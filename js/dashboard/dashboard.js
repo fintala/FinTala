@@ -35,6 +35,7 @@ function strechBox() {
     subButton.style.cssText = `
     display: flex;
     `;
+    strecher.textContent = '↑';
     profile.style.height = 'calc(60vh + 8rem)'
     strechClick = 2;
   }else if (strechClick === 2) {
@@ -76,7 +77,7 @@ openInput.addEventListener("click", (e) => {
     profile.style.height = '63vh';
     inputBox.style.display = 'flex';
     subButton.style.display = 'none';
-    
+    strecher.textContent = '↓';
     strechClick = 1;
   }, 400);
 });
@@ -87,7 +88,7 @@ closeInput.addEventListener("click", () => {
     profile.style.height = '63vh';
     inputBox.style.display = 'none';
     subButton.style.display = 'none';
-    
+    strecher.textContent = '↓';
     strechClick = 1;
   }, 400);
 });
