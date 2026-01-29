@@ -1119,10 +1119,10 @@ const movingAverage = document.getElementById('movingAverage').addEventListener(
 const volumeIndicator = document.getElementById('volume').addEventListener('click', (e) => {
   e.stopPropagation();
   localStorage.setItem("volume", "on");
-  window.location.href = '/charts.html';
+  window.location.href = 'charts.html';
   
   if (volumeActive == "on") {
     localStorage.removeItem("volume");
-    window.location.href = '/charts.html';
+    window.location.href = 'charts.html';
   }
 });
