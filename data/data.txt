@@ -1,0 +1,48 @@
+const crosshair = overlayLayer.append("g")
+      .style("display", "none");
+    
+    const crosshairX = crosshair.append("line")
+      .attr("y1", margin.top)
+      .attr("y2", height - margin.bottom)
+      .attr("stroke", "black")
+      .attr("stroke-dasharray", "3,3");
+    
+    const crosshairY = crosshair.append("line")
+      .attr("x1", margin.left)
+      .attr("x2", width - margin.right)
+      .attr("stroke", "black")
+      .attr("stroke-dasharray", "3,3");
+    
+    overlay
+      .on("mouseenter", () => crosshair.style("display", null))
+      .on("mouseleave", () => crosshair.style("display", "none"))
+      .on("mousemove", (event) => {
+        
+        const [mx, my] = d3.pointer(event, root.node());
+        
+        if (
+          mx < margin.top ||
+          mx > width - margin.bottom ||
+          my < margin.left ||
+          my > height - margin.right
+        ) return;
+        
+        const centers = visibleData.map(
+          d => x(d.date) + candleWidth / 2
+        );
+        
+        let i = 0,
+          min = Infinity;
+        centers.forEach((cx, idx) => {
+          const dist = Math.abs(mx - cx);
+          if (dist < min) {
+            min = dist;
+            i = idx;
+          }
+        });
+        
+        const snappedX = centers[i];
+        
+        crosshairX.attr("x1", snappedX).attr("x2", snappedX);
+        crosshairY.attr("y1", my).attr("y2", my);
+      });

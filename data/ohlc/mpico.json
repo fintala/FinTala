@@ -1,0 +1,99 @@
+ {
+  "symbol": "MPICO",
+  "name": "MPICO",
+  "exchange": "MSE",
+  "currency": "MWK",
+  "ohlc": [
+    { "date": "2025-08-01", "open": null, "high": null, "low": null, "close": null, "volume": null },
+    { "date": "2025-08-04", "open": null, "high": null, "low": null, "close": null, "volume": null },
+    { "date": "2025-08-05", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-07", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-08-08", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-11", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-13", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-15", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-08-18", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-19", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-20", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-22", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-08-25", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-27", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-28", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-03", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-04", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-09-05", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-08", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-09", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-10", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-11", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-09-12", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-15", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-23", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-25", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+
+    { "date": "2025-09-26", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-29", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-30", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-01", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-02", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-10-03", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-06", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-07", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-08", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-09", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+
+    { "date": "2025-10-13", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-20", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-10-27", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-28", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-29", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-30", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-31", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-11-03", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-07", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-10", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-18", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-11-20", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-27", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-28", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-02", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-12-05", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-08", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-09", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-10", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-11", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-12-12", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-15", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-16", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-18", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-12-19", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-23", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-24", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-31", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2026-01-14", "open": 19.52, "high": 19.51, "low": 19.51, "close": 19.51, "volume": 115917 },
+    { "date": "2026-01-19", "open": 19.49, "high": 19.49, "low": 19.49, "close": 19.49, "volume": 11896 },
+    { "date": "2026-01-21", "open": 19.48, "high": 19.48, "low": 19.46, "close": 19.47, "volume": 29279 },
+    { "date": "2026-01-26", "open": 19.47, "high": 19.46, "low": 19.46, "close": 19.46, "volume": 48107 }
+  ]
+}

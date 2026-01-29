@@ -1,0 +1,21 @@
+{
+  "symbol": "AMW",
+  "name": "AIRTEL MW",
+  "exchange": "MSE",
+  "currency": "MWK",
+  "ohlc": [
+    { "date": "2025-08-08", "open": 14.60, "high": 14.60, "low": 14.60, "close": 14.60, "volume": 0 },
+    { "date": "2025-08-15", "open": 14.60, "high": 14.60, "low": 14.60, "close": 14.60, "volume": 0 },
+    { "date": "2025-08-22", "open": 14.60, "high": 14.60, "low": 14.60, "close": 14.60, "volume": 0 },
+    { "date": "2025-08-29", "open": 14.60, "high": 15.06, "low": 14.60, "close": 15.00, "volume": 2000000 },
+    
+    { "date": "2025-09-05", "open": 15.01, "high": 15.01, "low": 15.00, "close": 15.00, "volume": 189483 },
+    { "date": "2025-09-12", "open": 15.00, "high": 15.02, "low": 15.00, "close": 15.01, "volume": 65000 },
+    { "date": "2025-09-17", "open": 15.01, "high": 15.02, "low": 15.01, "close": 15.02, "volume": 1267453 },
+    { "date": "2025-09-26", "open": 15.02, "high": 15.02, "low": 15.02, "close": 15.02, "volume": 0 },
+        
+    { "date": "2025-10-03", "open": 15.02, "high": 15.01, "low": 15.00, "close": 15.00, "volume": 189483 },
+    { "date": "2025-09-12", "open": 15.00, "high": 15.02, "low": 15.00, "close": 15.01, "volume": 65000 },
+    { "date": "2025-09-17", "open": 15.01, "high": 15.02, "low": 15.01, "close": 15.02, "volume": 1267453 },
+    { "date": "2025-09-26", "open": 15.02, "high": 15.02, "low": 15.02, "close": 15.02, "volume": 0 }
+    ]}

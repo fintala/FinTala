@@ -1,0 +1,483 @@
+/* ==========================
+   FinTala – main.css
+   Index Page Foundation
+   Palette:
+   Black: #000000
+   White: #ffffff
+   Accent: #c1ff72
+   ========================== */
+
+/* ---- CSS Reset (minimal) ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100vw;
+  max-width: 800px;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/assets/fonts/BBHHegarty-Regular.ttf') format('truetype');
+}
+
+/* ---- Base ---- */
+body {
+  font-family: system-ui, -apple-system, "BlinkMacSystemFont", Roboto, MyFont, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 4rem 0;
+  overflow-x: auto;
+}
+
+/* ==========================
+   Header
+   ========================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #c1ff72;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block; /* block */
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 1rem;
+}
+
+/* Logo (scale approach) */
+.logo {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transform: scale(1.4);
+}
+
+/* Menu */
+#pr-Name {
+  right: 3.5rem;
+  height: 1.1rem;
+  width: auto;
+  max-width: 9rem;
+  background: transparent;
+  position: absolute;
+  border-radius: 3px;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  font-weight: bolder;
+  transform: scaleX(1.3);
+  transform-origin: right;
+  overflow: hidden;
+  text-align: right;
+  opacity: 0.8;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  font-size: 0.9rem;
+}
+
+.menu-icon {
+  height: 32px;
+  width: 32px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c1ff72;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.menu-icon img {
+  width: 70%;
+  height: 70%;
+  scale: 1.56;
+}
+
+.main-nav {
+  display: none;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+/* -------------------
+    subscription dash
+   ------------------- */
+#header-outer {
+  top: 1rem;
+  right: 1rem;
+  height: auto;
+  min-height: 60vh;
+  width: 60vw;
+  position: fixed;
+  z-index: 1000;
+  background: #c1ff72;
+  border: 1px solid #f7f7f7;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 0.4rem;
+  padding: 1.5rem 0.75rem;
+  display: none; /* block */
+  z-index: 1500;
+  overflow: hidden;
+}
+
+#nickName {
+  letter-spacing: 0.05rem;
+}
+
+#nickname-child {
+  height: 2rem;
+  width: 100%;
+  display: none; /* flex */
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+#nickname-field {
+  height: 1.3rem;
+  width: 50%;
+}
+
+.nickname input {
+  background: lightcyan;
+  padding-left: 0.3rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.nickname button {
+  height: 1.3rem;
+  width: 2.3rem;
+  margin-left: 0.2rem;
+  overflow: hidden;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: hsl(0, 100%, 15%);
+  border-radius: 12px;
+}
+
+.opaq span {
+  opacity: 0.6;
+}
+
+.profile-field {
+ margin-bottom: 1.2rem; 
+}
+
+.profile-field div {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.profile-field div span {
+  background: brown;
+  color: #f6f6f6;
+  padding: 0rem 0.2rem;
+  border-radius: 3px;
+}
+
+.subscription {
+  height: 8rem;
+  width: 100%;
+  display: none; /* flex */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: transparent;
+}
+
+.subscription button {
+  height: 2.5rem;
+  width: 90%;
+  border-radius: 1.2rem;
+  font-size: 1rem;
+  background: hsl(0, 100%, 0%);
+  color: #c1ff72;
+  letter-spacing: 0.1rem;
+}
+
+.profile-controls {
+  height: 2.3rem;
+  width: 100%;
+  left: 0;
+  bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: transparent;
+  position: absolute;
+  background: #c1ff72;
+  gap: 1rem;
+}
+
+.profile-controls button {
+  height: 2rem;
+  width: 3rem;
+  background: rgba(16, 16, 16, 0.1);
+  color: black;
+  font-size: 2rem;
+  font-weight: bolder;
+  border-radius: 18px;
+}
+
+/* ---- Header visibility states ---- */
+header.is-hidden {
+  transform: translateY(-100%);
+}
+
+header.is-black {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+/* ---- Menu icon state ---- */
+header.is-black .menu-icon {
+  border: 1px solid #000;
+}
+
+/* ===========================
+    dashboard alert & overlay
+   =========================== */
+#dash-alert {
+  top: calc(50vh - 15vh);
+  left: calc(50vw - 35vw);
+  height: 30vh;
+  width: 70vw;
+  background: hsl(0, 100%, 98%);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 2000;
+  display: none; /* flex */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+#dash-alert h3 {
+  top: 1rem;
+  left: 1.2rem;
+  position: absolute;
+}
+
+#dash-alert span {
+  bottom: 1rem;
+  right: 2.7rem;
+  position: absolute;
+}
+
+#dashAlert-field {
+  transform: scaleX(1.2);
+  width: 90%;
+}
+
+#dash-overlay {
+  top: 0;
+  left: 0;
+  height: 120vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(16, 16, 16, 0.5);
+  z-index: 1000;
+  display: none; /* block */
+}
+
+/* =====================
+   Splash Screen
+   ===================== */
+#splash {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex; /* flex */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#splash img {
+  height: auto;
+  width: 35vw;
+  object-position: center;
+}
+
+#splash span {
+  bottom: 10vh;
+  position: absolute;
+  font-size: 1.1rem;
+}
+
+.smltxt {
+  transform: translateY(4vh) scale(0.8);
+}
+
+/* ==========================
+   Footer
+   ========================== */
+
+footer {
+  background-color: hsl(0, 0%, 15%);
+  color: #ffffff;
+  padding: 4rem 1rem 2rem;
+  display: block; /* block */
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Footer logo */
+.footer-logo {
+  height: 20vw;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.footer-logo img {
+  height: 30vw;
+  width: 100%;
+  object-position: center;
+}
+
+.about {
+  opacity: 0.76;
+}
+
+.join-us {
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-us a {
+  color: lightblue;
+}
+
+.join-us img {
+  margin-left: 0.4rem;
+  height: 1.6rem;
+  width: 1.6rem;
+  letter-spacing: 0.08rem;
+}
+
+.contact {
+  opacity: 0.8;
+}
+
+.contact a {
+  color: lightblue;
+}
+
+.usage-policy {
+  opacity: 0.7;
+  text-decoration: underline;
+  letter-spacing: 0.07rem;
+}
+
+.footer-copy {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.caution {
+  display: none;
+}
+
+/* ==========================
+   Responsive
+   ========================== */
+
+@media (min-width: 800px) {
+  html, body {
+    max-width: 90vw;
+  }
+  body p {
+    font-size: 3rem;
+    padding: 10vw;
+  }
+  
+  .caution {
+    top: 20vh;
+    left: 0;
+    width: 70vw;
+    position: absolute;
+    display: block;
+    text-align: center;
+  }
+  footer {
+    display: none;
+  }
+  header {
+    display: none;
+  }
+  .dashboard {
+    display: none !important;
+  }
+}
+
+/* ==================
+    animations
+   ================== */
+@keyframes vamos {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+  transform: scale(0);
+  display: none;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

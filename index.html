@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>FinTala | Market Dashboard</title>
+
+  <link rel="manifest" href="/data/manifest/manifest.json">
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <div class="caution">
+    <p>FinTala is yet to be available on devices with a width greater than 800 pixels. If the app fails to start, please kindly use a device with a smaller display.</p>
+  </div>
+
+  <!-- Header (shared) -->
+
+  <header id="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <img
+          id="header-logo"
+          src="/assets/brand/FinTala green.png"
+          data-alt="/assets/brand/FinTala.png"
+          alt="FinTala logo"
+        />
+      </div>
+
+      <div id="dash-overlay"></div>
+      <div id="pr-Name"></div>
+      <div id="pr-Icon" class="menu-icon dash">
+        <img src="/assets/ui/user-profile.png" alt="menu" />
+      </div>
+    </div>
+    
+    <div id="header-outer">
+      <div id="nickname" class="profile-field nickname">
+        <h4>Nickname:</h4>
+        <span id="nickName">[click to edit nickname]</span>
+        <div id="nickname-child">
+          <input type="text" name="nickname" id="nickname-field" value="" placeholder="nickname" />
+          <button id="nickname-close">×</button>
+          <button id="nickname-submit" type="submit">✓</button>
+        </div>
+      </div>
+      <div class="profile-field opaq">
+        <h4>Email:</h4>
+        <span>fintala.user@domain.com</span>
+      </div>
+      <div class="profile-field opaq">
+        <h4>ID:</h4>
+        <span>0e7b6202f_01</span>
+      </div>
+      <div class="profile-field">
+        <h4>Subscription:</h4>
+        <span>Free</span>
+        <div>
+          <h5>Tier:</h5>
+          <span>basic</span>
+        </div>
+      </div>
+      <div id="subContainer" class="subscription">
+        <button id="subscribe" onclick="">Subscribe</button>
+      </div>
+      <div class="profile-controls">
+        <button id="strecher" onclick="strechBox()">↓</button>
+        <button id="proClose"onclick="closeBox()">×</button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Main -->
+  <main class="dashboard">
+    <!-- Overlay -->
+    <div id="dash-alert">
+      <h3>v0.0.1 says:</h3>
+      <p id="dashAlert-field"></p>
+      <span id="close-dashAlert">Ok</span>
+    </div>
+    <!-- Market Overview -->
+    <section class="overview-section">
+    	<h2 class="section-title">Market Overview</h2>
+    	<div class="overview">
+        <div class="overview-box">
+          <div class="masi-wrap">
+            <div class="masi-box" id="masi">
+              <h3>MASI</h3>
+              <span>3,400</span>
+            </div>
+            <div class="masi-box" id="dsi">
+              <h3>DSI</h3>
+              <span>3,117</span>
+            </div>
+            <div class="masi-box" id="fsi">
+              <h3>FSI</h3>
+              <span>283</span>
+            </div>
+          </div>
+        </div>
+        <div id="volume-overview"class="overview-box">
+          <div id="volume-title">
+            <h3>most traded</h3>
+            <span>by volume</span>
+          </div>
+          <div id="oneVc" class="volume-card">
+            <h3 class="hname">_ _ /</h3>
+            <span>0,00</span>
+          </div>
+          <div id="twoVc" class="volume-card">
+            <h3 class="hname">_ _ /</h3>
+            <span>0,00</span>
+          </div>
+          <div id="threeVc" class="volume-card">
+            <h3 class="hname">_ _ /</h3>
+            <span>0,00</span>
+          </div>
+          <div id="fourVc" class="volume-card">
+            <h3 class="hname">_ _ /</h3>
+            <span>0,00</span>
+          </div>
+          <div id="fiveVc" class="volume-card">
+            <h3 class="hname">_ _ /</h3>
+            <span>0,00</span>
+          </div>
+          <div id="overview-overlay">[ - ]</div>
+        </div>
+        <div id="valTrnd-widget" class="overview-box">
+          <div id="vtw-inner" class="volume-card">
+            <span>Value Trends</span>
+          </div>
+          <div id="valTrnd-overlay">[ - ]</div>
+        </div>
+      </div>
+      <!-- expanded volume component -->
+      <div id="vol-detail" class="volume-detail">
+        <span id="close-volDet"> < Back</span>
+        <div id="vol-container"></div>
+        <div class="volume-buttons">
+          <div>D1</div>
+          <div>W1</div>
+          <div>M1</div>
+          <div>M4</div>
+          <div>Y1</div>
+        </div>
+        <div class="volume-key">Malawi-Stock-Exchange daily volume data.</div>
+      </div>
+      
+      <!-- sector comparison expanded -->
+      <div id="sector-comparison">
+        <span id="close-valTrnd"> < Back</span>
+        <span id="val-title">Telecom Sector</span>
+        <span id="val-help">?</span>
+        <div id="sect-container"></div>
+        <span id="val-helpText">
+          <strong>Value Trend</strong>
+          <span>
+            Shows how a company's traded value compares to the sector average.
+          </span>
+          
+          <span>
+            <strong style="color: magenta">Blue bars ↑:</strong> Company is trading above sector average (doing better).
+          </span>
+          <span>
+            <strong style="color: red">Red bars ↓:</strong> Company is trading below sector average (doing worse).
+          </span>
+        </span>
+        <div id="valTrndSelecta">
+          <div>sector</div>
+          <div>company</div>
+        </div>
+        <div id="valTrnd-key">Malawi-Stock-Exchange daily value_trend data.</div>
+      </div>
+    </section>
+    <!-- Watchlist -->
+    <section class="dash-section watchlist">
+      <h2 class="section-title">Observed companies (watchlist)</h2>
+    
+      <div class="watchlist-list">
+        <a id="amw" class="watchlist-item">
+          <img src="/assets/companies/airtel.png" alt="AMW" />
+          <div class="company-meta">
+            <span class="company-name">Airtel Mw</span>
+            <span id="amwPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="amwChange" class="company-change">+_._%</span>
+        </a>
+        
+        <a id="bhl" class="watchlist-item">
+          <img src="/assets/companies/bhl.png" alt="BH" />
+          <div class="company-meta">
+            <span class="company-name">Blantyre Hotels Plc</span>
+            <span id="bhlPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="bhlChange" class="company-change">+_._%</span>
+        </a>
+        
+        <a id="fdhb" class="watchlist-item">
+          <img src="/assets/companies/fdhb.png" alt="FDHB" />
+          <div class="company-meta">
+            <span class="company-name">FDH Bank</span>
+            <span id="fdhbPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="fdhbChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="fmb" class="watchlist-item">
+          <img src="/assets/companies/fmb.png" alt="FMB" />
+          <div class="company-meta">
+            <span class="company-name">FMB Capital</span>
+            <span id="fmbPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="fmbChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="icon" class="watchlist-item">
+          <img src="/assets/companies/iconProperties.jpeg" alt="ICON" />
+          <div class="company-meta">
+            <span class="company-name">Icon Properties</span>
+            <span id="iconPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="iconChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="illovo" class="watchlist-item">
+          <img src="/assets/companies/illovoSugar.jpeg" alt="Illovo" />
+          <div class="company-meta">
+            <span class="company-name">Illovo Sugar</span>
+            <span id="illPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="illChange"class="company-change positive">+_._%</span>
+        </a>
+    
+        <a id="mpico" class="watchlist-item">
+          <img src="/assets/companies/mpicoLtd.png" alt="MPICO" />
+          <div class="company-meta">
+            <span class="company-name">MPICO ltd</span>
+            <span id="mpicoPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="mpicoChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="nitl" class="watchlist-item">
+          <img src="/assets/companies/nitl.png" alt="NITL" />
+          <div class="company-meta">
+            <span class="company-name">National Investment Trust ltd</span>
+            <span id="nitlPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="nitlChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="nbm" class="watchlist-item">
+          <img src="/assets/companies/nb.jpg" alt="NBM" />
+          <div class="company-meta">
+            <span class="company-name">NBM plc</span>
+            <span id="nbmPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="nbmChange" class="company-change negative">−_._%</span>
+        </a>
+        
+        <a id="nbs" class="watchlist-item">
+          <img src="/assets/companies/nbsBank.png" alt="NBS" />
+          <div class="company-meta">
+            <span class="company-name">NBS</span>
+            <span id="nbsPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="nbsChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="nico" class="watchlist-item">
+          <img src="/assets/companies/nico.png" alt="NICO" />
+          <div class="company-meta">
+            <span class="company-name">NICO</span>
+            <span id="nicoPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="nicoChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="omu" class="watchlist-item">
+          <img src="/assets/companies/oldMutual.png" alt="OLMU" />
+          <div class="company-meta">
+            <span class="company-name">Old Mutual Mw</span></span>
+            <span id="omuPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="omuChange" class="company-change negative">−_._%</span>
+        </a>
+        
+        <a id="pcl" class="watchlist-item">
+          <img src="/assets/companies/pressCorp.png" alt="PCL" />
+          <div class="company-meta">
+            <span class="company-name">Press Corp.</span>
+            <span id="pclPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="pclChange" class="company-change negative">−_._%</span>
+        </a>
+        
+        <a id="stdb" class="watchlist-item">
+          <img src="/assets/companies/standardBank.jpeg" alt="STANBIC" />
+          <div class="company-meta">
+            <span class="company-name">Standard Bank Mw</span>
+            <span id="stdPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="stdChange" class="company-change positive">+_._%</span>
+        </a>
+        
+        <a id="sunbird" class="watchlist-item">
+          <img src="/assets/companies/sunbirdTourism.png" alt="SUNBIRD" />
+          <div class="company-meta">
+            <span class="company-name">Sunbird Hotels</span>
+            <span id="sunbirdPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="sunbirdChange" class="company-change negative">−_._%</span>
+        </a>
+        
+        <a id="tnm" class="watchlist-item">
+          <img src="/assets/companies/tnm.png" alt="TNM" />
+          <div class="company-meta">
+            <span class="company-name">TNM</span>
+            <span id="tnmPrice" class="company-price">MWK -,---.--</span>
+          </div>
+          <span id="tnmChange" class="company-change negative">−_._%</span>
+        </a>
+      </div>
+    </section>
+    <section class="install-prompt">
+      <button id="appInst">Install FinTala</button>
+    </section>
+
+
+  </main>
+
+  <!-- Footer -->
+
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <img class="footer-logo" src="/assets/brand/FinTala negative.png" alt="FinTala" />
+
+      <div class="about"><h4>about us</h4></div>
+      <div class="join-us">
+        <h5></h5><a href="https://chat.whatsapp.com/JF00JGC96eHEo1xhA0SYb2">Learn Technical Analysis</a></h5>
+        <img src="/assets/social/fb icon.png" alt="WA">
+      </div>
+      <div class="contact">
+        <h5>email:</5>
+        <a href="$">fintala1012@gmail.com</a>
+      </div>
+      <div class="usage-policy"><span>usage policy</span></div>
+      <div class="footer-copy">
+        <p>© 2026 FinTala. All rights reserved.</p>
+      </div>
+    </div>
+
+
+  </footer>
+
+  <script type="text/javascript" src="cdn_modules/d3@7.9.0/d3.min.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/dashboard/dashboard.js"></script>
+  <script src="/js/dashboard/dash_components.js"></script>
+  <script src="/js/chart/dataPort.js"></script>
+  <script src="/js/install.js"></script>
+
+</body>
+</html>

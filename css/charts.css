@@ -1,0 +1,416 @@
+/* =============================
+   FinTala Charts – charts.css
+   Philosophy: data-first, UI-last
+   ============================= */
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --accent: #c1ff72;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  max-width: 800px;
+  height: 100vh;
+  overflow: hidden;
+  background: hsl(0, 0%, 96%);
+  font-family: system-ui, sans-serif;
+}
+
+#chart-loadScreen {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: hsl(0, 0%, 100%);
+  display: flex; /* flex */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#chart-loadScreen img {
+  height: auto;
+  width: 50vw;
+  object-position: center;
+  position: absolute;
+}
+
+#cl-span {
+  font-size: 3rem;
+  font-weight: bold;
+  position: absolute;
+  bottom: 30vh;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#chart {
+  width: 100%;
+  height: 100%;
+}
+
+#logo {
+  position: absolute;
+  top: 45px;
+  left: 12vw;
+  width: 50px;
+  height: 45px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-origin: center;
+  transform: rotate(90deg) translateY(-70vw);
+  opacity: 0.5;
+}
+
+#logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transform: scaleX(1.3);
+}
+
+/* ==================
+/  TOOLs DASHBOARD
+/  ================*/
+#toolsWrap {
+  top: 8vh;
+  right: 5.5vw;
+  height: 80vh;
+  width: 100px;
+  position: absolute;
+  background-color: rgba(16, 16, 16, 0.75);
+  z-index: 1000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: -1px 2px 2px 0 black;
+  border: 1px solid lightskyblue;
+  border-radius: 5px;
+  display: none; /* block */
+}
+
+.tools {
+  top: 0;
+  left: 0;
+  position: relative;
+  height: 100%;
+  min-width: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.tools span {
+  background: rgba(255, 255, 255, 1);
+  height: 48px;
+  width: 48px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.tools span img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(0.6) rotate(90deg);
+}
+
+#graphB {
+  display: none;
+}
+
+#tfWrap {
+  top: 20vh;
+  left: 40vw;
+  height: 55vh;
+  width: 60px;
+  position: fixed;
+  display: none; /* flex */
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: -1px 2px 2px 0 black;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 1000;
+}
+
+#tfWrap span {
+  color: white;
+  border: 1px solid lightskyblue;
+  background: rgba(0, 0, 0, 0.95);
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+#tfWrapL span {
+  color: white;
+  border: 1px solid lightskyblue;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* =========================
+/   OVERLAY CURTAIN STYLES
+/* =======================*/
+#chartOverlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.35);
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 1000;
+  display: none; /* block */
+}
+
+#co-wrap{
+  top: 0;
+  right: 0;
+  min-width: 100vw;
+  width: auto;
+  height: 45vh;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+  background: hsl(0, 0%, 99%);
+  display: none; /* flex */
+  flex-direction: row-reverse;
+  position: absolute;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.overlay-choice {
+  right: 0;
+  top: 0;
+  width: 15rem;
+  transform: rotate(90deg) translateY(4vh);
+  display: flex; /* flex */
+  flex-direction: column;
+}
+
+.overlay-choice h3 {
+  font-size: 1.3rem;
+  text-align: right;
+  font: roboto;
+  border-bottom: 1px solid black;
+}
+
+.overlay-choice div {
+  min-height: 50px;
+  height: auto;
+}
+
+.overlay-choice h4 {
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+}
+
+.overlay-choice img {
+  height: 25px;
+  width: 25px;
+  object-fit: cover;
+  object-position: center;
+}
+
+#drawWrap {
+  display: none; /* flex */
+}
+
+#indicatorWrap {
+  display: none; /* flex */
+}
+
+/* ====================
+/  Timeline Composer
+/  ==================*/
+#tlcomposer {
+  position: fixed;
+  top: 80vh;
+  left: 5vw;
+  width: 50vw;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  font-family: system-ui, sans-serif;
+  z-index: 2000;
+  user-select: none;
+}
+
+#tlcomposer.hidden {
+  display: none;
+}
+
+/* Header (drag handle) */
+#tlcomposer .tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 12px;
+  font-weight: 600;
+  cursor: grab;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#tlcomposer .tl-header:active {
+  cursor: grabbing;
+}
+
+#tlcomposer .tl-header button {
+  background: none;
+  border: none;
+  font-size: 18px;
+}
+
+/* Body */
+#tlcomposer .tl-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#tlcomposer input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+}
+
+#tlcomposer .tl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#tlcomposer .tl-extend button {
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 2px 4px;
+  margin-left: 6px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: white;
+  border-radius: 6px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.tl-extend {
+  margin-left: 1.55rem;
+}
+
+#tlcomposer .tl-extend button.active {
+  background: #c1ff72;
+  border-color: black;
+}
+
+/* ===================
+       Alert Card
+   =================== */
+#alert-card {
+  height: 22rem;
+  width: 12rem;
+  top: calc(50vh - 11rem);
+  left: calc(50vw - 6rem);
+  position: fixed;
+  background: hsl(0, 100%, 96%);
+  box-shadow: -1px 1px 1px 1px rgba(16, 16, 16, 0.6);
+  z-index: 3000;
+  border-radius: 0.8rem;
+  display: none; /* flex */
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+#close-alert {
+  transform: rotate(90deg);
+  position: absolute;
+  bottom: 3rem;
+  left: 1.3rem;
+  font-size: 1.2rem;
+}
+
+.alert-card {
+  transform-origin: center;
+  transform: rotate(90deg) scaleX(1.8) scaleY(0.56);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.alert-card h3 {
+  top: 0;
+  left: 5%;
+  position: absolute;
+  transform: scaleX(0.8) scaleY(1.8);
+  line-height: 1rem;
+}
+
+#alert {
+  font-size: 0.8rem;
+  transform: scaleX(0.8) scaleY(1.9);
+  line-height: 1.15rem;
+}
+
+#movingAverage, #rsi, #trendline {
+  opacity: 0.4;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0.01;
+    }
+}
+
+@media (min-width: 800px) {
+  html, body {
+    min-width: 100vw;
+  }
+  
+  .overlay-choice {
+    right: 0;
+    top: 0;
+    width: 25rem;
+    transform: rotate(90deg) translateY(20vh);
+    display: flex; /* flex */
+    flex-direction: column;
+  }
+
+}

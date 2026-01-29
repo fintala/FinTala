@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>FinTala | Charts</title>
+
+  <!-- Charts-specific CSS -->
+  <link rel="stylesheet" href="css/charts.css" />
+</head>
+
+<body>
+  <!-- SPLASH SCREEN -->
+  <div id="chart-loadScreen">
+    <img src="/assets/public-imgz/bull-vs-bear-vector.jpg" alt="bulls n' bears" />
+    <span id="cl-span"></span>
+  </div>
+  
+  <!-- MAIN APP -->
+  <div id="app">
+    <svg id="chart"></svg>
+
+    <div id="toolsWrap">
+      <div class="tools">
+        <span id="toolsExit" class="tools-exit">×</span>
+        <span id="timeframe" class="timeframe">
+          <span id="tf-span" style="transform: rotate(90deg);">D1</span>
+        </span>
+        <div id="tfWrap">
+          <span id="tfwa">D1</span>
+          <span id="tfwb">W1</span>
+          <span id="tfwc">M1</span>
+          <span id="tfwd">Y1</span>
+        </div>
+        <span id="graph" class="graph">
+          <img id="graphA" src="/assets/ui/chart-line-smooth.svg" alt="linegraph">
+          <img id="graphB" src="/assets/ui/chart_candle.png" alt="chart_candle">
+        </span>
+        <span id="drawingTools" class="drawing-tools">
+          <img src="/assets/ui/drawing.png" alt="drawings">
+        </span>
+        <span id="tIndicators" class="indicators">
+          <img src="/assets/ui/signal.svg" alt="Indicators">
+        </span>
+        <span id="chartSettings" class="chart-settings tButton">
+          <img src="/assets/ui/settings-cog.svg" alt="settings">
+        </span>
+      </div>
+    </div>
+    
+    <!-- Overlay Curtain -->
+    <div id="chartOverlay">
+      <div id="co-wrap">
+        <div id="drawWrap" class="overlay-choice">
+          <h3>drawing tools</h3>
+          <div id="trendline">
+            <h4><img src="/assets/ui/3-trend-line.png" alt="trend-line">Trendline</h4>
+            <div id="trendlineStorage"></div>
+          </div>
+        </div>
+        <div id="indicatorWrap" class="overlay-choice">
+          <h3>Indicators</h3>
+          <div id="volume">
+            <h4><img src="/assets/ui/RSI.png" alt="rsi" />Volume</h4>
+          </div>
+          <div id="movingAverage">
+            <h4><img style="transform: scale(1.3);" src="/assets/ui/MAvg.jpg" alt="MAvg">Moving Average</h4>
+          </div>
+          <div id="rsi">
+            <h4><img src="/assets/ui/RSI.png" alt="rsi"/>Relative Strength Index</h4>
+          </div>
+              
+        </div>
+      </div>
+    </div>
+    
+    <div id="tlcomposer" class="hidden">
+      <div class="tl-header">
+        <span>Trendline</span>
+        <button id="tl-cancel">✕</button>
+      </div>
+        
+      <div class="tl-body">
+        <input
+          id="tl-name"
+          type="text"
+          placeholder="Name (e.g. Daily resistance)"
+        />
+      
+        <div class="tl-row">
+          <label>Extend</label>
+          <div class="tl-extend">
+            <button data-ext="none">—</button>
+            <button data-ext="left">←</button>
+            <button data-ext="right">→</button>
+            <button data-ext="both">↔</button>
+          </div>
+        </div>
+        
+        <div class="tl-row">
+          <label>Color</label>
+          <input id="tl-color" type="color" />
+        </div>
+        
+        <div class="tl-row">
+          <label>Width</label>
+          <input id="tl-width" type="range" min="1" max="4" step="0.5" />
+        </div>
+      </div>
+    </div>
+    
+    <div id="alert-card">
+      <div class="alert-card">
+        <h3>v0.0.1 says:</h3>
+        <p id="alert"></p>
+      </div>
+      <span id="close-alert">Ok</span>
+    </div>
+        
+    <div id="logo"><img id="chart-logo" src="/assets/brand/FinTala.png" alt="FinTala logo"></div>
+  </div>
+  
+  <script type="text/javascript" src="cdn_modules/d3@7.9.0/d3.min.js"></script>
+  <script src="/js/splash/splash.js"></script>
+  <script src="/js/chart/chart.js"></script>
+  <script src="/js/chart/timeline+-.js"></script>
+  
+
+</body>
+
+</html>
