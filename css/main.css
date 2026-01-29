@@ -32,7 +32,12 @@ body {
   color: #000000;
   line-height: 1.6;
   overflow-x: hidden;
+  padding: env(safe-area-inset-top)
+           env(safe-area-inset-right)
+           env(safe-area-inset-bottom)
+           env(safe-area-inset-left);
 }
+
 
 section {
   padding: 4rem 0;
@@ -306,7 +311,7 @@ header.is-black .menu-icon {
 #dash-overlay {
   top: 0;
   left: 0;
-  height: 120vh;
+  height: 120svh;
   width: 100vw;
   position: fixed;
   background: rgba(16, 16, 16, 0.5);

@@ -14,10 +14,17 @@ html, body {
   padding: 0;
   width: 100vw;
   max-width: 800px;
-  height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background: hsl(0, 0%, 96%);
   font-family: system-ui, sans-serif;
+}
+
+body {
+  padding: env(safe-area-inset-top)
+           env(safe-area-inset-right)
+           env(safe-area-inset-bottom)
+           env(safe-area-inset-left);
 }
 
 #chart-loadScreen {
@@ -50,7 +57,7 @@ html, body {
 
 #app {
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   position: relative;
 }
 
@@ -179,7 +186,7 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100svh;
   width: 100vw;
   position: fixed;
   background: rgba(255, 255, 255, 0.35);
