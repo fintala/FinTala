@@ -1364,7 +1364,7 @@ if (userId !== "olduser") {
   setTimeout (() => {
     dashAlert.style.cssText = `
     display: flex;
-    height: 16rem;
+    height: 20rem;
     `;
     daField.textContent = "Kindly note that the most recent price-data on this platform, is based on the previous business day's closing-information.                  You're strongly advised to visit the MSE site, if you want to refer to current price data.";
   }, 100);
