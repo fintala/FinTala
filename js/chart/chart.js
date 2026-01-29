@@ -57,30 +57,30 @@ function  checkSession() {
       if (cuup === "bhl") {
         function callBhl() {
           if (cuup === "bhl" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/bhl.json';
+            datafeed = 'data/ohlc/w_ohlc/bhl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/bh.json";
+            datafeed = "data/ohlc/bh.json";
             tfSpan.textContent = 'D1';
           }
         }
         callBhl();
       }
       if (cuup === "amw") {
-        datafeed = "/data/ohlc/airtelmw.json";
+        datafeed = "data/ohlc/airtelmw.json";
       }
       if (cuup === "nbm") {
-        datafeed = "/data/ohlc/nbm.json";
+        datafeed = "data/ohlc/nbm.json";
       }
       if (cuup === "ill") {
         function callIll() {
           if (cuup === "ill" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/illovo.json';
+            datafeed = 'data/ohlc/w_ohlc/illovo.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/illovo.json";
+            datafeed = "data/ohlc/illovo.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -89,11 +89,11 @@ function  checkSession() {
       if (cuup === "tnm") {
         function calltnm() {
           if (cuup === "tnm" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/tnm.json';
+            datafeed = 'data/ohlc/w_ohlc/tnm.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/tnm.json";
+            datafeed = "data/ohlc/tnm.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -102,11 +102,11 @@ function  checkSession() {
       if (cuup === "nitl") {
         function callnitl() {
           if (cuup === "nitl" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/nitl.json";
+            datafeed = "data/ohlc/nitl.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -115,11 +115,11 @@ function  checkSession() {
       if (cuup === "nico") {
         function callnico() {
           if (cuup === "nico" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/nico.json";
+            datafeed = "data/ohlc/nico.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -128,11 +128,11 @@ function  checkSession() {
       if (cuup === "nbs") {
         function callnbs() {
           if (cuup === "nbs" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/nbs.json";
+            datafeed = "data/ohlc/nbs.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -141,11 +141,11 @@ function  checkSession() {
       if (cuup === "fdhb") {
         function callfdhb() {
           if (cuup === "fmb" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/fdh.json";
+            datafeed = "data/ohlc/fdh.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -154,11 +154,11 @@ function  checkSession() {
       if (cuup === "fmb") {
         function callfmb() {
           if (cuup === "fmb" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/fmbch.json";
+            datafeed = "data/ohlc/fmbch.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -167,11 +167,11 @@ function  checkSession() {
       if (cuup === "icon") {
         function callicon() {
           if (cuup === "icon" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/icon_properties.json";
+            datafeed = "data/ohlc/icon_properties.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -180,11 +180,11 @@ function  checkSession() {
       if (cuup === "omu") {
         function callomu() {
           if (cuup === "omu" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/oldmutual.json";
+            datafeed = "data/ohlc/oldmutual.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -193,11 +193,11 @@ function  checkSession() {
       if (cuup === "mpico") {
         function callmpico() {
           if (cuup === "mpico" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/mpico.json";
+            datafeed = "data/ohlc/mpico.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -206,11 +206,11 @@ function  checkSession() {
       if (cuup === "pcl") {
         function callpcl() {
           if (cuup === "pcl" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/press_corp.json";
+            datafeed = "data/ohlc/press_corp.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -219,11 +219,11 @@ function  checkSession() {
       if (cuup === "stdb") {
         function callstdb() {
           if (cuup === "stdb" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/std_bank.json";
+            datafeed = "data/ohlc/std_bank.json";
             tfSpan.textContent = 'D1';
           }
         }
@@ -232,11 +232,11 @@ function  checkSession() {
       if (cuup === "sunbird") {
         function callsunbird() {
           if (cuup === "sunbird" && timeStrech === "W1") {
-            datafeed = '/data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/nitl.json';
             tfSpan.textContent = 'W1';
           }
           else {
-            datafeed = "/data/ohlc/sunbird.json";
+            datafeed = "data/ohlc/sunbird.json";
             tfSpan.textContent = 'D1';
           }
         }

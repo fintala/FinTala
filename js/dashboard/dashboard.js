@@ -226,7 +226,7 @@ function parseBhl() {
     const bhlPrice = document.getElementById('bhlPrice');
     const bhlChange = document.getElementById('bhlChange');
     
-    fetch('/data/ohlc/bh.json')
+    fetch('data/ohlc/bh.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -297,7 +297,7 @@ function parseAmw() {
     const amwPrice = document.getElementById('amwPrice');
     const amwChange = document.getElementById('amwChange');
   
-    fetch('/data/ohlc/airtelmw.json')
+    fetch('data/ohlc/airtelmw.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -368,7 +368,7 @@ function parseNbm() {
     const nbmPrice = document.getElementById('nbmPrice');
     const nbmChange = document.getElementById('nbmChange');
   
-    fetch('/data/ohlc/nbm.json')
+    fetch('data/ohlc/nbm.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -438,7 +438,7 @@ function parseIll() {
     const illPrice = document.getElementById('illPrice');
     const illChange = document.getElementById('illChange');
   
-    fetch('/data/ohlc/illovo.json')
+    fetch('data/ohlc/illovo.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -509,7 +509,7 @@ function parseTnm() {
     const tnmPrice = document.getElementById('tnmPrice');
     const tnmChange = document.getElementById('tnmChange');
   
-    fetch('/data/ohlc/tnm.json')
+    fetch('data/ohlc/tnm.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -580,7 +580,7 @@ function parseNitl() {
     const nitlPrice = document.getElementById('nitlPrice');
     const nitlChange = document.getElementById('nitlChange');
   
-    fetch('/data/ohlc/nitl.json')
+    fetch('data/ohlc/nitl.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -651,7 +651,7 @@ function parseNico() {
     const nicoPrice = document.getElementById('nicoPrice');
     const nicoChange = document.getElementById('nicoChange');
   
-    fetch('/data/ohlc/nico.json')
+    fetch('data/ohlc/nico.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -722,7 +722,7 @@ function parseNbs() {
     const nbsPrice = document.getElementById('nbsPrice');
     const nbsChange = document.getElementById('nbsChange');
   
-    fetch('/data/ohlc/nbs.json')
+    fetch('data/ohlc/nbs.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -793,7 +793,7 @@ function parseOmu() {
     const omuPrice = document.getElementById('omuPrice');
     const omuChange = document.getElementById('omuChange');
   
-    fetch('/data/ohlc/oldmutual.json')
+    fetch('data/ohlc/oldmutual.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -864,7 +864,7 @@ function parseFdhb() {
     const fdhbPrice = document.getElementById('fdhbPrice');
     const fdhbChange = document.getElementById('fdhbChange');
   
-    fetch('/data/ohlc/fdh.json')
+    fetch('data/ohlc/fdh.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -935,7 +935,7 @@ function parseFmb() {
     const fmbPrice = document.getElementById('fmbPrice');
     const fmbChange = document.getElementById('fmbChange');
   
-    fetch('/data/ohlc/fmbch.json')
+    fetch('data/ohlc/fmbch.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -1006,7 +1006,7 @@ function parseIcon() {
     const iconPrice = document.getElementById('iconPrice');
     const iconChange = document.getElementById('iconChange');
   
-    fetch('/data/ohlc/icon_properties.json')
+    fetch('data/ohlc/icon_properties.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -1077,7 +1077,7 @@ function parseMpico() {
     const mpicoPrice = document.getElementById('mpicoPrice');
     const mpicoChange = document.getElementById('mpicoChange');
   
-    fetch('/data/ohlc/mpico.json')
+    fetch('data/ohlc/mpico.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -1148,7 +1148,7 @@ function parsePcl() {
     const pclPrice = document.getElementById('pclPrice');
     const pclChange = document.getElementById('pclChange');
   
-    fetch('/data/ohlc/press_corp.json')
+    fetch('data/ohlc/press_corp.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -1219,7 +1219,7 @@ function parseStd() {
     const stdPrice = document.getElementById('stdPrice');
     const stdChange = document.getElementById('stdChange');
   
-    fetch('/data/ohlc/std_bank.json')
+    fetch('data/ohlc/std_bank.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({
@@ -1290,7 +1290,7 @@ function parseSunbird() {
     const sunbirdPrice = document.getElementById('sunbirdPrice');
     const sunbirdChange = document.getElementById('sunbirdChange');
   
-    fetch('/data/ohlc/sunbird.json')
+    fetch('data/ohlc/sunbird.json')
       .then(res => res.json())
       .then(raw => {
         data = raw.ohlc.map(d => ({

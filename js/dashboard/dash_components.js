@@ -1,5 +1,5 @@
 // List of JSON file paths
-const files = ['/data/ohlc/airtelmw.json', '/data/ohlc/bh.json', '/data/ohlc/illovo.json', '/data/ohlc/nbm.json', '/data/ohlc/tnm.json', '/data/ohlc/nitl.json', '/data/ohlc/nico.json', '/data/ohlc/nbs.json', '/data/ohlc/oldmutual.json', '/data/ohlc/fdh.json', '/data/ohlc/fmbch.json', '/data/ohlc/icon_properties.json', '/data/ohlc/mpico.json', '/data/ohlc/press_corp.json', '/data/ohlc/std_bank.json', '/data/ohlc/sunbird.json'];
+const files = ['data/ohlc/airtelmw.json', 'data/ohlc/bh.json', 'data/ohlc/illovo.json', 'data/ohlc/nbm.json', 'data/ohlc/tnm.json', 'data/ohlc/nitl.json', 'data/ohlc/nico.json', 'data/ohlc/nbs.json', 'data/ohlc/oldmutual.json', 'data/ohlc/fdh.json', 'data/ohlc/fmbch.json', 'data/ohlc/icon_properties.json', 'data/ohlc/mpico.json', 'data/ohlc/press_corp.json', 'data/ohlc/std_bank.json', 'data/ohlc/sunbird.json'];
 
 
 // Fetch data from files
@@ -87,8 +87,8 @@ const visibleCount = 20;
 
 // Fetch data from JSON files
 Promise.all([
-  d3.json('/data/ohlc/airtelmw.json'),
-  d3.json('/data/ohlc/tnm.json')
+  d3.json('data/ohlc/airtelmw.json'),
+  d3.json('data/ohlc/tnm.json')
 ]).then(([data1, data2]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
