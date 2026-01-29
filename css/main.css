@@ -22,7 +22,7 @@ html {
 
 @font-face {
   font-family: 'MyFont';
-  src: url('/assets/fonts/BBHHegarty-Regular.ttf') format('truetype');
+  src: url('assets/fonts/BBHHegarty-Regular.ttf') format('truetype');
 }
 
 /* ---- Base ---- */
