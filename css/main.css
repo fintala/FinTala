@@ -261,6 +261,11 @@ header {
   align-content: center;
 }
 
+.profile-controls button svg {
+  height: 100%;
+  width: auto;
+}
+
 /* ---- Header visibility states ---- */
 header.is-hidden {
   transform: translateY(-100%);
