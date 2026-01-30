@@ -188,15 +188,16 @@ header {
   overflow: hidden;
   font-size: 1.1rem;
   font-weight: bold;
+  text-align: center;
   color: white;
   background: hsl(0, 100%, 15%);
   border-radius: 12px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 }
 
-nickname button img {
+nickname-submit img {
   height: 100;
   width: auto;
   object-position: center;
