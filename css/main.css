@@ -201,7 +201,8 @@ nickname-submit img {
   height: 100;
   width: auto;
   object-position: center;
-  scale: 0.6;
+  transform-origin: center;
+  transform: scale(0.8);
 }
 
 .opaq span {
