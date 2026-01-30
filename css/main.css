@@ -258,7 +258,7 @@ header {
   font-weight: bolder;
   border-radius: 18px;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 }
 
 /* ---- Header visibility states ---- */
