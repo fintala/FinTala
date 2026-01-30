@@ -261,9 +261,10 @@ header {
   align-content: center;
 }
 
-.profile-controls button svg {
+.profile-controls button img {
   height: 100%;
   width: auto;
+  object-fit: cover;
 }
 
 /* ---- Header visibility states ---- */
