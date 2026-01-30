@@ -1423,7 +1423,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
     if (!localStorage.getItem("fintala-installed")) {
       overlay.hidden = false;
     }
-  }, 3000);
+  }, 6000);
 });
 
 // Install button logic
