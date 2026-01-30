@@ -1399,3 +1399,49 @@ subS.addEventListener("click", () => {
     dashAlert.style.display = 'none';
   });
 });
+
+// =======================
+//     Install Logic
+// =======================
+let deferredPrompt = null;
+
+const overlay = document.getElementById("install-overlay");
+const installBtn = document.getElementById("install-btn");
+
+// Guard: never show again after install
+if (localStorage.getItem("fintala-installed") === "true") {
+  overlay.hidden = true;
+}
+
+// Capture install eligibility
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  // Optional delay so it doesn’t jump instantly
+  setTimeout(() => {
+    if (!localStorage.getItem("fintala-installed")) {
+      overlay.hidden = false;
+    }
+  }, 3000);
+});
+
+// Install button logic
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  const choice = await deferredPrompt.userChoice;
+
+  if (choice.outcome === "accepted") {
+    overlay.hidden = true;
+  }
+
+  deferredPrompt = null;
+});
+
+// Final confirmation from the browser
+window.addEventListener("appinstalled", () => {
+  localStorage.setItem("fintala-installed", "true");
+  overlay.hidden = true;
+});
