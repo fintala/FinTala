@@ -473,7 +473,7 @@ footer {
 }
 
 .install-card {
-  background: #fff;
+  background: #c1ff72;
   color: #000;
   padding: 1.5rem;
   border-radius: 12px;
@@ -486,6 +486,9 @@ footer {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 
