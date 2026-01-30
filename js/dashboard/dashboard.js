@@ -1445,3 +1445,4 @@ window.addEventListener("appinstalled", () => {
   localStorage.setItem("fintala-installed", "true");
   overlay.hidden = true;
 });
+
