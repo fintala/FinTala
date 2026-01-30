@@ -198,11 +198,9 @@ header {
 }
 
 nickname-submit img {
-  height: 100;
+  height: 80%;
   width: auto;
   object-position: center;
-  transform-origin: center;
-  transform: scale(0.8);
 }
 
 .opaq span {
