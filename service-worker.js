@@ -1,4 +1,4 @@
-const CACHE_NAME = "v0.0.0.0.5";
+const CACHE_NAME = "v0.0.0.0.6";
 
 self.addEventListener("activate", event => {
   event.waitUntil(
@@ -16,8 +16,7 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache =>
       cache.addAll([
-        "./",
-        "./index.html"
+        "./"
       ])
     )
   );
