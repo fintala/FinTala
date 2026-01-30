@@ -1,4 +1,4 @@
-const CACHE_NAME = "v0.0.0.0.6";
+const CACHE_NAME = "v0.0.0.0.5";
 
 self.addEventListener("activate", event => {
   event.waitUntil(
