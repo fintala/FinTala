@@ -3,6 +3,7 @@ const prIcon = document.getElementById('pr-Icon');
 const strecher = document.getElementById('strecher');
 const subButton = document.getElementById('subContainer');
 const subS = document.getElementById('subscribe');
+const strechUp = document.getElementById('strech-up');
 
 let strechClick = 1;
 
@@ -35,14 +36,20 @@ function strechBox() {
     subButton.style.cssText = `
     display: flex;
     `;
-    strecher.textContent = '↑';
+    strechUp.style.cssText = `
+      transform-origin: center;
+      transform: rotate(180deg);
+    `;
     profile.style.height = 'calc(60vh + 8rem)'
     strechClick = 2;
   }else if (strechClick === 2) {
     subButton.style.cssText = `
     display: none;
     `;
-    strecher.textContent = '↓';
+    strechUp.style.cssText = `
+      transform-origin: center;
+      transform: rotate(0);
+    `;
     profile.style.height = '60vh';
     strechClick = 1;
   }
@@ -77,7 +84,10 @@ openInput.addEventListener("click", (e) => {
     profile.style.height = '63vh';
     inputBox.style.display = 'flex';
     subButton.style.display = 'none';
-    strecher.textContent = '↓';
+    strechUp.style.cssText = `
+      transform-origin: center;
+      transform: rotate(0);
+    `;
     strechClick = 1;
   }, 400);
 });
@@ -88,7 +98,10 @@ closeInput.addEventListener("click", () => {
     profile.style.height = '63vh';
     inputBox.style.display = 'none';
     subButton.style.display = 'none';
-    strecher.textContent = '↓';
+    strechUp.style.cssText = `
+      transform-origin: center;
+      transform: rotate(0);
+    `;
     strechClick = 1;
   }, 400);
 });
