@@ -1376,14 +1376,15 @@ let userId = localStorage.getItem("userId", "olduser");
 if (userId !== "olduser") {
   setTimeout (() => {
     dashAlert.style.cssText = `
-    top: 20svh;
+    top: 10svh !important;
     display: flex;
     height: auto;
     `;
     daField.style.cssText = `
-    margin: 3rem 0 3rem 0;
+    margin: 2rem 0 2rem 0;
     padding: 0 0.3rem;
     display: flex;
+    text-align: left;
     flex-direction: column;
     gap: 0.5rem;
     `;
