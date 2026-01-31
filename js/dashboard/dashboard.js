@@ -1376,26 +1376,26 @@ let userId = localStorage.getItem("userId", "olduser");
 if (userId !== "olduser") {
   setTimeout (() => {
     dashAlert.style.cssText = `
-    top: 10svh !important;
+    top: 15svh !important;
     display: flex;
     height: auto;
     `;
     daField.style.cssText = `
-    margin: 2rem 0 2rem 0;
-    padding: 0 0.3rem;
+    margin: 2.5rem 0 2.5rem 0;
+    padding: 0 0.6rem;
     display: flex;
     text-align: left;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
     `;
     daField.innerHTML = `
     <strong style="color: indigo;">
       Data notice
     </strong>
-    <p style="font-weight: 200;">
+    <p style="font-weight: 300;">
       The most recent prices displayed on this platform reflect the previous business day’s official closing data. Prices are updated automatically on first load.
     </p>
-    <p style="font-weight: 200;">
+    <p style="font-weight: 300;">
       For intraday or real-time price movements, users are advised to consult the Malawi Stock Exchange directly.
     </p>
     `;
