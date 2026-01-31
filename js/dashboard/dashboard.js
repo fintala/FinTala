@@ -1380,7 +1380,7 @@ if (userId !== "olduser") {
     height: auto;
     `;
     daField.style.cssText = `
-    margi: 4rem 0 4rem 0;
+    margin: 4rem 0 4rem 0;
     padding: 0 0.3rem;
     display: flex;
     flex-direction: column;
