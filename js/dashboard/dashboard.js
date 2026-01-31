@@ -1379,7 +1379,7 @@ if (userId !== "olduser") {
     display: flex;
     gap: 0.5rem;
     text-align: left;
-    height: auto;
+    height: 40rem;
     `;
     daField.innerHTML = `
     <strong style="color: indigo;">
