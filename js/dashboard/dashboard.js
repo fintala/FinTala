@@ -1377,7 +1377,7 @@ if (userId !== "olduser") {
   setTimeout (() => {
     dashAlert.style.cssText = `
     display: flex;
-    height: 20rem;
+    height: 25rem;
     `;
     daField.innerHTML = `
     <strong style="color: indigo;">
