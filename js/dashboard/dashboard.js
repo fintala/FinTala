@@ -1376,7 +1376,7 @@ let userId = localStorage.getItem("userId", "olduser");
 if (userId !== "olduser") {
   setTimeout (() => {
     dashAlert.style.cssText = `
-    top: 20svh !important;
+    top: 17svh !important;
     display: flex;
     height: auto;
     `;
