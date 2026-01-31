@@ -1379,7 +1379,17 @@ if (userId !== "olduser") {
     display: flex;
     height: 20rem;
     `;
-    daField.textContent = "Kindly note that the most recent price-data on this platform, is based on the previous business day's closing-information.                  You're strongly advised to visit the MSE site, if you want to refer to current price data.";
+    daField.innerHTML = `
+    <strong style="color: indigo;">
+      Data notice
+    </strong>
+    <p style="font-weight: 200;">
+      The most recent prices displayed on this platform reflect the previous business day’s official closing data. Prices are updated automatically on first load.
+    </p>
+    <p style="font-weight: 200;">
+      For intraday or real-time price movements, users are advised to consult the Malawi Stock Exchange directly.
+    </p>
+    `;
   }, 100);
   
   dashOverlay.style.display = 'block';
@@ -1445,4 +1455,3 @@ window.addEventListener("appinstalled", () => {
   localStorage.setItem("fintala-installed", "true");
   overlay.hidden = true;
 });
-
