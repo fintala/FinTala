@@ -19,7 +19,7 @@ Promise.all(files.map(file => d3.json(file)))
       .sort((a, b) => b.volume - a.volume);
 
     // Create bar chart with sortedData
-    const margin = { top: 20, right: 10, bottom: 20, left: 50 };
+    const margin = { top: 20, right: 10, bottom: 10, left: 50 };
     const width = 335 - margin.left - margin.right;
     const height = 315 - margin.top - margin.bottom;
 
