@@ -782,7 +782,6 @@ navBtn.addEventListener("click", (e) => {
   const da = document.getElementById('tfwa').addEventListener ('click', (e) => {
     e.stopPropagation();
     tfSpan.textContent = 'D1';
-    let cuup = ticker;
     checkSession();
     window.location.href = '/charts.html';
     closeTool();
