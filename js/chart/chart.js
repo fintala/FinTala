@@ -84,7 +84,7 @@ function  checkSession() {
           else {
             datafeed = "data/ohlc/airtelmw.json";
           }
-          callAmw
+          callAmw();
         }
         
       }
