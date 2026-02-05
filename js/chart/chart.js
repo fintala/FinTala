@@ -812,6 +812,11 @@ navBtn.addEventListener("click", (e) => {
   });
   const dd = document.getElementById('tfwd').addEventListener ('click', (e) => {
     e.stopPropagation();
+    
+    window.sessionStorage.setItem("timeframe", "M1");
+    checkSession();
+    window.location.href = '/charts.html';
+    
     tfSpan.textContent = 'Y1';
     closeTool();
   });
