@@ -64,7 +64,7 @@ function  checkSession() {
             datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'M1';
           }
-          if (cuup === "bhl" && timeStrech === "D1") {
+          if (cuup === "bhl") {
             datafeed = "data/ohlc/bh.json";
             tfSpan.textContent = 'D1';
           }
@@ -781,10 +781,8 @@ navBtn.addEventListener("click", (e) => {
   
   const da = document.getElementById('tfwa').addEventListener ('click', (e) => {
     e.stopPropagation();
-    
-    window.sessionStorage.setItem("timeframe", "D1");
     tfSpan.textContent = 'D1';
-    window.sessionStorage.setItem("timeframe", "D1");
+    let cuup = ticker;
     checkSession();
     window.location.href = '/charts.html';
     closeTool();
