@@ -60,7 +60,7 @@ function  checkSession() {
             datafeed = 'data/ohlc/w_ohlc/bh.json';
             tfSpan.textContent = 'W1';
           }
-          if (cuup === "bhl" && timeStrech === "M1") {
+          else if (cuup === "bhl" && timeStrech === "M1") {
             datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'M1';
           }
