@@ -84,9 +84,8 @@ function  checkSession() {
           else {
             datafeed = "data/ohlc/airtelmw.json";
           }
-          callAmw();
         }
-        
+        callAmw();
       }
       if (cuup === "nbm") {
         datafeed = "data/ohlc/nbm.json";
