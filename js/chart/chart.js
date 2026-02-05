@@ -813,7 +813,7 @@ navBtn.addEventListener("click", (e) => {
   const dd = document.getElementById('tfwd').addEventListener ('click', (e) => {
     e.stopPropagation();
     
-    window.sessionStorage.setItem("timeframe", "M1");
+    window.sessionStorage.setItem("timeframe", "Y1");
     checkSession();
     window.location.href = '/charts.html';
     
