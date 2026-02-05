@@ -43,13 +43,13 @@ let ticker = [];
 let fRame = [];
 const tfSpan = document.getElementById('tf-span');
 
+  ticker = localStorage.getItem("symbol");
+  fRame = sessionStorage.getItem("timeframe");
+    
+  let cuup = ticker;
+  let timeStrech = fRame;
 
 function  checkSession() {
-    ticker = localStorage.getItem("symbol");
-    fRame = sessionStorage.getItem("timeframe");
-    
-    let cuup = ticker;
-    let timeStrech = fRame;
     
     // handling companies
     function stealdata() {
