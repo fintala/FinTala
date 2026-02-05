@@ -60,6 +60,10 @@ function  checkSession() {
             datafeed = 'data/ohlc/w_ohlc/bh.json';
             tfSpan.textContent = 'W1';
           }
+          if (cuup === "bhl" && timeStrech === "M1") {
+            datafeed = '/data/ohlc/m_ohlc/bh.json';
+            tfSpan.textContent = 'M1';
+          }
           else {
             datafeed = "data/ohlc/bh.json";
             tfSpan.textContent = 'D1';
@@ -795,6 +799,10 @@ navBtn.addEventListener("click", (e) => {
   });
   const dc = document.getElementById('tfwc').addEventListener ('click', (e) => {
     e.stopPropagation();
+    window.sessionStorage.setItem("timeframe", "M1");
+    checkSession();
+    window.location.href = '/charts.html';
+    
     tfSpan.textContent = 'M1';
     closeTool();
   });
