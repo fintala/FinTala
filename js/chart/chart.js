@@ -61,7 +61,7 @@ function  checkSession() {
             tfSpan.textContent = 'W1';
           }
           if (cuup === "bhl" && timeStrech === "M1") {
-            datafeed = '/data/ohlc/m_ohlc/bh.json';
+            datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'M1';
           }
           else {
