@@ -57,7 +57,7 @@ function  checkSession() {
       if (cuup === "bhl") {
         function callBhl() {
           if (cuup === "bhl" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/m_ohlc/bhl.json';
+            datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'W1';
           }
           else {
