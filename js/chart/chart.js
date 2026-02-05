@@ -64,7 +64,7 @@ function  checkSession() {
             datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'M1';
           }
-          else {
+          if (cuup === 'bhl') {
             datafeed = "data/ohlc/bh.json";
             tfSpan.textContent = 'D1';
           }
