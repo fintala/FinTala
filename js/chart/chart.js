@@ -798,7 +798,7 @@ navBtn.addEventListener("click", (e) => {
     window.sessionStorage.setItem("timeframe", "");
     tfSpan.textContent = 'D1';
     checkSession();
-    window.location.href = '/charts.html';
+    window.location.reload();
     closeTool();
   });
   const db = document.getElementById('tfwb').addEventListener ('click', (e) => {
@@ -806,7 +806,7 @@ navBtn.addEventListener("click", (e) => {
     
     window.sessionStorage.setItem("timeframe", "W1");
     checkSession();
-    window.location.href = '/charts.html';
+    window.location.reload();
       
       console.log(datafeed);
     closeTool();
@@ -815,7 +815,7 @@ navBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     window.sessionStorage.setItem("timeframe", "M1");
     checkSession();
-    window.location.href = '/charts.html';
+    window.location.reload();
     
     tfSpan.textContent = 'M1';
     closeTool();
@@ -825,7 +825,7 @@ navBtn.addEventListener("click", (e) => {
     
     window.sessionStorage.setItem("timeframe", "Y1");
     checkSession();
-    window.location.href = '/charts.html';
+    window.location.reload();
     
     closeTool();
   });
