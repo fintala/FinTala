@@ -64,6 +64,9 @@ function  checkSession() {
             datafeed = 'data/ohlc/m_ohlc/bh.json';
             tfSpan.textContent = 'M1';
           }
+          else if (cuup === "bhl" && timeStrech === "Y1") {
+            datafeed = '/data/ohlc/y_ohlc/bh.json';
+          }
           else {
             datafeed = "data/ohlc/bh.json";
             tfSpan.textContent = 'D1';
