@@ -65,7 +65,7 @@ function  checkSession() {
             tfSpan.textContent = 'M1';
           }
           else if (cuup === "bhl" && timeStrech === "Y1") {
-            datafeed = '/data/ohlc/y_ohlc/bh.json';
+            datafeed = 'data/ohlc/y_ohlc/bh.json';
             tfSpan.textContent = 'Y1';
           }
           else {
@@ -76,7 +76,17 @@ function  checkSession() {
         callBhl();
       }
       if (cuup === "amw") {
-        datafeed = "data/ohlc/airtelmw.json";
+        function callAmw() {
+          if (cuup === "amw" && timeStrech === "W1") {
+            datafeed = 'data/ohlc/w_ohlc/airtelmw.json';
+            tfSpan.textContent = 'W1';
+          }
+          else {
+            datafeed = "data/ohlc/airtelmw.json";
+          }
+          callAmw
+        }
+        
       }
       if (cuup === "nbm") {
         datafeed = "data/ohlc/nbm.json";
