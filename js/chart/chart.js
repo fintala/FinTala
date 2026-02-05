@@ -781,6 +781,8 @@ navBtn.addEventListener("click", (e) => {
   
   const da = document.getElementById('tfwa').addEventListener ('click', (e) => {
     e.stopPropagation();
+    
+    window.sessionStorage.setItem("timeframe", "");
     tfSpan.textContent = 'D1';
     checkSession();
     window.location.href = '/charts.html';
