@@ -66,6 +66,7 @@ function  checkSession() {
           }
           else if (cuup === "bhl" && timeStrech === "Y1") {
             datafeed = '/data/ohlc/y_ohlc/bh.json';
+            tfSpan.textContent = 'Y1';
           }
           else {
             datafeed = "data/ohlc/bh.json";
@@ -817,7 +818,6 @@ navBtn.addEventListener("click", (e) => {
     checkSession();
     window.location.href = '/charts.html';
     
-    tfSpan.textContent = 'Y1';
     closeTool();
   });
   
