@@ -9,8 +9,8 @@ let volTime = '';
 if (volTime === 'W1') {
   pull = wFiles;
 }
-else if (volTime === 'D1') {
-  pull = files;
+else {
+  pull = wFiles;
 }
 
 // Fetch data from files
