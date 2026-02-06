@@ -43,8 +43,7 @@ Promise.all(pull.map(file => d3.json(file)))
         const width = 335 - margin.left - margin.right;
         const height = 305 - margin.top - margin.bottom;
     
-        const svg = d3.select('#vol-container').remove();
-        svg = d3.select('#vol-container')
+        const svg = d3.select('#vol-container')
           .append('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)
@@ -60,6 +59,8 @@ Promise.all(pull.map(file => d3.json(file)))
           .domain([0, d3.max(sortedData, d => d.volume)])
           .range([0, width]);
     
+        svg.selectAll('rect').remove();
+        
         svg.selectAll('rect')
           .data(sortedData)
           .enter()
@@ -70,6 +71,8 @@ Promise.all(pull.map(file => d3.json(file)))
           .attr('height', y.bandwidth())
           .attr('stroke', 'rgba(0, 0, 0, 0.7)')
           .attr('fill', 'lightskyblue');
+          
+        svg.selectAll('g').remove();
     
         // Add Y-axis (symbol names)
         svg.append('g')
