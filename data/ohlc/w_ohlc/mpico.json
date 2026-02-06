@@ -1,6 +1,6 @@
-{
-  "symbol": "NITL",
-  "name": "NATIONAL INVESTMENT TRUST Ltd",
+ {
+  "symbol": "MPICO",
+  "name": "MPICO",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -35,7 +35,7 @@
     { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2026-01-30", "open": 3934.79, "high": 3934.78, "low": 3934.49, "close": 3934.50, "volume": 100936 },
-    { "date": "2026-02-05", "open": 3934.50, "high": 3934.50, "low": 3932.91, "close": 3934.44, "volume": 26461 }
+    { "date": "2026-01-30", "open": 19.47, "high": 19.47, "low": 19.46, "close": 19.46, "volume": 1089359 },
+    { "date": "2026-02-05", "open": 19.46, "high": 19.46, "low": 19.43, "close": 19.44, "volume": 1109460 }
   ]
 }

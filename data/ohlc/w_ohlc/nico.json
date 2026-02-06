@@ -1,6 +1,6 @@
 {
-  "symbol": "NITL",
-  "name": "NATIONAL INVESTMENT TRUST Ltd",
+  "symbol": "NICO",
+  "name": "NATIONAL INSURANCE Corp.",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -35,7 +35,7 @@
     { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2026-01-30", "open": 3934.79, "high": 3934.78, "low": 3934.49, "close": 3934.50, "volume": 100936 },
-    { "date": "2026-02-05", "open": 3934.50, "high": 3934.50, "low": 3932.91, "close": 3934.44, "volume": 26461 }
+    { "date": "2026-01-30", "open": 1724.97, "high": 1724.97, "low": 1719.99, "close": 1720.27, "volume": 258022 },
+    { "date": "2026-02-05", "open": 1720.27, "high": 1719.50, "low": 1714.99, "close": 1715.92, "volume": 96493 }
   ]
 }

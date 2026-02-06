@@ -1,6 +1,6 @@
 {
-  "symbol": "NITL",
-  "name": "NATIONAL INVESTMENT TRUST Ltd",
+  "symbol": "NBM",
+  "name": "NATIONAL BANK of MALAWI",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -35,7 +35,7 @@
     { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2026-01-30", "open": 3934.79, "high": 3934.78, "low": 3934.49, "close": 3934.50, "volume": 100936 },
-    { "date": "2026-02-05", "open": 3934.50, "high": 3934.50, "low": 3932.91, "close": 3934.44, "volume": 26461 }
+    { "date": "2026-01-30", "open": 11840.00, "high": 11839.99, "low": 11740.00, "close": 11743.65, "volume": 18740 },
+    { "date": "2026-02-05", "open": 11743.66, "high": 11740.00, "low": 11719.78, "close": 11719.80, "volume": 19563 }
   ]
 }

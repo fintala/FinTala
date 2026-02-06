@@ -1,1 +1,41 @@
-{}
+ {
+  "symbol": "NBS",
+  "name": "NBS Bank",
+  "exchange": "MSE",
+  "currency": "MWK",
+  "ohlc": [
+    { "date": "2025-08-01", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-08", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-15", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-08-22", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-08-28", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-05", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-12", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-09-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-09-26", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-03", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-09", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-17", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-10-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-10-31", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-07", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-10", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-11-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-11-28", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-05", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-12", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2025-12-19", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-24", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-31", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    
+    { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2026-01-30", "open": 890.55, "high": 892.84, "low": 891.98, "close": 892.49, "volume": 1079092 },
+    { "date": "2026-02-05", "open": 892.49, "high": 891.95, "low": 891.47, "close": 891.52, "volume": 149856 }
+  ]
+}

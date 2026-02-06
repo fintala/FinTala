@@ -1,6 +1,6 @@
-{
-  "symbol": "NITL",
-  "name": "NATIONAL INVESTMENT TRUST Ltd",
+ {
+  "symbol": "OMU",
+  "name": "OLD MUTUAL MALAWI",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -35,7 +35,7 @@
     { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2026-01-30", "open": 3934.79, "high": 3934.78, "low": 3934.49, "close": 3934.50, "volume": 100936 },
-    { "date": "2026-02-05", "open": 3934.50, "high": 3934.50, "low": 3932.91, "close": 3934.44, "volume": 26461 }
+    { "date": "2026-01-30", "open": 3790.04, "high": 3790.04, "low": 3790.04, "close": 3790.04, "volume": 0 },
+    { "date": "2026-02-05", "open": 3790.04, "high": 3790.05, "low": 3790.04, "close": 3790.05, "volume": 262 }
   ]
 }

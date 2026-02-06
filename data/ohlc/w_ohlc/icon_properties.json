@@ -1,6 +1,6 @@
-{
-  "symbol": "NITL",
-  "name": "NATIONAL INVESTMENT TRUST Ltd",
+ {
+  "symbol": "ICON",
+  "name": "ICON Properties",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -35,7 +35,7 @@
     { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2026-01-30", "open": 3934.79, "high": 3934.78, "low": 3934.49, "close": 3934.50, "volume": 100936 },
-    { "date": "2026-02-05", "open": 3934.50, "high": 3934.50, "low": 3932.91, "close": 3934.44, "volume": 26461 }
+    { "date": "2026-01-30", "open": 16.00, "high": 16.00, "low": 15.97, "close": 15.97, "volume": 210894 },
+    { "date": "2026-02-05", "open": 15.97, "high": 15.97, "low": 15.96, "close": 15.97, "volume": 148403 }
   ]
 }
