@@ -136,6 +136,7 @@ volWeek.addEventListener('click', () => {
   sessionStorage.setItem("volumeTimeframe", "W1");
   pushSource();
   window.location.reload();
+  volDetail.style.display = 'block';
   setTimeout(() => {
     drawVolumeChart();
   }, 200);
