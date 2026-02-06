@@ -29,7 +29,11 @@ Promise.all(pull.map(file => d3.json(file)))
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
 
-    // Create bar chart with sortedData
+drawVolumeChart();
+  })  .catch(error => console.error(error));
+
+function drawVolumeChart() {
+      // Create bar chart with sortedData
     const margin = { top: 20, right: 10, bottom: 20, left: 50 };
     const width = 335 - margin.left - margin.right;
     const height = 305 - margin.top - margin.bottom;
@@ -88,19 +92,17 @@ Promise.all(pull.map(file => d3.json(file)))
       card.querySelector('span').textContent = company.volume.toLocaleString();
     }
   });
-  
-  const volWeek = document.getElementById('volDb');
-volWeek.addEventListener('click', () => {
-  volTime = "W1";
-  
-});
-  })
-  .catch(error => console.error(error));
+}
+
   
 // --------------------
 //  Timeframe Buttons
 // --------------------
-
+const volWeek = document.getElementById('volDb');
+volWeek.addEventListener('click', () => {
+  volTime = "W1";
+  
+});
 
   
 // =============================
