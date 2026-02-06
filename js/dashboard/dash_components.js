@@ -16,6 +16,8 @@ function  pushSource() {
   else {
     pull = files;
   }
+  
+  console.log(volTime);
 }
 pushSource();
 
@@ -104,7 +106,6 @@ volWeek.addEventListener('click', () => {
   setTimeout(() => {
     drawVolumeChart();
   }, 200);
-  console.log(volTime);
 });
     
   })
