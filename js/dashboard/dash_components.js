@@ -4,7 +4,7 @@ const files = ['data/ohlc/airtelmw.json', 'data/ohlc/bh.json', 'data/ohlc/illovo
 const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'data/ohlc/w_ohlc/fdh.json', 'data/ohlc/w_ohlc/fmbch.json', 'data/ohlc/w_ohlc/icon_properties.json', 'data/ohlc/w_ohlc/illovo.json', 'data/ohlc/w_ohlc/mpico.json', 'data/ohlc/w_ohlc/nbm.json', 'data/ohlc/w_ohlc/nbs.json', 'data/ohlc/w_ohlc/nico.json', 'data/ohlc/w_ohlc/nitl.json', 'data/ohlc/w_ohlc/oldmutual.json', 'data/ohlc/w_ohlc/press_corp.json', 'data/ohlc/w_ohlc/std_bank.json', 'data/ohlc/w_ohlc/sunbird.json', 'data/ohlc/w_ohlc/tnm.json'];
 
 let pull = [];
-let volTime = '';
+let volTime = sessionStorage.getItem("volumeTimeframe");
 
 function  pushSource() {
   if (volTime === "W1") {
@@ -133,7 +133,7 @@ Promise.all(pull.map(file => d3.json(file)))
     drawVolumeChart();
     const volWeek = document.getElementById('volDb');
 volWeek.addEventListener('click', () => {
-  volTime = "W1";
+  sessionStorage.setItem("volumeTimeframe", "W1");
   pushSource();
   setTimeout(() => {
     drawVolumeChart();
