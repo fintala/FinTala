@@ -59,7 +59,7 @@ Promise.all(pull.map(file => d3.json(file)))
           .domain([0, d3.max(sortedData, d => d.volume)])
           .range([0, width]);
     
-        svg.selectAll('rect').remove();
+        svg.selectAll('.rect').remove();
         
         svg.selectAll('rect')
           .data(sortedData)
@@ -72,7 +72,7 @@ Promise.all(pull.map(file => d3.json(file)))
           .attr('stroke', 'rgba(0, 0, 0, 0.7)')
           .attr('fill', 'lightskyblue');
           
-        svg.selectAll('g').remove();
+        svg.selectAll('.g').remove();
     
         // Add Y-axis (symbol names)
         svg.append('g')
