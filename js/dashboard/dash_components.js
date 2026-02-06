@@ -7,7 +7,7 @@ let pull = [];
 let volTime = '';
 
 function  pushSource() {
-  if (volTime === 'W1') {
+  if (volTime === "W1") {
     pull = wFiles;
   }
   else if (volTime === "M1") {
