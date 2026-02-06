@@ -135,6 +135,7 @@ Promise.all(pull.map(file => d3.json(file)))
 volWeek.addEventListener('click', () => {
   sessionStorage.setItem("volumeTimeframe", "W1");
   pushSource();
+  window.location.reload();
   setTimeout(() => {
     drawVolumeChart();
   }, 200);
