@@ -56,7 +56,7 @@ function drawVolumeChart() {
       .range([0, width]);
 
     svg.selectAll('rect')
-      .data(sortedData)
+      .data(volumeData)
       .enter()
       .append('rect')
       .attr('x', 0)
