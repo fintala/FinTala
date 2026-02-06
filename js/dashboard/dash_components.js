@@ -7,7 +7,7 @@ let pull = [];
 let volTime = '';
 
 function  pushSource() {
-  if (volTime === 'W1') {
+  if (volTime === "W1") {
     pull = wFiles;
   }
   else if (volTime === "M1") {
@@ -43,7 +43,8 @@ Promise.all(pull.map(file => d3.json(file)))
         const width = 335 - margin.left - margin.right;
         const height = 305 - margin.top - margin.bottom;
     
-        const svg = d3.select('#vol-container')
+        const svg = d3.select('#vol-container').remove();
+        svg = d3.select('#vol-container')
           .append('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)
