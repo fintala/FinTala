@@ -92,18 +92,18 @@ Promise.all(pull.map(file => d3.json(file)))
     }
     drawVolumeChart();
     
-    const volWeek = document.getElementById('volDb');
-volWeek.addEventListener('click', () => {
-  volTime = "W1";
-  drawVolumeChart();
-});
+    
   })
   .catch(error => console.error(error));
   
 // --------------------
 //  Timeframe Buttons
 // --------------------
-
+const volWeek = document.getElementById('volDb');
+volWeek.addEventListener('click', () => {
+  volTime = "W1";
+  drawVolumeChart();
+});
 
   
 // =============================
