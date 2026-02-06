@@ -9,7 +9,7 @@ let volTime = '';
 if (volTime === 'W1') {
   pull = wFiles;
 }
-else {
+else if (volTime === 'D1') {
   pull = files;
 }
 
