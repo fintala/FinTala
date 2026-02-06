@@ -99,22 +99,6 @@ Promise.all(pull.map(file => d3.json(file)))
 
   function drawVolumeChart() {
     
-        svg = d3.select('#vol-container')
-          .append('svg')
-          .attr('width', width + margin.left + margin.right)
-          .attr('height', height + margin.top + margin.bottom)
-          .append('g')
-          .attr('transform', `translate(${margin.left}, ${margin.top})`);
-    
-        const y = d3.scaleBand()
-          .domain(sortedData.map(d => d.symbol))
-          .range([0, height])
-          .padding(0.2);
-    
-        const x = d3.scaleLinear()
-          .domain([0, d3.max(sortedData, d => d.volume)])
-          .range([0, width]);
-    
         svg.selectAll('rect').remove();
     
         svg.selectAll('rect')
@@ -145,18 +129,6 @@ Promise.all(pull.map(file => d3.json(file)))
           .tickSize(3)
           );
           
-        // Get top 5 companies
-      const top5 = sortedData.slice(0, 5);
-      
-      // Update existing elements
-      const volumeCards = document.querySelectorAll('.volume-card');
-      top5.forEach((company, index) => {
-        const card = volumeCards[index];
-        if (card) {
-          card.querySelector('h3').textContent = company.symbol;
-          card.querySelector('span').textContent = company.volume.toLocaleString();
-        }
-      });
     }
     drawVolumeChart();
     const volWeek = document.getElementById('volDb');
