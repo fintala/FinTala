@@ -101,7 +101,9 @@ Promise.all(pull.map(file => d3.json(file)))
 volWeek.addEventListener('click', () => {
   volTime = "W1";
   pushSource();
-  drawVolumeChart();
+  setTimeout(() => {
+    drawVolumeChart();
+  }, 200);
   console.log(volTime);
 });
     
