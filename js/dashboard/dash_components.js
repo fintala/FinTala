@@ -36,14 +36,70 @@ Promise.all(pull.map(file => d3.json(file)))
     const sortedData = Object.entries(aggregatedData)
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
+      
+    // Create bar chart with sortedData
+    const margin = { top: 20, right: 10, bottom: 20, left: 50 };
+    const width = 335 - margin.left - margin.right;
+    const height = 305 - margin.top - margin.bottom;
+    
+    const svg = d3.select('#vol-container')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+    
+    const y = d3.scaleBand()
+      .domain(sortedData.map(d => d.symbol))
+      .range([0, height])
+      .padding(0.2);
+    
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(sortedData, d => d.volume)])
+      .range([0, width]);
+    
+    svg.selectAll('rect')
+      .data(sortedData)
+      .enter()
+      .append('rect')
+      .attr('x', 0)
+      .attr('y', d => y(d.symbol))
+      .attr('width', d => x(d.volume))
+      .attr('height', y.bandwidth())
+      .attr('stroke', 'rgba(0, 0, 0, 0.7)')
+      .attr('fill', 'lightskyblue');
+    
+    // Add Y-axis (symbol names)
+    svg.append('g')
+      .call(d3.axisLeft(y)
+      .tickSize(3)
+      .tickPadding(5)
+    );
+    
+    // Add X-axis (volume)
+    svg.append('g')
+      .attr('transform', `translate(0, ${height})`)
+      .call(d3.axisBottom(x)
+      .ticks(5)
+      .tickSize(3)
+    );
+          
+    // Get top 5 companies
+    const top5 = sortedData.slice(0, 5);
+      
+    // Update existing elements
+    const volumeCards = document.querySelectorAll('.volume-card');
+      top5.forEach((company, index) => {
+        const card = volumeCards[index];
+        if (card) {
+          card.querySelector('h3').textContent = company.symbol;
+          card.querySelector('span').textContent = company.volume.toLocaleString();
+        }
+    });
 
   function drawVolumeChart() {
-        // Create bar chart with sortedData
-        const margin = { top: 20, right: 10, bottom: 20, left: 50 };
-        const width = 335 - margin.left - margin.right;
-        const height = 305 - margin.top - margin.bottom;
     
-        const svg = d3.select('#vol-container')
+        svg = d3.select('#vol-container')
           .append('svg')
           .attr('width', width + margin.left + margin.right)
           .attr('height', height + margin.top + margin.bottom)
@@ -59,8 +115,8 @@ Promise.all(pull.map(file => d3.json(file)))
           .domain([0, d3.max(sortedData, d => d.volume)])
           .range([0, width]);
     
-        svg.selectAll('.rect').remove();
-        
+        svg.selectAll('rect').remove();
+    
         svg.selectAll('rect')
           .data(sortedData)
           .enter()
@@ -72,7 +128,7 @@ Promise.all(pull.map(file => d3.json(file)))
           .attr('stroke', 'rgba(0, 0, 0, 0.7)')
           .attr('fill', 'lightskyblue');
           
-        svg.selectAll('.g').remove();
+        svg.selectAll('g').remove();
     
         // Add Y-axis (symbol names)
         svg.append('g')
