@@ -29,7 +29,8 @@ Promise.all(pull.map(file => d3.json(file)))
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
 
-drawVolumeChart();
+const volumeData = sortedData;
+drawVolumeChart(volumeData);
   })  .catch(error => console.error(error));
 
 function drawVolumeChart() {
@@ -46,7 +47,7 @@ function drawVolumeChart() {
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
     const y = d3.scaleBand()
-      .domain(sortedData.map(d => d.symbol))
+      .domain(volumeData.map(d => d.symbol))
       .range([0, height])
       .padding(0.2);
 
@@ -81,7 +82,7 @@ function drawVolumeChart() {
       );
       
     // Get top 5 companies
-  const top5 = sortedData.slice(0, 5);
+  const top5 = volumeData.slice(0, 5);
   
   // Update existing elements
   const volumeCards = document.querySelectorAll('.volume-card');
