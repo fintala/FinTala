@@ -158,7 +158,7 @@ function  checkSession() {
       if (cuup === "fdhb") {
         function callfdhb() {
           if (cuup === "fmb" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
+            datafeed = 'data/ohlc/w_ohlc/fdh.json';
             tfSpan.textContent = 'W1';
           }
           else {
