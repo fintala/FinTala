@@ -1,9 +1,20 @@
 // List of JSON file paths
 const files = ['data/ohlc/airtelmw.json', 'data/ohlc/bh.json', 'data/ohlc/illovo.json', 'data/ohlc/nbm.json', 'data/ohlc/tnm.json', 'data/ohlc/nitl.json', 'data/ohlc/nico.json', 'data/ohlc/nbs.json', 'data/ohlc/oldmutual.json', 'data/ohlc/fdh.json', 'data/ohlc/fmbch.json', 'data/ohlc/icon_properties.json', 'data/ohlc/mpico.json', 'data/ohlc/press_corp.json', 'data/ohlc/std_bank.json', 'data/ohlc/sunbird.json'];
 
+const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'data/ohlc/w_ohlc/fdh.json', 'data/ohlc/w_ohlc/fmbch.json', 'data/ohlc/w_ohlc/icon_properties.json', 'data/ohlc/w_ohlc/illovo.json', 'data/ohlc/w_ohlc/mpico.json', 'data/ohlc/w_ohlc/nbm.json', 'data/ohlc/w_ohlc/nbs.json', 'data/ohlc/w_ohlc/nico.json', 'data/ohlc/w_ohlc/nitl.json', 'data/ohlc/w_ohlc/oldmutual.json', 'data/ohlc/w_ohlc/press_corp.json', 'data/ohlc/w_ohlc/std_bank.json', 'data/ohlc/w_ohlc/sunbird.json', 'data/ohlc/w_ohlc/tnm.json'];
+
+let pull = [];
+let volTime = '';
+
+if (volTime === 'W1') {
+  pull = wFiles;
+}
+else {
+  pull = files;
+}
 
 // Fetch data from files
-Promise.all(files.map(file => d3.json(file)))
+Promise.all(pull.map(file => d3.json(file)))
   .then(datasets => {
     // Aggregate volumes
     const aggregatedData = {};
