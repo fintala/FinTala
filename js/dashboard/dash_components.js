@@ -88,8 +88,20 @@ Promise.all(pull.map(file => d3.json(file)))
       card.querySelector('span').textContent = company.volume.toLocaleString();
     }
   });
+  
+  const volWeek = document.getElementById('volDb');
+volWeek.addEventListener('click', () => {
+  volTime = "W1";
+  
+});
   })
   .catch(error => console.error(error));
+  
+// --------------------
+//  Timeframe Buttons
+// --------------------
+
+
   
 // =============================
 //   SECTOR COMPARISON SECTION
