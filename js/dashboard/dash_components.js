@@ -29,72 +29,71 @@ Promise.all(pull.map(file => d3.json(file)))
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
 
-const volumeData = sortedData;
-drawVolumeChart(volumeData);
-  })  .catch(error => console.error(error));
-
-function drawVolumeChart() {
-      // Create bar chart with sortedData
-    const margin = { top: 20, right: 10, bottom: 20, left: 50 };
-    const width = 335 - margin.left - margin.right;
-    const height = 305 - margin.top - margin.bottom;
-
-    const svg = d3.select('#vol-container')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-    const y = d3.scaleBand()
-      .domain(volumeData.map(d => d.symbol))
-      .range([0, height])
-      .padding(0.2);
-
-    const x = d3.scaleLinear()
-      .domain([0, d3.max(sortedData, d => d.volume)])
-      .range([0, width]);
-
-    svg.selectAll('rect')
-      .data(volumeData)
-      .enter()
-      .append('rect')
-      .attr('x', 0)
-      .attr('y', d => y(d.symbol))
-      .attr('width', d => x(d.volume))
-      .attr('height', y.bandwidth())
-      .attr('stroke', 'rgba(0, 0, 0, 0.7)')
-      .attr('fill', 'lightskyblue');
-
-    // Add Y-axis (symbol names)
-    svg.append('g')
-      .call(d3.axisLeft(y)
-        .tickSize(3)
-        .tickPadding(5)
-      );
-
-    // Add X-axis (volume)
-    svg.append('g')
-      .attr('transform', `translate(0, ${height})`)
-      .call(d3.axisBottom(x)
-      .ticks(5)
-      .tickSize(3)
-      );
+  function drawVolumeChart() {
+        // Create bar chart with sortedData
+        const margin = { top: 20, right: 10, bottom: 20, left: 50 };
+        const width = 335 - margin.left - margin.right;
+        const height = 305 - margin.top - margin.bottom;
+    
+        const svg = d3.select('#vol-container')
+          .append('svg')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', `translate(${margin.left}, ${margin.top})`);
+    
+        const y = d3.scaleBand()
+          .domain(sortedData.map(d => d.symbol))
+          .range([0, height])
+          .padding(0.2);
+    
+        const x = d3.scaleLinear()
+          .domain([0, d3.max(sortedData, d => d.volume)])
+          .range([0, width]);
+    
+        svg.selectAll('rect')
+          .data(sortedData)
+          .enter()
+          .append('rect')
+          .attr('x', 0)
+          .attr('y', d => y(d.symbol))
+          .attr('width', d => x(d.volume))
+          .attr('height', y.bandwidth())
+          .attr('stroke', 'rgba(0, 0, 0, 0.7)')
+          .attr('fill', 'lightskyblue');
+    
+        // Add Y-axis (symbol names)
+        svg.append('g')
+          .call(d3.axisLeft(y)
+            .tickSize(3)
+            .tickPadding(5)
+          );
+    
+        // Add X-axis (volume)
+        svg.append('g')
+          .attr('transform', `translate(0, ${height})`)
+          .call(d3.axisBottom(x)
+          .ticks(5)
+          .tickSize(3)
+          );
+          
+        // Get top 5 companies
+      const top5 = sortedData.slice(0, 5);
       
-    // Get top 5 companies
-  const top5 = volumeData.slice(0, 5);
-  
-  // Update existing elements
-  const volumeCards = document.querySelectorAll('.volume-card');
-  top5.forEach((company, index) => {
-    const card = volumeCards[index];
-    if (card) {
-      card.querySelector('h3').textContent = company.symbol;
-      card.querySelector('span').textContent = company.volume.toLocaleString();
+      // Update existing elements
+      const volumeCards = document.querySelectorAll('.volume-card');
+      top5.forEach((company, index) => {
+        const card = volumeCards[index];
+        if (card) {
+          card.querySelector('h3').textContent = company.symbol;
+          card.querySelector('span').textContent = company.volume.toLocaleString();
+        }
+      });
     }
-  });
-}
-
+    drawVolumeChart();
+    
+  })
+  .catch(error => console.error(error));
   
 // --------------------
 //  Timeframe Buttons
