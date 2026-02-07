@@ -165,16 +165,18 @@ const aMSa = document.getElementById('zd');
 const hOSa = document.getElementById('zf');
 const iNSa = document.getElementById('ze');
 
+let selectClick = 0;
+if (select === 1) {
 selectSector.addEventListener('click', () => {
   selectSector.classList.add = ':hover';
   sectorBox.style.display = 'flex';
-});
+  selectClick = 0;
+})};
 
 telSa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
-  selectSector.removeEventListener('click');
   const sbAirtel = document.getElementById('sa').style.display = 'block';
   const sbTnm= document.getElementById('sp').style.display = 'block';
 });
@@ -183,7 +185,6 @@ rESa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
-  selectSector.removeEventListener('click');
   const sbIcon = document.getElementById('se').style.display = 'block';
   const sbMpico = document.getElementById('sg').style.display = 'block';
 });
