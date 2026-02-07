@@ -253,7 +253,7 @@ Promise.all(sector).then(([data1, data2, data3, data4, data5]) => {
   const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
 
   // Select one company (e.g., data1)
-  let selectedCompany = data1.ohlc;
+  let selectedCompany = data2.ohlc;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
