@@ -131,6 +131,8 @@ volWeek.addEventListener('click', (e) => {
 if (volTime === "" ) {
   promise();
 }
+else {
+}
 // --------------------
 //  Timeframe Buttons
 // --------------------
