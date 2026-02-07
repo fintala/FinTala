@@ -490,6 +490,9 @@
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .selection-box span {
@@ -500,7 +503,7 @@
 }
 
 #select-company {
-  display: none;
+  display: none; /* flex */
 }
 
 #valTrnd-key {
