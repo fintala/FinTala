@@ -98,8 +98,17 @@ Promise.all(pull.map(file => d3.json(file)))
     });
 
   function drawVolumeChart() {
+        svg.selectAll('svg').remove();
+        
+        svg
+          .append('svg')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', `translate(${margin.left}, ${margin.top})`);
     
-        svg.selectAll('#rect').remove();
+    
+        svg.selectAll('rect').remove();
     
         svg.selectAll('rect')
           .data(sortedData)
@@ -112,7 +121,7 @@ Promise.all(pull.map(file => d3.json(file)))
           .attr('stroke', 'rgba(0, 0, 0, 0.7)')
           .attr('fill', 'lightskyblue');
           
-        svg.selectAll('#g').remove();
+        svg.selectAll('g').remove();
     
         // Add Y-axis (symbol names)
         svg.append('g')
