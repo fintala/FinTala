@@ -156,11 +156,11 @@ const industrialSector = [d3.json('data/ohlc/illovo.json')];
 
 // buttons
 const selectSector = document.querySelector ('.vts-button');
-const sectorBoks = document.getElementById('selectSector');
+const sectorBox = document.getElementById('select-sector');
 
 selectSector.addEventListener('click', () => {
   selectSector.classList.add = 'hover';
-  sectorBoks.style.display = 'flex';
+  sectorBox.style.display = 'flex';
 });
 
 let sector = assetManagementSector;
