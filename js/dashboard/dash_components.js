@@ -98,7 +98,7 @@ Promise.all(pull.map(file => d3.json(file)))
     });
 
   function drawVolumeChart() {
-        svg.selectAll('svg').remove();
+        svg.selectAll('.svg').remove();
     
         svg.selectAll('rect').remove();
     
