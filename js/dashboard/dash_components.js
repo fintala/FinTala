@@ -102,6 +102,15 @@ Promise.all(pull.map(file => d3.json(file)))
     });
 
   function drawVolumeChart() {
+    
+    const y = d3.scaleBand()
+      .domain(sortedData.map(d => d.symbol))
+      .range([0, height])
+      .padding(0.2);
+    
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(sortedData, d => d.volume)])
+      .range([0, width]);
   
         svg.selectAll('rect').remove();
     
