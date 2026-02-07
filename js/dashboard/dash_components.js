@@ -166,9 +166,15 @@ const hOSa = document.getElementById('zf');
 const iNSa = document.getElementById('ze');
 
 selectSector.addEventListener('click', () => {
-  selectSector.style.background = 'lightgray';
+  selectSector.style.cssText = `
+    transform: translateY(0.1rem);
+    background: lightcyan;
+  `;
   setTimeout ( () => {
-    selectSector.style.background = '#c1ff72';
+    selectSector.style.cssText = `
+      transform: translateY(0);
+      background: #c1ff72;
+    `;
   }, 300);
   sectorBox.style.display = 'flex';
 });
