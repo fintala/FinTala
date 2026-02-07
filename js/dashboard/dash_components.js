@@ -16,7 +16,6 @@ let volTime = "D1";
     pull = [];
   }
 
-
 function promise() {
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
@@ -119,7 +118,7 @@ Promise.all(pull.map(file => d3.json(file)))
 volWeek.addEventListener('click', (bt) => {
   bt.stopPropagation();
   volTime = "W1";
-    pushSource();
+  
     promise();
     drawVolumeChart();
 });
