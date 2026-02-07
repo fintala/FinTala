@@ -242,7 +242,7 @@ function sectorDataArray() {
 sectorDataArray();
 console.log(sector);
 
-Promise.all(sector).then((dataArray) => {
+Promise.all([sector]).then(([data1, data2, data3, data4, data5]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
