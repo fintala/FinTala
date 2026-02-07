@@ -186,8 +186,8 @@ rESa.addEventListener('click', (e) => {
   corporationBox.style.display = 'flex';
   const sbIcon = document.getElementById('se')
   const sbMpico = document.getElementById('sg');
-  sbTnm.style.display = 'block';
-  sbAirtel.style.display = 'block';
+  sbIcon.style.display = 'block';
+  sbMpico.style.display = 'block';
 });
 
 let sector = assetManagementSector;
