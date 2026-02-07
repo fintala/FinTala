@@ -16,6 +16,10 @@ function pushSource() {
   else {
     pull = files;
     promise();
+    volDay.style.cssText = `
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+    `;
   }
 }
 pushSource();
@@ -106,14 +110,8 @@ Promise.all(pull.map(file => d3.json(file)))
           card.querySelector('span').textContent = company.volume.toLocaleString();
         }
     });
-          
-    
-  
-    
-    
   })
   .catch(error => console.error(error));
-  
 }
 
 const volWeek = document.getElementById('volDb');
