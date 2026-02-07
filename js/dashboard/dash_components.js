@@ -242,7 +242,7 @@ let data5;
 
 function sectorDataArray(param) {
   if (sector === assetManagementSector) {
-    dataArray = [data1, data2, data3, data4, data5];
+    dataArray = [[data1, data2, data3, data4, data5]];
   }
 }
 sectorDataArray();
