@@ -111,19 +111,17 @@ Promise.all(pull.map(file => d3.json(file)))
   
     const volWeek = document.getElementById('volDb');
     const volDay = document.getElementById('volDa');
-    volDay.addEventListener('click', (e) => {
-  e.stopPropagation();
-  volTime = "D1";
-    pushSource();
-    promise();
-});
-volWeek.addEventListener('click', (e) => {
-  e.stopPropagation();
-  volTime = "W1";
-  pushSource();
-    promise();
-    
-});
+    volDay.addEventListener('click', () => {
+      volTime = "D1";
+        pushSource();
+        promise();
+    });
+    volWeek.addEventListener('click', () => {
+      volTime = "W1";
+      pushSource();
+        promise();
+        
+    });
     
   })
   .catch(error => console.error(error));
