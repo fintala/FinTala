@@ -234,19 +234,12 @@ iNSa.addEventListener('click', (e) => {
 let sector = assetManagementSector;
 let dataArray = [];
 
-let data1;
-let data2;
-let data3;
-let data4;
-let data5;
-
 function sectorDataArray(param) {
   if (sector === assetManagementSector) {
     dataArray = "data1, data2, data3, data4, data5";
   }
 }
 sectorDataArray();
-console.log(dataArray);
 
 Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
