@@ -154,6 +154,15 @@ const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fd
 const assetManagementSector = [d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')];
 const industrialSector = [d3.json('data/ohlc/illovo.json')];
 
+// buttons
+const selectSector = document.getElementById('vts-button');
+const sectorBox = document.getElementById('selectSector');
+
+selectSector.addEventListener('click', () => {
+  selectSector.classList.add = 'hover';
+  sectorBox.style.display = 'flex';
+});
+
 let sector = assetManagementSector;
 
 Promise.all(sector).then(([data1, data2, data3, data4, data5]) => {
