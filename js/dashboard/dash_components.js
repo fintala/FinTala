@@ -158,6 +158,7 @@ volWeek.addEventListener('click', (bt) => {
 
 
 }
+promise();
   
 // --------------------
 //  Timeframe Buttons
