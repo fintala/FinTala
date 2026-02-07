@@ -117,7 +117,7 @@ Promise.all(pull.map(file => d3.json(file)))
       promise();
       volDay.style.cssText = `
         background: white;
-        border: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.5);
       `;
     });
     volWeek.addEventListener('click', () => {
@@ -126,7 +126,7 @@ Promise.all(pull.map(file => d3.json(file)))
       promise();
       volWeek.style.cssText = `
         background: white;
-        border: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.5);
       `;
     });
     
