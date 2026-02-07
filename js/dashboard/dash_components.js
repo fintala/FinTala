@@ -19,7 +19,7 @@ function pushSource() {
 }
 pushSource();
 
-
+function promise() {
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
   .then(datasets => {
@@ -37,7 +37,7 @@ Promise.all(pull.map(file => d3.json(file)))
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
       
-  function drawVolumeChart() {
+  
     // Create bar chart with sortedData
     const margin = { top: 20, right: 10, bottom: 20, left: 50 };
     const width = 335 - margin.left - margin.right;
@@ -106,8 +106,7 @@ Promise.all(pull.map(file => d3.json(file)))
         }
     });
           
-    }
-    drawVolumeChart();
+    
   
     const volWeek = document.getElementById('volDb');
     const volDay = document.getElementById('volDa');
@@ -115,21 +114,21 @@ Promise.all(pull.map(file => d3.json(file)))
   e.stopPropagation();
   volTime = "D1";
     pushSource();
-    
-    drawVolumeChart();
+    promise();
 });
 volWeek.addEventListener('click', (e) => {
   e.stopPropagation();
   volTime = "W1";
   pushSource();
+    promise();
     
-    drawVolumeChart();
 });
     
   })
   .catch(error => console.error(error));
   
-
+}
+promise();
 // --------------------
 //  Timeframe Buttons
 // --------------------
