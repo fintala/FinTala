@@ -113,14 +113,15 @@ Promise.all(pull.map(file => d3.json(file)))
     const volDay = document.getElementById('volDa');
     volDay.addEventListener('click', () => {
       volTime = "D1";
-        pushSource();
-        promise();
+      pushSource();
+      promise();
+      volDay.style.background = 'cream';
     });
     volWeek.addEventListener('click', () => {
       volTime = "W1";
       pushSource();
-        promise();
-        
+      promise();
+      volDay.style.background = 'cream';
     });
     
   })
