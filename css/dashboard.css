@@ -469,15 +469,27 @@
   justify-content: space-evenly;
 }
 
-#valTrndSelecta div {
+.vts-button {
   height: 1.5rem;
-  width: 9rem;
+  width: 11rem;
   background: #c1ff72;
   border: 1px solid rgba(0, 0, 0, 0.5);
   text-align: center;
   font-weight: 300;
   border-radius: 0.7rem;
   line-height: 1.75rem;
+}
+
+.selection-box {
+  top: 10vh;
+  left: 10vw;
+  height: 10rem;
+  width: 5rem;
+  position: fixed;
+}
+
+#select-company {
+  display: none;
 }
 
 #valTrnd-key {
