@@ -147,7 +147,7 @@ Promise.all(pull.map(file => d3.json(file)))
 const visibleCount = 20;
 
 // Fetch data from JSON files
-const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
+const telecomSector = [{"data1": d3.json('data/ohlc/airtelmw.json'), "data2": d3.json('data/ohlc/tnm.json')}];
 const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
 const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
 const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
@@ -234,12 +234,18 @@ iNSa.addEventListener('click', (e) => {
 let sector = assetManagementSector;
 let dataArray = [];
 
+let data1 = Object.map(d => d.data1);
+let data2 = Object.map(d => d.data2);
+let data3 = Object.map(d => d.data3);
+let data4 = Object.map(d => d.data4);
+let data5 = Object.map(d => d.data5);
+
 function sectorDataArray() {
   if (sector === assetManagementSector) {
-    dataArray = "[data1, data2, data3, data4, data5]";
+    dataArray = [data1, data2, data3, data4, data5];
   }
   else if (sector === bankingSector) {
-    dataArray = "[data1, data2, data3, data4]";
+    dataArray = [data1, data2, data3, data4];
   }
 }
 if (sector === assetManagementSector) {
