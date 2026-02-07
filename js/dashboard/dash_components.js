@@ -147,11 +147,11 @@ Promise.all(pull.map(file => d3.json(file)))
 const visibleCount = 20;
 
 // Fetch data from JSON files
-const telecomSector = [{"data1": d3.json('data/ohlc/airtelmw.json'), "data2": d3.json('data/ohlc/tnm.json')}];
+const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
 const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
 const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
-const bankingSector = [ { "data1": d3.json('data/ohlc/std_bank.json'), "data2": d3.json('data/ohlc/fdh.json'), "data3": d3.json('data/ohlc/nbm.json'), "data4": d3.json('data/ohlc/nbs.json') } ];
-const assetManagementSector = [ { "data1": d3.json('data/ohlc/fmbch.json'), "data2": d3.json('data/ohlc/nico.json'), "data3": d3.json('data/ohlc/nitl.json'), "data4": d3.json('data/ohlc/oldmutual.json'), "data5": d3.json('data/ohlc/press_corp.json') } ];
+const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
+const assetManagementSector = [d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')];
 const industrialSector = [d3.json('data/ohlc/illovo.json')];
 
 // buttons
@@ -233,27 +233,21 @@ iNSa.addEventListener('click', (e) => {
 
 let sector = assetManagementSector;
 let dataArray = [];
-let mapper = assetManagementSector;
 
-let data1 = mapper.map(d => d.data1);
-let data2 = mapper.map(d => d.data2);
-let data3 = mapper.map(d => d.data3);
-let data4 = mapper.map(d => d.data4);
-let data5 = mapper.map(d => d.data5);
+let data1;
+let data2;
+let data3;
+let data4;
+let data5;
 
-function sectorDataArray() {
+function sectorDataArray(param) {
   if (sector === assetManagementSector) {
     dataArray = [data1, data2, data3, data4, data5];
   }
-  else if (sector === bankingSector) {
-    dataArray = [data1, data2, data3, data4];
-  }
 }
-if (sector === assetManagementSector) {
-  sectorDataArray();
-}
+sectorDataArray();
 
-Promise.all(sector).then((dataArray) => {
+Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
