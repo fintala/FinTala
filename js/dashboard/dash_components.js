@@ -240,6 +240,7 @@ function sectorDataArray(param) {
   }
 }
 sectorDataArray();
+console.log(dataArray);
 
 Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
