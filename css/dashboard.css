@@ -508,7 +508,6 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   background: lightgreen;
   padding: 0.5rem 0.5rem;
-  scroll-margin: 1rem 0.75rem;
 }
 
 #select-sector, #select-company {
