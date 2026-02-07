@@ -175,10 +175,8 @@ telSa.addEventListener('click', (e) => {
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
   selectSector.removeEventListener();
-  const sbAirtel = document.getElementById('sa')
-  const sbTnm = document.getElementById('sp');
-  sbTnm.style.display = 'block';
-  sbAirtel.style.display = 'block';
+  const sbAirtel = document.getElementById('sa').style.display = 'block';
+  const sbTnm= document.getElementById('sp').style.display = 'block';
 });
 
 rESa.addEventListener('click', (e) => {
@@ -186,10 +184,8 @@ rESa.addEventListener('click', (e) => {
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
   selectSector.removeEventListener();
-  const sbIcon = document.getElementById('se')
-  const sbMpico = document.getElementById('sg');
-  sbIcon.style.display = 'block';
-  sbMpico.style.display = 'block';
+  const sbIcon = document.getElementById('se').style.display = 'block';
+  const sbMpico = document.getElementById('sg').style.display = 'block';
 });
 
 let sector = assetManagementSector;
