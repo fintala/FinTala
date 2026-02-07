@@ -165,16 +165,13 @@ const aMSa = document.getElementById('zd');
 const hOSa = document.getElementById('zf');
 const iNSa = document.getElementById('ze');
 
-let selectClick = 1;
-if (selectClick === 1) {
 selectSector.addEventListener('click', () => {
   selectSector.style.background = 'lightgray';
   setTimeout ( () => {
     selectSector.style.background = '#c1ff72';
-  }, 500);
+  }, 300);
   sectorBox.style.display = 'flex';
-  selectClick = 2;
-})};
+});
 
 telSa.addEventListener('click', (e) => {
   e.stopPropagation();
