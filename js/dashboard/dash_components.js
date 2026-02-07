@@ -169,7 +169,6 @@ Promise.all(pull.map(file => d3.json(file)))
     });
           
     }
-    redrawVolumeChart();
     const volWeek = document.getElementById('volDb');
 volWeek.addEventListener('click', (bt) => {
   bt.stopPropagation();
