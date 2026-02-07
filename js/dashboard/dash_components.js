@@ -173,7 +173,7 @@ selectSector.addEventListener('click', () => {
     selectSector.style.background = '#c1ff72';
   }, 500);
   sectorBox.style.display = 'flex';
-  selectClick = 0;
+  selectClick = 2;
 })};
 
 telSa.addEventListener('click', (e) => {
