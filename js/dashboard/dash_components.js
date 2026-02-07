@@ -3,6 +3,9 @@ const files = ['data/ohlc/airtelmw.json', 'data/ohlc/bh.json', 'data/ohlc/illovo
 
 const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'data/ohlc/w_ohlc/fdh.json', 'data/ohlc/w_ohlc/fmbch.json', 'data/ohlc/w_ohlc/icon_properties.json', 'data/ohlc/w_ohlc/illovo.json', 'data/ohlc/w_ohlc/mpico.json', 'data/ohlc/w_ohlc/nbm.json', 'data/ohlc/w_ohlc/nbs.json', 'data/ohlc/w_ohlc/nico.json', 'data/ohlc/w_ohlc/nitl.json', 'data/ohlc/w_ohlc/oldmutual.json', 'data/ohlc/w_ohlc/press_corp.json', 'data/ohlc/w_ohlc/std_bank.json', 'data/ohlc/w_ohlc/sunbird.json', 'data/ohlc/w_ohlc/tnm.json'];
 
+const volWeek = document.getElementById('volDb');
+const volDay = document.getElementById('volDa');
+
 let pull = [];
 let volTime = "";
 
@@ -114,8 +117,6 @@ Promise.all(pull.map(file => d3.json(file)))
   .catch(error => console.error(error));
 }
 
-const volWeek = document.getElementById('volDb');
-    const volDay = document.getElementById('volDa');
     volDay.addEventListener('click', () => {
       volTime = "D1";
       pushSource();
