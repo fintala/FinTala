@@ -109,7 +109,14 @@ Promise.all(pull.map(file => d3.json(file)))
           
     
   
-    const volWeek = document.getElementById('volDb');
+    
+    
+  })
+  .catch(error => console.error(error));
+  
+}
+
+const volWeek = document.getElementById('volDb');
     const volDay = document.getElementById('volDa');
     volDay.addEventListener('click', () => {
       volTime = "D1";
@@ -131,11 +138,6 @@ Promise.all(pull.map(file => d3.json(file)))
       `;
       volDay.style.background = '#c1ff72';
     });
-    
-  })
-  .catch(error => console.error(error));
-  
-}
 // --------------------
 //  Timeframe Buttons
 // --------------------
