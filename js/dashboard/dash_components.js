@@ -159,7 +159,6 @@ const selectSector = document.querySelector('.vts-button');
 const sectorBox = document.getElementById('selectSector');
 
 selectSector.addEventListener('click', () => {
-  selectSector.classList.add = 'hover';
   sectorBox.style.display = 'flex';
 });
 
