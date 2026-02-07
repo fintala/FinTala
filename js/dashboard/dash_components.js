@@ -44,6 +44,10 @@ Promise.all(pull.map(file => d3.json(file)))
     const height = 305 - margin.top - margin.bottom;
     
     let svg = d3.select('#vol-container')
+      .selectAll('*')
+      .remove();
+      
+    svg = d3.select('#vol-container')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -112,14 +116,14 @@ Promise.all(pull.map(file => d3.json(file)))
   volTime = "D1";
     pushSource();
     promise();
-    redrawVolumeChart();
+    drawVolumeChart();
 });
 volWeek.addEventListener('click', (bt) => {
   bt.stopPropagation();
   volTime = "W1";
     pushSource();
     promise();
-    redrawVolumeChart();
+    drawVolumeChart();
 });
     
   })
