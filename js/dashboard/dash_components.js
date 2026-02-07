@@ -151,7 +151,7 @@ const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tn
 const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
 const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
 const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
-const assetManagementSector = [d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')];
+const assetManagementSector = "d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')";
 const industrialSector = [d3.json('data/ohlc/illovo.json')];
 
 // buttons
@@ -233,17 +233,16 @@ iNSa.addEventListener('click', (e) => {
 
 let sector = assetManagementSector;
 let dataArray = [];
-console.log(sector);
 
 function sectorDataArray() {
   if (sector === assetManagementSector) {
-    dataArray = (data1, data2, data3, data4, data5);
+    dataArray = "data1, data2, data3, data4, data5";
   }
 }
 sectorDataArray();
 console.log(dataArray);
 
-Promise.all(sector).then(([dataArray]) => {
+Promise.all([sector]).then(([dataArray]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
