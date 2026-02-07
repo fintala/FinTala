@@ -231,12 +231,12 @@ iNSa.addEventListener('click', (e) => {
   const sbIllovo = document.getElementById('sf').style.display = 'block';
 });
 
-let sector = assetManagementSector;
+let sector = telecomSector;
 let dataArray = [];
 
 function sectorDataArray() {
   if (sector === assetManagementSector) {
-    dataArray = "data1, data2, data3, data4, data5";
+    dataArray = [data1, data2, data3, data4, data5];
   }
 }
 sectorDataArray();
@@ -247,15 +247,13 @@ Promise.all(sector).then(([data1, data2, data3, data4, data5]) => {
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
   const values2 = data2.ohlc.map(d => d.close * d.volume);
-  const values3 = data3.ohlc.map(d => d.close * d.volume);
-  const values4 = data4.ohlc.map(d => d.close * d.volume);
-  const values5 = data5.ohlc.map(d => d.close * d.volume);
+  
 
   // Calculate sector average
-  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i] + values3[i] + values4[i] + values5[i]) / 5);
+  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
 
   // Select one company (e.g., data1)
-  let selectedCompany = data5.ohlc;
+  let selectedCompany = data2.ohlc;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
