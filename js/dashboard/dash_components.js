@@ -231,15 +231,16 @@ iNSa.addEventListener('click', (e) => {
   const sbIllovo = document.getElementById('sf').style.display = 'block';
 });
 
+let sector = telecomSector;
 
 Promise.all(sector).then(([data1, data2, data3, data4, data5, data6]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
     
   
-  let sector = telecomSector;
+  let selectedSector = telecomSector;
   
-  if (sector === telecomSector) {
+  if (selectedSector === telecomSector) {
     const values1 = data1.ohlc.map(d => d.close * d.volume);
     const values2 = data2.ohlc.map(d => d.close * d.volume);
     
