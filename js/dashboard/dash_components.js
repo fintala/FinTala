@@ -234,9 +234,9 @@ iNSa.addEventListener('click', (e) => {
 let sector = assetManagementSector;
 let dataArray = [];
 
-function sectorDataArray(param) {
+function sectorDataArray() {
   if (sector === assetManagementSector) {
-    dataArray = {data1, data2, data3, data4, data5};
+    dataArray = (data1, data2, data3, data4, data5);
   }
 }
 sectorDataArray();
