@@ -151,7 +151,7 @@ const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tn
 const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
 const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
 const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
-const assetManagementSector = "d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')";
+const assetManagementSector = [d3.json('data/ohlc/fmbch.json'), d3.json('data/ohlc/nico.json'), d3.json('data/ohlc/nitl.json'), d3.json('data/ohlc/oldmutual.json'), d3.json('data/ohlc/press_corp.json')];
 const industrialSector = [d3.json('data/ohlc/illovo.json')];
 
 // buttons
