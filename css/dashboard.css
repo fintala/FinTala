@@ -485,7 +485,7 @@
 }
 
 .selection-box {
-  top: 27vh;
+  top: 25vh;
   left: 20vw;
   height: 18rem;
   width: 14rem;
@@ -499,6 +499,7 @@
   flex-direction: column;
   gap: 0.75rem;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .selection-box span {

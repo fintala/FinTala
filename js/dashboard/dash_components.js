@@ -166,7 +166,7 @@ const hOSa = document.getElementById('zf');
 const iNSa = document.getElementById('ze');
 
 selectSector.addEventListener('click', () => {
-  selectSector.classList.add = 'hover';
+  selectSector.classList.add = ':hover';
   sectorBox.style.display = 'flex';
 });
 
@@ -174,6 +174,7 @@ telSa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
+  selectSector.removeEventListener();
   const sbAirtel = document.getElementById('sa')
   const sbTnm = document.getElementById('sp');
   sbTnm.style.display = 'block';
@@ -184,6 +185,7 @@ rESa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
+  selectSector.removeEventListener();
   const sbIcon = document.getElementById('se')
   const sbMpico = document.getElementById('sg');
   sbIcon.style.display = 'block';
