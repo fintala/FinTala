@@ -236,7 +236,7 @@ let dataArray = [];
 
 function sectorDataArray() {
   if (sector === assetManagementSector) {
-    dataArray = [data1, data2, data3, data4, data5];
+    dataArray = "[data1, data2, data3, data4, data5]";
   }
   else if (sector === bankingSector) {
     dataArray = "[data1, data2, data3, data4]";
