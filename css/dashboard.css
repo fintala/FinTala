@@ -492,6 +492,13 @@
   padding: 1rem 0.75rem;
 }
 
+.selection-box span {
+  height: auto;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: #c1ff72;
+}
+
 #select-company {
   display: none;
 }
