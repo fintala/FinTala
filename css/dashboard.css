@@ -500,7 +500,7 @@
   gap: 0.75rem;
   overflow-y: auto;
   scroll-behavior: smooth;
-  scroll-margin: 1rem 0.75rem;
+  scroll-padding: 1rem 0.75rem !important;
 }
 
 .selection-box span {
