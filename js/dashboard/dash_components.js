@@ -148,19 +148,23 @@ const visibleCount = 20;
 
 // Fetch data from JSON files
 const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
-const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')]
-const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')]
+const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
+const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
+const financeSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
 
-let sector = hospitalitySector;
-Promise.all(sector).then(([data1, data2]) => {
+let sector = financeSector;
+
+Promise.all(sector).then(([data1, data2, data3, data4]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
   const values2 = data2.ohlc.map(d => d.close * d.volume);
+  const values3 = data3.ohlc.map(d => d.close * d.volume);
+  const values4 = data4.ohlc.map(d => d.close * d.volume);
 
 
   // Calculate sector average
-  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
+  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i] + values3[i] + values4[i]) / 4);
 
   // Select one company (e.g., data1)
   let selectedCompany = data2.ohlc;
