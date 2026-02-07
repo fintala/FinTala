@@ -157,10 +157,27 @@ const industrialSector = [d3.json('data/ohlc/illovo.json')];
 // buttons
 const selectSector = document.querySelector ('.vts-button');
 const sectorBox = document.getElementById('select-sector');
+const corporationBox = document.getElementById('select-company');
+const telSa = document.getElementById('za');
+const rESa = document.getElementById('zb');
+const baSa = document.getElementById('zc');
+const aMSa = document.getElementById('zd');
+const hOSa = document.getElementById('zf');
+const iNSa = document.getElementById('ze');
 
 selectSector.addEventListener('click', () => {
   selectSector.classList.add = 'hover';
   sectorBox.style.display = 'flex';
+});
+
+telSa.addEventListener('click', (e) => {
+  e.stopPropagation();
+  sectorBox.style.display = 'none';
+  corporationBox.style.display = 'flex';
+  const sbAirtel = document.getElementById('sa')
+  const sbTnm = document.getElementById('sp');
+  sbTnm.style.display = 'block';
+  sbAirtel.style.display = 'block';
 });
 
 let sector = assetManagementSector;
