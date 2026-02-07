@@ -12,14 +12,13 @@ let volTime = "";
   if (volTime !== "W1") {
     pull = files;
   }
-  
-  console.log(volTime);
-
 
 
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
   .then(datasets => {
+    
+    function drawVolumeChart() {
     // Aggregate volumes
     const aggregatedData = {};
     datasets.forEach(data => {
@@ -45,8 +44,6 @@ Promise.all(pull.map(file => d3.json(file)))
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
       
-  if (volTime !== "W1") {
-    
     const y = d3.scaleBand()
       .domain(sortedData.map(d => d.symbol))
       .range([0, height])
@@ -82,7 +79,6 @@ Promise.all(pull.map(file => d3.json(file)))
       .tickSize(3)
     );
     
-  }
           
     // Get top 5 companies
     const top5 = sortedData.slice(0, 5);
@@ -96,47 +92,6 @@ Promise.all(pull.map(file => d3.json(file)))
           card.querySelector('span').textContent = company.volume.toLocaleString();
         }
     });
-
-  function drawVolumeChart() {
-    
-    const y = d3.scaleBand()
-      .domain(sortedData.map(d => d.symbol))
-      .range([0, height])
-      .padding(0.2);
-    
-    const x = d3.scaleLinear()
-      .domain([0, d3.max(sortedData, d => d.volume)])
-      .range([0, width]);
-  
-        svg.selectAll('rect').remove();
-    
-        svg.selectAll('rect')
-          .data(sortedData)
-          .enter()
-          .append('rect')
-          .attr('x', 0)
-          .attr('y', d => y(d.symbol))
-          .attr('width', d => x(d.volume))
-          .attr('height', y.bandwidth())
-          .attr('stroke', 'rgba(0, 0, 0, 0.7)')
-          .attr('fill', 'lightskyblue');
-          
-        svg.selectAll('g').remove();
-    
-        // Add Y-axis (symbol names)
-        svg.append('g')
-          .call(d3.axisLeft(y)
-            .tickSize(3)
-            .tickPadding(5)
-          );
-    
-        // Add X-axis (volume)
-        svg.append('g')
-          .attr('transform', `translate(0, ${height})`)
-          .call(d3.axisBottom(x)
-          .ticks(5)
-          .tickSize(3)
-          );
           
     }
     const volWeek = document.getElementById('volDb');
