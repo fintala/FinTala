@@ -481,13 +481,14 @@
 }
 
 .selection-box {
-  top: 20vh;
+  top: 25vh;
   left: 20vw;
   height: 18rem;
-  width: 13rem;
+  width: 13.5rem;
   position: fixed;
   background: white;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
 }
 
 #select-company {
