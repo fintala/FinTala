@@ -108,17 +108,17 @@ Promise.all(pull.map(file => d3.json(file)))
   
     const volWeek = document.getElementById('volDb');
     const volDay = document.getElementById('volDa');
-    volDay.addEventListener('click', (bt) => {
-  bt.stopPropagation();
+    volDay.addEventListener('click', (e) => {
+  e.stopPropagation();
   volTime = "D1";
     pushSource();
     promise();
     drawVolumeChart();
 });
-volWeek.addEventListener('click', (bt) => {
-  bt.stopPropagation();
+volWeek.addEventListener('click', (e) => {
+  e.stopPropagation();
   volTime = "W1";
-  
+  console.log('clicked');
     promise();
     drawVolumeChart();
 });
