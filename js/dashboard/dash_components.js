@@ -10,10 +10,7 @@ function  pushSource() {
   if (volTime === "W1") {
     pull = wFiles;
   }
-  else if (volTime === "M1") {
-    pull = 0;
-  }
-  else {
+  if (volTime !== "W1") {
     pull = files;
   }
   
