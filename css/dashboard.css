@@ -484,9 +484,10 @@
   top: 20vh;
   left: 20vw;
   height: 18rem;
-  width: 11rem;
+  width: 13rem;
   position: fixed;
   background: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 #select-company {
