@@ -147,10 +147,11 @@ Promise.all(pull.map(file => d3.json(file)))
 const visibleCount = 20;
 
 // Fetch data from JSON files
-const telSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
-const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('/data/ohlc/mpico.json')]
+const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
+const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')]
+const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')]
 
-let sector = realEstateSector;
+let sector = hospitalitySector;
 Promise.all(sector).then(([data1, data2]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
