@@ -116,31 +116,29 @@ Promise.all(pull.map(file => d3.json(file)))
   })
   .catch(error => console.error(error));
 }
-
-    volDay.addEventListener('click', () => {
-      volTime = "D1";
-      pushSource();
-      promise();
-      volDay.style.cssText = `
-        background: white;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-      `;
-      volWeek.style.background = '#c1ff72';
-    });
-    volWeek.addEventListener('click', () => {
-      volTime = "W1";
-      pushSource();
-      promise();
-      volWeek.style.cssText = `
-        background: white;
-        border: 1px solid rgba(0, 0, 0, 0.5);
-      `;
-      volDay.style.background = '#c1ff72';
-    });
 // --------------------
 //  Timeframe Buttons
 // --------------------
-
+  volDay.addEventListener('click', () => {
+    volTime = "D1";
+    pushSource();
+    promise();
+    volDay.style.cssText = `
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    `;
+    volWeek.style.background = '#c1ff72';
+  });
+  volWeek.addEventListener('click', () => {
+    volTime = "W1";
+    pushSource();
+    promise();
+    volWeek.style.cssText = `
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    `;
+    volDay.style.background = '#c1ff72';
+  });
 
   
 // =============================
@@ -149,10 +147,11 @@ Promise.all(pull.map(file => d3.json(file)))
 const visibleCount = 20;
 
 // Fetch data from JSON files
-Promise.all([
-  d3.json('data/ohlc/airtelmw.json'),
-  d3.json('data/ohlc/tnm.json')
-]).then(([data1, data2]) => {
+const telSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
+const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('/data/ohlc/mpico.json')]
+
+let sector = realEstateSector;
+Promise.all(sector).then(([data1, data2]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
