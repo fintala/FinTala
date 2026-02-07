@@ -509,8 +509,12 @@
   padding: 0.5rem 0.5rem;
 }
 
-#select-company {
+#select-sector, #select-company {
   display: none; /* flex */
+}
+
+#select-company span {
+  display: none; /* block */
 }
 
 #valTrnd-key {
