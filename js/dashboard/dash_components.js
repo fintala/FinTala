@@ -109,7 +109,10 @@ Promise.all(pull.map(file => d3.json(file)))
     const width = 335 - margin.left - margin.right;
     const height = 305 - margin.top - margin.bottom;
     
-    const svg = d3.select('#vol-container')
+    const svg = d3.select('#vol-container');
+    
+    svg.selectAll('*').remove();
+    svg
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -137,7 +140,7 @@ Promise.all(pull.map(file => d3.json(file)))
       .attr('width', d => x(d.volume))
       .attr('height', y.bandwidth())
       .attr('stroke', 'rgba(0, 0, 0, 0.7)')
-      .attr('fill', 'lightskyblue');
+      .attr('fill', 'blue');
     
     // Add Y-axis (symbol names)
     svg.append('g')
