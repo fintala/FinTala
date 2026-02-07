@@ -37,6 +37,7 @@ Promise.all(pull.map(file => d3.json(file)))
       .map(([symbol, volume]) => ({ symbol, volume }))
       .sort((a, b) => b.volume - a.volume);
       
+      if (volTime !== "W1") {
   function drawVolumeChart() {
     // Create bar chart with sortedData
     const margin = { top: 20, right: 10, bottom: 20, left: 50 };
@@ -104,6 +105,7 @@ Promise.all(pull.map(file => d3.json(file)))
           
     }
     drawVolumeChart();
+    }
   function redrawVolumeChart() {
     // Create bar chart with sortedData
     const margin = { top: 20, right: 10, bottom: 20, left: 50 };
