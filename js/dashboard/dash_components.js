@@ -119,6 +119,7 @@ Promise.all(pull.map(file => d3.json(file)))
         background: white;
         border: 1px solid rgba(0, 0, 0, 0.5);
       `;
+      volWeek.style.background = 'c1ff72';
     });
     volWeek.addEventListener('click', () => {
       volTime = "W1";
@@ -128,6 +129,7 @@ Promise.all(pull.map(file => d3.json(file)))
         background: white;
         border: 1px solid rgba(0, 0, 0, 0.5);
       `;
+      volDay.style.background = 'c1ff72';
     });
     
   })
