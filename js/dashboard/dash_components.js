@@ -16,10 +16,10 @@ function pushSource() {
   else {
     pull = files;
   }
-  console.log(pull);
 }
 pushSource();
 
+function promise() {
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
   .then(datasets => {
@@ -180,6 +180,7 @@ volWeek.addEventListener('click', (bt) => {
   volTime = "W1";
   pushSource();
   setTimeout(() => {
+    promise();
     redrawVolumeChart();
   }, 100);
 });
@@ -187,6 +188,8 @@ volWeek.addEventListener('click', (bt) => {
   })
   .catch(error => console.error(error));
   
+}
+promise();
 // --------------------
 //  Timeframe Buttons
 // --------------------
