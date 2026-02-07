@@ -180,6 +180,16 @@ telSa.addEventListener('click', (e) => {
   sbAirtel.style.display = 'block';
 });
 
+rESa.addEventListener('click', (e) => {
+  e.stopPropagation();
+  sectorBox.style.display = 'none';
+  corporationBox.style.display = 'flex';
+  const sbIcon = document.getElementById('se')
+  const sbMpico = document.getElementById('sg');
+  sbTnm.style.display = 'block';
+  sbAirtel.style.display = 'block';
+});
+
 let sector = assetManagementSector;
 
 Promise.all(sector).then(([data1, data2, data3, data4, data5]) => {
