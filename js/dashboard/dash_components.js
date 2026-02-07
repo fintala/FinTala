@@ -239,7 +239,7 @@ function sectorDataArray() {
     dataArray = [data1, data2, data3, data4, data5];
   }
   else if (sector === bankingSector) {
-    dataArray = [data1, data2, data3, data4];
+    dataArray = "[data1, data2, data3, data4]";
   }
 }
 if (sector === assetManagementSector) {
