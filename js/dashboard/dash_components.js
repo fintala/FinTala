@@ -234,11 +234,8 @@ iNSa.addEventListener('click', (e) => {
 let sector = assetManagementSector;
 let dataArray = [];
 
-let data1 = Object.map(d => d.data1);
-let data2 = Object.map(d => d.data2);
-let data3 = Object.map(d => d.data3);
-let data4 = Object.map(d => d.data4);
-let data5 = Object.map(d => d.data5);
+let data1 = assetManagementSector.map(d => d.data1);
+console.log(data1);
 
 function sectorDataArray() {
   if (sector === assetManagementSector) {
