@@ -174,7 +174,7 @@ telSa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
-  selectSector.removeEventListener();
+  selectSector.removeEventListener('click');
   const sbAirtel = document.getElementById('sa').style.display = 'block';
   const sbTnm= document.getElementById('sp').style.display = 'block';
 });
@@ -183,7 +183,7 @@ rESa.addEventListener('click', (e) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
-  selectSector.removeEventListener();
+  selectSector.removeEventListener('click');
   const sbIcon = document.getElementById('se').style.display = 'block';
   const sbMpico = document.getElementById('sg').style.display = 'block';
 });
