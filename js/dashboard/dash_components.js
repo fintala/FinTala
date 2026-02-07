@@ -6,6 +6,7 @@ const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'd
 let pull = [];
 let volTime = "D1";
 
+function pushSource() {
   if (volTime === "W1") {
     pull = wFiles;
   }
@@ -15,8 +16,10 @@ let volTime = "D1";
   else {
     pull = [];
   }
+}
+pushSource();
 
-function promise() {
+
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
   .then(datasets => {
@@ -112,22 +115,21 @@ Promise.all(pull.map(file => d3.json(file)))
   e.stopPropagation();
   volTime = "D1";
     pushSource();
-    promise();
+    
     drawVolumeChart();
 });
 volWeek.addEventListener('click', (e) => {
   e.stopPropagation();
   volTime = "W1";
-  console.log('clicked');
-    promise();
+  pushSource();
+    
     drawVolumeChart();
 });
     
   })
   .catch(error => console.error(error));
   
-}
-promise();
+
 // --------------------
 //  Timeframe Buttons
 // --------------------
