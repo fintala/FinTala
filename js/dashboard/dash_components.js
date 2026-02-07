@@ -232,8 +232,21 @@ iNSa.addEventListener('click', (e) => {
 });
 
 let sector = assetManagementSector;
+let dataArray = [];
 
-Promise.all(sector).then(([data1, data2, data3, data4, data5]) => {
+function sectorDataArray() {
+  if (sector === assetManagementSector) {
+    dataArray = [data1, data2, data3, data4, data5];
+  }
+  else if (sector === bankingSector) {
+    dataArray = [data1, data2, data3, data4];
+  }
+}
+if (sector === assetManagementSector) {
+  sectorArray();
+}
+
+Promise.all(sector).then((dataArray) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
   const values1 = data1.ohlc.map(d => d.close * d.volume);
