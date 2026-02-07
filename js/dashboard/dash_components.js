@@ -115,13 +115,13 @@ Promise.all(pull.map(file => d3.json(file)))
       volTime = "D1";
       pushSource();
       promise();
-      volDay.style.background = 'cream';
+      volDay.style.background = 'white';
     });
     volWeek.addEventListener('click', () => {
       volTime = "W1";
       pushSource();
       promise();
-      volDay.style.background = 'cream';
+      volWeek.style.background = 'white';
     });
     
   })
