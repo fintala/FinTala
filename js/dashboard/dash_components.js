@@ -180,11 +180,13 @@ Promise.all(pull.map(file => d3.json(file)))
 volWeek.addEventListener('click', (bt) => {
   bt.stopPropagation();
   volTime = "W1";
-  pushSource();
-  
+  setTimeout (() => {
+    pushSource();
+  }, 100);
+  setTimeout (() => {
     promise();
     redrawVolumeChart();
-  
+  }, 200);
 });
     
   })
