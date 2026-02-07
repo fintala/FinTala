@@ -99,7 +99,7 @@ Promise.all(pull.map(file => d3.json(file)))
 
   function drawVolumeChart() {
     
-        svg.selectAll('#rect').remove();
+        svg.selectAll('rect').remove();
     
         svg.selectAll('rect')
           .data(sortedData)
@@ -115,7 +115,7 @@ Promise.all(pull.map(file => d3.json(file)))
         svg.selectAll('g').remove();
     
         // Add Y-axis (symbol names)
-        svg.append('#g')
+        svg.append('g')
           .call(d3.axisLeft(y)
             .tickSize(3)
             .tickPadding(5)
@@ -130,7 +130,6 @@ Promise.all(pull.map(file => d3.json(file)))
           );
           
     }
-    drawVolumeChart();
     const volWeek = document.getElementById('volDb');
 volWeek.addEventListener('click', () => {
   sessionStorage.setItem("volumeTimeframe", "W1");
