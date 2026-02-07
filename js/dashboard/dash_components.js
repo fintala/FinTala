@@ -236,26 +236,10 @@ let sector = telecomSector;
 Promise.all(sector).then(([data1, data2, data3, data4, data5, data6]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
-  function doMath() {
-  if (sector === telecomSector) {
     const values1 = data1.ohlc.map(d => d.close * d.volume);
     const values2 = data2.ohlc.map(d => d.close * d.volume);
     
     const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
-  }
-  else if (sector === assetManagementSector) {
-    const values1 = data1.ohlc.map(d => d.close * d.volume);
-    const values2 = data2.ohlc.map(d => d.close * d.volume);
-    const values3 = data3.ohlc.map(d => d.close * d.volume);
-    const values4 = data4.ohlc.map(d => d.close * d.volume);
-    const values5 = data5.ohlc.map(d => d.close * d.volume);
-    
-    const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i] + values3[i] + values4[i] + values5[i]) / 5);
-    console.log(sectorValueAvg);
-  }
-  else {}
-}
-doMath();
   
 
   // Calculate sector average
