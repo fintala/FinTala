@@ -168,7 +168,7 @@ const iNSa = document.getElementById('ze');
 selectSector.addEventListener('click', () => {
   selectSector.style.cssText = `
     transform: translateY(0.1rem);
-    background: lightcyan;
+    background: lightgrey;
   `;
   setTimeout ( () => {
     selectSector.style.cssText = `
