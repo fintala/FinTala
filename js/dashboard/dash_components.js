@@ -233,6 +233,7 @@ iNSa.addEventListener('click', (e) => {
 
 let sector = assetManagementSector;
 let dataArray = [];
+console.log(sector);
 
 function sectorDataArray() {
   if (sector === assetManagementSector) {
