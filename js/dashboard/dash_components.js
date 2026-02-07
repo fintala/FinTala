@@ -166,7 +166,7 @@ const hOSa = document.getElementById('zf');
 const iNSa = document.getElementById('ze');
 
 let selectClick = 0;
-if (select === 1) {
+if (selectClick === 1) {
 selectSector.addEventListener('click', () => {
   selectSector.classList.add = ':hover';
   sectorBox.style.display = 'flex';
