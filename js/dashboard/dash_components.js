@@ -110,7 +110,7 @@ Promise.all(pull.map(file => d3.json(file)))
     const height = 305 - margin.top - margin.bottom;
     
     const svg = d3.select('#vol-container')
-      .selectAll('*')
+      .select('svg')
       .remove()
       .append('svg')
       .attr('width', width + margin.left + margin.right)
