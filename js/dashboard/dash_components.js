@@ -6,13 +6,18 @@ const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'd
 let pull = [];
 let volTime = "";
 
+function pushSource() {
   if (volTime === "W1") {
     pull = wFiles;
   }
-  if (volTime !== "W1") {
+  else if (volTime !== "W1") {
+    pull = 0;
+  }
+  else {
     pull = files;
   }
-
+}
+pushSource();
 
 // Fetch data from files
 Promise.all(pull.map(file => d3.json(file)))
@@ -94,10 +99,12 @@ Promise.all(pull.map(file => d3.json(file)))
     });
           
     }
+    drawVolumeChart();
     const volWeek = document.getElementById('volDb');
 volWeek.addEventListener('click', (bt) => {
   bt.stopPropagation();
   volTime = "W1";
+  pushSource();
   setTimeout(() => {
     drawVolumeChart();
   }, 100);
