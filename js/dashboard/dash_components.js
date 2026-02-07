@@ -128,11 +128,13 @@ volWeek.addEventListener('click', (e) => {
   .catch(error => console.error(error));
   
 }
-if (volTime === "" ) {
-  promise();
+function nn() {
+  if (volTime === "" ) {
+    promise();
+  }
+  else {}
 }
-else {
-}
+nn();
 // --------------------
 //  Timeframe Buttons
 // --------------------
