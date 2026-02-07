@@ -104,7 +104,7 @@ Promise.all(pull.map(file => d3.json(file)))
     });
           
     }
-    drawVolumeChart();
+    drawVolumehart();
      }
   function redrawVolumeChart() {
     // Create bar chart with sortedData
@@ -176,6 +176,7 @@ Promise.all(pull.map(file => d3.json(file)))
     });
           
     }
+    redrawVolumeChart();
     const volWeek = document.getElementById('volDb');
     const volDay = document.getElementById('volDa');
     volDay.addEventListener('click', (bt) => {
