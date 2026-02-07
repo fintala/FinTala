@@ -243,7 +243,7 @@ function sectorDataArray() {
   }
 }
 if (sector === assetManagementSector) {
-  sectorArray();
+  sectorDataArray();
 }
 
 Promise.all(sector).then((dataArray) => {
