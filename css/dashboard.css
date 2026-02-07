@@ -487,19 +487,21 @@
   width: 14rem;
   position: fixed;
   background: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 1rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .selection-box span {
   height: auto;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  background: #c1ff72;
+  background: lightgreen;
+  padding: 0.5rem 0.5rem;
 }
 
 #select-company {
