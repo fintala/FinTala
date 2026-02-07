@@ -14,7 +14,7 @@ function pushSource() {
     pull = files;
   }
   else {
-    pull = [];
+    pull = files;
   }
 }
 pushSource();
@@ -128,7 +128,9 @@ volWeek.addEventListener('click', (e) => {
   .catch(error => console.error(error));
   
 }
-promise();
+if (volTime === "" ) {
+  promise();
+}
 // --------------------
 //  Timeframe Buttons
 // --------------------
