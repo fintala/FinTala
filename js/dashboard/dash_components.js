@@ -10,8 +10,11 @@ function pushSource() {
   if (volTime === "W1") {
     pull = wFiles;
   }
-  if (volTime === "D1") {
+  else if (volTime === "D1") {
     pull = files;
+  }
+  else {
+    pull = [];
   }
 }
 pushSource();
