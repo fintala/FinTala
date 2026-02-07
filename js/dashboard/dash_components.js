@@ -48,6 +48,8 @@ Promise.all(pull.map(file => d3.json(file)))
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
+      
+  if (volTime !== "W1") {
     
     const y = d3.scaleBand()
       .domain(sortedData.map(d => d.symbol))
@@ -83,6 +85,8 @@ Promise.all(pull.map(file => d3.json(file)))
       .ticks(5)
       .tickSize(3)
     );
+    
+  }
           
     // Get top 5 companies
     const top5 = sortedData.slice(0, 5);
@@ -98,8 +102,7 @@ Promise.all(pull.map(file => d3.json(file)))
     });
 
   function drawVolumeChart() {
-        svg.selectAll('.svg').remove();
-    
+  
         svg.selectAll('rect').remove();
     
         svg.selectAll('rect')
