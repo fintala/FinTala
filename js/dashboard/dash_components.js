@@ -181,7 +181,6 @@ selectSector.addEventListener('click', () => {
 });
 
 let sector = assetManagementSector;
-let counter = "";
 
 Promise.allSettled(sector).then((results) => {
   const dataArray = results.map((result) => {
@@ -235,10 +234,6 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      counter = "is clicked";
-      setTimeout (()=>{
-        createDivergingChart(chartData);
-      }, 200);
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
@@ -377,9 +372,9 @@ function createDivergingChart(data) {
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
-    if (counter === "is clicked") {
+    const counter = querySelectorAll('.counter').addEventListener('click', (e) => {
       updateChart(data);
-    }
+    });
 
     function updateChart(data) {
 
