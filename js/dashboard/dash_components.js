@@ -231,9 +231,7 @@ iNSa.addEventListener('click', (e) => {
   const sbIllovo = document.getElementById('sf').style.display = 'block';
 });
 
-let sector = telecomSector;
-dataArray[1].ohlc;
-let choiceWrap = dataArray[1].ohlc;
+let sector = assetManagementSector;
 
 Promise.allSettled(sector).then((results) => {
   const dataArray = results.map((result) => {
@@ -260,7 +258,7 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Select one company (e.g., data1)
-  let selectedCompany = choiceWrap;
+  let selectedCompany = dataArray[1].ohlc;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
