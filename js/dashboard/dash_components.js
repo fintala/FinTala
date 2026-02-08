@@ -159,6 +159,7 @@ const selectSector = document.querySelector ('.vts-button');
 const sectorBox = document.getElementById('select-sector');
 const corporationBox = document.getElementById('select-company');
 const valueTrendTitle = document.getElementById('val-title');
+const counta = document.querySelectorAll('.counta');
 const telSa = document.getElementById('za');
 const rESa = document.getElementById('zb');
 const baSa = document.getElementById('zc');
@@ -227,6 +228,7 @@ let selectedCounter = "Airtel";
       sbIcon.style.display = 'block';
       sbIcon.addEventListener('click', (e) => {
         e.stopPropagation();
+        counta.style.display = 'none';
         sectorBox.style.display = 'none';
         corporationBox.style.display = 'none';
         sector = realEstateSector;
