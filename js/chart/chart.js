@@ -403,16 +403,16 @@ function render() {
   if (volumeActive == "on") {
     y
     .domain([
-      d3.min(visibleData, d => d.low * 1.5),
-      d3.max(visibleData, d => d.high * 1.5)
+      d3.min(visibleData, d => d.low) * 1.5,
+      d3.max(visibleData, d => d.high) * 1.5
     ])
     .nice()
     .range([height - (margin.bottom + 75), margin.top]);
   } else {
     y
     .domain([
-      d3.min(visibleData, d => d.low * 1.5),
-      d3.max(visibleData, d => d.high * 1.5)
+      d3.min(visibleData, d => d.low) * 1.5,
+      d3.max(visibleData, d => d.high) * 1.5
     ])
     .nice()
     .range([height - (margin.bottom + 15), margin.top]);
