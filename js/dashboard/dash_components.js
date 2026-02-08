@@ -376,7 +376,9 @@ function createDivergingChart(data) {
     counters.forEach((counter) => {
       counter.addEventListener('click', (e) => {
         e.stopPropagation();
-        updateChart(data);
+        setTimeout ( () => {
+          updateChart(data);
+        }, 200);
       });
     });
 
