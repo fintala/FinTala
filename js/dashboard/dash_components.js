@@ -236,6 +236,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
+      selectedCompany = dataArray[0].ohlc;
       companyClicked = "Yes";
       newPromise();
     });
