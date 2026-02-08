@@ -158,6 +158,7 @@ const industrialSector = [d3.json('data/ohlc/illovo.json')];
 const selectSector = document.querySelector ('.vts-button');
 const sectorBox = document.getElementById('select-sector');
 const corporationBox = document.getElementById('select-company');
+const valueTrendTitle = document.getElementById('val-title');
 const telSa = document.getElementById('za');
 const rESa = document.getElementById('zb');
 const baSa = document.getElementById('zc');
@@ -225,6 +226,15 @@ Promise.allSettled(sector).then((results) => {
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
   const sbAirtel = document.getElementById('sa').style.display = 'block';
+    sbAirtel.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sectorBox.style.display = 'none';
+      corporationBox.style.display = 'none';
+      sector = telecomSector;
+      selectSector.textContent = 'Airtel Mw';
+      valueTrendTitle.textContent = 'Telecommunications sector';
+      createDivergingChart();
+    });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
   
