@@ -237,9 +237,7 @@ Promise.allSettled(sector).then((results) => {
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
       companyClick = "yes";
-      setTimeout (() => {
-        newPromise();
-      }, 200);
+      newPromise();
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
@@ -386,9 +384,7 @@ function createDivergingChart(data) {
     counters.forEach((counter) => {
       counter.addEventListener('click', (e) => {
         e.stopPropagation();
-        setTimeout( () => {
-          updateChart(data);
-        }, 200);
+        updateChart(data);
       });
     });
     
