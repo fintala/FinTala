@@ -179,58 +179,6 @@ selectSector.addEventListener('click', () => {
   sectorBox.style.display = 'flex';
 });
 
-telSa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbAirtel = document.getElementById('sa').style.display = 'block';
-  const sbTnm= document.getElementById('sp').style.display = 'block';
-});
-
-rESa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbIcon = document.getElementById('se').style.display = 'block';
-  const sbMpico = document.getElementById('sg').style.display = 'block';
-});
-
-baSa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbNBM = document.getElementById('sh').style.display = 'block';
-  const sbNBS = document.getElementById('si').style.display = 'block';
-  const sbFDHB = document.getElementById('sc').style.display = 'block';
-  const sbSTDB = document.getElementById('sn').style.display = 'block';
-});
-
-aMSa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbFmbch = document.getElementById('sd').style.display = 'block';
-  const sbNico = document.getElementById('sj').style.display = 'block';
-  const sbNitl = document.getElementById('sk').style.display = 'block';
-  const sbPcl = document.getElementById('sl').style.display = 'block';
-  const sbOlmu = document.getElementById('sm').style.display = 'block';
-});
-
-hOSa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbBhl = document.getElementById('sb').style.display = 'block';
-  const sbSunbird = document.getElementById('so').style.display = 'block';
-});
-
-iNSa.addEventListener('click', (e) => {
-  e.stopPropagation();
-  sectorBox.style.display = 'none';
-  corporationBox.style.display = 'flex';
-  const sbIllovo = document.getElementById('sf').style.display = 'block';
-});
-
 let sector = assetManagementSector;
 
 Promise.allSettled(sector).then((results) => {
@@ -268,6 +216,61 @@ Promise.allSettled(sector).then((results) => {
     date,
     divergence: companyValues[i] - sectorValueAvg[i]
   }));
+  
+  // ======================
+  //   Buttons & Controls
+  // ======================
+  telSa.addEventListener('click', (e) => {
+  e.stopPropagation();
+  sectorBox.style.display = 'none';
+  corporationBox.style.display = 'flex';
+  const sbAirtel = document.getElementById('sa').style.display = 'block';
+  const sbTnm= document.getElementById('sp').style.display = 'block';
+  });
+  
+  rESa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sectorBox.style.display = 'none';
+    corporationBox.style.display = 'flex';
+    const sbIcon = document.getElementById('se').style.display = 'block';
+    const sbMpico = document.getElementById('sg').style.display = 'block';
+  });
+  
+  baSa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sectorBox.style.display = 'none';
+    corporationBox.style.display = 'flex';
+    const sbNBM = document.getElementById('sh').style.display = 'block';
+    const sbNBS = document.getElementById('si').style.display = 'block';
+    const sbFDHB = document.getElementById('sc').style.display = 'block';
+    const sbSTDB = document.getElementById('sn').style.display = 'block';
+  });
+  
+  aMSa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sectorBox.style.display = 'none';
+    corporationBox.style.display = 'flex';
+    const sbFmbch = document.getElementById('sd').style.display = 'block';
+    const sbNico = document.getElementById('sj').style.display = 'block';
+    const sbNitl = document.getElementById('sk').style.display = 'block';
+    const sbPcl = document.getElementById('sl').style.display = 'block';
+    const sbOlmu = document.getElementById('sm').style.display = 'block';
+  });
+  
+  hOSa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sectorBox.style.display = 'none';
+    corporationBox.style.display = 'flex';
+    const sbBhl = document.getElementById('sb').style.display = 'block';
+    const sbSunbird = document.getElementById('so').style.display = 'block';
+  });
+  
+  iNSa.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sectorBox.style.display = 'none';
+    corporationBox.style.display = 'flex';
+    const sbIllovo = document.getElementById('sf').style.display = 'block';
+  });
 
   // Render chart
   createDivergingChart(chartData);
