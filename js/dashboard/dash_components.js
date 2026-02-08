@@ -242,7 +242,7 @@ Promise.allSettled(sector).then((results) => {
     });
   const sbTnm= document.getElementById('sp');
     sbTnm.style.display = 'block';
-    sbTnm.addEventListener('clicked', () => {
+    sbTnm.addEventListener('click', () => {
       e.stopPropagation();
       sectorBox.style.display = 'none';
       corporationBox.style.display = 'none';
