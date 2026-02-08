@@ -424,15 +424,60 @@ let selectedCounter = "Airtel";
     e.stopPropagation();
     sectorBox.style.display = 'none';
     corporationBox.style.display = 'flex';
-    const sbBhl = document.getElementById('sb').style.display = 'block';
-    const sbSunbird = document.getElementById('so').style.display = 'block';
+    const sbBhl = document.getElementById('sb');
+    sbBhl.style.display = 'block';
+    sbBhl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = hospitalitySector;
+        selectSector.textContent = 'BHL';
+        valueTrendTitle.textContent = 'Hospitality Sector';
+        selectedCounter = "BHL";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbSunbird = document.getElementById('so');
+    sbSunbird.style.display = 'block';
+    sbSunbird.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = hospitalitySector;
+        selectSector.textContent = 'Sunbird';
+        valueTrendTitle.textContent = 'Hospitality Sector';
+        selectedCounter = "Sunbird";
+        companyClicked = "Yes";
+        newPromise();
+      });
   });
   
   iNSa.addEventListener('click', (e) => {
     e.stopPropagation();
     sectorBox.style.display = 'none';
     corporationBox.style.display = 'flex';
-    const sbIllovo = document.getElementById('sf').style.display = 'block';
+    const sbIllovo = document.getElementById('sf');
+    sbIllovo.style.display = 'block';
+    sbIllovo.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = industrialSector;
+        selectSector.textContent = 'Illovo';
+        valueTrendTitle.textContent = 'Industrial Sector';
+        selectedCounter = "Illovo";
+        companyClicked = "Yes";
+        newPromise();
+      });
   });
 
 function newPromise() {
@@ -643,6 +688,51 @@ function newPromise() {
     }
     else if (selectedCounter === "PCL") {
       let selectedCompany = dataArray[4].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "BHL") {
+      let selectedCompany = dataArray[1].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "Sunbird") {
+      let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "Illovo") {
+      let selectedCompany = dataArray[0].ohlc;
       const companyValues = selectedCompany.map(d => d.close * d.volume);
       const divergence = companyValues - sectorValueAvg;
       // Create chart data
