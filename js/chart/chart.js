@@ -411,8 +411,8 @@ function render() {
   } else {
     y
     .domain([
-      d3.min(visibleData, d => d.low),
-      d3.max(visibleData, d => d.high)
+      d3.min(visibleData, d => d.low * 1.3),
+      d3.max(visibleData, d => d.high * 1.3)
     ])
     .nice()
     .range([height - (margin.bottom + 15), margin.top]);
