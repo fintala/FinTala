@@ -372,10 +372,12 @@ function createDivergingChart(data) {
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
-    const counter = document.querySelectorAll('.counta');
-    counter.addEventListener('click', (e) => {
-      e.stopPropagation();
-      updateChart(data);
+    const counters = document.querySelectorAll('.counta');
+    counters.forEach((counter) => {
+      counter.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateChart(data);
+      });
     });
 
     function updateChart(data) {
