@@ -232,7 +232,8 @@ iNSa.addEventListener('click', (e) => {
 });
 
 let sector = telecomSector;
-let selectedCompany = dataArray[1].ohlc;
+dataArray[1].ohlc;
+let choiceWrap = dataArray[1].ohlc;
 
 Promise.allSettled(sector).then((results) => {
   const dataArray = results.map((result) => {
@@ -259,16 +260,16 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Select one company (e.g., data1)
-  ;
+  let selectedCompany = choiceWrap;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
 
   // Create chart data
   const chartData = dates.map((date, i) => ({
-  date,
-  divergence: companyValues[i] - sectorValueAvg[i]
-}));
+    date,
+    divergence: companyValues[i] - sectorValueAvg[i]
+  }));
 
   // Render chart
   createDivergingChart(chartData);
