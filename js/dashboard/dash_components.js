@@ -238,7 +238,9 @@ Promise.allSettled(sector).then((results) => {
       valueTrendTitle.textContent = 'Telecommunications..';
       selectedCompany = dataArray[1].ohlc;
       companyClicked = "Yes";
-      newPromise();
+      setTimeout(()=>{
+        newPromise();
+      }, 200);
     });
   const sbTnm= document.getElementById('sp');
     sbTnm.style.display = 'block';
