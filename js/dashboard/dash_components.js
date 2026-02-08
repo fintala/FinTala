@@ -291,25 +291,33 @@ function newPromise() {
     // Select one company (e.g., data1)
     if (selectedCounter === "Airtel") {
       let selectedCompany = dataArray[1].ohlc;
-    
-    const companyValues = selectedCompany.map(d => d.close * d.volume);
-    
-    const divergence = companyValues - sectorValueAvg;
-  
-    // Create chart data
-    const chartData = dates.map((date, i) => ({
-      date,
-      divergence: companyValues[i] - sectorValueAvg[i]
-    }));
-  
-    // Render chart
-      createDivergingChart(chartData);
-    if (companyClicked !== "Yes") {
-      createWidgetChart(chartData);
-    }
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
     }
     else if (selectedCounter === "TNM") {
       let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
     }
     else {
       let selectedCompany = dataArray[0].ohlc;
