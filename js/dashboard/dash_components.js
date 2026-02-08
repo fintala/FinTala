@@ -858,7 +858,7 @@ function createDivergingChart(data) {
       const visibleData = data.slice(startIndex, startIndex + visibleCount);
     
     
-      const maxVal = Math.max(...visibleData.map(d => Math.abs(d.divergence))) || 1;
+      const maxVal = Math.max(...visibleData.map(d => Math.abs(d.divergence * 1.3))) || 1;
       
       const x = d3.scaleBand()
         .domain(visibleData.map(d => d.date))
