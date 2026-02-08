@@ -196,6 +196,9 @@ let selectedCounter = "Airtel";
     sbAirtel.style.display = 'block';
     sbAirtel.addEventListener('click', (e) => {
       e.stopPropagation();
+      counta.forEach(item => {
+        item.style.display = 'none';
+      });
       sectorBox.style.display = 'none';
       corporationBox.style.display = 'none';
       sector = telecomSector;
@@ -209,6 +212,9 @@ let selectedCounter = "Airtel";
     sbTnm.style.display = 'block';
     sbTnm.addEventListener('click', () => {
       e.stopPropagation();
+      counta.forEach(item => {
+        item.style.display = 'none';
+      });
       sectorBox.style.display = 'none';
       corporationBox.style.display = 'none';
       sector = telecomSector;
@@ -230,7 +236,6 @@ let selectedCounter = "Airtel";
         e.stopPropagation();
         counta.forEach(item => {
           item.style.display = 'none';
-          console.log('voided');
         });
         sectorBox.style.display = 'none';
         corporationBox.style.display = 'none';
@@ -245,6 +250,9 @@ let selectedCounter = "Airtel";
       sbMpico.style.display = 'block';
       sbMpico.addEventListener('click', (e) => {
         e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
         sectorBox.style.display = 'none';
         corporationBox.style.display = 'none';
         sector = realEstateSector;
@@ -260,10 +268,70 @@ let selectedCounter = "Airtel";
     e.stopPropagation();
     sectorBox.style.display = 'none';
     corporationBox.style.display = 'flex';
-    const sbNBM = document.getElementById('sh').style.display = 'block';
-    const sbNBS = document.getElementById('si').style.display = 'block';
-    const sbFDHB = document.getElementById('sc').style.display = 'block';
-    const sbSTDB = document.getElementById('sn').style.display = 'block';
+    const sbNBM = document.getElementById('sh');
+    sbNBM.style.display = 'block';
+    sbNBM.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'NBM';
+        valueTrendTitle.textContent = 'Banking Sector';
+        selectedCounter = "NBM";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbNBS = document.getElementById('si');
+    sbNBS.style.display = 'block';
+    sbNBS.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'NBS';
+        valueTrendTitle.textContent = 'Banking Sector';
+        selectedCounter = "NBS";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbFDHB = document.getElementById('sc');
+    sbFDHB.style.display = 'block';
+    sbFDHB.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'FDHB';
+        valueTrendTitle.textContent = 'Banking Sector';
+        selectedCounter = "FDHB";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbSTDB = document.getElementById('sn');
+    sbSTDB.style.display = 'block';
+    sbSTDB.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'STDB';
+        valueTrendTitle.textContent = 'Banking Sector';
+        selectedCounter = "STDB";
+        companyClicked = "Yes";
+        newPromise();
+      });
   });
   
   aMSa.addEventListener('click', (e) => {
@@ -364,6 +432,66 @@ function newPromise() {
       }
     }
     else if (selectedCounter === "Mpico") {
+      let selectedCompany = dataArray[1].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "NBM") {
+      let selectedCompany = dataArray[2].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "NBS") {
+      let selectedCompany = dataArray[3].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "STDB") {
+      let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "FDHB") {
       let selectedCompany = dataArray[1].ohlc;
       const companyValues = selectedCompany.map(d => d.close * d.volume);
       const divergence = companyValues - sectorValueAvg;
