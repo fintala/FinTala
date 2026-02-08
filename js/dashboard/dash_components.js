@@ -223,8 +223,32 @@ let selectedCounter = "Airtel";
     e.stopPropagation();
     sectorBox.style.display = 'none';
     corporationBox.style.display = 'flex';
-    const sbIcon = document.getElementById('se').style.display = 'block';
-    const sbMpico = document.getElementById('sg').style.display = 'block';
+    const sbIcon = document.getElementById('se');
+      sbIcon.style.display = 'block';
+      sbIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'Icon';
+        valueTrendTitle.textContent = 'Hospitality Sector';
+        selectedCounter = "Icon";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbMpico = document.getElementById('sg');
+      sbMpico.style.display = 'block';
+      sbMpico.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = realEstateSector;
+        selectSector.textContent = 'Mpico';
+        valueTrendTitle.textContent = 'Hospitality Sector';
+        selectedCounter = "Mpico";
+        companyClicked = "Yes";
+        newPromise();
+      });
   });
   
   baSa.addEventListener('click', (e) => {
@@ -306,6 +330,36 @@ function newPromise() {
     }
     else if (selectedCounter === "TNM") {
       let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "Icon") {
+      let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "Mpico") {
+      let selectedCompany = dataArray[1].ohlc;
       const companyValues = selectedCompany.map(d => d.close * d.volume);
       const divergence = companyValues - sectorValueAvg;
       // Create chart data
