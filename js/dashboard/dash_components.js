@@ -235,19 +235,23 @@ let sector = telecomSector;
 
 Promise.all(sector).then(([data1, data2, data3, data4, data5, data6]) => {
   // Extract close and date arrays
+  initData();
+
+  // Render chart
+  createDivergingChart(chartData);
+  createWidgetChart(chartData);
+});
+
+function initData() {
+  
   const dates = data1.ohlc.map(d => d.date);
     
-  
-  let selectedSector = telecomSector;
-  
-  if (selectedSector === telecomSector) {
     const values1 = data1.ohlc.map(d => d.close * d.volume);
     const values2 = data2.ohlc.map(d => d.close * d.volume);
     
-    const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
-  }
+    
   // Calculate sector average
-  
+  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
 
   // Select one company (e.g., data1)
   let selectedCompany = data2.ohlc;
@@ -260,11 +264,7 @@ Promise.all(sector).then(([data1, data2, data3, data4, data5, data6]) => {
   date,
   divergence: companyValues[i] - sectorValueAvg[i]
 }));
-
-  // Render chart
-  createDivergingChart(chartData);
-  createWidgetChart(chartData);
-});
+}
 
 
 function createDivergingChart(data) {
