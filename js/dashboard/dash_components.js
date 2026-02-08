@@ -338,11 +338,86 @@ let selectedCounter = "Airtel";
     e.stopPropagation();
     sectorBox.style.display = 'none';
     corporationBox.style.display = 'flex';
-    const sbFmbch = document.getElementById('sd').style.display = 'block';
-    const sbNico = document.getElementById('sj').style.display = 'block';
-    const sbNitl = document.getElementById('sk').style.display = 'block';
-    const sbPcl = document.getElementById('sl').style.display = 'block';
-    const sbOlmu = document.getElementById('sm').style.display = 'block';
+    const sbFmbch = document.getElementById('sd');
+    sbFmbch.style.display = 'block';
+    sbFmbch.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = assetManagementSector;
+        selectSector.textContent = 'FMBCH';
+        valueTrendTitle.textContent = 'Asset Management..';
+        selectedCounter = "FMBCH";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbNico = document.getElementById('sj');
+    sbNico.style.display = 'block';
+    sbNico.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = assetManagementSector;
+        selectSector.textContent = 'NICO';
+        valueTrendTitle.textContent = 'Asset Management..';
+        selectedCounter = "NICO";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbNitl = document.getElementById('sk');
+    sbNitl.style.display = 'block';
+    sbNitl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = assetManagementSector;
+        selectSector.textContent = 'NITL';
+        valueTrendTitle.textContent = 'Asset Management..';
+        selectedCounter = "NITL";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbPcl = document.getElementById('sl');
+    sbPcl.style.display = 'block';
+    sbPcl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = assetManagementSector;
+        selectSector.textContent = 'PCL';
+        valueTrendTitle.textContent = 'Asset Management..';
+        selectedCounter = "PCL";
+        companyClicked = "Yes";
+        newPromise();
+      });
+    const sbOlmu = document.getElementById('sm');
+    sbOlmu.style.display = 'block';
+    sbOlmu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
+        sectorBox.style.display = 'none';
+        corporationBox.style.display = 'none';
+        sector = assetManagementSector;
+        selectSector.textContent = 'OLMU';
+        valueTrendTitle.textContent = 'Asset Management..';
+        selectedCounter = "OLMU";
+        companyClicked = "Yes";
+        newPromise();
+      });
   });
   
   hOSa.addEventListener('click', (e) => {
@@ -493,6 +568,81 @@ function newPromise() {
     }
     else if (selectedCounter === "FDHB") {
       let selectedCompany = dataArray[1].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "FMBCH") {
+      let selectedCompany = dataArray[0].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "NICO") {
+      let selectedCompany = dataArray[1].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "NITL") {
+      let selectedCompany = dataArray[2].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "OLMU") {
+      let selectedCompany = dataArray[3].ohlc;
+      const companyValues = selectedCompany.map(d => d.close * d.volume);
+      const divergence = companyValues - sectorValueAvg;
+      // Create chart data
+      const chartData = dates.map((date, i) => ({
+        date,
+        divergence: companyValues[i] - sectorValueAvg[i]
+      }));
+      // Render chart
+        createDivergingChart(chartData);
+      if (companyClicked !== "Yes") {
+        createWidgetChart(chartData);
+      }
+    }
+    else if (selectedCounter === "PCL") {
+      let selectedCompany = dataArray[3].ohlc;
       const companyValues = selectedCompany.map(d => d.close * d.volume);
       const divergence = companyValues - sectorValueAvg;
       // Create chart data
