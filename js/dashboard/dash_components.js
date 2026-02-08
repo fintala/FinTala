@@ -372,7 +372,7 @@ function createDivergingChart(data) {
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
-    const counter = document.querySelectorAll('.counter');
+    const counter = document.querySelectorAll('counter');
     counter.addEventListener('click', (e) => {
       e.stopPropagation();
       updateChart(data);
