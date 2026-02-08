@@ -233,12 +233,14 @@ iNSa.addEventListener('click', (e) => {
 
 let sector = telecomSector;
 
-Promise.all(sector).then(([data1, data2, data3, data4, data5, data6]) => {
+Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
   const dates = data1.ohlc.map(d => d.date);
     
     const values1 = data1.ohlc.map(d => d.close * d.volume);
     const values2 = data2.ohlc.map(d => d.close * d.volume);
+    
+    console.log(dataArray);
     
     
   // Calculate sector average
