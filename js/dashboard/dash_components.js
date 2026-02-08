@@ -182,45 +182,8 @@ selectSector.addEventListener('click', () => {
 
 let sector = assetManagementSector;
 let companyClicked = "No";
+let selectedCounter = "";
 
-function newPromise() {
-Promise.allSettled(sector).then((results) => {
-  const dataArray = results.map((result) => {
-    if (result.status === 'fulfilled') {
-      return result.value;
-    } else {
-      console.error('Error fetching data:', result.reason);
-      return null;
-    }
-  }).filter((data) => data !== null);
-
-  if (dataArray.length === 0) {
-    console.error('No data available');
-    return;
-  }
-
-  const dates = dataArray[0].ohlc.map(d => d.date);
-  const values = dataArray.map(data => data.ohlc.map(d => d.close * d.volume));
-
-  // Calculate sector average
-  const sectorValueAvg = dates.map((date, i) => {
-    const sum = values.reduce((acc, curr) => acc + curr[i], 0);
-    return sum / values.length;
-  });
-
-  // Select one company (e.g., data1)
-  let selectedCompany = dataArray[0].ohlc;
-  console.log(selectedCompany);
-  const companyValues = selectedCompany.map(d => d.close * d.volume);
-  
-  const divergence = companyValues - sectorValueAvg;
-
-  // Create chart data
-  const chartData = dates.map((date, i) => ({
-    date,
-    divergence: companyValues[i] - sectorValueAvg[i]
-  }));
-  
   // ======================
   //   Buttons & Controls
   // ======================
@@ -237,7 +200,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      selectedCompany = dataArray[1].ohlc;
+      selectedCounter = "Airtel";
       companyClicked = "Yes";
       newPromise();
     });
@@ -250,7 +213,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'TNM';
       valueTrendTitle.textContent = 'Telecommunications..';
-      selectedCompany = dataArray[0].ohlc;
+      selectedCounter = "TNM";
       companyClicked = "Yes";
       newPromise();
     });
@@ -300,12 +263,57 @@ Promise.allSettled(sector).then((results) => {
     const sbIllovo = document.getElementById('sf').style.display = 'block';
   });
 
-  // Render chart
-    createDivergingChart(chartData);
-  if (companyClicked !== "Yes") {
-    createWidgetChart(chartData);
-  }
-});
+function newPromise() {
+  Promise.allSettled(sector).then((results) => {
+    const dataArray = results.map((result) => {
+      if (result.status === 'fulfilled') {
+        return result.value;
+      } else {
+        console.error('Error fetching data:', result.reason);
+        return null;
+      }
+    }).filter((data) => data !== null);
+  
+    if (dataArray.length === 0) {
+      console.error('No data available');
+      return;
+    }
+  
+    const dates = dataArray[0].ohlc.map(d => d.date);
+    const values = dataArray.map(data => data.ohlc.map(d => d.close * d.volume));
+  
+    // Calculate sector average
+    const sectorValueAvg = dates.map((date, i) => {
+      const sum = values.reduce((acc, curr) => acc + curr[i], 0);
+      return sum / values.length;
+    });
+  
+    // Select one company (e.g., data1)
+    if (selectedCounter === "Airtel") {
+      let selectedCompany = dataArray[1].ohlc;
+    }
+    else if (selectedCounter === "TNM") {
+      let selectedCompany = dataArray[0].ohlc;
+    }
+    else {
+      let selectedCompany = dataArray[0].ohlc;
+    }
+    const companyValues = selectedCompany.map(d => d.close * d.volume);
+    
+    const divergence = companyValues - sectorValueAvg;
+  
+    // Create chart data
+    const chartData = dates.map((date, i) => ({
+      date,
+      divergence: companyValues[i] - sectorValueAvg[i]
+    }));
+  
+    // Render chart
+      createDivergingChart(chartData);
+    if (companyClicked !== "Yes") {
+      createWidgetChart(chartData);
+    }
+  });
 }
 newPromise();
 
