@@ -236,6 +236,7 @@ let sector = telecomSector;
 Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
   const dates = dataArray[0].ohlc.map(d => d.date);
+  console.log(dataArray);
 
   // Map over data sources and extract values
   const values = dataArray.map(data => data.ohlc.map(d => d.close * d.volume));
