@@ -289,7 +289,8 @@ function newPromise() {
     });
   
     // Select one company (e.g., data1)
-    if (selectedCounter !== "Airtel") {
+    function vvv() {
+    if (selectedCounter === "Airtel") {
       let selectedCompany = dataArray[1].ohlc;
     }
     else if (selectedCounter === "TNM") {
@@ -298,6 +299,7 @@ function newPromise() {
     else {
       let selectedCompany = dataArray[0].ohlc;
     }
+    } vvv();
     const companyValues = selectedCompany.map(d => d.close * d.volume);
     
     const divergence = companyValues - sectorValueAvg;
