@@ -240,7 +240,19 @@ Promise.allSettled(sector).then((results) => {
       companyClicked = "Yes";
       newPromise();
     });
-  const sbTnm= document.getElementById('sp').style.display = 'block';
+  const sbTnm= document.getElementById('sp');
+    sbTnm.style.display = 'block';
+    abTnm.addEventListener('clicked', () => {
+      e.stopPropagation();
+      sectorBox.style.display = 'none';
+      corporationBox.style.display = 'none';
+      sector = telecomSector;
+      selectSector.textContent = 'TNM';
+      valueTrendTitle.textContent = 'Telecommunications..';
+      selectedCompany = dataArray[1].ohlc;
+      companyClicked = "Yes";
+      newPromise();
+    });
   });
   
   rESa.addEventListener('click', (e) => {
