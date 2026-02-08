@@ -182,6 +182,7 @@ selectSector.addEventListener('click', () => {
 
 let sector = assetManagementSector;
 
+function newPromise() {
 Promise.allSettled(sector).then((results) => {
   const dataArray = results.map((result) => {
     if (result.status === 'fulfilled') {
@@ -234,6 +235,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
+      newPromise();
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
@@ -286,6 +288,8 @@ Promise.allSettled(sector).then((results) => {
   createDivergingChart(chartData);
   createWidgetChart(chartData);
 });
+}
+newPromise();
 
 function createDivergingChart(data) {
   const margin = { top: 20, right: 60, bottom: 10, left: 30 };
