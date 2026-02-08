@@ -258,7 +258,7 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Select one company (e.g., data1)
-  let selectedCompany = data2.ohlc;
+  let selectedCompany = dataArray[1].ohlc;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
