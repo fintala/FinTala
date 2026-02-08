@@ -291,7 +291,7 @@ function newPromise() {
     // Select one company (e.g., data1)
     if (selectedCounter === "Airtel") {
       let selectedCompany = dataArray[1].ohlc;
-      console.log(opened);
+      console.log("opened");
     }
     else if (selectedCounter === "TNM") {
       let selectedCompany = dataArray[0].ohlc;
