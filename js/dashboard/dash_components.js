@@ -233,12 +233,22 @@ iNSa.addEventListener('click', (e) => {
 
 let sector = telecomSector;
 
-Promise.all(sector).then(([dataArray]) => {
-  // Extract close and date arrays
-  const dates = dataArray[0].ohlc.map(d => d.date);
-  console.log(dataArray);
+Promise.allSettled(sector).then((results) => {
+  const dataArray = results.map((result) => {
+    if (result.status === 'fulfilled') {
+      return result.value;
+    } else {
+      console.error('Error fetching data:', result.reason);
+      return null;
+    }
+  }).filter((data) => data !== null);
 
-  // Map over data sources and extract values
+  if (dataArray.length === 0) {
+    console.error('No data available');
+    return;
+  }
+
+  const dates = dataArray[0].ohlc.map(d => d.date);
   const values = dataArray.map(data => data.ohlc.map(d => d.close * d.volume));
 
   // Calculate sector average
