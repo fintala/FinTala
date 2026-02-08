@@ -181,7 +181,7 @@ selectSector.addEventListener('click', () => {
   sectorBox.style.display = 'flex';
 });
 
-let sector = assetManagementSector;
+let sector = telecomSector;
 let companyClicked = "No";
 let selectedCounter = "Airtel";
 
@@ -747,7 +747,7 @@ function newPromise() {
       }
     }
     else {
-      let selectedCompany = dataArray[0].ohlc;
+      let selectedCompany = dataArray[1].ohlc;
     }
   });
 }
