@@ -386,7 +386,7 @@ let selectedCounter = "Airtel";
         companyClicked = "Yes";
         newPromise();
       });
-    const sbPcl = document.getElementById('sl');
+    const sbPcl = document.getElementById('sm');
     sbPcl.style.display = 'block';
     sbPcl.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -402,7 +402,7 @@ let selectedCounter = "Airtel";
         companyClicked = "Yes";
         newPromise();
       });
-    const sbOlmu = document.getElementById('sm');
+    const sbOlmu = document.getElementById('sl');
     sbOlmu.style.display = 'block';
     sbOlmu.addEventListener('click', (e) => {
         e.stopPropagation();
