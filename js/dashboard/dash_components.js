@@ -305,7 +305,7 @@ function createDivergingChart(data) {
   
   const visibleData = data.slice(-visibleCount);
   
-  let svg = d3.select('svg').remove();
+  let svg = d3.selectAll('*').remove();
   
   svg = d3.select('#sect-container')
     .append('svg')
