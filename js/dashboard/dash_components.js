@@ -372,7 +372,7 @@ function createDivergingChart(data) {
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
-    const counter = document.querySelector('.selection-box');
+    const counter = document.querySelectorAll('.counta');
     counter.addEventListener('click', (e) => {
       e.stopPropagation();
       updateChart(data);
