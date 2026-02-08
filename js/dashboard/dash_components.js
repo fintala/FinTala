@@ -261,7 +261,7 @@ Promise.allSettled(sector).then((results) => {
   // Select one company (e.g., data1)
   let selectedCompany = choiceWrap;
   console.log(selectedCompany);
-  const companyValues = selectedCompany.map(d => d.close * d.volume);
+  const companyValues = choiceWrap.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
 
