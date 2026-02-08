@@ -407,7 +407,7 @@ function render() {
       d3.max(visibleData, d => d.high * 1.5)
     ])
     .nice()
-    .range([height - (margin.bottom + 75) * 1.5, margin.top * 1.5]);
+    .range([height - (margin.bottom + 75), margin.top]);
   } else {
     y
     .domain([
