@@ -642,7 +642,7 @@ function newPromise() {
       }
     }
     else if (selectedCounter === "PCL") {
-      let selectedCompany = dataArray[3].ohlc;
+      let selectedCompany = dataArray[4].ohlc;
       const companyValues = selectedCompany.map(d => d.close * d.volume);
       const divergence = companyValues - sectorValueAvg;
       // Create chart data
