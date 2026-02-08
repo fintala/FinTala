@@ -290,17 +290,8 @@ function newPromise() {
   
     // Select one company (e.g., data1)
     if (selectedCounter === "Airtel") {
-      let selectedCompanyy = dataArray[1].ohlc;
-      
-    }
-    else if (selectedCounter === "TNM") {
-      let selectedCompany = dataArray[0].ohlc;
-      console.log("opened");
-    }
-    else {
-      let selectedCompany = dataArray[0].ohlc;
-    }
-    let selectedCompany = selectedCompanyy;
+      let selectedCompany = dataArray[1].ohlc;
+    
     const companyValues = selectedCompany.map(d => d.close * d.volume);
     
     const divergence = companyValues - sectorValueAvg;
@@ -315,6 +306,13 @@ function newPromise() {
       createDivergingChart(chartData);
     if (companyClicked !== "Yes") {
       createWidgetChart(chartData);
+    }
+    }
+    else if (selectedCounter === "TNM") {
+      let selectedCompany = dataArray[0].ohlc;
+    }
+    else {
+      let selectedCompany = dataArray[0].ohlc;
     }
   });
 }
