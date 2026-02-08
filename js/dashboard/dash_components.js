@@ -235,16 +235,16 @@ let sector = telecomSector;
 
 Promise.all(sector).then(([dataArray]) => {
   // Extract close and date arrays
-  const dates = data1.ohlc.map(d => d.date);
-    
-    const values1 = data1.ohlc.map(d => d.close * d.volume);
-    const values2 = data2.ohlc.map(d => d.close * d.volume);
-    
-    console.log(dataArray);
-    
-    
+  const dates = dataArray[0].ohlc.map(d => d.date);
+
+  // Map over data sources and extract values
+  const values = dataArray.map(data => data.ohlc.map(d => d.close * d.volume));
+
   // Calculate sector average
-  const sectorValueAvg = dates.map((date, i) => (values1[i] + values2[i]) / 2);
+  const sectorValueAvg = dates.map((date, i) => {
+    const sum = values.reduce((acc, curr) => acc + curr[i], 0);
+    return sum / values.length;
+  });
 
   // Select one company (e.g., data1)
   let selectedCompany = data2.ohlc;
