@@ -181,6 +181,7 @@ selectSector.addEventListener('click', () => {
 });
 
 let sector = assetManagementSector;
+let companyClick = "";
 
 function newPromise() {
 Promise.allSettled(sector).then((results) => {
@@ -235,7 +236,10 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      newPromise();
+      companyClick = "yes";
+      setTimeout (() => {
+        newPromise();
+      }, 200);
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
@@ -285,8 +289,10 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Render chart
-  createDivergingChart(chartData);
-  createWidgetChart(chartData);
+  if (companyClick !== "yes") {
+    createDivergingChart(chartData);
+    createWidgetChart(chartData);
+  }
 });
 }
 newPromise();
@@ -305,9 +311,7 @@ function createDivergingChart(data) {
   
   const visibleData = data.slice(-visibleCount);
   
-  let svg = d3.selectAll('*').remove();
-  
-  svg = d3.select('#sect-container')
+  const svg = d3.select('#sect-container')
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom + 20)
@@ -378,6 +382,15 @@ function createDivergingChart(data) {
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
+    const counters = document.querySelectorAll('.counta');
+    counters.forEach((counter) => {
+      counter.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setTimeout( () => {
+          updateChart(data);
+        }, 200);
+      });
+    });
     
     function updateChart(data) {
 
