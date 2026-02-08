@@ -228,7 +228,9 @@ let selectedCounter = "Airtel";
       sbIcon.style.display = 'block';
       sbIcon.addEventListener('click', (e) => {
         e.stopPropagation();
-        counta.style.display = 'none';
+        counta.forEach(item => {
+          item.style.display = 'none';
+        });
         sectorBox.style.display = 'none';
         corporationBox.style.display = 'none';
         sector = realEstateSector;
