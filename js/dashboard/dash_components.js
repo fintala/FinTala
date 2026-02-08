@@ -230,6 +230,7 @@ let selectedCounter = "Airtel";
         e.stopPropagation();
         counta.forEach(item => {
           item.style.display = 'none';
+          console.log('voided');
         });
         sectorBox.style.display = 'none';
         corporationBox.style.display = 'none';
