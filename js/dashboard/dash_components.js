@@ -68,7 +68,7 @@ Promise.all(pull.map(file => d3.json(file)))
       .padding(0.2);
     
     const x = d3.scaleLinear()
-      .domain([0, d3.max(sortedData, d => d.volume) * 1.5])
+      .domain([0, d3.max(sortedData, d => d.volume) * 1.15])
       .range([0, width]);
       
     svg.selectAll('rect').remove();
