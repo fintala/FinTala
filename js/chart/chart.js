@@ -403,16 +403,16 @@ function render() {
   if (volumeActive == "on") {
     y
     .domain([
-      d3.min(visibleData, d => d.low),
-      d3.max(visibleData, d => d.high)
+      d3.min(visibleData, d => d.low * 1.5),
+      d3.max(visibleData, d => d.high * 1.5)
     ])
     .nice()
-    .range([height - (margin.bottom + 75), margin.top]);
+    .range([height - (margin.bottom + 75) * 1.5, margin.top * 1.5]);
   } else {
     y
     .domain([
-      d3.min(visibleData, d => d.low * 1.3),
-      d3.max(visibleData, d => d.high * 1.3)
+      d3.min(visibleData, d => d.low * 1.5),
+      d3.max(visibleData, d => d.high * 1.5)
     ])
     .nice()
     .range([height - (margin.bottom + 15), margin.top]);
@@ -661,7 +661,7 @@ function Indicators () {
     yy
     .domain([
       0,
-      d3.max(visibleData, d => d.volume)
+      d3.max(visibleData, d => d.volume * 1.3)
     ])
     .nice()
     .range([volume.top, margin.bottom]);
