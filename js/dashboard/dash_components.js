@@ -225,7 +225,8 @@ Promise.allSettled(sector).then((results) => {
   e.stopPropagation();
   sectorBox.style.display = 'none';
   corporationBox.style.display = 'flex';
-  const sbAirtel = document.getElementById('sa').style.display = 'block';
+  const sbAirtel = document.getElementById('sa');
+    sbAirtel.style.display = 'block';
     sbAirtel.addEventListener('click', (e) => {
       e.stopPropagation();
       sectorBox.style.display = 'none';
