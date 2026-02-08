@@ -147,7 +147,7 @@ Promise.all(pull.map(file => d3.json(file)))
 const visibleCount = 20;
 
 // Fetch data from JSON files
-const telecomSector = [d3.json('data/ohlc/airtelmw.json'), d3.json('data/ohlc/tnm.json')];
+const telecomSector = [d3.json('data/ohlc/tnm.json'), d3.json('data/ohlc/airtelmw.json')];
 const realEstateSector = [d3.json('data/ohlc/icon_properties.json'), d3.json('data/ohlc/mpico.json')];
 const hospitalitySector = [d3.json('data/ohlc/sunbird.json'), d3.json('data/ohlc/bh.json')];
 const bankingSector = [d3.json('data/ohlc/std_bank.json'), d3.json('data/ohlc/fdh.json'), d3.json('data/ohlc/nbm.json'), d3.json('data/ohlc/nbs.json'),];
