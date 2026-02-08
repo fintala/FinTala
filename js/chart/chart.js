@@ -405,7 +405,7 @@ function render() {
     .domain([
       d3.min(visibleData, d => d.low),
       d3.max(visibleData, d => d.high)
-    ])
+    ] * 1.5)
     .nice()
     .range([height - (margin.bottom + 75), margin.top]);
   } else {
@@ -413,7 +413,7 @@ function render() {
     .domain([
       d3.min(visibleData, d => d.low),
       d3.max(visibleData, d => d.high)
-    ])
+    ] * 1.5)
     .nice()
     .range([height - (margin.bottom + 15), margin.top]);
   }
