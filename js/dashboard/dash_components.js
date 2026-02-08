@@ -209,7 +209,7 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Select one company (e.g., data1)
-  let selectedCompany = dataArray[1].ohlc;
+  let selectedCompany = dataArray[0].ohlc;
   const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
@@ -236,7 +236,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      selectedCompany = dataArray[0].ohlc;
+      selectedCompany = dataArray[1].ohlc;
       companyClicked = "Yes";
       newPromise();
     });
@@ -249,7 +249,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'TNM';
       valueTrendTitle.textContent = 'Telecommunications..';
-      selectedCompany = dataArray[1].ohlc;
+      selectedCompany = dataArray[0].ohlc;
       companyClicked = "Yes";
       newPromise();
     });
