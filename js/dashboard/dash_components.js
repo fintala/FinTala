@@ -234,7 +234,9 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      updateChart(chartData);
+      setTimeout (()=>{
+        createDivergingChart();
+      }, 200);
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
@@ -287,7 +289,6 @@ Promise.allSettled(sector).then((results) => {
   createDivergingChart(chartData);
   createWidgetChart(chartData);
 });
-
 
 function createDivergingChart(data) {
   const margin = { top: 20, right: 60, bottom: 10, left: 30 };
