@@ -232,7 +232,7 @@ iNSa.addEventListener('click', (e) => {
 });
 
 let sector = telecomSector;
-let choiceWrap = 'dataArray[1].ohlc'
+let selectedCompany = dataArray[1].ohlc;
 
 Promise.allSettled(sector).then((results) => {
   const dataArray = results.map((result) => {
@@ -259,9 +259,8 @@ Promise.allSettled(sector).then((results) => {
   });
 
   // Select one company (e.g., data1)
-  let selectedCompany = choiceWrap;
-  console.log(selectedCompany);
-  const companyValues = choiceWrap.map(d => d.close * d.volume);
+  ;
+  const companyValues = selectedCompany.map(d => d.close * d.volume);
   
   const divergence = companyValues - sectorValueAvg;
 
