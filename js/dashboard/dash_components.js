@@ -234,7 +234,7 @@ Promise.allSettled(sector).then((results) => {
       sector = telecomSector;
       selectSector.textContent = 'Airtel Mw';
       valueTrendTitle.textContent = 'Telecommunications..';
-      createDivergingChart(chartData);
+      updateChart(chartData);
     });
   const sbTnm= document.getElementById('sp').style.display = 'block';
   });
