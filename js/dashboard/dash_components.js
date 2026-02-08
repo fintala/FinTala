@@ -180,9 +180,11 @@ selectSector.addEventListener('click', () => {
   sectorBox.style.display = 'flex';
 });
 
+let airtel;
+
 let sector = assetManagementSector;
 let companyClicked = "No";
-let selectedCounter = "Airtel";
+let selectedCounter = airtel;
 
   // ======================
   //   Buttons & Controls
@@ -289,10 +291,10 @@ function newPromise() {
     });
   
     // Select one company (e.g., data1)
-    if (selectedCounter == "Airtel") {
+    if (selectedCounter === airtel) {
       let selectedCompany = dataArray[1].ohlc;
     }
-    else if (selectedCounter == "TNM") {
+    else if (selectedCounter === "TNM") {
       let selectedCompany = dataArray[0].ohlc;
     }
     else {
