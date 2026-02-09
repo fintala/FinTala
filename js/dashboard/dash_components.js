@@ -838,7 +838,7 @@ function createDivergingChart(data) {
     .attr('y', d => d.divergence > 0 ? y(d.divergence) : y(0))
     .attr('width', x.bandwidth())
     .attr('height', d => Math.abs(y(d.divergence) - y(0)))
-    .attr('fill', d => d.divergence > 0 ? 'magenta' : '#dc143c')
+    .attr('fill', d => d.divergence > 0 ? 'magenta' : '#660033')
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
     
