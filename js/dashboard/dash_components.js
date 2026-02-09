@@ -163,6 +163,104 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
       .text(`${percentageChangeF}%`);
+      
+// =======================
+//  Rendering Bar Charts
+// =======================
+  const visibleCount = 25;
+  
+  const edge = { top: 20, right: 60, bottom: 10, left: 30 };
+  const hWidth = 350 - edge.left - edge.right;
+  const vHeight = 100 - edge.top - edge.bottom;
+  
+  let startIndex = 0;
+  
+  startIndex = Math.max(
+  0,
+  Math.min(startIndex, indexData.length - visibleCount)
+  );
+  
+  const visibleData = indexData.slice(-visibleCount);
+  
+  let svg = d3.select('#masi-barchart')
+      .selectAll('*')
+      .remove();
+      
+  svg = d3.select('#masi-barchart')
+    .append('svg')
+    .attr('width', hWidth + margin.left + margin.right)
+    .attr('height', vHeight + margin.top + margin.bottom + 20)
+    .append('g')
+    .attr('transform', `translate(${edge.left}, ${edge.top})`);
+  
+  const xx = d3.scaleBand();
+  const yy = d3.scaleLinear();
+  
+  // =====================
+  // SCALES
+  // =====================
+    xx
+    .domain(visibleData.map(d => d.date))
+    .range([edge.left, hWidth - edge.right - 15])
+    .paddingInner(0.3)
+    .paddingOuter(0.15);
+  
+    yy
+    .domain([
+      0,
+      d3.max(visibleData, d => d.volume * 1.3)
+    ])
+    .nice()
+    .range([edge.top, edge.bottom]);
+  
+    const barWidth = xx.bandwidth();
+    
+    // ============
+    //  Axes
+    // ============
+    axisLayer.append("g")
+      .attr("transform", `translate(0,${vHeight - edge.bottom})`)
+      .style("color", "blue")
+      .style("opacity", "0")
+      .call(
+        d3.axisBottom(x)
+        .tickValues(
+          visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
+        )
+        .tickFormat(d3.timeFormat("%d %b '%y"))
+      );
+      
+    overlayLayer.append("g")
+    .attr("transform", `translate(${hWidth - edge.right}, ${edge.top + 156})`)
+    .call(d3.axisRight(yy)
+      .ticks(3)
+      .tickSize(4)
+      .tickPadding(5) // add some padding
+    );
+    
+    // =============
+    //  Bars
+    // =============
+    chartLayer.append("rect")
+      .attr("x", edge.left)
+      .attr("y", vHeight - edge.top - 2)
+      .attr("width", hWidth - edge.left - edge.right - 14)
+      .attr("height",edge.top - 29)
+      .attr("fill", "rgba(255, 255, 255, 0.5)");
+    
+    const barLayer = chartLayer.append("g");
+    barLayer.selectAll(".body")
+    .data(visibleData)
+    .join("rect")
+    .attr("class", "body")
+    .attr("x", d => xx(d.date) + 4 - barWidth * 0.5) // adjust x to center the bar
+    .attr("y", d => yy(0) + yy(d.masi) + edge.top + 37)
+    .attr("width", barWidth)
+    .attr("height", d => yy(0) - yy(d.masi))
+    .attr("fill", "magenta")
+    .attr("stroke", "black")
+    .style("transform", "translateY(1.5rem)");
+  
 });
 
 // ======================
