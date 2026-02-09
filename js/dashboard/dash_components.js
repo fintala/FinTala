@@ -214,7 +214,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
     svg.append('g')
       .attr('transform', `translate(0, ${hEight})`)
       .call(d3.axisBottom(x)
-      .ticks(4)
+        .tickValues(
+          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+        )
       .tickSize(3)
     )
       .selectAll('text')
