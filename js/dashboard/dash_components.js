@@ -196,9 +196,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
       .range([-5, wIdth + 20])
-      .padding(0.2)
-      .selectAll('text')
-      .attr("text-anchor", "middle");
+      .padding(0.2);
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
@@ -218,7 +216,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .call(d3.axisBottom(x)
       .ticks(4)
       .tickSize(3)
-    );
+    )
+      .selectAll('text')
+      .attr("text-anchor", "middle");
     
   
 });
