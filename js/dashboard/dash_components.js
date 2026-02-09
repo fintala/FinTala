@@ -192,7 +192,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('height', hEight + edge.top + edge.bottom)
       .style('background', 'black')
       .append('g')
-      .attr('transform', `translate(${edge.left}, ${edge.top})`);
+      .attr('transform', `translate(${wIdth - edge.left - edge.right}, ${hEight - edge.left - edge.top})`);
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
