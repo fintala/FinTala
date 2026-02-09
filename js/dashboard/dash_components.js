@@ -167,13 +167,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
 // =======================
 //  Rendering Bar Charts
 // =======================
-  const svg = d3.select('#masi-barchart');
+  const idx = d3.select('#masi-barchart');
       
-  const chartLayer = svg.append("g");
-  const axisLayer = svg.append("g");
-  const overlayLayer = svg.append("g");
-  const annotationLayer = svg.append("g");
-  const overlay = svg.append("rect");
+  const chartLayer = idx.append("g");
+  const axisLayer = idx.append("g");
+  const overlayLayer = idx.append("g");
+  const annotationLayer = idx.append("g");
+  const overlay = idx.append("rect");
   
   const visibleCount = 25;
   
@@ -190,7 +190,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const visibleData = indexData.slice(-visibleCount);
   
-  svg
+  idx
     .append('svg')
     .attr('width', hWidth + edge.left + edge.right)
     .attr('height', vHeight + edge.top + edge.bottom + 20)
