@@ -201,29 +201,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const x = d3.scaleLinear()
       .domain([0, d3.max(indexData, d => d.date)])
       .range([0, wIdth]);
-  
-  // =====================
-  // SCALES
-  // =====================
-  const x = d3.scaleBand()
-    .domain(visibleData.map(d => d.date))
-    .range([edge.left, wIdth - edge.right - 15])
-    .paddingInner(0.3)
-    .paddingOuter(0.15);
-  
-  const yy = d3.scaleLinear()
-    .domain([
-      0,
-      d3.max(visibleData, d => d.masi)
-    ])
-    .nice()
-    .range([edge.bottom, edge.top]);
-  
-    const barWidth = x.bandwidth();
-    
-    // ============
-    //  Axes
-    // ============
     
   
 });
