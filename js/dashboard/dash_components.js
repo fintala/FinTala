@@ -191,14 +191,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr('width', hWidth + edge.left + edge.right)
     .attr('height', vHeight + edge.top + edge.bottom)
     .append('g')
-    .attr('transform', `translate(${edge.left}, ${edge.top})`)
-    .style('background', 'black');
+    .attr('transform', `translate(${edge.left}, ${edge.top})`);
   
   
   // =====================
   // SCALES
   // =====================
-  const xx = d3.scaleBand()
+  const x = d3.scaleBand()
     .domain(visibleData.map(d => d.date))
     .range([edge.left, hWidth - edge.right - 15])
     .paddingInner(0.3)
@@ -212,7 +211,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .nice()
     .range([edge.bottom, edge.top]);
   
-    const barWidth = xx.bandwidth();
+    const barWidth = x.bandwidth();
     
     // ============
     //  Axes
@@ -220,7 +219,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     idx.append("g")
       .attr("transform", `translate(0, ${vHeight})`)
       .call(
-        d3.axisBottom(xx)
+        d3.axisBottom(x)
         .tickValues(
           visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
         )
@@ -251,7 +250,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .data(visibleData)
     .join("rect")
     .attr("class", "body")
-    .attr("x", d => xx(d.date)) // adjust x to center the bar
+    .attr("x", d => x(d.date)) // adjust x to center the bar
     .attr("y", d => yy(0) + yy(d.masi))
     .attr("width", barWidth)
     .attr("height", d => yy(0) - yy(d.masi))
