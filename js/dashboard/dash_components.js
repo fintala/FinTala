@@ -42,19 +42,19 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const height = 100 - margin.top - margin.bottom;
     const radius = Math.min(width, height) / 2;
     
-    const masiPie = d3.select('#masi-piechart')
+    const masiPie = d3.select('#mai-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-      const dsiPie = d3.select('#dsi-piechart')
+      const dsiPie = d3.select('#si-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-    const fsiPie = d3.select('#fsi-piechart')
+    const fsiPie = d3.select('#fi-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -212,10 +212,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .range([edge.bottom, edge.top]);
   
     const barWidth = xx.bandwidth();
-    
-    console.log(xx);
-    console.log(yy);
-    console.log(barWidth);
     
     // ============
     //  Axes
