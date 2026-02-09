@@ -201,6 +201,20 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const x = d3.scaleLinear()
       .domain([0, d3.max(indexData, d => d.date)])
       .range([0, wIdth]);
+      
+    svg.append('g')
+      .call(d3.axisLeft(y)
+      .tickSize(3)
+      .tickPadding(5)
+    );
+    
+    // Add X-axis (volume)
+    svg.append('g')
+      .attr('transform', `translate(0, ${hEight})`)
+      .call(d3.axisBottom(x)
+      .ticks(5)
+      .tickSize(3)
+    );
     
   
 });
