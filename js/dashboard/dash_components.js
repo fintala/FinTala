@@ -193,14 +193,14 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('g')
       .attr('transform', `translate(${edge.left}, ${edge.top})`);
       
-    const y = d3.scaleBand()
-      .domain(visibleData.map(d => d.masi))
-      .range([0, hEight])
+    const x = d3.scaleBand()
+      .domain(visibleData.map(d => d.date))
+      .range([0, width])
       .padding(0.2);
     
-    const x = d3.scaleLinear()
-      .domain(visibleData.map(d => d.date))
-      .range([0, wIdth]);
+    const y = d3.scaleLinear()
+      .domain([0, d3.max(indexData, d => d.masi)])
+      .range([0, hEight]);
       
     svg.append('g')
       .call(d3.axisRight(y)
