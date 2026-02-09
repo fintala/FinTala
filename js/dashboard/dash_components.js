@@ -191,7 +191,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
       .append('g')
-      .attr('transform', `translate(${edge.left}, ${edge.top})`);
+      .attr('transform', `translate(1, 1)`);
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
@@ -200,7 +200,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
-      .range([hEight - edge.top, 0]);
+      .range([hEight, 0]);
       
     svg.append('g')
       .call(d3.axisRight(y)
