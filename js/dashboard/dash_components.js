@@ -203,7 +203,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([hEight, 0]);
       
     svg.append('g')
-      .attr('transform', `translate(${wIdth}, 0)`)
+      .attr('transform', `translate(${wIdth + (edge.right * 0.5)}, 0)`)
       .call(d3.axisRight(y)
       .tickSize(3)
       .tickPadding(5)
