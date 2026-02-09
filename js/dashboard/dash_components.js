@@ -22,12 +22,20 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const indexData = dataArray[0].index;
   
-  const currentPoint = indexData[indexData.length - 1].masi;
-  const previousPoint = indexData[indexData.length - 2].masi;
+  const currentPointM = indexData[indexData.length - 1].masi;
+  const previousPointM = indexData[indexData.length - 2].masi;
   
-  const percentageChange = (((currentPoint - previousPoint)/(currentPoint))*100).toFixed(2);
+  const percentageChangeM = (((currentPointM - previousPointM)/(currentPointM))*100).toFixed(2);
   
-  console.log(percentageChange);
+  const currentPointD = indexData[indexData.length - 1].dsi;
+  const previousPointD = indexData[indexData.length - 2].dsi;
+  
+  const percentageChangeD = (((currentPointD - previousPointD)/(currentPointD))*100).toFixed(2);
+  
+  const currentPointF = indexData[indexData.length - 1].fsi;
+  const previousPointF = indexData[indexData.length - 2].fsi;
+  
+  const percentageChangeF = (((currentPointaF - previousPointF)/(currentPointF))*100).toFixed(2);
     
     const margin = { top: 4, right: 5, bottom: 6, left: 7 };
     const width = 100 - margin.left - margin.right;
@@ -54,10 +62,18 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
     const color = percentageChange >= 0 ? '#660033' : 'brown';
-    const data = [Math.abs(percentageChange), 10 - Math.abs(percentageChange)];
+    const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
+    const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
+    const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
     
-    const pieColor = d3.scaleOrdinal()
-      .domain(data)
+    const pieColorM = d3.scaleOrdinal()
+      .domain(dataM)
+      .range([color, 'white']);
+    const pieColorD = d3.scaleOrdinal()
+      .domain(dataD)
+      .range([color, 'white']);
+    const pieColorF = d3.scaleOrdinal()
+      .domain(dataF)
       .range([color, 'white']);
     
     const pie = d3.pie()
@@ -91,8 +107,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.5)`)
-      .text(`${percentageChange}%`);
+      .attr('transform', `rotate(-225), scale(0.65)`)
+      .text(`${percentageChangeM}%`);
       
   // ====================
   //   dsi pie chart
@@ -117,8 +133,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.5)`)
-      .text(`${percentageChange}%`);
+      .attr('transform', `rotate(-225), scale(0.65)`)
+      .text(`${percentageChangeD}%`);
       
   // ====================
   //   fsi pie chart
@@ -143,8 +159,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.5)`)
-      .text(`${percentageChange}%`);
+      .attr('transform', `rotate(-225), scale(0.65)`)
+      .text(`${percentageChangeF}%`);
 });
 
 // ======================
