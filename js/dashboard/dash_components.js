@@ -198,8 +198,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr('width', hWidth + margin.left + margin.right)
     .attr('height', vHeight + margin.top + margin.bottom + 20)
     .append('g')
-    .attr('transform', `translate(${edge.left}, ${edge.top})`)
-    .attr('fill', 'lightskyblue');
+    .attr('transform', `translate(${edge.left}, ${edge.top})`);
     
   root
     .attr("transform", `translate(${vHeight})`);
@@ -219,7 +218,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     yy
     .domain([
       0,
-      d3.max(visibleData, d => d.volume * 1.3)
+      d3.max(visibleData, d => d.masi * 1.3)
     ])
     .nice()
     .range([edge.top, edge.bottom]);
