@@ -115,7 +115,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorM}`)
       .text(`${percentageChangeM}%`)
-      .style("font-weight", "400");
+      .style("font-weight", "500");
       
   // ====================
   //   dsi pie chart
@@ -143,7 +143,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorD}`)
       .text(`${percentageChangeD}%`)
-      .style("font-weight", "400");
+      .style("font-weight", "500");
       
   // ====================
   //   fsi pie chart
@@ -171,7 +171,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorF}`)
       .text(`${percentageChangeF}%`)
-      .style("font-weight", "400");
+      .style("font-weight", "500");
       
 // =======================
 //  Rendering Bar Charts
