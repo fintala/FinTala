@@ -215,7 +215,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       d3.max(visibleData, d => d.masi * 1.3)
     ])
     .nice()
-    .range([edge.top, edge.bottom]);
+    .range([edge.bottom, edge.top]);
   
     const barWidth = xx.bandwidth();
     
@@ -224,8 +224,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
     // ============
     axisLayer.append("g")
       .attr("transform", `translate(0,${vHeight})`)
-      .style("color", "blue")
-      .style("opacity", "0")
       .call(
         d3.axisBottom(xx)
         .tickValues(
