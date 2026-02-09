@@ -20,7 +20,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const dsi = dataArray[0].index.map(d => d.dsi);
   const fsi = dataArray[0].index.map(d => d.fsi);
   
-  const indexData = dataArray[0].Index;
+  const indexData = dataArray[0].index;
   
   const currentPoint = indexData[indexData.length - 1].masi;
   const previousPoint = indexData[indexData.length - 2].masi;
