@@ -43,26 +43,28 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range(['#660033', 'white']);
     
     const pie = d3.pie()
-      .value(d => d);
+      .value(d => d)
+      .sort(null);
     
     const arc = d3.arc()
       .outerRadius(radius)
       .innerRadius(radius * 0.6);
     
     svg.selectAll('path')
-      .data(pie(data))
-      .enter()
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', (d, i) => color(i))
-      .each(function(d) { this._current = d; })
-      .transition()
-      .duration(3000)
-      .attrTween('d', function(a) {
-        var i = d3.interpolate(this._current, a);
-        this._current = i(0);
-        return function(t) { return arc(i(t)); };
-      });
+  .data(pie([0, 100]))
+  .enter()
+  .append('path')
+  .attr('d', arc)
+  .attr('fill', (d, i) => i === 0 ? '#660033' : 'white')
+  .transition()
+  .duration(1000)
+  .attrTween('d', function(d, i) {
+    var interpolate = d3.interpolate(0, data[i]);
+    return function(t) {
+      d.data = interpolate(t);
+      return arc(d);
+    };
+  });
       
     svg.append('circle')
       .attr('cx', 0)
