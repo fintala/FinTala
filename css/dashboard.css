@@ -343,17 +343,23 @@
 
 .index-buttons {
   top: 1.3rem;
-  left: 5rem;
+  left: 5.5rem;
   height: auto;
   width: 70vw;
-  background: black;
   position: absolute;
   font-size: 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
   padding: 0 0.3rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.index-buttons div {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 0.3rem;
+  background: #c1ff72;
 }
 
 /* =======================
