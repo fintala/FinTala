@@ -53,7 +53,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
-    const color = percentageChange >= 0 ? '#660033' : 'scarlet';
+    const color = percentageChange >= 0 ? '#660033' : 'red';
     const data = [Math.abs(percentageChange), 10 - Math.abs(percentageChange)];
     
     const pieColor = d3.scaleOrdinal()
