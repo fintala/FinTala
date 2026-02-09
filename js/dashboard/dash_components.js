@@ -244,10 +244,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(Math.max(0, d.masi)))
+      .attr("y", d => y(d.masi))
       .attr("width", barWidth)
-      .attr("height", d =>
-        Math.max(1, Math.abs(y(0) - y(d.masi)))
+      .attr("height", d => Math.abs(y(0) - y(d.masi))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
