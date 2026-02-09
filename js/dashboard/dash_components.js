@@ -193,6 +193,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const visibleData = indexData.slice(-visibleCount);
   
+  console.log(visibleData);
+  
   svg = d3.select('#masi-barchart')
     .append('svg')
     .attr('width', hWidth + margin.left + margin.right)
