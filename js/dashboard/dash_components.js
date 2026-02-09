@@ -193,19 +193,17 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .append('g')
     .attr('transform', `translate(${edge.left}, ${edge.top})`);
   
-  const xx = d3.scaleBand();
-  const yy = d3.scaleLinear();
   
   // =====================
   // SCALES
   // =====================
-    xx
+  const xx = d3.scaleBand()
     .domain(visibleData.map(d => d.date))
     .range([edge.left, hWidth - edge.right - 15])
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
-    yy
+  const yy = d3.scaleLinear()
     .domain([
       0,
       d3.max(visibleData, d => d.masi)
