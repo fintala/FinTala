@@ -200,7 +200,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
-      .range([hEight, -2]);
+      .range([-2, hEight]);
       
     let barWidth = x.bandwidth();
       
