@@ -231,12 +231,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(0))
-      .attr("width", barWidth/2)
-      .attr("height", d => y(0) + y(d.masi))
+      .attr("y", d => y(Math.max(0, d.masi)))
+      .attr("width", barWidth)
+      .attr("height", d =>
+        Math.max(1, Math.abs(y(0) - y(d.masi)))
+      )
       .attr("fill", "magenta")
-      .attr("stroke", "black")
-      .style('transform', 'translateY(-6rem)');
+      .attr("stroke", "black");
   
 });
 
