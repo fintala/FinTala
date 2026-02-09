@@ -25,7 +25,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const currentPoint = indexData[indexData.length - 1].masi;
   const previousPoint = indexData[indexData.length - 2].masi;
   
-  const percentageChange = (((currentPoint - previousPoint)/(currentPoint))*100).toFixed(2);
+  const percentageChange = (((currentPoint - previousPoint- 100000)/(currentPoint))*100).toFixed(2);
   
   console.log(percentageChange);
     
