@@ -174,8 +174,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const root = svg.append("g");
   const chartLayer = root.append("g");
   const axisLayer = root.append("g");
-  root
-    .attr("transform", `translate(${vHeight})`);
   const overlayLayer = root.append("g");
   const annotationLayer = root.append("g");
   const overlay = root.append("rect");
@@ -201,6 +199,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr('height', vHeight + margin.top + margin.bottom + 20)
     .append('g')
     .attr('transform', `translate(${edge.left}, ${edge.top})`);
+    
+  root
+    .attr("transform", `translate(${vHeight})`);
   
   const xx = d3.scaleBand();
   const yy = d3.scaleLinear();
