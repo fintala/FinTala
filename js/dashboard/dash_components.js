@@ -225,7 +225,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .tickValues(
           visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
         )
-        .tickFormat(d3.timeFormat("%d %b '%y"))
+        .tickFormat(d3.timeFormat("%b '%y"))
       );
       
     idx.append("g")
