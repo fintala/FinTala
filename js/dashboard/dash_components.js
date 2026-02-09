@@ -43,8 +43,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range(['#660033', 'white']);
     
     const pie = d3.pie()
-      .value(d => d)
-      .attr('background', 'hsl(0, 100%, 98%)');
+      .value(d => d);
     
     const arc = d3.arc()
       .outerRadius(radius)
@@ -63,6 +62,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('transform', 'rotate(-45)')
+      .style('background', 'hsl(0, 100%, 98%)')
       .text(`${percentageChange}%`);
 });
 
