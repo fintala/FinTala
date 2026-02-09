@@ -210,7 +210,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const y = d3.scalePow()
       .exponent(5)
       .domain([0, d3.max
-      (visibleData, d => d.masi) * 1.1])
+      (visibleData, d => d.masi)])
       .range([hEight, -2]);
       
       console.log(indexData.map(d => d.masi));
