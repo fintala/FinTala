@@ -367,6 +367,17 @@
   border-radius: 0.4rem;
 }
 
+.index-piecharts {
+  top: 2.5rem;
+  height: auto;
+  width: 100%;
+  position: absolute;
+  background: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 /* =======================
      Volume Animations
    ======================= */
