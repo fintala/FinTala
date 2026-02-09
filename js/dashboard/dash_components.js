@@ -114,7 +114,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorM}`)
-      .text(`${percentageChangeM}%`);
+      .text(`${percentageChangeM}%`)
+      .style("font-weight", "bold");
       
   // ====================
   //   dsi pie chart
@@ -141,7 +142,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorD}`)
-      .text(`${percentageChangeD}%`);
+      .text(`${percentageChangeD}%`)
+      .style("font-weight", "bold");
       
   // ====================
   //   fsi pie chart
@@ -168,7 +170,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
       .attr('fill', `${textColorF}`)
-      .text(`${percentageChangeF}%`);
+      .text(`${percentageChangeF}%`)
+      .style("font-weight", "bold");
       
 // =======================
 //  Rendering Bar Charts
