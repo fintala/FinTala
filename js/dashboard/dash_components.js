@@ -25,7 +25,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const currentPoint = indexData[indexData.length - 1].masi;
   const previousPoint = indexData[indexData.length - 2].masi;
   
-  console.log(previousPoint, currentPoint);
+  const percentageChange = (((currentPoint - previous)/(currentPoint))*100);
+  
+  console.log(percentageChange);
     
     const margin = { top: 4, right: 5, bottom: 6, left: 7 };
     const width = 100 - margin.left - margin.right;
@@ -51,7 +53,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
     
-    const percentageChange = 50; // example value
     const data = [percentageChange, 100 - percentageChange];
     
     const color = d3.scaleOrdinal()
