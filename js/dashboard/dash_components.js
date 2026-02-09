@@ -223,7 +223,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     //  Axes
     // ============
     axisLayer.append("g")
-      .attr("transform", `translate(0,${vHeight})`)
+      .attr("transform", `translate(${vHeight})`)
       .call(
         d3.axisBottom(xx)
         .tickValues(
