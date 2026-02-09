@@ -190,9 +190,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('svg')
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
+      .attr('fill', 'black')
       .append('g')
-      .attr('transform', `translate(${edge.left}, ${edge.top})`)
-      .attr('fill', 'black');
+      .attr('transform', `translate(${edge.left}, ${edge.top})`);
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
