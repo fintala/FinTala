@@ -19,7 +19,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     
     
-    const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+    const margin = { top: 5, right: 10, bottom: 7, left: 10 };
     const width = 100 - margin.left - margin.right;
     const height = 100 - margin.top - margin.bottom;
     const radius = Math.min(width, height) / 2;
