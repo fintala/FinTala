@@ -235,7 +235,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("y", d => y(Math.max(0, d.masi)))
       .attr("width", barWidth)
       .attr("height", d =>
-        Math.max(1, Math.abs(y(0) - y(d.masi)))
+        Math.max(1, Math.abs(y(d.masi - 500000) - y(d.masi)))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
