@@ -233,7 +233,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .style("color", "blue")
       .style("opacity", "0")
       .call(
-        d3.axisBottom(x)
+        d3.axisBottom(xx)
         .tickValues(
           visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
         )
