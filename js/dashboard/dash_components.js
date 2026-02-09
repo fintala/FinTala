@@ -167,6 +167,16 @@ Promise.allSettled(indexTimeframe).then((results) => {
 // =======================
 //  Rendering Bar Charts
 // =======================
+  const chartLayer = root.append("g");
+  const candleLayer = chartLayer.append("g");
+  
+  const axisLayer = root.append("g");
+  root
+    .attr("transform", `translate(${vHeight})`);
+  const overlayLayer = root.append("g");
+  const annotationLayer = root.append("g");
+  const overlay = root.append("rect");
+  
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
