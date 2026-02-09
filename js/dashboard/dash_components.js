@@ -171,7 +171,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
   const wIdth = 330 - edge.left - edge.right;
-  const hEight = 120 - edge.top - edge.bottom;
+  const hEight = 125 - edge.top - edge.bottom;
   
   let startIndex = 0;
   
