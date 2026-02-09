@@ -204,6 +204,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
+      .style('opacity', '0.8')
       .call(d3.axisRight(y)
       .ticks(5)
       .tickSize(3)
@@ -213,11 +214,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
     // Add X-axis (volume)
     svg.append('g')
       .attr('transform', `translate(0, ${hEight})`)
+      .style('opacity', '0.8')
       .call(d3.axisBottom(x)
         .tickValues(
           visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
         )
-      .tickFormat(d3.timeFormat("%d %b '%y"))
       .tickSize(3)
     )
       .selectAll('text')
