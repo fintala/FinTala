@@ -388,7 +388,13 @@
 .index-piechart {
   height: 6rem;
   width: 100%;
-  border: 1px solid brown;
+}
+
+.piechart-name {
+  height: 1.98rem;
+  width: 100%;
+  padding: 0.2rem 0;
+  text-align: center;
 }
 
 /* =======================
