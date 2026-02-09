@@ -223,7 +223,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     //  Axes
     // ============
     axisLayer.append("g")
-      .attr("transform", `translate(${vHeight})`)
+      .attr("transform", `translate(0, ${vHeight})`)
       .call(
         d3.axisBottom(xx)
         .tickValues(
@@ -245,10 +245,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
     // =============
     chartLayer.append("rect")
       .attr("x", edge.left)
-      .attr("y", vHeight - edge.top - 2)
+      .attr("y", edge.top )
       .attr("width", hWidth - edge.left - edge.right - 14)
-      .attr("height",edge.top - 29)
-      .attr("fill", "rgba(255, 255, 255, 0.5)");
+      .attr("height",vHeight - edge.top - edge.bottom)
+      .attr("fill", "rgba(0, 0, 0, 0.5)");
     
     const barLayer = chartLayer.append("g");
     barLayer.selectAll(".body")
