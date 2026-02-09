@@ -209,12 +209,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
-  console.log(visibleData.map(d => d.date));
-  
     yy
     .domain([
       0,
-      d3.max(visibleData, d => d.masi * 1.3)
+      d3.max(visibleData.map(d => d.masi * 1.3))
     ])
     .nice()
     .range([edge.bottom, edge.top]);
