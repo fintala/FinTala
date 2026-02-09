@@ -358,9 +358,11 @@
 
 .index-buttons div {
   width: 2.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0 0.3rem;
   background: #c1ff72;
+  text-align: center;
+  border-radius: 0.4rem;
 }
 
 /* =======================
