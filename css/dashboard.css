@@ -349,7 +349,7 @@
   position: absolute;
   font-size: 1.2rem;
   background: transparent;
-  padding: 0.3rem 0.3rem;
+  padding: 0.1rem 0.3rem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: row;
@@ -360,7 +360,7 @@
   height: 1.5rem;
   width: 2.5rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0.3rem 0.3rem;
+  padding: 0.1rem 0.3rem;
   background: #c1ff72;
   font-size: 0.9rem;
   text-align: center;
