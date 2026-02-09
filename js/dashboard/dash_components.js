@@ -235,7 +235,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("width", barWidth)
       .attr("height", d => y(0) + y(d.masi))
       .attr("fill", "magenta")
-      .attr("stroke", "black");
+      .attr("stroke", "black")
+      .style("transform", "rotateY(180deg)");
   
 });
 
