@@ -199,7 +199,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .padding(0.2);
     
     const x = d3.scaleLinear()
-      .domain([0, d3.max(visibleData, d => d.date)])
+      .domain(visibleData.map(d => d.date))
       .range([0, wIdth]);
       
     svg.append('g')
