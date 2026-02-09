@@ -182,11 +182,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const visibleData = indexData.slice(-visibleCount);
   
-  let svg = d3.select('#masi-barchart')
+  let masiSvg = d3.select('#masi-barchart')
       .selectAll('*')
       .remove();
       
-    svg = d3.select('#masi-barchart')
+    masiSvg = d3.select('#masi-barchart')
       .append('svg')
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
@@ -204,7 +204,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     let barWidth = x.bandwidth();
       
-    svg.append('g')
+    masiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .style('opacity', '0.7')
       .call(d3.axisRight(y)
@@ -214,7 +214,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     );
     
     // Add X-axis (volume)
-    svg.append('g')
+    masiSvg.append('g')
       .attr('transform', `translate(0, ${hEight})`)
       .style('opacity', '0.7')
       .call(d3.axisBottom(x)
@@ -226,7 +226,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .selectAll('text')
       .attr("text-anchor", "middle");
     
-    svg.selectAll(".body")
+    masiSvg.selectAll(".body")
       .data(visibleData)
       .join("rect")
       .attr("class", "body")
@@ -235,6 +235,102 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("width", barWidth)
       .attr("height", d =>
         Math.max(1, Math.abs(y(0) - y(d.masi)))
+      )
+      .attr("fill", "steelblue")
+      .attr("stroke", "black")
+      .attr("stroke-width", "0.5")
+      .style("opacity", "0.6");
+      
+  let dsiSvg = d3.select('#dsi-barchart')
+      .selectAll('*')
+      .remove();
+      
+    dsiSvg = d3.select('#dsi-barchart')
+      .append('svg')
+      .attr('width', wIdth + edge.left + edge.right)
+      .attr('height', hEight + edge.top + edge.bottom)
+      .append('g')
+      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
+      
+    dsiSvg.append('g')
+      .attr('transform', `translate(${wIdth + 20}, 0)`)
+      .style('opacity', '0.7')
+      .call(d3.axisRight(y)
+      .ticks(5)
+      .tickSize(3)
+      .tickPadding(5)
+    );
+    
+    // Add X-axis (volume)
+    dsiSvg.append('g')
+      .attr('transform', `translate(0, ${hEight})`)
+      .style('opacity', '0.7')
+      .call(d3.axisBottom(x)
+        .tickValues(
+          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+        )
+      .tickSize(3)
+    )
+      .selectAll('text')
+      .attr("text-anchor", "middle");
+    
+    dsiSvg.selectAll(".body")
+      .data(visibleData)
+      .join("rect")
+      .attr("class", "body")
+      .attr("x", d => x(d.date)) // adjust x to center the bar
+      .attr("y", d => y(Math.max(0, d.dsi)))
+      .attr("width", barWidth)
+      .attr("height", d =>
+        Math.max(1, Math.abs(y(0) - y(d.dsi)))
+      )
+      .attr("fill", "steelblue")
+      .attr("stroke", "black")
+      .attr("stroke-width", "0.5")
+      .style("opacity", "0.6");
+      
+  let fsiSvg = d3.select('#fsi-barchart')
+      .selectAll('*')
+      .remove();
+      
+    fsiSvg = d3.select('#fsi-barchart')
+      .append('svg')
+      .attr('width', wIdth + edge.left + edge.right)
+      .attr('height', hEight + edge.top + edge.bottom)
+      .append('g')
+      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
+      
+    fsiSvg.append('g')
+      .attr('transform', `translate(${wIdth + 20}, 0)`)
+      .style('opacity', '0.7')
+      .call(d3.axisRight(y)
+      .ticks(5)
+      .tickSize(3)
+      .tickPadding(5)
+    );
+    
+    // Add X-axis (volume)
+    fsiSvg.append('g')
+      .attr('transform', `translate(0, ${hEight})`)
+      .style('opacity', '0.7')
+      .call(d3.axisBottom(x)
+        .tickValues(
+          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+        )
+      .tickSize(3)
+    )
+      .selectAll('text')
+      .attr("text-anchor", "middle");
+    
+    fsiSvg.selectAll(".body")
+      .data(visibleData)
+      .join("rect")
+      .attr("class", "body")
+      .attr("x", d => x(d.date)) // adjust x to center the bar
+      .attr("y", d => y(Math.max(0, d.fsi)))
+      .attr("width", barWidth)
+      .attr("height", d =>
+        Math.max(1, Math.abs(y(0) - y(d.fsi)))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
