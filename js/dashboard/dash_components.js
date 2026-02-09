@@ -167,7 +167,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
 // =======================
 //  Rendering Bar Charts
 // =======================
-  let svg = d3.select('#masi-barchart');
+  const svg = d3.select('#masi-barchart');
       
     
   const root = svg.append("g");
@@ -194,8 +194,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   svg
     .append('svg')
-    .attr('width', hWidth + margin.left + margin.right)
-    .attr('height', vHeight + margin.top + margin.bottom + 20)
+    .attr('width', hWidth + edge.left + edge.right)
+    .attr('height', vHeight + edge.top + edge.bottom + 20)
     .append('g')
     .attr('transform', `translate(${edge.left}, ${edge.top})`);
     
