@@ -343,9 +343,9 @@
 
 .index-buttons {
   top: 1.3rem;
-  left: 2rem;
+  left: 3rem;
   height: auto;
-  width: 90vw;
+  width: 80vw;
   background: black;
   position: absolute;
   font-size: 1.2rem;
