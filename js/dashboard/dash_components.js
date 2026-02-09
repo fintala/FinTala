@@ -208,7 +208,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .padding(0.2);
     
     const y = d3.scalePow()
-      .exponent(64)
+      .exponent(26)
       .domain([1, d3.max
       (visibleData, d => d.masi)])
       .range([hEight, -2]);
@@ -221,6 +221,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .style('opacity', '0.7')
       .call(d3.axisRight(y)
+      .ticks(12)
       .tickSize(3)
       .tickPadding(5)
     );
