@@ -376,12 +376,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding: 0.4rem 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .piechart-block {
   width: 30%;
   height: 8rem;
-  border: 1px solid black;
   overflow: hidden;
 }
 
@@ -393,7 +394,7 @@
 .piechart-name {
   height: 1.98rem;
   width: 100%;
-  padding: 0.2rem 0;
+  padding: 0.3rem 0;
   text-align: center;
 }
 
