@@ -230,13 +230,12 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .data(visibleData)
       .join("rect")
       .attr("class", "body")
-      .attr("x", d => x(d.date) + 4 - barWidth * 0.5) // adjust x to center the bar
-      .attr("y", d => y(0) + y(d.masi) + 60)
+      .attr("x", d => x(d.date)) // adjust x to center the bar
+      .attr("y", d => y(0))
       .attr("width", barWidth)
-      .attr("height", d => y(0) - y(masi))
+      .attr("height", d => y(0) + y(masi))
       .attr("fill", "magenta")
-      .attr("stroke", "black")
-      .style("transform", "translateY(1.5rem)");
+      .attr("stroke", "black");
   
 });
 
