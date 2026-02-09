@@ -209,6 +209,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
+  console.log(visibleData.map(d => d.date));
+  
     yy
     .domain([
       0,
