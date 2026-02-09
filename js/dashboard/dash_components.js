@@ -140,6 +140,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
+      .attr('fill', `${textColorD}`)
       .text(`${percentageChangeD}%`);
       
   // ====================
@@ -166,6 +167,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
+      .attr('fill', `${textColorF}`)
       .text(`${percentageChangeF}%`);
       
 // =======================
