@@ -170,8 +170,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
-  const wIdth = 300 - edge.left - edge.right;
-  const hEight = 100 - edge.top - edge.bottom;
+  const wIdth = 310 - edge.left - edge.right;
+  const hEight = 110 - edge.top - edge.bottom;
   
   let startIndex = 0;
   
@@ -192,7 +192,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('height', hEight + edge.top + edge.bottom)
       .style('background', 'black')
       .append('g')
-      .attr('transform', `translate(${wIdth - edge.right}, ${hEight - edge.bottom})`);
+      .attr('transform', `translate(${edge.left}, ${edge.top})`);
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
