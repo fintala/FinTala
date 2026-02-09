@@ -1,4 +1,68 @@
-// List of JSON file paths
+// Stock Indices
+const indexTimeframe= [d3.json('data/indices/market.json'), d3.json('data/indices/w_market.json'), d3.json('data/indices/m1_market.json'), d3.json('data/indices/m4_market.json'), d3.json('data/indices/y_market.json')];
+
+Promise.allSettled(indexTimeframe).then((results) => {
+    const dataArray = results.map((result) => {
+      if (result.status === 'fulfilled') {
+        return result.value;
+      } else {
+        console.error('Error fetching data:', result.reason);
+        return null;
+      }
+    }).filter((data) => data !== null);
+  
+    if (dataArray.length === 0) {
+      console.error('No data available');
+      return;
+    }
+    
+    
+    
+    
+    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+    const width = 200 - margin.left - margin.right;
+    const height = 200 - margin.top - margin.bottom;
+    const radius = Math.min(width, height) / 2;
+    
+    const svg = d3.select('body')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top})`);
+    
+    const percentageChange = 50; // example value
+    const data = [percentageChange, 100 - percentageChange];
+    
+    const color = d3.scaleOrdinal()
+      .domain(data)
+      .range(['#660033', 'white']);
+    
+    const pie = d3.pie()
+      .value(d => d);
+    
+    const arc = d3.arc()
+      .outerRadius(radius)
+      .innerRadius(radius * 0.5);
+    
+    svg.selectAll('path')
+      .data(pie(data))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', (d, i) => color(i));
+    
+    svg.append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .text(`${percentageChange}%`);
+});
+
+// ======================
+//    Volume Widget
+// ======================
 const files = ['data/ohlc/airtelmw.json', 'data/ohlc/bh.json', 'data/ohlc/illovo.json', 'data/ohlc/nbm.json', 'data/ohlc/tnm.json', 'data/ohlc/nitl.json', 'data/ohlc/nico.json', 'data/ohlc/nbs.json', 'data/ohlc/oldmutual.json', 'data/ohlc/fdh.json', 'data/ohlc/fmbch.json', 'data/ohlc/icon_properties.json', 'data/ohlc/mpico.json', 'data/ohlc/press_corp.json', 'data/ohlc/std_bank.json', 'data/ohlc/sunbird.json'];
 
 const wFiles = ['data/ohlc/w_ohlc/airtelmw.json', 'data/ohlc/w_ohlc/bh.json', 'data/ohlc/w_ohlc/fdh.json', 'data/ohlc/w_ohlc/fmbch.json', 'data/ohlc/w_ohlc/icon_properties.json', 'data/ohlc/w_ohlc/illovo.json', 'data/ohlc/w_ohlc/mpico.json', 'data/ohlc/w_ohlc/nbm.json', 'data/ohlc/w_ohlc/nbs.json', 'data/ohlc/w_ohlc/nico.json', 'data/ohlc/w_ohlc/nitl.json', 'data/ohlc/w_ohlc/oldmutual.json', 'data/ohlc/w_ohlc/press_corp.json', 'data/ohlc/w_ohlc/std_bank.json', 'data/ohlc/w_ohlc/sunbird.json', 'data/ohlc/w_ohlc/tnm.json'];

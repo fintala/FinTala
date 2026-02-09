@@ -1,7 +1,0 @@
-{
-  "name": "Daily Stock-Exchange-Indices",
-  "exchange": "MSE",
-  "index": [
-    { "date": "2026-02-28", "masi": null, "dsi": null, "fsi": null }
-  ]
-}

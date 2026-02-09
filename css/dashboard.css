@@ -316,6 +316,20 @@
   letter-spacing: 0.1rem;
 }
 
+/* =======================
+     Indices Component
+   ======================= */
+#index-illustration {
+  top: 0;
+  left: 0;
+  height: 100svh;
+  width: 100vw;
+  position: fixed;
+  background: white;
+  z-index: 2000;
+  padding: 4.5rem 0.7rem;
+  display: block; /* block */
+}
 
 /* =======================
      Volume Animations

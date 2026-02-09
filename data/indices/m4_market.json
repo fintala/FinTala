@@ -1,0 +1,13 @@
+{
+  "name": "Daily Stock-Exchange-Indices",
+  "exchange": "MSE",
+  "index": [
+    { "date": "2026-02-29", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-01-30", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-02-02", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-02-04", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-02-05", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-02-06", "masi": null, "dsi": null, "fsi": null },
+    { "date": "2026-02-09", "masi": null, "dsi": null, "fsi": null }
+  ]
+}
