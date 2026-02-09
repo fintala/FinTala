@@ -52,12 +52,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+      
+    const color = percentageChange >= 0 ? '#660033' : '#FF00FF';
+    const data = [Math.abs(percentageChange), 10 - Math.abs(percentageChange)];
     
-    const data = [percentageChange, 10 - percentageChange];
-    
-    const color = d3.scaleOrdinal()
+    const pieColor = d3.scaleOrdinal()
       .domain(data)
-      .range(['#660033', 'white']);
+      .range([color, 'white']);
     
     const pie = d3.pie()
       .value(d => d)
@@ -75,7 +76,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => color(i));
+      .attr('fill', (d, i) => pieColor(i));
       
     masiPie.append('circle')
       .attr('cx', 0)
