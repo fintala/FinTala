@@ -167,9 +167,19 @@ Promise.allSettled(indexTimeframe).then((results) => {
 // =======================
 //  Rendering Bar Charts
 // =======================
+  let svg = d3.select('#masi-barchart')
+      .selectAll('*')
+      .remove();
+      
+  svg = d3.select('#masi-barchart')
+    .append('svg')
+    .attr('width', hWidth + margin.left + margin.right)
+    .attr('height', vHeight + margin.top + margin.bottom + 20)
+    .append('g')
+    .attr('transform', `translate(${edge.left}, ${edge.top})`);
+    
+  const root = svg.append("g");
   const chartLayer = root.append("g");
-  const candleLayer = chartLayer.append("g");
-  
   const axisLayer = root.append("g");
   root
     .attr("transform", `translate(${vHeight})`);
@@ -191,17 +201,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
   );
   
   const visibleData = indexData.slice(-visibleCount);
-  
-  let svg = d3.select('#masi-barchart')
-      .selectAll('*')
-      .remove();
-      
-  svg = d3.select('#masi-barchart')
-    .append('svg')
-    .attr('width', hWidth + margin.left + margin.right)
-    .attr('height', vHeight + margin.top + margin.bottom + 20)
-    .append('g')
-    .attr('transform', `translate(${edge.left}, ${edge.top})`);
   
   const xx = d3.scaleBand();
   const yy = d3.scaleLinear();
