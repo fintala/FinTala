@@ -206,7 +206,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.6')
+      .style('opacity', '0.8')
       .call(d3.axisRight(y)
       .ticks(5)
       .tickSize(3)
@@ -216,7 +216,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     // Add X-axis (volume)
     svg.append('g')
       .attr('transform', `translate(0, ${hEight})`)
-      .style('opacity', '0.8')
+      .style('opacity', '0.7')
       .call(d3.axisBottom(x)
         .tickValues(
           visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
@@ -239,7 +239,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("fill", "magenta")
       .attr("stroke", "black")
       .attr("stroke-width", "0.5")
-      .style("opacity", "0.8");
+      .style("opacity", "0.6");
   
 });
 
