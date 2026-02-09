@@ -39,21 +39,21 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       const dsiPie = d3.select('#dsi-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
     const fsiPie = d3.select('#fsi-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
-    const color = percentageChange >= 0 ? '#660033' : '#FF00FF';
+    const color = percentageChange >= 0 ? '#660033' : 'scarlet';
     const data = [Math.abs(percentageChange), 10 - Math.abs(percentageChange)];
     
     const pieColor = d3.scaleOrdinal()
@@ -91,7 +91,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', 'rotate(-45)')
+      .attr('transform', 'rotate(-225)')
       .text(`${percentageChange}%`);
       
   // ====================
@@ -102,7 +102,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => color(i));
+      .attr('fill', (d, i) => pieColor(i));
       
     dsiPie.append('circle')
       .attr('cx', 0)
@@ -117,7 +117,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', 'rotate(-45)')
+      .attr('transform', 'rotate(-225)')
       .text(`${percentageChange}%`);
       
   // ====================
@@ -128,7 +128,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => color(i));
+      .attr('fill', (d, i) => pieColor(i));
       
     fsiPie.append('circle')
       .attr('cx', 0)
@@ -143,7 +143,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('transform', 'rotate(-45)')
+      .attr('transform', 'rotate(-225)')
       .text(`${percentageChange}%`);
 });
 
