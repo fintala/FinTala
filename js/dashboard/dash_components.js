@@ -191,7 +191,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr('width', wIdth + edge.left + edge.right)
     .attr('height', hEight + edge.top + edge.bottom)
     .append('g')
-    .attr('transform', `translate(${hEight}, ${wIdth})`);
+    .attr('transform', `translate(${edge.top}, ${edge.left})`);
   
   
   // =====================
