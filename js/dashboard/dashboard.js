@@ -147,6 +147,40 @@ function pushUsername() {
 pushUsername();
 
 // ===========================
+//  Activating Indices Widget
+// ===========================
+const indexWidget = document.getElementById('index-overview');
+const indexOverlay = document.getElementById('masi-overlay');
+const indexDetail = document.getElementById('index-illustration');
+const closeIndexDetail = document.getElementById('close-indices');
+
+indexWidget.addEventListener('click', (e)=> {
+  indexOverlay.style.display = 'block';
+  setTimeout( () => {
+    indexOverlay.style.display = 'none';
+  }, 3000);
+  
+  indexOverlay.addEventListener('click', () => {
+    const dashSect = document.querySelector('body');
+    e.stopPropagation();
+    setTimeout (() => {
+      indexDetail.style.display = 'block';
+      dashSect.style.overflow = 'hidden';
+    }, 300);
+    
+    closeIndexDetail.addEventListener('click', () => {
+      e.stopPropagation();
+      dashSect.style.cssText = `
+      overflow-x: hidden;
+      `;
+      setTimeout (() => {
+      indexDetail.style.display = 'none';
+    }, 300);
+    });
+  });
+});
+
+// ===========================
 //  Activating Volume Widget
 // ===========================
 const volWidget = document.getElementById('volume-overview');
