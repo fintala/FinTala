@@ -54,7 +54,15 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => color(i));
+      .attr('fill', (d, i) => color(i))
+      .each(function(d) { this._current = d; })
+      .transition()
+      .duration(1000)
+      .attrTween('d', function(a) {
+        var i = d3.interpolate(this._current, a);
+        this._current = i(0);
+        return function(t) { return arc(i(t)); };
+      });
       
     svg.append('circle')
       .attr('cx', 0)
