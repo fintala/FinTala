@@ -207,8 +207,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([-8, wIdth + 20])
       .padding(0.2);
     
-    const y = d3.scaleSymlog()
-      .domain([1, d3.max
+    const y = d3.scaleLinear()
+      .domain([0, d3.max
       (visibleData, d => d.masi) * 1.1])
       .range([hEight, -2]);
       
@@ -221,6 +221,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .ticks(5)
       .tickSize(3)
       .tickPadding(5)
+      .tickFormat(d => `${(d / 10000).toFixed(2)}k`)
     );
     
     // Add X-axis (volume)
