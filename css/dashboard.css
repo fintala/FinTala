@@ -467,6 +467,7 @@
   background: white;
   z-index: 2000;
   padding: 0.5rem 0.7rem;
+  padding-top: 3rem !important;
   display: none; /* block */
 }
 
@@ -481,7 +482,7 @@
 }
 
 #vol-container {
-  top: 3rem;
+  top: 0;
   left: 0;
   height: 60%;
   width: 100%;
