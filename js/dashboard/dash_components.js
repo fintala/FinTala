@@ -195,7 +195,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
-      .range([0, width])
+      .range([0, width + edge.left + edge.right])
       .padding(0.2);
     
     const y = d3.scaleLinear()
