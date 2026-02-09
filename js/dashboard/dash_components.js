@@ -200,7 +200,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
-      .range([0, hEight]);
+      .range([hEight - edge.top, 0]);
       
     svg.append('g')
       .call(d3.axisRight(y)
