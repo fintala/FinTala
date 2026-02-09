@@ -370,7 +370,7 @@
 .index-piecharts {
   top: 4rem;
   height: auto;
-  width: calc(100vw - 0.6rem);
+  width: 95%;
   position: absolute;
   background: black;
   display: flex;
