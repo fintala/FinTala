@@ -368,9 +368,9 @@
 }
 
 .index-piecharts {
-  top: 2.5rem;
+  top: 3.5rem;
   height: auto;
-  width: 100%;
+  width: calc(100% - 0.6rem);
   position: absolute;
   background: black;
   display: flex;
