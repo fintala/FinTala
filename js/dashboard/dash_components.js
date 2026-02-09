@@ -218,7 +218,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     let barWidth = x.bandwidth();
     
     const tickValues = d3.range(0, d3.max
-      (visibleData, d => d.masi) + 250000, 600000);
+      (visibleData, d => d.masi) + 250000);
       
     masiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
