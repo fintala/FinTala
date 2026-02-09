@@ -193,14 +193,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const visibleData = indexData.slice(-visibleCount);
   
-  console.log(visibleData);
-  
   svg = d3.select('#masi-barchart')
     .append('svg')
     .attr('width', hWidth + margin.left + margin.right)
     .attr('height', vHeight + margin.top + margin.bottom + 20)
     .append('g')
-    .attr('transform', `translate(${edge.left}, ${edge.top})`);
+    .attr('transform', `translate(${edge.left}, ${edge.top})`)
+    .attr('fill', 'lightskyblue');
     
   root
     .attr("transform", `translate(${vHeight})`);
