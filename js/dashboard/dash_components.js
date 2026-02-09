@@ -61,6 +61,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
+    const textColorM = percentageChangeM >= 0? 'magenta' : 'red';
+    const textColorD = percentageChangeD >= 0? 'magenta' : 'red';
+    const textColorF = percentageChangeF >= 0? 'magenta' : 'red';
     const colorM = percentageChangeM >= 0 ? '#660033' : 'brown';
     const colorD = percentageChangeM >= 0 ? '#660033' : 'brown';
     const colorF = percentageChangeM >= 0 ? '#660033' : 'brown';
@@ -110,6 +113,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('transform', `rotate(-225), scale(0.65)`)
+      .attr('fill', `${textColorM}`)
       .text(`${percentageChangeM}%`);
       
   // ====================
