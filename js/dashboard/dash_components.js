@@ -196,7 +196,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
       .range([-5, wIdth + 20])
-      .padding(0.2);
+      .padding(0.2)
+      .selectAll('text')
+      .attr("text-anchor", "middle");
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
@@ -205,6 +207,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .call(d3.axisRight(y)
+      .ticks(5)
       .tickSize(3)
       .tickPadding(5)
     );
@@ -213,7 +216,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     svg.append('g')
       .attr('transform', `translate(0, ${hEight})`)
       .call(d3.axisBottom(x)
-      .ticks(5)
+      .ticks(4)
       .tickSize(3)
     );
     
