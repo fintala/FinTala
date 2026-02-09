@@ -236,7 +236,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("height", d => y(0) - y(d.masi))
       .attr("fill", "magenta")
       .attr("stroke", "black")
-      .style("transform", "translateY(1.5rem)");
+      .style("transform", "translateY(-1.5rem)");
   
 });
 
