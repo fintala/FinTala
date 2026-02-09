@@ -191,7 +191,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
       .append('g')
-      .attr('transform', `translate(${edge.left/2}, ${edge.top/2})`);
+      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
@@ -210,7 +210,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     // Add X-axis (volume)
     svg.append('g')
-      .attr('transform', `translate(0, ${hEight})`)
+      .attr('transform', `translate(${wIdth}, ${hEight})`)
       .call(d3.axisBottom(x)
       .ticks(5)
       .tickSize(3)
