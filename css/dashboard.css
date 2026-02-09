@@ -357,11 +357,12 @@
 }
 
 .index-buttons div {
-  height: 1.1rem;
+  height: 1.5rem;
   width: 2.5rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0 0.3rem;
   background: #c1ff72;
+  font-size: 0.9rem;
   text-align: center;
   border-radius: 0.4rem;
 }
