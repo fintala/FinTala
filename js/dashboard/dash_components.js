@@ -200,7 +200,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
-      .range([hEight, -2]);
+      .range([hEight * 1.3, -2]);
       
     let barWidth = x.bandwidth();
       
@@ -236,8 +236,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("height", d =>
         Math.max(1, Math.abs(y(0) - y(d.masi)))
       )
-      .attr("fill", "magenta")
-      .attr("stroke", "black");
+      .attr("fill", "#660033")
+      .attr("stroke", "black")
+      .style("opacity", "0.8");
   
 });
 
