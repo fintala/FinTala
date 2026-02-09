@@ -35,7 +35,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const currentPointF = indexData[indexData.length - 1].fsi;
   const previousPointF = indexData[indexData.length - 2].fsi;
   
-  const percentageChangeF = (((currentPointaF - previousPointF)/(currentPointF))*100).toFixed(2);
+  const percentageChangeF = (((currentPointF - previousPointF)/(currentPointF))*100).toFixed(2);
     
     const margin = { top: 4, right: 5, bottom: 6, left: 7 };
     const width = 100 - margin.left - margin.right;
