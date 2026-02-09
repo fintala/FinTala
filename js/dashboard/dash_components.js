@@ -195,12 +195,14 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
-      .range([-5, wIdth + 20])
+      .range([-8, wIdth + 20])
       .padding(0.2);
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
       .range([hEight, -2]);
+      
+    let barWidth = x.bandwidth();
       
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
@@ -224,6 +226,17 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .selectAll('text')
       .attr("text-anchor", "middle");
     
+    svg.selectAll(".body")
+      .data(visibleData)
+      .join("rect")
+      .attr("class", "body")
+      .attr("x", d => x(d.date) + 4 - barWidth * 0.5) // adjust x to center the bar
+      .attr("y", d => yy(0) + yy(d.masi) + volume.top + 37)
+      .attr("width", barWidth)
+      .attr("height", d => yy(0) - yy(masi))
+      .attr("fill", "magenta")
+      .attr("stroke", "black")
+      .style("transform", "translateY(1.5rem)");
   
 });
 
