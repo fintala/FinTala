@@ -399,6 +399,12 @@
   text-align: center;
 }
 
+.index-barcharts {
+  top: 13rem;
+  width: 94%;
+  background: black;
+}
+
 /* =======================
      Volume Animations
    ======================= */
