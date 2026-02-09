@@ -402,9 +402,19 @@
 .index-barcharts {
   top: 13rem;
   width: 94%;
-  height: 24rem;
-  background: black;
+  height: 25rem;
+  background: transparent;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.idxbarchart-block {
+  height: 32%;
+  width: 100%;
+  border: 1px solid black;
+  overflow: hidden;
 }
 
 /* =======================
