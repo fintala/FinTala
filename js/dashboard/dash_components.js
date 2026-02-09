@@ -19,9 +19,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const masi = dataArray[0].index.map(d => d.masi);
   const dsi = dataArray[0].index.map(d => d.dsi);
   const fsi = dataArray[0].index.map(d => d.fsi);
-    
   
-    
+  const indexData = dataArray[0].Index;
+  
+  const currentPoint = indexData[indexData.length - 1].masi;
+  const previousPoint = indexData[indexData.length - 2].masi;
+  
+  console.log(previousPoint, currentPoint);
     
     const margin = { top: 4, right: 5, bottom: 6, left: 7 };
     const width = 100 - margin.left - margin.right;
@@ -29,6 +33,12 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const radius = Math.min(width, height) / 2;
     
     const masiPie = d3.select('#masi-piechart')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+      const dsiPie = d3.select('#dsi-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -83,7 +93,33 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .text(`${percentageChange}%`);
       
   // ====================
-  //   masi pie chart
+  //   dsi pie chart
+  // ====================
+    dsiPie.selectAll('path')
+      .data(pie(data))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', (d, i) => color(i));
+      
+    dsiPie.append('circle')
+      .attr('cx', 0)
+      .attr('cy', 0)
+      .attr('r', radius * 0.6)
+      .attr('fill', 'hsl(0, 100%, 98%)')
+      .attr('stroke', 'lightgrey')
+      .attr('stroke-width', '0.5');
+    
+    dsiPie.append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('transform', 'rotate(-45)')
+      .text(`${percentageChange}%`);
+      
+  // ====================
+  //   fsi pie chart
   // ====================
     fsiPie.selectAll('path')
       .data(pie(data))
