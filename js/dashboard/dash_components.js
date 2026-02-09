@@ -217,6 +217,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .tickValues(
           visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
         )
+      .tickFormat(d3.timeFormat("%d %b '%y"))
       .tickSize(3)
     )
       .selectAll('text')
