@@ -174,8 +174,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
-  const hWidth = 100 - edge.left - edge.right;
-  const vHeight = 100 - edge.top - edge.bottom;
+  const wIdth = 300 - edge.left - edge.right;
+  const hEight = 100 - edge.top - edge.bottom;
   
   let startIndex = 0;
   
@@ -188,10 +188,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   idx
     .append('svg')
-    .attr('width', hWidth + edge.left + edge.right)
-    .attr('height', vHeight + edge.top + edge.bottom)
+    .attr('width', wIdth + edge.left + edge.right)
+    .attr('height', hEight + edge.top + edge.bottom)
     .append('g')
-    .attr('transform', `translate(${height}, ${width})`);
+    .attr('transform', `translate(${hEight}, ${wIdth})`);
   
   
   // =====================
@@ -199,7 +199,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // =====================
   const x = d3.scaleBand()
     .domain(visibleData.map(d => d.date))
-    .range([edge.left, hWidth - edge.right - 15])
+    .range([edge.left, wIdth - edge.right - 15])
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
