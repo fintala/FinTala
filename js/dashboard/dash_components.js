@@ -190,7 +190,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('svg')
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
-      .style('background', 'black')
       .append('g')
       .attr('transform', `translate(${edge.left}, ${edge.top})`);
       
@@ -200,7 +199,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .padding(0.2);
     
     const y = d3.scaleLinear()
-      .domain([0, d3.max(indexData, d => d.masi)])
+      .domain([0, d3.max(visibleData, d => d.masi)])
       .range([0, hEight]);
       
     svg.append('g')
