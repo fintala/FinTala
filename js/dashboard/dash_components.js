@@ -203,6 +203,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([hEight, 0]);
       
     svg.append('g')
+      .attr('transform', `translate(${wIdth - edge.right}, 0)`)
       .call(d3.axisRight(y)
       .tickSize(3)
       .tickPadding(5)
@@ -210,7 +211,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     // Add X-axis (volume)
     svg.append('g')
-      .attr('transform', `translate(${wIdth}, ${hEight})`)
+      .attr('transform', `translate(0, ${hEight})`)
       .call(d3.axisBottom(x)
       .ticks(5)
       .tickSize(3)
