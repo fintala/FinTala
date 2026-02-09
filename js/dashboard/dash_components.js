@@ -43,7 +43,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const arc = d3.arc()
       .outerRadius(radius)
-      .innerRadius(radius * 0.5);
+      .innerRadius(radius * 0.75);
     
     svg.selectAll('path')
       .data(pie(data))
