@@ -228,7 +228,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     //  Axes
     // ============
     axisLayer.append("g")
-      .attr("transform", `translate(0,${vHeight - edge.bottom})`)
+      .attr("transform", `translate(0,${vHeight})`)
       .style("color", "blue")
       .style("opacity", "0")
       .call(
@@ -240,7 +240,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       );
       
     overlayLayer.append("g")
-    .attr("transform", `translate(${hWidth - edge.right}, ${edge.top + 156})`)
+    .attr("transform", `translate(${hWidth - edge.right})`)
     .call(d3.axisRight(yy)
       .ticks(3)
       .tickSize(4)
