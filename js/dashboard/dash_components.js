@@ -191,7 +191,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', wIdth + edge.left + edge.right)
       .attr('height', hEight + edge.top + edge.bottom)
       .append('g')
-      .attr('transform', `translate(${edge.left}, ${edge.top})`);
+      .attr('transform', `translate(${edge.left}, ${edge.top})`)
+      .attr('fill', 'black');
       
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
