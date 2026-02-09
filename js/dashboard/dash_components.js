@@ -183,10 +183,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   0,
   Math.min(startIndex, indexData.length - visibleCount)
   );
-
-  const visibleData = indexData[indexData.slice(-visibleCount)].date;
   
-  console.log(visibleData);
+  const visibleData = indexData.slice(-visibleCount);
   
   idx
     .append('svg')
@@ -218,46 +216,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     // ============
     //  Axes
     // ============
-    idx.append("g")
-      .attr("transform", `translate(0, ${vHeight})`)
-      .call(
-        d3.axisBottom(x)
-        .tickValues(
-          visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
-        )
-        .tickFormat(d3.timeFormat("%b '%y"))
-      );
-      
-    idx.append("g")
-    .attr("transform", `translate(${hWidth - edge.right})`)
-    .call(d3.axisRight(yy)
-      .ticks(3)
-      .tickSize(4)
-      .tickPadding(5) // add some padding
-    );
     
-    // =============
-    //  Bars
-    // =============
-    idx.append("rect")
-      .attr("x", edge.left)
-      .attr("y", edge.top )
-      .attr("width", hWidth - edge.left - edge.right)
-      .attr("height",vHeight - edge.top - edge.bottom)
-      .attr("fill", "rgba(0, 0, 0, 1)");
-    
-    idx
-    .append('g')
-    .selectAll(".body")
-    .data(visibleData)
-    .join("rect")
-    .attr("class", "body")
-    .attr("x", d => x(d.date)) // adjust x to center the bar
-    .attr("y", d => yy(0) + yy(d.masi))
-    .attr("width", barWidth)
-    .attr("height", d => yy(0) - yy(d.masi))
-    .attr("fill", "magenta")
-    .attr("stroke", "black");
   
 });
 
