@@ -57,6 +57,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('y', 0)
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
+      .attr('transform', 'rotate(-45)')
       .text(`${percentageChange}%`);
 });
 
