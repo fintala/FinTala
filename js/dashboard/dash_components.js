@@ -216,6 +216,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       console.log(indexData.map(d => d.masi));
       
     let barWidth = x.bandwidth();
+    
+    const tickValues = d3.range(minValue, maxValue + 250000, 600000);
       
     masiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
@@ -223,6 +225,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .call(d3.axisRight(y)
       .tickSize(3)
       .tickPadding(5)
+      .tickValues(tickValues)
     );
     
     // Add X-axis (volume)
