@@ -61,20 +61,22 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('g')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
-    const color = percentageChange >= 0 ? '#660033' : 'brown';
+    const colorM = percentageChangeM >= 0 ? '#660033' : 'brown';
+    const colorD = percentageChangeM >= 0 ? '#660033' : 'brown';
+    const colorF = percentageChangeM >= 0 ? '#660033' : 'brown';
     const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
     const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
     const dataF = [Math.abs(percentageChangeF), 10 - Math.abs(percentageChangeF)];
     
     const pieColorM = d3.scaleOrdinal()
       .domain(dataM)
-      .range([color, 'white']);
+      .range([colorM, 'white']);
     const pieColorD = d3.scaleOrdinal()
       .domain(dataD)
-      .range([color, 'white']);
+      .range([colorD, 'white']);
     const pieColorF = d3.scaleOrdinal()
       .domain(dataF)
-      .range([color, 'white']);
+      .range([colorF, 'white']);
     
     const pie = d3.pie()
       .value(d => d)
