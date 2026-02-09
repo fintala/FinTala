@@ -232,7 +232,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(Math.max(0, d.masi - 500000)))
+      .attr("y", d => y(Math.max(d.masi - 500000, d.masi)))
       .attr("width", barWidth)
       .attr("height", d =>
         Math.max(1, Math.abs(y(0) - y(d.masi)))
