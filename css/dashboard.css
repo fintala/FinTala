@@ -370,12 +370,18 @@
 .index-piecharts {
   top: 4rem;
   height: auto;
-  width: 95%;
+  width: 94%;
   position: absolute;
-  background: black;
+  background: transparent;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.piechart-block {
+  width: 30%;
+  height: 30rem;
+  border: 1px solid black;
 }
 
 /* =======================
