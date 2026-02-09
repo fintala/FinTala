@@ -413,7 +413,6 @@
 .idxbarchart-block {
   height: 32%;
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -429,7 +428,13 @@
   background: #c1ff72;
   text-align: center;
   padding-left: 3px;
-  opacity: 0.6;
+  opacity: 0.5;
+}
+
+.index-barchart {
+  height: 100%;
+  width: 94%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* =======================
