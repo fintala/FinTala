@@ -213,6 +213,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       (visibleData, d => d.masi) * 1.1])
       .range([hEight, -2]);
       
+      console.log(indexData.map(d => d.masi));
+      
     let barWidth = x.bandwidth();
       
     masiSvg.append('g')
