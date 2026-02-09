@@ -231,12 +231,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(0) - y(d.masi))
+      .attr("y", d => y(0))
       .attr("width", barWidth)
       .attr("height", d => y(0) + y(d.masi))
       .attr("fill", "magenta")
-      .attr("stroke", "black")
-      .style("transform", "rotateZ(180deg)");
+      .attr("stroke", "black");
   
 });
 
