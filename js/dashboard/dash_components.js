@@ -51,7 +51,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .innerRadius(radius * 0.6);
     
     svg.selectAll('path')
-  .data(pie([0, 100]))
+  .data(pie(data))
   .enter()
   .append('path')
   .attr('d', arc)
