@@ -426,8 +426,10 @@
   writing-mode: vertical-rl;
   text-orientation: upright;
   letter-spacing: 0.2rem;
-  border: 1px solid green;
+  background: #c1ff72;
   text-align: center;
+  padding: 3px 0;
+  opacity: 0.8;
 }
 
 /* =======================
