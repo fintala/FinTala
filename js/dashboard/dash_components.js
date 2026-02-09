@@ -94,7 +94,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => pieColor(i));
+      .attr('fill', (d, i) => pieColorM(i));
       
     masiPie.append('circle')
       .attr('cx', 0)
@@ -120,7 +120,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => pieColor(i));
+      .attr('fill', (d, i) => pieColorD(i));
       
     dsiPie.append('circle')
       .attr('cx', 0)
@@ -146,7 +146,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d, i) => pieColor(i));
+      .attr('fill', (d, i) => pieColorF(i));
       
     fsiPie.append('circle')
       .attr('cx', 0)
