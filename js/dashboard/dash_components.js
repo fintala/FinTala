@@ -178,7 +178,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
-  const hWidth = 250 - edge.left - edge.right;
+  const hWidth = 100 - edge.left - edge.right;
   const vHeight = 100 - edge.top - edge.bottom;
   
   let startIndex = 0;
@@ -212,7 +212,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     yy
     .domain([
       0,
-      d3.max(visibleData.map(d => d.masi * 1.3))
+      d3.max(visibleData, d => d.masi)
     ])
     .nice()
     .range([edge.bottom, edge.top]);
@@ -248,7 +248,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("y", edge.top )
       .attr("width", hWidth - edge.left - edge.right - 14)
       .attr("height",vHeight - edge.top - edge.bottom)
-      .attr("fill", "rgba(0, 0, 0, 0.5)");
+      .attr("fill", "rgba(0, 0, 0, 1)");
     
     const barLayer = chartLayer.append("g");
     barLayer.selectAll(".body")
