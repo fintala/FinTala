@@ -232,7 +232,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .tickFormat(d3.timeFormat("%d %b '%y"))
       );
       
-    overlayLayer.append("g")
+    axisLayer.append("g")
     .attr("transform", `translate(${hWidth - edge.right})`)
     .call(d3.axisRight(yy)
       .ticks(3)
