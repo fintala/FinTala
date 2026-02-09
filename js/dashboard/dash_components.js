@@ -19,9 +19,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     
     
-    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-    const width = 200 - margin.left - margin.right;
-    const height = 200 - margin.top - margin.bottom;
+    const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+    const width = 100 - margin.left - margin.right;
+    const height = 100 - margin.top - margin.bottom;
     const radius = Math.min(width, height) / 2;
     
     const svg = d3.select('#masi-piechart')
