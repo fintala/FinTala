@@ -206,7 +206,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.8')
+      .style('opacity', '0.7')
       .call(d3.axisRight(y)
       .ticks(5)
       .tickSize(3)
@@ -236,7 +236,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("height", d =>
         Math.max(1, Math.abs(y(0) - y(d.masi)))
       )
-      .attr("fill", "magenta")
+      .attr("fill", "steelblue")
       .attr("stroke", "black")
       .attr("stroke-width", "0.5")
       .style("opacity", "0.6");
