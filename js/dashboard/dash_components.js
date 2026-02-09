@@ -200,7 +200,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const y = d3.scaleLinear()
       .domain([0, d3.max(visibleData, d => d.masi)])
-      .range([-2, hEight]);
+      .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
       
@@ -233,7 +233,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("x", d => x(d.date)) // adjust x to center the bar
       .attr("y", d => y(0))
       .attr("width", barWidth)
-      .attr("height", d => y(0) - y(d.masi))
+      .attr("height", d => y(0) + y(d.masi) * (-1))
       .attr("fill", "magenta")
       .attr("stroke", "black");
   
