@@ -267,7 +267,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .style('opacity', '0.7')
       .call(d3.axisRight(y)
-      .ticks(5)
+      .ticks(4)
       .tickSize(3)
       .tickPadding(5)
     );
