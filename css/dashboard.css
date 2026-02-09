@@ -413,8 +413,21 @@
 .idxbarchart-block {
   height: 32%;
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.idxbarchart-name {
+  height: 100%;
+  width: 5%;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.2rem;
+  border: 1px solid green;
+  text-align: center;
 }
 
 /* =======================
