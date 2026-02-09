@@ -167,10 +167,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
 // =======================
 //  Rendering Bar Charts
 // =======================
-  const idx = d3.select('#masi-barchart');
-    
-  const overlay = idx.append("rect");
-  
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
@@ -186,13 +182,25 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   const visibleData = indexData.slice(-visibleCount);
   
-  idx
-    .append('svg')
-    .attr('width', wIdth + edge.left + edge.right)
-    .attr('height', hEight + edge.top + edge.bottom)
-    .append('g')
-    .attr('transform', `translate(${edge.top}, ${edge.left})`);
-  
+  let svg = d3.select('#masi-barchart')
+      .selectAll('*')
+      .remove();
+      
+    svg = d3.select('#masi-barchart')
+      .append('svg')
+      .attr('width', wIdth + edge.left + edge.right)
+      .attr('height', hEight + edge.top + edge.bottom)
+      .append('g')
+      .attr('transform', `translate(${edge.left}, ${edge.top})`);
+      
+    const y = d3.scaleBand()
+      .domain(indexData.map(d => d.masi))
+      .range([0, hEight])
+      .padding(0.2);
+    
+    const x = d3.scaleLinear()
+      .domain([0, d3.max(indexData, d => d.date)])
+      .range([0, wIdth]);
   
   // =====================
   // SCALES
