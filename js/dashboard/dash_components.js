@@ -33,7 +33,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .style('background', 'hsl(0, 100%, 98%)')
+      .attr('background', 'hsl(0, 100%, 98%)')
       .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
     
     const percentageChange = 50; // example value
