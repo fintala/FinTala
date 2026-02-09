@@ -380,8 +380,15 @@
 
 .piechart-block {
   width: 30%;
-  height: 10rem;
+  height: 9rem;
   border: 1px solid black;
+  overflow: hidden;
+}
+
+.index-piechart {
+  height: 7rem;
+  width: 100%;
+  border: 1px solid brown;
 }
 
 /* =======================
