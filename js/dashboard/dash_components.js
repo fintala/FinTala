@@ -16,7 +16,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
       return;
     }
     
+  const masi = dataArray[0].index.map(d => d.masi);
+  const dsi = dataArray[0].index.map(d => d.dsi);
+  const fsi = dataArray[0].index.map(d => d.fsi);
     
+  console.log(masi);
     
     
     const margin = { top: 4, right: 5, bottom: 6, left: 7 };
@@ -43,7 +47,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const arc = d3.arc()
       .outerRadius(radius)
-      .innerRadius(radius * 0.65);
+      .innerRadius(radius * 0.6);
     
     svg.selectAll('path')
       .data(pie(data))
