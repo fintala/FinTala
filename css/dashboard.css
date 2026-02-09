@@ -331,6 +331,16 @@
   display: block; /* block */
 }
 
+#close-indices {
+  top: 1.3rem;
+  left: 1rem;
+  position: absolute;
+  font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 0.3rem;
+  border-radius: 0.5rem;
+}
+
 /* =======================
      Volume Animations
    ======================= */
@@ -342,7 +352,7 @@
   position: fixed;
   background: white;
   z-index: 2000;
-  padding: 4.5rem 0.7rem;
+  padding: 0.5rem 0.7rem;
   display: none; /* block */
 }
 
