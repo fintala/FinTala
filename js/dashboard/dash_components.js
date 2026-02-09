@@ -191,7 +191,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr('width', hWidth + edge.left + edge.right)
     .attr('height', vHeight + edge.top + edge.bottom)
     .append('g')
-    .attr('transform', `translate(${edge.left}, ${edge.top})`);
+    .attr('transform', `translate(${height}, ${width})`);
   
   
   // =====================
@@ -250,7 +250,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .data(visibleData)
     .join("rect")
     .attr("class", "body")
-    .attr("x", dataArray[0].index.map(d => x(d.date))) // adjust x to center the bar
+    .attr("x", d => x(d.date)) // adjust x to center the bar
     .attr("y", d => yy(0) + yy(d.masi))
     .attr("width", barWidth)
     .attr("height", d => yy(0) - yy(d.masi))
