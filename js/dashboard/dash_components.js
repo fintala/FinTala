@@ -180,7 +180,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const visibleCount = 25;
   
   const edge = { top: 20, right: 60, bottom: 10, left: 30 };
-  const hWidth = 350 - edge.left - edge.right;
+  const hWidth = 250 - edge.left - edge.right;
   const vHeight = 100 - edge.top - edge.bottom;
   
   let startIndex = 0;
