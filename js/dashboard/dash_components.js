@@ -232,10 +232,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
       .attr("y", d => y(0))
-      .attr("width", barWidth)
-      .attr("height", d => y(0) + y(d.masi) * (-1))
+      .attr("width", barWidth/2)
+      .attr("height", d => y(0) + y(d.masi))
       .attr("fill", "magenta")
-      .attr("stroke", "black");
+      .attr("stroke", "black")
+      .attr('translate', `0, 100`);
   
 });
 
