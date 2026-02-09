@@ -199,14 +199,14 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .padding(0.2);
     
     const y = d3.scaleLinear()
-      .domain([0, d3.max(visibleData, d => d.masi) * 1.3])
+      .domain([0, d3.max(visibleData, d => d.masi) * 1.1])
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
       
     svg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.8')
+      .style('opacity', '0.6')
       .call(d3.axisRight(y)
       .ticks(5)
       .tickSize(3)
