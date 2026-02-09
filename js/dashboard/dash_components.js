@@ -208,7 +208,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .padding(0.2);
     
     const y = d3.scaleLinear()
-      .domain([500000, d3.max
+      .domain([1, d3.max
       (visibleData, d => d.masi) * 1.1])
       .range([hEight, -2]);
       
