@@ -61,7 +61,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('cy', 0)
       .attr('r', radius * 0.6)
       .attr('fill', 'hsl(0, 100%, 98%)')
-      .attr('stroke', 'lightgrey');
+      .attr('stroke', 'lightgrey')
+      .attr('stroke-width', '0.5');
     
     svg.append('text')
       .attr('x', 0)
