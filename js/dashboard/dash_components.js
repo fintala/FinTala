@@ -221,7 +221,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .ticks(5)
       .tickSize(3)
       .tickPadding(5)
-      .tickFormat(d => `${(d / 10000).toFixed(2)}k`)
+      .tickFormat(d => `${(d / 100000).toFixed(2)}k`)
     );
     
     // Add X-axis (volume)
