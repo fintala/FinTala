@@ -57,7 +57,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .attr('d', arc)
   .attr('fill', (d, i) => i === 0 ? '#660033' : 'white')
   .transition()
-  .duration(1000)
+  .duration(8000)
   .attrTween('d', function(d, i) {
     var interpolate = d3.interpolate(0, data[i]);
     return function(t) {
