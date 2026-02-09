@@ -213,6 +213,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
     const barWidth = xx.bandwidth();
     
+    console.log(xx);
+    console.log(yy);
+    console.log(barWidth);
+    
     // ============
     //  Axes
     // ============
