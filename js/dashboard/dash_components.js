@@ -64,7 +64,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const color = percentageChange >= 0 ? '#660033' : 'brown';
     const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
     const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
-    const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
+    const dataF = [Math.abs(percentageChangeF), 10 - Math.abs(percentageChangeF)];
     
     const pieColorM = d3.scaleOrdinal()
       .domain(dataM)
