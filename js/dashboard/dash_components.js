@@ -183,8 +183,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
   0,
   Math.min(startIndex, indexData.length - visibleCount)
   );
+
+  const visibleData = indexData[indexData.slice(-visibleCount)].date;
   
-  const visibleData = indexData.slice(-visibleCount);
+  console.log(visibleData);
   
   idx
     .append('svg')
