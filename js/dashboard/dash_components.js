@@ -90,7 +90,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   //   masi pie chart
   // ====================
     masiPie.selectAll('path')
-      .data(pie(data))
+      .data(pie(dataM))
       .enter()
       .append('path')
       .attr('d', arc)
@@ -116,7 +116,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   //   dsi pie chart
   // ====================
     dsiPie.selectAll('path')
-      .data(pie(data))
+      .data(pie(dataD))
       .enter()
       .append('path')
       .attr('d', arc)
@@ -142,7 +142,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   //   fsi pie chart
   // ====================
     fsiPie.selectAll('path')
-      .data(pie(data))
+      .data(pie(dataF))
       .enter()
       .append('path')
       .attr('d', arc)
