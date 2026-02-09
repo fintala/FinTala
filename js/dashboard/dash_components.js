@@ -28,7 +28,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const height = 100 - margin.top - margin.bottom;
     const radius = Math.min(width, height) / 2;
     
-    const svg = d3.select('#masi-piechart')
+    const masiPie = d3.select('#masi-piechart')
+      .append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
+    const fsiPie = d3.select('#fsi-piechart')
       .append('svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
@@ -49,24 +55,18 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const arc = d3.arc()
       .outerRadius(radius)
       .innerRadius(radius * 0.6);
-    
-    svg.selectAll('path')
-  .data(pie(data))
-  .enter()
-  .append('path')
-  .attr('d', arc)
-  .attr('fill', (d, i) => i === 0 ? '#660033' : 'white')
-  .transition()
-  .duration(8000)
-  .attrTween('d', function(d, i) {
-    var interpolate = d3.interpolate(0, data[i]);
-    return function(t) {
-      d.data = interpolate(t);
-      return arc(d);
-    };
-  });
       
-    svg.append('circle')
+  // ====================
+  //   masi pie chart
+  // ====================
+    masiPie.selectAll('path')
+      .data(pie(data))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', (d, i) => color(i));
+      
+    masiPie.append('circle')
       .attr('cx', 0)
       .attr('cy', 0)
       .attr('r', radius * 0.6)
@@ -74,7 +74,33 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('stroke', 'lightgrey')
       .attr('stroke-width', '0.5');
     
-    svg.append('text')
+    masiPie.append('text')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('transform', 'rotate(-45)')
+      .text(`${percentageChange}%`);
+      
+  // ====================
+  //   masi pie chart
+  // ====================
+    fsiPie.selectAll('path')
+      .data(pie(data))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', (d, i) => color(i));
+      
+    fsiPie.append('circle')
+      .attr('cx', 0)
+      .attr('cy', 0)
+      .attr('r', radius * 0.6)
+      .attr('fill', 'hsl(0, 100%, 98%)')
+      .attr('stroke', 'lightgrey')
+      .attr('stroke-width', '0.5');
+    
+    fsiPie.append('text')
       .attr('x', 0)
       .attr('y', 0)
       .attr('text-anchor', 'middle')
