@@ -55,6 +55,12 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .append('path')
       .attr('d', arc)
       .attr('fill', (d, i) => color(i));
+      
+    svg.append('circle')
+      .attr('cx', 0)
+      .attr('cy', 0)
+      .attr('r', radius * 0.6)
+      .attr('fill', 'hsl(0, 100%, 98%)');
     
     svg.append('text')
       .attr('x', 0)
@@ -62,7 +68,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('transform', 'rotate(-45)')
-      .style('background', 'hsl(0, 100%, 98%)')
       .text(`${percentageChange}%`);
 });
 
