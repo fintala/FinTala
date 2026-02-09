@@ -29,7 +29,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top})`);
+      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(45)`);
     
     const percentageChange = 50; // example value
     const data = [percentageChange, 100 - percentageChange];
@@ -43,7 +43,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     
     const arc = d3.arc()
       .outerRadius(radius)
-      .innerRadius(radius * 0.75);
+      .innerRadius(radius * 0.65);
     
     svg.selectAll('path')
       .data(pie(data))
