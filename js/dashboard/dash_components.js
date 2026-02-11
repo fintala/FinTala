@@ -214,7 +214,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([hEight, -2]);
       
     const dsiY = d3.scalePow()
-      .exponent(4)
+      .exponent(2)
       .domain([1, d3.max
       (visibleData, d => d.masi) * 1.01])
       .range([hEight, -2]);
@@ -274,7 +274,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .style('opacity', '0.7')
       .call(d3.axisRight(dsiY)
       .ticks(4)
-      .tickValues([1, 485000, 490000, 500000])
+      .tickValues([1, 400000, 405000, 410000])
       .tickSize(3)
       .tickPadding(5)
     );
