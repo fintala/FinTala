@@ -392,7 +392,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const toleranceHeight = 30; 
   const touchArea = masiSvg.append("rect")
     .attr("x", 0)
-    .attr("y", y(thresholdValue) - toleranceHeight / 2)
+    .attr("y", masiY(thresholdValue) - toleranceHeight / 2)
     .attr("width", width)
     .attr("height", toleranceHeight)
     .attr("opacity", 0) // make it invisible
@@ -403,7 +403,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .on("touchstart", (event) => {
       // Start dragging
       const touchY = event.touches[0].clientY;
-      const initialY = y.invert(touchY);
+      const initialY = masiY.invert(touchY);
       // Store initial values
       touchArea.datum({ initialY, touchY });
     })
@@ -411,13 +411,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
       // Update line position on drag
       const touchY = event.touches[0].clientY;
       const initialData = touchArea.datum();
-      const newY = initialData.initialY + (y.invert(touchY) - y.invert(initialData.touchY));
+      const newY = initialData.initialY + (masiY.invert(touchY) - masiY.invert(initialData.touchY));
       thresholdLine
-        .attr("y1", y(newY))
-        .attr("y2", y(newY));
+        .attr("y1", masiY(newY))
+        .attr("y2", masiY(newY));
       // Update label and rect position
       masiSvg.selectAll("rect, text")
-        .attr("y", y(newY) - 10);
+        .attr("y", masiY(newY) - 10);
     });
   
 });
