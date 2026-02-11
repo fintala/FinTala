@@ -216,13 +216,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const dsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.dsi) * 1.02])
+      (visibleData, d => d.dsi) * 1.015])
       .range([hEight, -2]);
       
     const fsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.fsi) * 1.03])
+      (visibleData, d => d.fsi) * 1.04])
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
@@ -329,7 +329,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .style('opacity', '0.7')
       .call(d3.axisRight(fsiY)
       .ticks(4)
-      .tickValues([1, 95000, 100000, 105000])
+      .tickValues([1, 140000, 145000, 150000])
       .tickSize(3)
       .tickPadding(5)
     );
