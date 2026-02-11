@@ -216,7 +216,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const dsiY = d3.scalePow()
       .exponent(20)
       .domain([1, d3.max
-      (visibleData, d => d.masi) * 1.01])
+      (visibleData, d => d.dsi) * 1.01])
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
