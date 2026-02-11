@@ -249,9 +249,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(d.masi))
+      .attr("y", d => masiY(d.masi))
       .attr("width", barWidth)
-      .attr("height", d => Math.abs(y(0) - y(d.masi))
+      .attr("height", d => Math.abs(masiY(0) - masiY(d.masi))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
@@ -297,10 +297,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(Math.max(0, d.dsi)))
+      .attr("y", d => dsiY(Math.max(0, d.dsi)))
       .attr("width", barWidth)
       .attr("height", d =>
-        Math.max(1, Math.abs(y(0) - y(d.dsi)))
+        Math.max(1, Math.abs(dsiY(0) - dsiY(d.dsi)))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
