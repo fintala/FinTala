@@ -216,13 +216,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const dsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.dsi) * 1.2])
+      (visibleData, d => d.dsi) * 1.02])
       .range([hEight, -2]);
       
     const fsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.fsi) * 1.3])
+      (visibleData, d => d.fsi) * 1.03])
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
