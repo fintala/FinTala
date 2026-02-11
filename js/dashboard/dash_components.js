@@ -414,6 +414,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       thresholdLine
         .attr("y1", masiY(newY))
         .attr("y2", masiY(newY));
+      masiSvg.selectAll("rect, text").remove();
       masiSvg.selectAll("rect, text")
         .attr("y", masiY(newY) - 10);
     });
