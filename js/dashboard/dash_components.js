@@ -384,7 +384,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   masiSvg.append("text")
     .attr("x", wIdth + edge.right - 33)
-    .attr("y", masiY(thresholdValue) + 2)
+    .attr("y", masiY(thresholdValue) + 4)
     .text(thresholdValue)
     .attr("fill", "lightskyblue")
     .style("font-size", "9px");
