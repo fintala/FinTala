@@ -392,7 +392,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const toleranceHeight = 30; 
   const touchArea = masiSvg.append("rect")
     .attr("x", 0)
-    .attr("y", masiY(thresholdValue) - toleranceHeight / 2)
+    .attr("y", masiY(thresholdValue) + toleranceHeight / 2)
     .attr("width", width)
     .attr("height", toleranceHeight)
     .attr("opacity", 0) // make it invisible
