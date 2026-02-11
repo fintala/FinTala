@@ -214,7 +214,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([hEight, -2]);
       
     const dsiY = d3.scalePow()
-      .exponent(1.2)
+      .exponent(20)
       .domain([1, d3.max
       (visibleData, d => d.masi) * 1.01])
       .range([hEight, -2]);
