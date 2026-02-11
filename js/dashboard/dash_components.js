@@ -207,20 +207,24 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([-8, wIdth + 20])
       .padding(0.2);
     
-    const y = d3.scalePow()
+    const masiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
       (visibleData, d => d.masi) * 1.01])
       .range([hEight, -2]);
       
-      console.log(indexData.map(d => d.masi));
+    const dsiY = d3.scalePow()
+      .exponent(13)
+      .domain([1, d3.max
+      (visibleData, d => d.masi) * 1.01])
+      .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
       
     masiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .style('opacity', '0.7')
-      .call(d3.axisRight(y)
+      .call(d3.axisRight(masiY)
       .ticks(4)
       .tickValues([1, 585000, 590000, 600000])
       .tickSize(3)
@@ -268,8 +272,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
     dsiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
       .style('opacity', '0.7')
-      .call(d3.axisRight(y)
-      .ticks(5)
+      .call(d3.axisRight(dsiY)
+      .ticks(4)
+      .tickValues([1, 485000, 490000, 500000])
       .tickSize(3)
       .tickPadding(5)
     );
