@@ -368,7 +368,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const thresholdValue = 100;
   masiSvg.append("line")
   .attr("x1", 0)
-  .attr("x2", wIdth + edge.right - 10)
+  .attr("x2", wIdth + edge.right - 20)
   .attr("y1", masiY(thresholdValue))
   .attr("y2", masiY(thresholdValue))
   .attr("stroke", "#660033")
@@ -376,18 +376,18 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .style("opacity", "0.5"); // makes the line dashed
 
   masiSvg.append("rect")
-    .attr("x", wIdth + edge.right - 10) // position it a bit to the right of the chart
+    .attr("x", wIdth + edge.right - 20) // position it a bit to the right of the chart
     .attr("y", masiY(thresholdValue) - 5)
-    .attr("width", 30)
+    .attr("width", 45)
     .attr("height", 10)
     .attr("fill", "black");
   
   masiSvg.append("text")
-    .attr("x", wIdth + edge.right - 10)
+    .attr("x", wIdth + edge.right - 22)
     .attr("y", masiY(thresholdValue))
     .text(thresholdValue)
     .attr("fill", "magenta")
-    .style("font-size", "5px");
+    .style("font-size", "11px");
   
 });
 
