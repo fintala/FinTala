@@ -216,7 +216,13 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const dsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.dsi) * 1.01])
+      (visibleData, d => d.dsi) * 1.05])
+      .range([hEight, -2]);
+      
+    const fsiY = d3.scalePow()
+      .exponent(26)
+      .domain([1, d3.max
+      (visibleData, d => d.dsi) * 1.1])
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
@@ -345,10 +351,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .join("rect")
       .attr("class", "body")
       .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => y(Math.max(0, d.fsi)))
+      .attr("y", d => fsiY(Math.max(0, d.fsi)))
       .attr("width", barWidth)
       .attr("height", d =>
-        Math.max(1, Math.abs(y(0) - y(d.fsi)))
+        Math.max(1, Math.abs(fsiY(0) - fsiY(d.fsi)))
       )
       .attr("fill", "steelblue")
       .attr("stroke", "black")
