@@ -361,6 +361,31 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .attr("stroke", "black")
       .attr("stroke-width", "0.5")
       .style("opacity", "0.6");
+      
+  // =======================
+  //    Creating Events
+  // =======================
+  const thresholdValue = 100;
+  masiSvg.append("line")
+  .attr("x1", 0)
+  .attr("x2", width)
+  .attr("y1", y(thresholdValue))
+  .attr("y2", y(thresholdValue))
+  .attr("stroke", "red")
+  .attr("stroke-dasharray", "4 2"); // makes the line dashed
+
+  masiSvg.append("rect")
+    .attr("x", wIdth + 5) // position it a bit to the right of the chart
+    .attr("y", masiY(thresholdValue) - 5)
+    .attr("width", 30)
+    .attr("height", 10)
+    .attr("fill", "black");
+  
+  masiSvg.append("text")
+    .attr("x", width + 10)
+    .attr("y", y(thresholdValue))
+    .text(thresholdValue)
+    .attr("fill", "magenta");
   
 });
 
