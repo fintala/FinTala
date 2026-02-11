@@ -366,7 +366,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   //    Creating Events
   // =======================
   const thresholdValue = 100;
-  masiSvg.append("line")
+  const thresholdLine = masiSvg.append("line")
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
   .attr("y1", masiY(thresholdValue))
@@ -386,8 +386,39 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("x", wIdth + edge.right - 33)
     .attr("y", masiY(thresholdValue) + 3)
     .text(thresholdValue)
-    .attr("fill", "lightskyblue")
+    .attr("fill", "white")
     .style("font-size", "9px");
+    
+  const toleranceHeight = 30; 
+  const touchArea = masiSvg.append("rect")
+    .attr("x", 0)
+    .attr("y", y(thresholdValue) - toleranceHeight / 2)
+    .attr("width", width)
+    .attr("height", toleranceHeight)
+    .attr("opacity", 0) // make it invisible
+    .attr("cursor", "ns-resize");
+  
+  // Add touch event listeners to the touch area
+  touchArea
+    .on("touchstart", (event) => {
+      // Start dragging
+      const touchY = event.touches[0].clientY;
+      const initialY = y.invert(touchY);
+      // Store initial values
+      touchArea.datum({ initialY, touchY });
+    })
+    .on("touchmove", (event) => {
+      // Update line position on drag
+      const touchY = event.touches[0].clientY;
+      const initialData = touchArea.datum();
+      const newY = initialData.initialY + (y.invert(touchY) - y.invert(initialData.touchY));
+      thresholdLine
+        .attr("y1", y(newY))
+        .attr("y2", y(newY));
+      // Update label and rect position
+      masiSvg.selectAll("rect, text")
+        .attr("y", y(newY) - 10);
+    });
   
 });
 
