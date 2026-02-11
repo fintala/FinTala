@@ -401,21 +401,19 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // Add touch event listeners to the touch area
   touchArea
     .on("touchstart", (event) => {
-      // Start dragging
-      const touchY = event.touches[0].clientY;
+      event.preventDefault();
+      const touchY = d3.pointer(event)[1];
       const initialY = masiY.invert(touchY);
-      // Store initial values
       touchArea.datum({ initialY, touchY });
     })
     .on("touchmove", (event) => {
-      // Update line position on drag
-      const touchY = event.touches[0].clientY;
+      event.preventDefault();
+      const touchY = d3.pointer(event)[1];
       const initialData = touchArea.datum();
-      const newY = initialData.initialY + (masiY.invert(touchY) - masiY.invert(initialData.touchY));
+      const newY = masiY.invert(initialData.touchY + (touchY - initialData.touchY));
       thresholdLine
         .attr("y1", masiY(newY))
         .attr("y2", masiY(newY));
-      // Update label and rect position
       masiSvg.selectAll("rect, text")
         .attr("y", masiY(newY) - 10);
     });
