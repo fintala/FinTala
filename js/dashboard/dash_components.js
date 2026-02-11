@@ -222,7 +222,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .style('opacity', '0.7')
       .call(d3.axisRight(y)
       .ticks(2)
-      .tickValues([1, 600000])
+      .tickValues([1, 580000])
       .tickSize(3)
       .tickPadding(5)
     );
