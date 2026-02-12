@@ -488,7 +488,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     fsiSvg.selectAll("line").remove();
     fsiPriceTagText.selectAll("text").remove();
     fsiPriceTag.selectAll("rect").remove();
-    renderDsiThreshold();
+    renderFsiThreshold();
   });
 });
 
