@@ -364,11 +364,20 @@ function render() {
     startIndex + visibleCount
   );
   
+  // -------------------
+  //  filtering candles
+  // -------------------
   let singleCandleIndex = data.length - 1;
   const currentCandle = data.slice(singleCandleIndex, singleCandleIndex + 1);
   
   const previousCandle = data.slice(singleCandleIndex - 1, singleCandleIndex);
   
+  // changing colors
+  const currentCloseData = currentCandle[0].close;
+  const previousCloseData = previousCandle.close; // if using data[singleCandleIndex - 1]
+  
+  const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, 0.6)' : 'rgba(211, 211, 211, 0.8)';
+
   // =====================
   // CLIP PATH
   // =====================
@@ -539,7 +548,7 @@ function render() {
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
-    .attr("fill", (currentCandle, y(d => d.close)) >= (previousCandle, y(d => d.close)) ? "#c1ff72" : "hsl(255, 0, 0, 1)")
+    .attr("fill", colorFf)
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
   
