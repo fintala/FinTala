@@ -374,7 +374,7 @@ function render() {
   
   // changing colors
   const currentCloseData = currentCandle[0].close;
-  const previousCloseData = previousCandle.close; // if using data[singleCandleIndex - 1]
+  const previousCloseData = previousCandle[0].close; // if using data[singleCandleIndex - 1]
   
   const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, 0.6)' : 'rgba(211, 211, 211, 0.8)';
 
