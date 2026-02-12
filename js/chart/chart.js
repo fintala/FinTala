@@ -497,8 +497,6 @@ function render() {
       .attr("fill", d => d.close >= d.open ? "#c1ff72" : "#2c3e50")
       .attr("stroke", "black");
       
-    chartLayer.selectAll("line").remove();
-      
     // appending close price tag
     chartLayer.append("line")
       .attr("x1", 0)
@@ -573,6 +571,7 @@ function render() {
       
           axisLayer.selectAll("*").remove();
           chartLayer.selectAll("rect").remove();
+          chartLayer.selectAll("line").remove();
           
           render(data);
           if (volumeActive == "on") {
