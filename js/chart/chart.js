@@ -546,7 +546,7 @@ function render() {
   overlayLayer.append("rect")
     .attr("x", width - margin.right - 2) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
-    .attr("width", margin.right - 2)
+    .attr("width", margin.right)
     .attr("height", 20)
     .attr("fill", colorFf)
     .attr("stroke", "black")
