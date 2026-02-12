@@ -1,16 +1,16 @@
 // Stock Indices
 const indexTimeframe= [d3.json('data/indices/market.json'), d3.json('data/indices/w_market.json'), d3.json('data/indices/m1_market.json'), d3.json('data/indices/m4_market.json'), d3.json('data/indices/y_market.json')];
 
-function barsPromise() {
-  Promise.allSettled(indexTimeframe).then((results) => {
-      const dataArray = results.map((result) => {
-        if (result.status === 'fulfilled') {
-          return result.value;
-        } else {
-          console.error('Error fetching data:', result.reason);
-          return null;
-        }
-      }).filter((data) => data !== null);
+
+Promise.allSettled(indexTimeframe).then((results) => {
+    const dataArray = results.map((result) => {
+      if (result.status === 'fulfilled') {
+        return result.value;
+      } else {
+        console.error('Error fetching data:', result.reason);
+        return null;
+      }
+    }).filter((data) => data !== null);
     
       if (dataArray.length === 0) {
         console.error('No data available');
@@ -22,7 +22,8 @@ function barsPromise() {
     let fsi = dataArray[0].index.map(d => d.fsi);
     
     let indexData = dataArray[0].index;
-    
+  
+  function renderIndexPies() { 
     const currentPointM = indexData[indexData.length - 1].masi;
     const previousPointM = indexData[indexData.length - 2].masi;
     
@@ -35,7 +36,6 @@ function barsPromise() {
     
     const currentPointF = indexData[indexData.length - 1].fsi;
     const previousPointF = indexData[indexData.length - 2].fsi;
-    
     const percentageChangeF = (((currentPointF - previousPointF)/(currentPointF))*100).toFixed(2);
       
       const margin = { top: 4, right: 5, bottom: 6, left: 7 };
@@ -43,19 +43,28 @@ function barsPromise() {
       const height = 100 - margin.top - margin.bottom;
       const radius = Math.min(width, height) / 2;
       
-      const masiPie = d3.select('#masi-piechart')
+      let masiPie = d3.select('#masi-piechart')
+      .selectAll("*")
+      .remove();
+      masiPie = d3.select('#masi-piechart')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
         .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-        const dsiPie = d3.select('#dsi-piechart')
+      let dsiPie = d3.select('#dsi-piechart')
+      .selectAll("*")
+      .remove();
+      dsiPie = d3.select('#dsi-piechart')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
         .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-      const fsiPie = d3.select('#fsi-piechart')
+      let fsiPie = d3.select('#fsi-piechart')
+      .selectAll("*")
+      .remove();
+      fsiPie = d3.select('#fsi-piechart')
         .append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
@@ -66,8 +75,8 @@ function barsPromise() {
       const textColorD = percentageChangeD >= 0? 'magenta' : 'red';
       const textColorF = percentageChangeF >= 0? 'magenta' : 'red';
       const colorM = percentageChangeM >= 0 ? '#660033' : 'brown';
-      const colorD = percentageChangeM >= 0 ? '#660033' : 'brown';
-      const colorF = percentageChangeM >= 0 ? '#660033' : 'brown';
+      const colorD = percentageChangeD >= 0 ? '#660033' : 'brown';
+      const colorF = percentageChangeF >= 0 ? '#660033' : 'brown';
       const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
       const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
       const dataF = [Math.abs(percentageChangeF), 10 - Math.abs(percentageChangeF)];
@@ -173,7 +182,8 @@ function barsPromise() {
         .attr('fill', `${textColorF}`)
         .text(`${percentageChangeF}%`)
         .style("font-weight", "500");
-        
+    }
+    renderIndexPies();
   // =======================
   //  Rendering Bar Charts
   // =======================
@@ -489,24 +499,43 @@ function barsPromise() {
   }
   renderIndexBars();
     
-    // ======================
-    //   Shifting Timelines
-    // ======================
-    const indexWeeklyButton = document.getElementById('idxDb');
-    indexWeeklyButton.addEventListener("click", () => {
-      masi = dataArray[1].index.map(d => d.masi);
-      dsi = dataArray[1].index.map(d => d.dsi);
-      fsi = dataArray[1].index.map(d => d.fsi);
-      
-      indexData = dataArray[1].index;
-        barsCallback();
+  // ======================
+  //   Shifting Timelines
+  // ======================
+  const indexWeeklyButton = document.getElementById('idxDb');
+  const indexDailyButton = document.getElementById('idxDa');
+  const indexButtons = document.querySelectorAll('.index-button');
+  indexDailyButton.style.background = 'white';
+  indexButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      indexButtons.forEach(button => {
+        button.style.background = '#c1ff72'
+      });
     });
   });
-}
-barsPromise();
-function barsCallback() {
-  barsPromise();
-}
+  indexDailyButton.addEventListener("click", () => {
+    masi = dataArray[0].index.map(d => d.masi);
+    dsi = dataArray[0].index.map(d => d.dsi);
+    fsi = dataArray[0].index.map(d => d.fsi);
+      
+    indexData = dataArray[0].index;
+    
+    indexDailyButton.style.background = 'white';
+        renderIndexBars();
+        renderIndexPies();
+  });
+  indexWeeklyButton.addEventListener("click", () => {
+    masi = dataArray[1].index.map(d => d.masi);
+    dsi = dataArray[1].index.map(d => d.dsi);
+    fsi = dataArray[1].index.map(d => d.fsi);
+      
+    indexData = dataArray[1].index;
+    
+    indexWeeklyButton.style.background = 'white';
+      renderIndexBars();
+      renderIndexPies();
+  });
+});
 // ======================
 //    Volume Widget
 // ======================
