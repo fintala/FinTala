@@ -544,7 +544,7 @@ function render() {
     .style("opacity", "0.8");
     
   overlayLayer.append("rect")
-    .attr("x", width - margin.right - 2) // position it a bit to the right of the chart
+    .attr("x", width - margin.right - 10) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right)
     .attr("height", 20)
