@@ -367,7 +367,7 @@ function render() {
   let singleCandleIndex = data.length - 1;
   const currentCandle = data.slice(singleCandleIndex, singleCandleIndex + 1);
   
-  const previousCandle = data.slice(singleCandleIndex + 1, singleCandleIndex + 2);
+  const previousCandle = data.slice(singleCandleIndex - 1, singleCandleIndex);
   
   console.log(previousCandle);
   
