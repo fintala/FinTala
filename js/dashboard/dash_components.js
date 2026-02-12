@@ -371,7 +371,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
   const thresholdLine = masiSvg.append("line")
   .data(currentBar)
-  .attr("x1", 0)
+  .attr("x1", -5)
   .attr("x2", wIdth + edge.right - 35)
   .attr("y1", d => masiY(d.masi))
   .attr("y2", d => masiY(d.masi))
