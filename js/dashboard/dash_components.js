@@ -386,6 +386,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("fill", "black");
   
   masiSvg.append("text")
+    .data(visibleData)
     .attr("x", wIdth + edge.right - 33)
     .attr("y", masiY(thresholdValue) + 3)
     .text(d => d3.format(",.2f")(d.masi))
