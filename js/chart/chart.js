@@ -521,9 +521,9 @@ function render() {
   };
   
   // appending close price tag
-  chartLayer.append("line")
+  overlayLayer.append("line")
     .attr("x1", 0)
-    .attr("x2", width + 10)
+    .attr("x2", width)
     .attr("y1", y(d3.min(currentCandle, d => d.close)))
     .attr("y2", y(d3.min(currentCandle, d => d.close)))
     .attr("stroke", "#660033")
@@ -570,7 +570,7 @@ function render() {
       
           axisLayer.selectAll("*").remove();
           chartLayer.selectAll("rect").remove();
-          chartLayer.selectAll("line").remove();
+          overlayLayer.selectAll("line").remove();
           
           render(data);
           if (volumeActive == "on") {
