@@ -376,7 +376,7 @@ function render() {
   const currentCloseData = currentCandle[0].close;
   const previousCloseData = previousCandle[0].close; // if using data[singleCandleIndex - 1]
   
-  const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, 1)' : 'rgba(211, 211, 211, 1)';
+  const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, )' : 'rgba(211, 211, 211, 1)';
 
   // =====================
   // CLIP PATH
@@ -544,9 +544,9 @@ function render() {
     .style("opacity", "0.8");
     
   overlayLayer.append("rect")
-    .attr("x", width - margin.right - 10) // position it a bit to the right of the chart
+    .attr("x", width - margin.right) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
-    .attr("width", margin.right)
+    .attr("width", margin.right - 2)
     .attr("height", 20)
     .attr("fill", colorFf)
     .attr("stroke", "black")
@@ -554,7 +554,7 @@ function render() {
   
   overlayLayer.append("text")
     .data(currentCandle)
-    .attr("x", width - margin.right + 1)
+    .attr("x", width - margin.right + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
     .text(d => d3.format(",.2f")(d.close))
     .attr("fill", "black")
