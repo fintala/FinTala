@@ -365,7 +365,7 @@ function render() {
     startIndex + visibleCount
   );
   
-  const currentCandle = data.slice(visibleData, visibleData - 1);
+  const currentCandle = data.slice(startIndex, startIndex + 1);
   
   // =====================
   // CLIP PATH
@@ -502,7 +502,7 @@ function render() {
       .data(currentCandle)
       .attr("x1", 0)
       .attr("x2", width + 10)
-      .attr("y1", y(d => d.close))
+      .attr("y1", d => Math.abs(1, y(d.close)))
       .attr("y2", y(d => d.close))
       .attr("stroke", "#660033")
       .attr("stroke-dasharray", "4 2")
