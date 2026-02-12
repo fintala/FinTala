@@ -543,7 +543,7 @@ function render() {
     .data(currentCandle)
     .attr("x", width - margin.right + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
-    .text(d => y(d.close))
+    .text(d => d3.format(",.2f")(d.close))
     .attr("fill", "black")
     .style("font-size", "11px");
       
