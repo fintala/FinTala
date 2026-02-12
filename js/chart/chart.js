@@ -497,8 +497,10 @@ function render() {
       .attr("fill", d => d.close >= d.open ? "#c1ff72" : "#2c3e50")
       .attr("stroke", "black");
       
+    
+      
     // appending close price tag
-    overlayLayer.append("line")
+    chartLayer.append("line")
       .attr("x1", 0)
       .attr("x2", width + 10)
       .attr("y1", y(d3.min(currentCandle, d => d.close)))
