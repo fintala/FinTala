@@ -529,6 +529,20 @@ function render() {
     .attr("stroke", "#660033")
     .attr("stroke-dasharray", "4 2")
     .style("opacity", "0.8");
+    
+  axisLayer.append("rect")
+    .attr("x", width + 1) // position it a bit to the right of the chart
+    .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
+    .attr("width", margin.right - 2)
+    .attr("height", 20)
+    .attr("fill", "#c1ff72");
+  
+  axisLayer.append("text")
+    .attr("x", width + 3)
+    .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
+    .text(y(d3.min(currentCandle, d => d.close)))
+    .attr("fill", "black")
+    .style("font-size", "11px");
       
       // Switching the button icon
       lineIcon.style.display = "block";
