@@ -388,7 +388,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   masiSvg.append("text")
     .attr("x", wIdth + edge.right - 33)
     .attr("y", masiY(thresholdValue) + 3)
-    .text(thresholdValue)
+    .text(d => d3.format(",.2f")(d.masi))
     .attr("fill", "white")
     .style("font-size", "9px");
     
