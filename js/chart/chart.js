@@ -535,12 +535,14 @@ function render() {
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
-    .attr("fill", "#c1ff72");
+    .attr("fill", "#c1ff72")
+    .attr("stroke", "black")
+    .attr("stroke-width", "0.3");
   
   overlayLayer.append("text")
     .attr("x", width - margin.right + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
-    .text(y(d3.min(currentCandle, d => d.close)))
+    .text(y(d.close))
     .attr("fill", "black")
     .style("font-size", "11px");
       

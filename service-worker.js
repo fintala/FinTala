@@ -3,7 +3,7 @@
 // Stable, update-safe, PWA-friendly
 // ===============================
 
-const CACHE_NAME = 'v0.0.7.3.1';
+const CACHE_NAME = 'v0.0.7.3.2';
 
 // -------------------------------
 // INSTALL
