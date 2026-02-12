@@ -367,28 +367,27 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // =======================
   //    Creating Events
   // =======================
-  const thresholdValue = 100;
   const thresholdLine = masiSvg.append("line")
-  .data(visibleData)
+  .data(currentPointM)
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
-  .attr("y1", masiY(d3.min(visibleData, d => d.masi)))
-  .attr("y2", masiY(d3.min(visibleData, d => d.masi)))
+  .attr("y1", masiY(d3.min(currentPointM, d => d.masi)))
+  .attr("y2", masiY(d3.min(currentPointM, d => d.masi)))
   .attr("stroke", "#660033")
   .attr("stroke-dasharray", "4 2")
   .style("opacity", "0.5");
 
   masiSvg.append("rect")
     .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-    .attr("y", masiY(thresholdValue) - 5)
-    .attr("width", 48)
+    .attr("y", masiY(d3.min(currentPointM, d => d.masi)) - 5)
+    .attr("width", 49)
     .attr("height", 10)
     .attr("fill", "black");
   
   masiSvg.append("text")
     .data(visibleData)
     .attr("x", wIdth + edge.right - 34)
-    .attr("y", masiY(thresholdValue) + 3)
+    .attr("y", masiY(d3.min(currentPointM, d => d.masi)) + 3)
     .text(d => d3.format(",.2f")(d.masi))
     .attr("fill", "white")
     .style("font-size", "9px");
