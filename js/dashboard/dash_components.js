@@ -300,7 +300,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .selectAll('text')
       .attr("text-anchor", "middle");
     
-    dsiSvg.selectAll(".body")
+    const dsiBars = dsiSvg.selectAll(".body")
       .data(visibleData)
       .join("rect")
       .attr("class", "body")
@@ -349,7 +349,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .selectAll('text')
       .attr("text-anchor", "middle");
     
-    fsiSvg.selectAll(".body")
+    const fsiBars = fsiSvg.selectAll(".body")
       .data(visibleData)
       .join("rect")
       .attr("class", "body")
@@ -369,49 +369,127 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // =======================
   let singleBarIndex = indexData.length - 1;
   let currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-  const priceTag = masiSvg.append("rect");
-  const priceTagText =  masiSvg.append("text");
-  function renderThreshold () {
-  const thresholdLine = masiSvg.append("line")
-  .data(currentBar)
-  .attr("x1", -10)
-  .attr("x2", wIdth + edge.right - 35)
-  .attr("y1", d => masiY(d.masi))
-  .attr("y2", d => masiY(d.masi))
-  .attr("stroke", "#660033")
-  .attr("stroke-dasharray", "4 2")
-  .style("opacity", "0.5");
-
-  priceTag
+  const masiPriceTag = masiSvg.append("rect");
+  const masiPriceTagText =  masiSvg.append("text");
+  const fsiPriceTag = fsiSvg.append("rect");
+  const fsiPriceTagText =  fsiSvg.append("text");
+  const dsiPriceTag = dsiSvg.append("rect");
+  const dsiPriceTagText =  dsiSvg.append("text");
+  function renderMasiThreshold () {
+    const thresholdLine = masiSvg.append("line")
     .data(currentBar)
-    .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-    .attr("y", d => masiY(d.masi) - 5)
-    .attr("width", 49)
-    .attr("height", 10)
-    .attr("fill", "black");
+    .attr("x1", -10)
+    .attr("x2", wIdth + edge.right - 35)
+    .attr("y1", d => masiY(d.masi))
+    .attr("y2", d => masiY(d.masi))
+    .attr("stroke", "#660033")
+    .attr("stroke-dasharray", "4 2")
+    .style("opacity", "0.5");
   
-  priceTagText
-    .data(currentBar)
-    .attr("x", wIdth + edge.right - 34)
-    .attr("y", d => masiY(d.masi) + 3)
-    .text(d => d3.format(",.2f")(d.masi))
-    .attr("fill", "white")
-    .style("font-size", "9px");
+    masiPriceTag
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+      .attr("y", d => masiY(d.masi) - 5)
+      .attr("width", 49)
+      .attr("height", 10)
+      .attr("fill", "black");
+    
+    masiPriceTagText
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 34)
+      .attr("y", d => masiY(d.masi) + 3)
+      .text(d => d3.format(",.2f")(d.masi))
+      .attr("fill", "white")
+      .style("font-size", "9px");
   }
-  renderThreshold();
+  renderMasiThreshold();
+  function renderDsiThreshold () {
+    const thresholdLine = dsiSvg.append("line")
+    .data(currentBar)
+    .attr("x1", -10)
+    .attr("x2", wIdth + edge.right - 35)
+    .attr("y1", d => dsiY(d.dsi))
+    .attr("y2", d => dsiY(d.dsi))
+    .attr("stroke", "#660033")
+    .attr("stroke-dasharray", "4 2")
+    .style("opacity", "0.5");
+  
+    dsiPriceTag
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+      .attr("y", d => dsiY(d.dsi) - 5)
+      .attr("width", 49)
+      .attr("height", 10)
+      .attr("fill", "black");
+    
+    dsiPriceTagText
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 34)
+      .attr("y", d => dsiY(d.dsi) + 3)
+      .text(d => d3.format(",.2f")(d.dsi))
+      .attr("fill", "white")
+      .style("font-size", "9px");
+  }
+  renderDsiThreshold();
+  function renderFsiThreshold () {
+    const thresholdLine = fsiSvg.append("line")
+    .data(currentBar)
+    .attr("x1", -10)
+    .attr("x2", wIdth + edge.right - 35)
+    .attr("y1", d => fsiY(d.fsi))
+    .attr("y2", d => fsiY(d.fsi))
+    .attr("stroke", "#660033")
+    .attr("stroke-dasharray", "4 2")
+    .style("opacity", "0.5");
+  
+    fsiPriceTag
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+      .attr("y", d => fsiY(d.fsi) - 5)
+      .attr("width", 49)
+      .attr("height", 10)
+      .attr("fill", "black");
+    
+    fsiPriceTagText
+      .data(currentBar)
+      .attr("x", wIdth + edge.right - 34)
+      .attr("y", d => fsiY(d.fsi) + 3)
+      .text(d => d3.format(",.2f")(d.fsi))
+      .attr("fill", "white")
+      .style("font-size", "9px");
+  }
+  renderFsiThreshold();
     
   masiBars.on("click", (event, d) => {
     singleBarIndex = indexData.indexOf(d);
-    console.log(singleBarIndex);
-    // update currentBar
+    // updating currentBar
     currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-    // update your display/logic here
+    // updating your display/logic
     masiSvg.selectAll("line").remove();
-    priceTagText.selectAll("text").remove();
-    priceTag.selectAll("rect").remove();
-    renderThreshold();
+    masiPriceTagText.selectAll("text").remove();
+    masiPriceTag.selectAll("rect").remove();
+    renderMasiThreshold();
   });
-  
+  dsiBars.on("click", (event, d) => {
+    singleBarIndex = indexData.indexOf(d);
+    // updating currentBar
+    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+    // updating your display/logic
+    dsiSvg.selectAll("line").remove();
+    dsiPriceTagText.selectAll("text").remove();
+    dsiPriceTag.selectAll("rect").remove();
+    renderDsiThreshold();
+  });
+  fsiBars.on("click", (event, d) => {
+    singleBarIndex = indexData.indexOf(d);
+    // updating currentBar
+    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+    // updating your display/logic
+    fsiSvg.selectAll("line").remove();
+    fsiPriceTagText.selectAll("text").remove();
+    fsiPriceTag.selectAll("rect").remove();
+    renderDsiThreshold();
+  });
 });
 
 // ======================
