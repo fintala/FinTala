@@ -365,6 +365,7 @@ function render() {
     startIndex + visibleCount
   );
   
+  const currentCandle = data.slice(visibleData, visibleData - 1);
   
   // =====================
   // CLIP PATH
@@ -497,12 +498,12 @@ function render() {
       .attr("stroke", "black");
       
       // appending close price tag
-      chartLayer.append("line")
-      .data(visibleData)
+      overlayLayer.append("line")
+      .data(currentCandle)
       .attr("x1", 0)
       .attr("x2", width + 10)
-      .attr("y1", y(visibleData, d => d.close))
-      .attr("y2", y(visibleData, d => d.close))
+      .attr("y1", y(d => d.close))
+      .attr("y2", y(d => d.close))
       .attr("stroke", "#660033")
       .attr("stroke-dasharray", "4 2")
       .style("opacity", "0.7");
