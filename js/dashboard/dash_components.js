@@ -398,7 +398,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("fill", "white")
     .style("font-size", "9px");
   }
-  renderThreshold();
+  
     
   masiBars.on("click", (event, d, i) => {
     singleBarIndex = i;
