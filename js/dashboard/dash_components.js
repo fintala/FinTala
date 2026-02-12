@@ -367,7 +367,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // =======================
   //    Creating Events
   // =======================
-  let singleBarIndex = data.length - 1;
+  let singleBarIndex = indexData.length - 1;
   const currentBar = data.slice(singleBarIndex, singleBarIndex + 1);
   const thresholdLine = masiSvg.append("line")
   .data(currentBar)
