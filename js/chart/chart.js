@@ -367,9 +367,9 @@ function render() {
   let singleCandleIndex = data.length - 1;
   const currentCandle = data.slice(singleCandleIndex, singleCandleIndex + 1);
   
-  const previousCandle = data.slice(singleCandleIndex, singleCandleIndex + 2);
+  const previousCandle = data.slice(singleCandleIndex + 1, singleCandleIndex + 2);
   
-  console.log(previousCandle);
+  console.log(currentCandle, previousCandle);
   
   // =====================
   // CLIP PATH
