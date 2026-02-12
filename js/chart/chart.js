@@ -497,7 +497,7 @@ function render() {
       .attr("stroke", "black");
       
       // appending close price tag
-      chartOverlay.append("line")
+      chartLayer.append("line")
       .data(visibleData)
       .attr("x1", 0)
       .attr("x2", width + 10)
