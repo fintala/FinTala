@@ -371,23 +371,23 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .data(currentPointM)
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
-  .attr("y1", masiY(d3.min(currentPointM, d => d.masi)))
-  .attr("y2", masiY(d3.min(currentPointM, d => d.masi)))
+  .attr("y1", d => y(d.masi))
+  .attr("y2", d => y(d.masi))
   .attr("stroke", "#660033")
   .attr("stroke-dasharray", "4 2")
   .style("opacity", "0.5");
 
   masiSvg.append("rect")
     .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-    .attr("y", masiY(d3.min(currentPointM, d => d.masi)) - 5)
+    .attr("y", d => y(d.masi) - 5)
     .attr("width", 49)
     .attr("height", 10)
     .attr("fill", "black");
   
   masiSvg.append("text")
-    .data(visibleData)
+    .data(currentPointM)
     .attr("x", wIdth + edge.right - 34)
-    .attr("y", masiY(d3.min(currentPointM, d => d.masi)) + 3)
+    .attr("y", d => masiY(d.masi) + 3)
     .text(d => d3.format(",.2f")(d.masi))
     .attr("fill", "white")
     .style("font-size", "9px");
