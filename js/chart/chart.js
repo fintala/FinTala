@@ -365,14 +365,8 @@ function render() {
     startIndex + visibleCount
   );
   
-  let singleCandleIndex = 0;
-  
-  singleCandleIndex = Math.max(
-  0,
-  Math.min(singleCandleIndex, data.length - (data.length - 1))
-  );
-  
-  const currentCandle = data.slice(-singleCandleIndex, singleCandleIndex + 1)
+  let singleCandleIndex = data.length - 1;
+  const currentCandle = data.slice(singleCandleIndex, singleCandleIndex + 1);
   
   // =====================
   // CLIP PATH
