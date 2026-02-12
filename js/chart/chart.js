@@ -497,7 +497,7 @@ function render() {
       .attr("fill", d => d.close >= d.open ? "#c1ff72" : "#2c3e50")
       .attr("stroke", "black");
       
-    
+    chartLayer.selectAll("line").remove();
       
     // appending close price tag
     chartLayer.append("line")
