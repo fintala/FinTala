@@ -521,7 +521,7 @@ function render() {
   };
   
   // appending close price tag
-  overlayLayer.append("line")
+  candleLayer.append("line")
     .attr("x1", 0)
     .attr("x2", width)
     .attr("y1", y(d3.min(currentCandle, d => d.close)))
@@ -570,7 +570,7 @@ function render() {
       
           axisLayer.selectAll("*").remove();
           chartLayer.selectAll("rect").remove();
-          overlayLayer.selectAll("line").remove();
+          candleLayer.selectAll("line").remove();
           
           render(data);
           if (volumeActive == "on") {
