@@ -544,7 +544,7 @@ function render() {
     .style("opacity", "0.8");
     
   overlayLayer.append("rect")
-    .attr("x", width - margin.right) // position it a bit to the right of the chart
+    .attr("x", width - margin.right - 2) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
@@ -554,7 +554,7 @@ function render() {
   
   overlayLayer.append("text")
     .data(currentCandle)
-    .attr("x", width - margin.right + 3)
+    .attr("x", width - margin.right + 1)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
     .text(d => d3.format(",.2f")(d.close))
     .attr("fill", "black")
