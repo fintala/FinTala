@@ -371,8 +371,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .enter
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
-  .attr("y1", masiY(d3.min(d => d.masi)))
-  .attr("y2", masiY(d3.min(d => d.masi)))
+  .attr("y1", masiY(visibleData, d3.min(d => d.masi)))
+  .attr("y2", masiY(visibleData, d3.min(d => d.masi)))
   .attr("stroke", "#660033")
   .attr("stroke-dasharray", "4 2")
   .style("opacity", "0.5"); // makes the line dashed
