@@ -501,8 +501,8 @@ function render() {
     chartLayer.append("line")
       .attr("x1", 0)
       .attr("x2", width + 10)
-      .attr("y1", y(d3.abs(currentCandle, d => d.close)))
-      .attr("y2", y(d3.abs(currentCandle, d => d.close)))
+      .attr("y1", y(d3.min(currentCandle, d => d.close)))
+      .attr("y2", y(d3.min(currentCandle, d => d.close)))
       .attr("stroke", "#660033")
       .attr("stroke-dasharray", "4 2")
       .style("opacity", "0.7");
