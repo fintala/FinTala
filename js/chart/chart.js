@@ -369,7 +369,7 @@ function render() {
   
   const previousCandle = data.slice(singleCandleIndex + 1, singleCandleIndex + 2);
   
-  console.log(currentCandle, previousCandle);
+  console.log(previousCandle);
   
   // =====================
   // CLIP PATH
