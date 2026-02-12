@@ -398,10 +398,11 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("fill", "white")
     .style("font-size", "9px");
   }
-  
+  renderThreshold();
     
   masiBars.on("click", (event, d, i) => {
     singleBarIndex = i;
+    console.log(singleBarIndex);
     // update currentBar
     const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
     // update your display/logic here
