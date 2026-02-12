@@ -393,34 +393,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("fill", "white")
     .style("font-size", "9px");
     
-  const toleranceHeight = 30; 
-  const touchArea = masiSvg.append("rect")
-    .attr("x", 0)
-    .attr("y", masiY(thresholdValue) + toleranceHeight / 2)
-    .attr("width", width)
-    .attr("height", toleranceHeight)
-    .attr("opacity", 0) // make it invisible
-    .attr("cursor", "ns-resize");
   
-  // Add touch event listeners to the touch area
-  touchArea
-    .on("touchstart", (event) => {
-      event.preventDefault();
-      const touchY = d3.pointer(event)[1];
-      const initialY = masiY.invert(touchY);
-      touchArea.datum({ initialY, touchY });
-    })
-    .on("touchmove", (event) => {
-      event.preventDefault();
-      const touchY = d3.pointer(event)[1];
-      const initialData = touchArea.datum();
-      const newY = masiY.invert(initialData.touchY + (touchY - initialData.touchY));
-      thresholdLine
-        .attr("y1", masiY(newY))
-        .attr("y2", masiY(newY));
-      masiSvg.selectAll("rect, text")
-        .attr("y", masiY(newY) - 10);
-    });
   
 });
 
