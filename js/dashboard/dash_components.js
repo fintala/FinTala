@@ -226,6 +226,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
       .range([hEight, -2]);
       
     let barWidth = x.bandwidth();
+    
+    console.log(d3.min(visibleData, d => d.masi));
       
     masiSvg.append('g')
       .attr('transform', `translate(${wIdth + 20}, 0)`)
