@@ -367,8 +367,10 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // =======================
   //    Creating Events
   // =======================
+  let singleBarIndex = data.length - 1;
+  const currentBar = data.slice(singleBarIndex, singleBarIndex + 1);
   const thresholdLine = masiSvg.append("line")
-  .data(currentPointM)
+  .data(currentBar)
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
   .attr("y1", d => masiY(d.masi))
@@ -378,7 +380,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .style("opacity", "0.5");
 
   masiSvg.append("rect")
-    .data(currentPointM)
+    .data(currentBar)
     .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
     .attr("y", d => masiY(d.masi) - 5)
     .attr("width", 49)
@@ -386,7 +388,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("fill", "black");
   
   masiSvg.append("text")
-    .data(currentPointM)
+    .data(currentBar)
     .attr("x", wIdth + edge.right - 34)
     .attr("y", d => masiY(d.masi) + 3)
     .text(d => d3.format(",.2f")(d.masi))
