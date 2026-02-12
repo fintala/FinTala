@@ -368,7 +368,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   //    Creating Events
   // =======================
   let singleBarIndex = indexData.length - 1;
-  const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+  let currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
   const priceTag = masiSvg.append("rect");
   const priceTagText =  masiSvg.append("text");
   function renderThreshold () {
