@@ -379,7 +379,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .style("opacity", "0.5");
 
   masiSvg.append("rect")
-    .attr("x", wIdth + edge.right - 35) // position it a bit to the right of the chart
+    .attr("x", wIdth + edge.right - 37) // position it a bit to the right of the chart
     .attr("y", masiY(thresholdValue) - 5)
     .attr("width", 45)
     .attr("height", 10)
@@ -387,7 +387,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   
   masiSvg.append("text")
     .data(visibleData)
-    .attr("x", wIdth + edge.right - 33)
+    .attr("x", wIdth + edge.right - 35)
     .attr("y", masiY(thresholdValue) + 3)
     .text(d => d3.format(",.2f")(d.masi))
     .attr("fill", "white")
