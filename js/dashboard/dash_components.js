@@ -370,6 +370,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   let singleBarIndex = indexData.length - 1;
   const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
   const priceTag = masiSvg.append("rect");
+  const priceTagText =  masiSvg.append("text");
   function renderThreshold () {
   const thresholdLine = masiSvg.append("line")
   .data(currentBar)
@@ -389,7 +390,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     .attr("height", 10)
     .attr("fill", "black");
   
-  masiSvg.append("text")
+  priceTagText
     .data(currentBar)
     .attr("x", wIdth + edge.right - 34)
     .attr("y", d => masiY(d.masi) + 3)
@@ -405,7 +406,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
     // update your display/logic here
     masiSvg.selectAll("line").remove();
-    
+    priceTagText.selectAll("text").remove();
     priceTag.selectAll("rect").remove();
     renderThreshold();
   });
