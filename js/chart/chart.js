@@ -369,8 +369,6 @@ function render() {
   
   const previousCandle = data.slice(singleCandleIndex - 1, singleCandleIndex);
   
-  console.log(previousCandle);
-  
   // =====================
   // CLIP PATH
   // =====================
@@ -541,7 +539,7 @@ function render() {
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
-    .attr("fill", "#c1ff72")
+    .attr("fill", (currentCandle, d => d.close) >= (previousCandle, d => d.close) ? "#c1ff72" : "hsl(255, 0, 0, 0.6")
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
   
