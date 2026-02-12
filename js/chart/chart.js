@@ -530,15 +530,15 @@ function render() {
     .attr("stroke-dasharray", "4 2")
     .style("opacity", "0.8");
     
-  axisLayer.append("rect")
-    .attr("x", 1) // position it a bit to the right of the chart
+  overlayLayer.append("rect")
+    .attr("x", ) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
     .attr("fill", "#c1ff72");
   
-  axisLayer.append("text")
-    .attr("x", 3)
+  overlayLayer.append("text")
+    .attr("x", width + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
     .text(y(d3.min(currentCandle, d => d.close)))
     .attr("fill", "black")
