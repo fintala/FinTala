@@ -1,497 +1,512 @@
 // Stock Indices
 const indexTimeframe= [d3.json('data/indices/market.json'), d3.json('data/indices/w_market.json'), d3.json('data/indices/m1_market.json'), d3.json('data/indices/m4_market.json'), d3.json('data/indices/y_market.json')];
 
-Promise.allSettled(indexTimeframe).then((results) => {
-    const dataArray = results.map((result) => {
-      if (result.status === 'fulfilled') {
-        return result.value;
-      } else {
-        console.error('Error fetching data:', result.reason);
-        return null;
+function barsPromise() {
+  Promise.allSettled(indexTimeframe).then((results) => {
+      const dataArray = results.map((result) => {
+        if (result.status === 'fulfilled') {
+          return result.value;
+        } else {
+          console.error('Error fetching data:', result.reason);
+          return null;
+        }
+      }).filter((data) => data !== null);
+    
+      if (dataArray.length === 0) {
+        console.error('No data available');
+        return;
       }
-    }).filter((data) => data !== null);
-  
-    if (dataArray.length === 0) {
-      console.error('No data available');
-      return;
-    }
-    
-  const masi = dataArray[0].index.map(d => d.masi);
-  const dsi = dataArray[0].index.map(d => d.dsi);
-  const fsi = dataArray[0].index.map(d => d.fsi);
-  
-  const indexData = dataArray[0].index;
-  
-  const currentPointM = indexData[indexData.length - 1].masi;
-  const previousPointM = indexData[indexData.length - 2].masi;
-  
-  const percentageChangeM = (((currentPointM - previousPointM)/(currentPointM))*100).toFixed(2);
-  
-  const currentPointD = indexData[indexData.length - 1].dsi;
-  const previousPointD = indexData[indexData.length - 2].dsi;
-  
-  const percentageChangeD = (((currentPointD - previousPointD)/(currentPointD))*100).toFixed(2);
-  
-  const currentPointF = indexData[indexData.length - 1].fsi;
-  const previousPointF = indexData[indexData.length - 2].fsi;
-  
-  const percentageChangeF = (((currentPointF - previousPointF)/(currentPointF))*100).toFixed(2);
-    
-    const margin = { top: 4, right: 5, bottom: 6, left: 7 };
-    const width = 100 - margin.left - margin.right;
-    const height = 100 - margin.top - margin.bottom;
-    const radius = Math.min(width, height) / 2;
-    
-    const masiPie = d3.select('#masi-piechart')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-      const dsiPie = d3.select('#dsi-piechart')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
-    const fsiPie = d3.select('#fsi-piechart')
-      .append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
       
-    const textColorM = percentageChangeM >= 0? 'magenta' : 'red';
-    const textColorD = percentageChangeD >= 0? 'magenta' : 'red';
-    const textColorF = percentageChangeF >= 0? 'magenta' : 'red';
-    const colorM = percentageChangeM >= 0 ? '#660033' : 'brown';
-    const colorD = percentageChangeM >= 0 ? '#660033' : 'brown';
-    const colorF = percentageChangeM >= 0 ? '#660033' : 'brown';
-    const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
-    const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
-    const dataF = [Math.abs(percentageChangeF), 10 - Math.abs(percentageChangeF)];
+    let masi = dataArray[0].index.map(d => d.masi);
+    let dsi = dataArray[0].index.map(d => d.dsi);
+    let fsi = dataArray[0].index.map(d => d.fsi);
     
-    const pieColorM = d3.scaleOrdinal()
-      .domain(dataM)
-      .range([colorM, 'white']);
-    const pieColorD = d3.scaleOrdinal()
-      .domain(dataD)
-      .range([colorD, 'white']);
-    const pieColorF = d3.scaleOrdinal()
-      .domain(dataF)
-      .range([colorF, 'white']);
+    let indexData = dataArray[0].index;
     
-    const pie = d3.pie()
-      .value(d => d)
-      .sort(null);
+    const currentPointM = indexData[indexData.length - 1].masi;
+    const previousPointM = indexData[indexData.length - 2].masi;
     
-    const arc = d3.arc()
-      .outerRadius(radius)
-      .innerRadius(radius * 0.6);
-      
-  // ====================
-  //   masi pie chart
-  // ====================
-    masiPie.selectAll('path')
-      .data(pie(dataM))
-      .enter()
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', (d, i) => pieColorM(i));
-      
-    masiPie.append('circle')
-      .attr('cx', 0)
-      .attr('cy', 0)
-      .attr('r', radius * 0.6)
-      .attr('fill', 'hsl(0, 100%, 98%)')
-      .attr('stroke', 'lightgrey')
-      .attr('stroke-width', '0.5');
+    const percentageChangeM = (((currentPointM - previousPointM)/(currentPointM))*100).toFixed(2);
     
-    masiPie.append('text')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.65)`)
-      .attr('fill', `${textColorM}`)
-      .text(`${percentageChangeM}%`)
-      .style("font-weight", "500");
-      
-  // ====================
-  //   dsi pie chart
-  // ====================
-    dsiPie.selectAll('path')
-      .data(pie(dataD))
-      .enter()
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', (d, i) => pieColorD(i));
-      
-    dsiPie.append('circle')
-      .attr('cx', 0)
-      .attr('cy', 0)
-      .attr('r', radius * 0.6)
-      .attr('fill', 'hsl(0, 100%, 98%)')
-      .attr('stroke', 'lightgrey')
-      .attr('stroke-width', '0.5');
+    const currentPointD = indexData[indexData.length - 1].dsi;
+    const previousPointD = indexData[indexData.length - 2].dsi;
     
-    dsiPie.append('text')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.65)`)
-      .attr('fill', `${textColorD}`)
-      .text(`${percentageChangeD}%`)
-      .style("font-weight", "500");
-      
-  // ====================
-  //   fsi pie chart
-  // ====================
-    fsiPie.selectAll('path')
-      .data(pie(dataF))
-      .enter()
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', (d, i) => pieColorF(i));
-      
-    fsiPie.append('circle')
-      .attr('cx', 0)
-      .attr('cy', 0)
-      .attr('r', radius * 0.6)
-      .attr('fill', 'hsl(0, 100%, 98%)')
-      .attr('stroke', 'lightgrey')
-      .attr('stroke-width', '0.5');
+    const percentageChangeD = (((currentPointD - previousPointD)/(currentPointD))*100).toFixed(2);
     
-    fsiPie.append('text')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'middle')
-      .attr('transform', `rotate(-225), scale(0.65)`)
-      .attr('fill', `${textColorF}`)
-      .text(`${percentageChangeF}%`)
-      .style("font-weight", "500");
+    const currentPointF = indexData[indexData.length - 1].fsi;
+    const previousPointF = indexData[indexData.length - 2].fsi;
+    
+    const percentageChangeF = (((currentPointF - previousPointF)/(currentPointF))*100).toFixed(2);
       
-// =======================
-//  Rendering Bar Charts
-// =======================
-  const visibleCount = 25;
-  
-  const edge = { top: 20, right: 60, bottom: 10, left: 30 };
-  const wIdth = 330 - edge.left - edge.right;
-  const hEight = 125 - edge.top - edge.bottom;
-  
-  let startIndex = 0;
-  
-  startIndex = Math.max(
-  0,
-  Math.min(startIndex, indexData.length - visibleCount)
-  );
-  
-  const visibleData = indexData.slice(-visibleCount);
-  
-  let masiSvg = d3.select('#masi-barchart')
+      const margin = { top: 4, right: 5, bottom: 6, left: 7 };
+      const width = 100 - margin.left - margin.right;
+      const height = 100 - margin.top - margin.bottom;
+      const radius = Math.min(width, height) / 2;
+      
+      const masiPie = d3.select('#masi-piechart')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
+        const dsiPie = d3.select('#dsi-piechart')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
+      const fsiPie = d3.select('#fsi-piechart')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', `translate(${width / 2 + margin.left}, ${height / 2 + margin.top}), rotate(225)`);
+        
+      const textColorM = percentageChangeM >= 0? 'magenta' : 'red';
+      const textColorD = percentageChangeD >= 0? 'magenta' : 'red';
+      const textColorF = percentageChangeF >= 0? 'magenta' : 'red';
+      const colorM = percentageChangeM >= 0 ? '#660033' : 'brown';
+      const colorD = percentageChangeM >= 0 ? '#660033' : 'brown';
+      const colorF = percentageChangeM >= 0 ? '#660033' : 'brown';
+      const dataM = [Math.abs(percentageChangeM), 10 - Math.abs(percentageChangeM)];
+      const dataD = [Math.abs(percentageChangeD), 10 - Math.abs(percentageChangeD)];
+      const dataF = [Math.abs(percentageChangeF), 10 - Math.abs(percentageChangeF)];
+      
+      const pieColorM = d3.scaleOrdinal()
+        .domain(dataM)
+        .range([colorM, 'white']);
+      const pieColorD = d3.scaleOrdinal()
+        .domain(dataD)
+        .range([colorD, 'white']);
+      const pieColorF = d3.scaleOrdinal()
+        .domain(dataF)
+        .range([colorF, 'white']);
+      
+      const pie = d3.pie()
+        .value(d => d)
+        .sort(null);
+      
+      const arc = d3.arc()
+        .outerRadius(radius)
+        .innerRadius(radius * 0.6);
+        
+    // ====================
+    //   masi pie chart
+    // ====================
+      masiPie.selectAll('path')
+        .data(pie(dataM))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', (d, i) => pieColorM(i));
+        
+      masiPie.append('circle')
+        .attr('cx', 0)
+        .attr('cy', 0)
+        .attr('r', radius * 0.6)
+        .attr('fill', 'hsl(0, 100%, 98%)')
+        .attr('stroke', 'lightgrey')
+        .attr('stroke-width', '0.5');
+      
+      masiPie.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('transform', `rotate(-225), scale(0.65)`)
+        .attr('fill', `${textColorM}`)
+        .text(`${percentageChangeM}%`)
+        .style("font-weight", "500");
+        
+    // ====================
+    //   dsi pie chart
+    // ====================
+      dsiPie.selectAll('path')
+        .data(pie(dataD))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', (d, i) => pieColorD(i));
+        
+      dsiPie.append('circle')
+        .attr('cx', 0)
+        .attr('cy', 0)
+        .attr('r', radius * 0.6)
+        .attr('fill', 'hsl(0, 100%, 98%)')
+        .attr('stroke', 'lightgrey')
+        .attr('stroke-width', '0.5');
+      
+      dsiPie.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('transform', `rotate(-225), scale(0.65)`)
+        .attr('fill', `${textColorD}`)
+        .text(`${percentageChangeD}%`)
+        .style("font-weight", "500");
+        
+    // ====================
+    //   fsi pie chart
+    // ====================
+      fsiPie.selectAll('path')
+        .data(pie(dataF))
+        .enter()
+        .append('path')
+        .attr('d', arc)
+        .attr('fill', (d, i) => pieColorF(i));
+        
+      fsiPie.append('circle')
+        .attr('cx', 0)
+        .attr('cy', 0)
+        .attr('r', radius * 0.6)
+        .attr('fill', 'hsl(0, 100%, 98%)')
+        .attr('stroke', 'lightgrey')
+        .attr('stroke-width', '0.5');
+      
+      fsiPie.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('transform', `rotate(-225), scale(0.65)`)
+        .attr('fill', `${textColorF}`)
+        .text(`${percentageChangeF}%`)
+        .style("font-weight", "500");
+        
+  // =======================
+  //  Rendering Bar Charts
+  // =======================
+  function renderIndexBars() {
+    let masiSvg = d3.select('#masi-barchart')
       .selectAll('*')
       .remove();
-      
-    masiSvg = d3.select('#masi-barchart')
-      .append('svg')
-      .attr('width', wIdth + edge.left + edge.right)
-      .attr('height', hEight + edge.top + edge.bottom)
-      .append('g')
-      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
-      
+    let dsiSvg = d3.select('#dsi-barchart')
+      .selectAll('*')
+      .remove();
+    let fsiSvg = d3.select('#fsi-barchart')
+      .selectAll('*')
+      .remove();
+    
+    const edge = { top: 20, right: 60, bottom: 10, left: 30 };
+    const wIdth = 330 - edge.left - edge.right;
+    const hEight = 125 - edge.top - edge.bottom;
+    
+    const visibleCount = 25;
+    let startIndex = 0;
+    const visibleData = indexData.slice(-visibleCount);
+    
     const x = d3.scaleBand()
       .domain(visibleData.map(d => d.date))
       .range([-8, wIdth + 20])
       .padding(0.2);
-    
+      
     const masiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.masi) * 1.01])
+        (visibleData, d => d.masi) * 1.01])
       .range([hEight, -2]);
-      
+        
     const dsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.dsi) * 1.015])
+        (visibleData, d => d.dsi) * 1.015])
       .range([hEight, -2]);
-      
+        
     const fsiY = d3.scalePow()
       .exponent(26)
       .domain([1, d3.max
-      (visibleData, d => d.fsi) * 1.045])
+        (visibleData, d => d.fsi) * 1.045])
       .range([hEight, -2]);
-      
-    let barWidth = x.bandwidth();
     
-    console.log(d3.min(visibleData, d => d.masi));
-      
-    masiSvg.append('g')
-      .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.7')
-      .call(d3.axisRight(masiY)
-      .ticks(4)
-      .tickValues([1, 585000, 590000, 595000])
-      .tickSize(3)
-      .tickPadding(5)
+    startIndex = Math.max(
+    0,
+    Math.min(startIndex, indexData.length - visibleCount)
     );
-    
-    // Add X-axis (volume)
-    masiSvg.append('g')
-      .attr('transform', `translate(0, ${hEight})`)
-      .style('opacity', '0.7')
-      .call(d3.axisBottom(x)
-        .tickValues(
-          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
-        )
-      .tickSize(3)
-    )
-      .selectAll('text')
-      .attr("text-anchor", "middle");
-    
-    const masiBars = masiSvg.selectAll(".body")
-      .data(visibleData)
-      .join("rect")
-      .attr("class", "body")
-      .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => masiY(d.masi))
-      .attr("width", barWidth)
-      .attr("height", d => Math.abs(masiY(0) - masiY(d.masi))
+        
+      masiSvg = d3.select('#masi-barchart')
+        .append('svg')
+        .attr('width', wIdth + edge.left + edge.right)
+        .attr('height', hEight + edge.top + edge.bottom)
+        .append('g')
+        .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
+        
+      let barWidth = x.bandwidth();
+        
+      masiSvg.append('g')
+        .attr('transform', `translate(${wIdth + 20}, 0)`)
+        .style('opacity', '0.7')
+        .call(d3.axisRight(masiY)
+        .ticks(4)
+        .tickValues([1, 585000, 590000, 595000])
+        .tickSize(3)
+        .tickPadding(5)
+      );
+      
+      // Add X-axis (volume)
+      masiSvg.append('g')
+        .attr('transform', `translate(0, ${hEight})`)
+        .style('opacity', '0.7')
+        .call(d3.axisBottom(x)
+          .tickValues(
+            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+          )
+        .tickSize(3)
       )
-      .attr("fill", "steelblue")
-      .attr("stroke", "black")
-      .attr("stroke-width", "0.5")
-      .style("opacity", "0.6");
+        .selectAll('text')
+        .attr("text-anchor", "middle");
       
-  let dsiSvg = d3.select('#dsi-barchart')
-      .selectAll('*')
-      .remove();
-      
-    dsiSvg = d3.select('#dsi-barchart')
-      .append('svg')
-      .attr('width', wIdth + edge.left + edge.right)
-      .attr('height', hEight + edge.top + edge.bottom)
-      .append('g')
-      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
-      
-    dsiSvg.append('g')
-      .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.7')
-      .call(d3.axisRight(dsiY)
-      .ticks(4)
-      .tickValues([1, 400000, 405000, 410000])
-      .tickSize(3)
-      .tickPadding(5)
-    );
-    
-    // Add X-axis (volume)
-    dsiSvg.append('g')
-      .attr('transform', `translate(0, ${hEight})`)
-      .style('opacity', '0.7')
-      .call(d3.axisBottom(x)
-        .tickValues(
-          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+      const masiBars = masiSvg.selectAll(".body")
+        .data(visibleData)
+        .join("rect")
+        .attr("class", "body")
+        .attr("x", d => x(d.date)) // adjust x to center the bar
+        .attr("y", d => masiY(d.masi))
+        .attr("width", barWidth)
+        .attr("height", d => Math.abs(masiY(0) - masiY(d.masi))
         )
-      .tickSize(3)
-    )
-      .selectAll('text')
-      .attr("text-anchor", "middle");
-    
-    const dsiBars = dsiSvg.selectAll(".body")
-      .data(visibleData)
-      .join("rect")
-      .attr("class", "body")
-      .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => dsiY(Math.max(0, d.dsi)))
-      .attr("width", barWidth)
-      .attr("height", d =>
-        Math.max(1, Math.abs(dsiY(0) - dsiY(d.dsi)))
+        .attr("fill", "steelblue")
+        .attr("stroke", "black")
+        .attr("stroke-width", "0.5")
+        .style("opacity", "0.6");
+        
+      dsiSvg = d3.select('#dsi-barchart')
+        .append('svg')
+        .attr('width', wIdth + edge.left + edge.right)
+        .attr('height', hEight + edge.top + edge.bottom)
+        .append('g')
+        .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
+        
+      dsiSvg.append('g')
+        .attr('transform', `translate(${wIdth + 20}, 0)`)
+        .style('opacity', '0.7')
+        .call(d3.axisRight(dsiY)
+        .ticks(4)
+        .tickValues([1, 400000, 405000, 410000])
+        .tickSize(3)
+        .tickPadding(5)
+      );
+      
+      // Add X-axis (volume)
+      dsiSvg.append('g')
+        .attr('transform', `translate(0, ${hEight})`)
+        .style('opacity', '0.7')
+        .call(d3.axisBottom(x)
+          .tickValues(
+            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+          )
+        .tickSize(3)
       )
-      .attr("fill", "steelblue")
-      .attr("stroke", "black")
-      .attr("stroke-width", "0.5")
-      .style("opacity", "0.6");
+        .selectAll('text')
+        .attr("text-anchor", "middle");
       
-  let fsiSvg = d3.select('#fsi-barchart')
-      .selectAll('*')
-      .remove();
-      
-    fsiSvg = d3.select('#fsi-barchart')
-      .append('svg')
-      .attr('width', wIdth + edge.left + edge.right)
-      .attr('height', hEight + edge.top + edge.bottom)
-      .append('g')
-      .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
-      
-    fsiSvg.append('g')
-      .attr('transform', `translate(${wIdth + 20}, 0)`)
-      .style('opacity', '0.7')
-      .call(d3.axisRight(fsiY)
-      .ticks(4)
-      .tickValues([1, 140000, 145000, 150000])
-      .tickSize(3)
-      .tickPadding(5)
-    );
-    
-    // Add X-axis (volume)
-    fsiSvg.append('g')
-      .attr('transform', `translate(0, ${hEight})`)
-      .style('opacity', '0.7')
-      .call(d3.axisBottom(x)
-        .tickValues(
-          visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+      const dsiBars = dsiSvg.selectAll(".body")
+        .data(visibleData)
+        .join("rect")
+        .attr("class", "body")
+        .attr("x", d => x(d.date)) // adjust x to center the bar
+        .attr("y", d => dsiY(Math.max(0, d.dsi)))
+        .attr("width", barWidth)
+        .attr("height", d =>
+          Math.max(1, Math.abs(dsiY(0) - dsiY(d.dsi)))
         )
-      .tickSize(3)
-    )
-      .selectAll('text')
-      .attr("text-anchor", "middle");
-    
-    const fsiBars = fsiSvg.selectAll(".body")
-      .data(visibleData)
-      .join("rect")
-      .attr("class", "body")
-      .attr("x", d => x(d.date)) // adjust x to center the bar
-      .attr("y", d => fsiY(Math.max(0, d.fsi)))
-      .attr("width", barWidth)
-      .attr("height", d =>
-        Math.max(1, Math.abs(fsiY(0) - fsiY(d.fsi)))
-      )
-      .attr("fill", "steelblue")
-      .attr("stroke", "black")
-      .attr("stroke-width", "0.5")
-      .style("opacity", "0.6");
+        .attr("fill", "steelblue")
+        .attr("stroke", "black")
+        .attr("stroke-width", "0.5")
+        .style("opacity", "0.6");
+        
+      fsiSvg = d3.select('#fsi-barchart')
+        .append('svg')
+        .attr('width', wIdth + edge.left + edge.right)
+        .attr('height', hEight + edge.top + edge.bottom)
+        .append('g')
+        .attr('transform', `translate(${edge.left * 0.5}, ${edge.top * 0.5})`);
+        
+      fsiSvg.append('g')
+        .attr('transform', `translate(${wIdth + 20}, 0)`)
+        .style('opacity', '0.7')
+        .call(d3.axisRight(fsiY)
+        .ticks(4)
+        .tickValues([1, 140000, 145000, 150000])
+        .tickSize(3)
+        .tickPadding(5)
+      );
       
-  // =======================
-  //    Creating Events
-  // =======================
-  let singleBarIndex = indexData.length - 1;
-  let currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-  const masiPriceTag = masiSvg.append("rect");
-  const masiPriceTagText =  masiSvg.append("text");
-  const fsiPriceTag = fsiSvg.append("rect");
-  const fsiPriceTagText =  fsiSvg.append("text");
-  const dsiPriceTag = dsiSvg.append("rect");
-  const dsiPriceTagText =  dsiSvg.append("text");
-  function renderMasiThreshold () {
-    const thresholdLine = masiSvg.append("line")
-    .data(currentBar)
-    .attr("x1", -10)
-    .attr("x2", wIdth + edge.right - 35)
-    .attr("y1", d => masiY(d.masi))
-    .attr("y2", d => masiY(d.masi))
-    .attr("stroke", "#660033")
-    .attr("stroke-dasharray", "4 2")
-    .style("opacity", "0.5");
-  
-    masiPriceTag
-      .data(currentBar)
-      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-      .attr("y", d => masiY(d.masi) - 5)
-      .attr("width", 49)
-      .attr("height", 10)
-      .attr("fill", "black");
+      // Add X-axis (volume)
+      fsiSvg.append('g')
+        .attr('transform', `translate(0, ${hEight})`)
+        .style('opacity', '0.7')
+        .call(d3.axisBottom(x)
+          .tickValues(
+            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+          )
+        .tickSize(3)
+      )
+        .selectAll('text')
+        .attr("text-anchor", "middle");
+      
+      const fsiBars = fsiSvg.selectAll(".body")
+        .data(visibleData)
+        .join("rect")
+        .attr("class", "body")
+        .attr("x", d => x(d.date)) // adjust x to center the bar
+        .attr("y", d => fsiY(Math.max(0, d.fsi)))
+        .attr("width", barWidth)
+        .attr("height", d =>
+          Math.max(1, Math.abs(fsiY(0) - fsiY(d.fsi)))
+        )
+        .attr("fill", "steelblue")
+        .attr("stroke", "black")
+        .attr("stroke-width", "0.5")
+        .style("opacity", "0.6");
+        
+    masiBars.on("click", (event, d) => {
+      singleBarIndex = indexData.indexOf(d);
+      // updating currentBar
+      currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+      // updating your display/logic
+      masiSvg.selectAll("line").remove();
+      masiPriceTagText.selectAll("text").remove();
+      masiPriceTag.selectAll("rect").remove();
+      renderMasiThreshold();
+    });
+    dsiBars.on("click", (event, d) => {
+      singleBarIndex = indexData.indexOf(d);
+      // updating currentBar
+      currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+      // updating your display/logic
+      dsiSvg.selectAll("line").remove();
+      dsiPriceTagText.selectAll("text").remove();
+      dsiPriceTag.selectAll("rect").remove();
+      renderDsiThreshold();
+    });
+    fsiBars.on("click", (event, d) => {
+      singleBarIndex = indexData.indexOf(d);
+      // updating currentBar
+      currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+      // updating your display/logic
+      fsiSvg.selectAll("line").remove();
+      fsiPriceTagText.selectAll("text").remove();
+      fsiPriceTag.selectAll("rect").remove();
+      renderFsiThreshold();
+    });
     
-    masiPriceTagText
+      // =======================
+    //    Creating Events
+    // =======================
+    let singleBarIndex = indexData.length - 1;
+    let currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+    const masiPriceTag = masiSvg.append("rect");
+    const masiPriceTagText =  masiSvg.append("text");
+    const fsiPriceTag = fsiSvg.append("rect");
+    const fsiPriceTagText =  fsiSvg.append("text");
+    const dsiPriceTag = dsiSvg.append("rect");
+    const dsiPriceTagText =  dsiSvg.append("text");
+    function renderMasiThreshold () {
+      const thresholdLine = masiSvg.append("line")
       .data(currentBar)
-      .attr("x", wIdth + edge.right - 34)
-      .attr("y", d => masiY(d.masi) + 3)
-      .text(d => d3.format(",.2f")(d.masi))
-      .attr("fill", "white")
-      .style("font-size", "9px");
-  }
-  renderMasiThreshold();
-  function renderDsiThreshold () {
-    const thresholdLine = dsiSvg.append("line")
-    .data(currentBar)
-    .attr("x1", -10)
-    .attr("x2", wIdth + edge.right - 35)
-    .attr("y1", d => dsiY(d.dsi))
-    .attr("y2", d => dsiY(d.dsi))
-    .attr("stroke", "#660033")
-    .attr("stroke-dasharray", "4 2")
-    .style("opacity", "0.5");
-  
-    dsiPriceTag
-      .data(currentBar)
-      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-      .attr("y", d => dsiY(d.dsi) - 5)
-      .attr("width", 49)
-      .attr("height", 10)
-      .attr("fill", "black");
+      .attr("x1", -10)
+      .attr("x2", wIdth + edge.right - 35)
+      .attr("y1", d => masiY(d.masi))
+      .attr("y2", d => masiY(d.masi))
+      .attr("stroke", "#660033")
+      .attr("stroke-dasharray", "4 2")
+      .style("opacity", "0.5");
     
-    dsiPriceTagText
-      .data(currentBar)
-      .attr("x", wIdth + edge.right - 34)
-      .attr("y", d => dsiY(d.dsi) + 3)
-      .text(d => d3.format(",.2f")(d.dsi))
-      .attr("fill", "white")
-      .style("font-size", "9px");
-  }
-  renderDsiThreshold();
-  function renderFsiThreshold () {
-    const thresholdLine = fsiSvg.append("line")
-    .data(currentBar)
-    .attr("x1", -10)
-    .attr("x2", wIdth + edge.right - 35)
-    .attr("y1", d => fsiY(d.fsi))
-    .attr("y2", d => fsiY(d.fsi))
-    .attr("stroke", "#660033")
-    .attr("stroke-dasharray", "4 2")
-    .style("opacity", "0.5");
-  
-    fsiPriceTag
-      .data(currentBar)
-      .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
-      .attr("y", d => fsiY(d.fsi) - 5)
-      .attr("width", 49)
-      .attr("height", 10)
-      .attr("fill", "black");
-    
-    fsiPriceTagText
-      .data(currentBar)
-      .attr("x", wIdth + edge.right - 34)
-      .attr("y", d => fsiY(d.fsi) + 3)
-      .text(d => d3.format(",.2f")(d.fsi))
-      .attr("fill", "white")
-      .style("font-size", "9px");
-  }
-  renderFsiThreshold();
-    
-  masiBars.on("click", (event, d) => {
-    singleBarIndex = indexData.indexOf(d);
-    // updating currentBar
-    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-    // updating your display/logic
-    masiSvg.selectAll("line").remove();
-    masiPriceTagText.selectAll("text").remove();
-    masiPriceTag.selectAll("rect").remove();
+      masiPriceTag
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+        .attr("y", d => masiY(d.masi) - 5)
+        .attr("width", 49)
+        .attr("height", 10)
+        .attr("fill", "black");
+      
+      masiPriceTagText
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 34)
+        .attr("y", d => masiY(d.masi) + 3)
+        .text(d => d3.format(",.2f")(d.masi))
+        .attr("fill", "white")
+        .style("font-size", "9px");
+    }
     renderMasiThreshold();
-  });
-  dsiBars.on("click", (event, d) => {
-    singleBarIndex = indexData.indexOf(d);
-    // updating currentBar
-    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-    // updating your display/logic
-    dsiSvg.selectAll("line").remove();
-    dsiPriceTagText.selectAll("text").remove();
-    dsiPriceTag.selectAll("rect").remove();
+    function renderDsiThreshold () {
+      const thresholdLine = dsiSvg.append("line")
+      .data(currentBar)
+      .attr("x1", -10)
+      .attr("x2", wIdth + edge.right - 35)
+      .attr("y1", d => dsiY(d.dsi))
+      .attr("y2", d => dsiY(d.dsi))
+      .attr("stroke", "#660033")
+      .attr("stroke-dasharray", "4 2")
+      .style("opacity", "0.5");
+    
+      dsiPriceTag
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+        .attr("y", d => dsiY(d.dsi) - 5)
+        .attr("width", 49)
+        .attr("height", 10)
+        .attr("fill", "black");
+      
+      dsiPriceTagText
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 34)
+        .attr("y", d => dsiY(d.dsi) + 3)
+        .text(d => d3.format(",.2f")(d.dsi))
+        .attr("fill", "white")
+        .style("font-size", "9px");
+    }
     renderDsiThreshold();
-  });
-  fsiBars.on("click", (event, d) => {
-    singleBarIndex = indexData.indexOf(d);
-    // updating currentBar
-    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
-    // updating your display/logic
-    fsiSvg.selectAll("line").remove();
-    fsiPriceTagText.selectAll("text").remove();
-    fsiPriceTag.selectAll("rect").remove();
+    function renderFsiThreshold () {
+      const thresholdLine = fsiSvg.append("line")
+      .data(currentBar)
+      .attr("x1", -10)
+      .attr("x2", wIdth + edge.right - 35)
+      .attr("y1", d => fsiY(d.fsi))
+      .attr("y2", d => fsiY(d.fsi))
+      .attr("stroke", "#660033")
+      .attr("stroke-dasharray", "4 2")
+      .style("opacity", "0.5");
+    
+      fsiPriceTag
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
+        .attr("y", d => fsiY(d.fsi) - 5)
+        .attr("width", 49)
+        .attr("height", 10)
+        .attr("fill", "black");
+      
+      fsiPriceTagText
+        .data(currentBar)
+        .attr("x", wIdth + edge.right - 34)
+        .attr("y", d => fsiY(d.fsi) + 3)
+        .text(d => d3.format(",.2f")(d.fsi))
+        .attr("fill", "white")
+        .style("font-size", "9px");
+    }
     renderFsiThreshold();
+  }
+  renderIndexBars();
+    
+    // ======================
+    //   Shifting Timelines
+    // ======================
+    const indexWeeklyButton = document.getElementById('idxDb');
+    indexWeeklyButton.addEventListener("click", () => {
+      masi = dataArray[1].index.map(d => d.masi);
+      dsi = dataArray[1].index.map(d => d.dsi);
+      fsi = dataArray[1].index.map(d => d.fsi);
+      
+      indexData = dataArray[1].index;
+        barsCallback();
+    });
   });
-});
-
+}
+barsPromise();
+function barsCallback() {
+  barsPromise();
+}
 // ======================
 //    Volume Widget
 // ======================
