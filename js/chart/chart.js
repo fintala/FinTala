@@ -367,6 +367,10 @@ function render() {
   let singleCandleIndex = data.length - 1;
   const currentCandle = data.slice(singleCandleIndex, singleCandleIndex + 1);
   
+  const previousCandle = data.slice(singleCandleIndex, singleCandleIndex + 2);
+  
+  console.log(previousCandle);
+  
   // =====================
   // CLIP PATH
   // =====================
@@ -459,7 +463,9 @@ function render() {
   
   overlayLayer.append("g")
     .attr("transform", `translate(${width - margin.right},0)`)
-    .call(d3.axisRight(y));
+    .call(d3.axisRight(y)
+      .tickFormat(d => d3.format(".2f")(d))
+    );
     
   candleLayer.selectAll("*").remove();
   
