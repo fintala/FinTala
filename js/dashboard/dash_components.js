@@ -404,7 +404,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     singleBarIndex = indexData.indexOf(d);
     console.log(singleBarIndex);
     // update currentBar
-    const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
+    currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
     // update your display/logic here
     masiSvg.selectAll("line").remove();
     priceTagText.selectAll("text").remove();
