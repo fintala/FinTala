@@ -378,6 +378,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .style("opacity", "0.5");
 
   masiSvg.append("rect")
+    .data(currentPointM)
     .attr("x", wIdth + edge.right - 36) // position it a bit to the right of the chart
     .attr("y", d => masiY(d.masi) - 5)
     .attr("width", 49)
