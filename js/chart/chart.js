@@ -498,7 +498,7 @@ function render() {
       .attr("stroke", "black");
       
       // appending close price tag
-      overlayLayer.append("line")
+      candleLayer.append("line")
       .data(currentCandle)
       .attr("x1", 0)
       .attr("x2", width + 10)
