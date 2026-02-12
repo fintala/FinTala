@@ -405,7 +405,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
     // update your display/logic here
     masiSvg.selectAll("line").remove();
-    masiSvg.selectAll("text").remove();
+    
     priceTag.selectAll("rect").remove();
     renderThreshold();
   });
