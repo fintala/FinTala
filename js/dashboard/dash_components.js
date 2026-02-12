@@ -376,7 +376,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
   .attr("y2", masiY(d3.min(visibleData, d => d.masi)))
   .attr("stroke", "#660033")
   .attr("stroke-dasharray", "4 2")
-  .style("opacity", "0.5"); // makes the line dashed
+  .style("opacity", "0.5");
 
   masiSvg.append("rect")
     .attr("x", wIdth + edge.right - 35) // position it a bit to the right of the chart
