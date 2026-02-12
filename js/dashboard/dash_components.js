@@ -370,7 +370,6 @@ Promise.allSettled(indexTimeframe).then((results) => {
   const thresholdValue = 100;
   const thresholdLine = masiSvg.append("line")
   .data(visibleData)
-  .enter()
   .attr("x1", 0)
   .attr("x2", wIdth + edge.right - 35)
   .attr("y1", masiY(d3.min(visibleData, d => d.masi)))
