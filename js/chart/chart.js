@@ -531,14 +531,14 @@ function render() {
     .style("opacity", "0.8");
     
   axisLayer.append("rect")
-    .attr("x", width + 1) // position it a bit to the right of the chart
+    .attr("x", 1) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
     .attr("width", margin.right - 2)
     .attr("height", 20)
     .attr("fill", "#c1ff72");
   
   axisLayer.append("text")
-    .attr("x", width + 3)
+    .attr("x", 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
     .text(y(d3.min(currentCandle, d => d.close)))
     .attr("fill", "black")
