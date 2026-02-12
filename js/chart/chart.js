@@ -542,7 +542,7 @@ function render() {
   overlayLayer.append("text")
     .attr("x", width - margin.right + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
-    .text(y(d.close))
+    .text(y(currentCandle, d => d.close))
     .attr("fill", "black")
     .style("font-size", "11px");
       
