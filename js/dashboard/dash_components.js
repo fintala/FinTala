@@ -400,9 +400,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
   }
   renderThreshold();
     
-  masiBars.on("click", (event, d, i) => {
+  masiBars.on("click", (event, d) => {
     singleBarIndex = i;
-    console.log(singleBarIndex);
+    console.log(d);
     // update currentBar
     const currentBar = indexData.slice(singleBarIndex, singleBarIndex + 1);
     // update your display/logic here
