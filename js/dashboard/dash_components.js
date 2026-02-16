@@ -659,25 +659,37 @@ Promise.all(pull.map(file => d3.json(file)))
 // --------------------
 //  Timeframe Buttons
 // --------------------
+const volumeKey = document.querySelector('.volume-key');
+const volBtns = document.querySelectorAll('.volume-button');
   volDay.addEventListener('click', () => {
     volTime = "D1";
     pushSource();
     promise();
+    volumeKey.textContent = 'Malawi-Stock-Exchange daily volume data.';
+    volBtns.forEach(volKey => {
+      volKey.style.cssText = `
+          background: #c1ff72;
+          `;
+    });
     volDay.style.cssText = `
       background: white;
       border: 1px solid rgba(0, 0, 0, 0.5);
     `;
-    volWeek.style.background = '#c1ff72';
   });
   volWeek.addEventListener('click', () => {
     volTime = "W1";
     pushSource();
     promise();
+    volumeKey.textContent = 'Malawi-Stock-Exchange weekly volume data.';
+    volBtns.forEach(volKey => {
+      volKey.style.cssText = `
+          background: #c1ff72;
+          `;
+    });
     volWeek.style.cssText = `
       background: white;
       border: 1px solid rgba(0, 0, 0, 0.5);
     `;
-    volDay.style.background = '#c1ff72';
   });
 
   

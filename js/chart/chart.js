@@ -9,22 +9,14 @@ let manualRotation = null;
 
 let volumeActive = localStorage.getItem("volume");
 
-const drawingState = {
-  mode: "idle",      // "idle" | "trendline"
-  phase: null,       // null | "armed" | "anchored"
-  draft: null
-};
-
 const trendlines = [];
-
 let chartType = "candlestick";
-
 let dragAccumulator = 0;
 
 // ================================
 // CONFIG
 // ================================
-const visibleCount = 45;
+let visibleCount = 55;
 
 const svg = d3.select("#chart");
 
@@ -304,6 +296,7 @@ let startIndex = 0;
 function initChart(data) {
   startIndex = Math.max(0, data.length - visibleCount);
   render(window.__chartData);
+  drawMovingAverages(window.__chartData);
   if (volumeActive == "on") {
     Indicators(window.__chartData);
   }
@@ -376,7 +369,7 @@ function render() {
   const currentCloseData = currentCandle[0].close;
   const previousCloseData = previousCandle[0].close; // if using data[singleCandleIndex - 1]
   
-  const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, )' : 'rgba(211, 211, 211, 1)';
+  const colorFf = currentCloseData > previousCloseData ? '#c1ff72' : currentCloseData < previousCloseData ? 'rgba(255, 0, 0, 0.95)' : 'rgba(211, 211, 211, 1)';
 
   // =====================
   // CLIP PATH
@@ -437,6 +430,7 @@ function render() {
   // =====================
   axisLayer.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`)
+    .style("opacity", "0.7")
     .call(
       d3.axisBottom(x)
       .tickValues(
@@ -470,6 +464,7 @@ function render() {
   
   overlayLayer.append("g")
     .attr("transform", `translate(${width - margin.right},0)`)
+    .style("opacity", "0.7")
     .call(d3.axisRight(y)
       .tickFormat(d => d3.format(".2f")(d))
     );
@@ -603,6 +598,7 @@ function render() {
           candleLayer.selectAll("line").remove();
           
           render(data);
+          drawMovingAverages(window.__chartData);
           if (volumeActive == "on") {
           Indicators(data);
           }
@@ -611,55 +607,12 @@ function render() {
       })
       .on("end", () => overlay.style("cursor", "grab"))
   );
-
-  // --------------------------
-  // Trendline drawing overlay
-  // --------------------------
-      // ----- SAVED TRENDLINES -----
-      annotationLayer.selectAll(".trendline").remove();
-    
-      trendlines.forEach(tl => drawTrendline(tl, false));
-    
-      // ----- PREVIEW TRENDLINE -----
-      if (
-        drawingState.mode === "trendline" &&
-        drawingState.phase === "anchored" &&
-        drawingState.draft?.anchors[1]
-      ) {
-        drawTrendline(drawingState.draft, true);
-      }
-      
-      // ----- DRAFT ANCHORS -----
-      if (drawingState.mode === "trendline" && drawingState.draft) {
-        annotationLayer.selectAll(".anchor").remove();
-      
-        drawingState.draft.anchors.forEach((a, i) => {
-          if (!a) return;
-      
-          annotationLayer.append("circle")
-            .attr("class", "anchor")
-            .attr("cx", x(a.date) + x.bandwidth() / 2)
-            .attr("cy", y(a.price))
-            .attr("r", 5)
-            .attr("fill", i === 0 ? "black" : "blue");
-        });
-      }
-
+  
   // =====================
   // CROSSHAIR
   // =====================
-  
-  overlay.on("mousemove", (event) => {
-  if (drawingState.mode === "trendline") {
-    handleTrendlineMove(event);
-    return;
-  }
-
   // existing crosshair logic stays here
     
-    });
-    
-  //  console.log("visibleCount:", visibleCount, "startIndex:", startIndex);
 }
 
 // =========================
@@ -913,6 +866,7 @@ graph.addEventListener("click", (e) => {
   chartType = chartType === "candlestick" ? "line" : "candlestick";
     toolsWrap.style.display = 'none';
     render(window.__chartData);
+    drawMovingAverages(window.__chartData);
     if (volumeActive == "on") {
     Indicators(window.__chartData);
     }
@@ -928,216 +882,6 @@ chartSettings.addEventListener("click", (e) => {
   alertClose();
 });
 
-// ====================
-// Trendline Composer
-// ====================
-const composer = document.getElementById("tlcomposer");
-const header = composer.querySelector(".tl-header");
-
-let dragOffsetX = 0;
-let dragOffsetY = 0;
-let dragging = false;
-
-header.addEventListener("pointerdown", (e) => {
-  dragging = true;
-  const rect = composer.getBoundingClientRect();
-  dragOffsetX = e.clientX - rect.left;
-  dragOffsetY = e.clientY - rect.top;
-
-  header.setPointerCapture(e.pointerId);
-});
-
-header.addEventListener("pointermove", (e) => {
-  if (!dragging) return;
-
-  composer.style.left = `${e.clientX - dragOffsetX}px`;
-  composer.style.top = `${e.clientY - dragOffsetY}px`;
-});
-
-header.addEventListener("pointerup", () => {
-  dragging = false;
-});
-
-// ---------------------
-// Show/Hide logic
-// ---------------------
-function showTrendlineComposer() {
-  composer.classList.remove("hidden");
-  chartOverlay.style.display = 'none';
-  toolsWrap.style.display = 'none';
-}
-
-function hideTrendlineComposer() {
-  composer.classList.add("hidden");
-}
-
-const trendlineToolBtn = document.getElementById("trendline");
-
-trendlineToolBtn.addEventListener("click", () => {
-  openAlert();
-  alertField.innerText = "The FinTala team is working on bringing more features. Trendline coming soon."
-  //startTrendlineDrawing();
-});
-
-// -------------
-// Input Logic
-// -------------
-let trendlineDraft = {
-  name: "",
-  extension: "none",
-  style: {
-    color: "#000000",
-    width: 1.5
-  }
-};
-
-// name input
-const nameInput = document.getElementById("tl-name");
-
-nameInput.addEventListener("input", (e) => {
-  trendlineDraft.name = e.target.value;
-});
-
-// extension buttons
-const extendButtons = document.querySelectorAll(".tl-extend button");
-
-extendButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    extendButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    trendlineDraft.extension = btn.dataset.ext;
-  });
-});
-
-// color picker
-const colorInput = document.getElementById("tl-color");
-
-colorInput.addEventListener("input", (e) => {
-  trendlineDraft.style.color = e.target.value;
-});
-
-// width slider
-const widthInput = document.getElementById("tl-width");
-
-widthInput.addEventListener("input", (e) => {
-  trendlineDraft.style.width = parseFloat(e.target.value);
-});
-
-// cancel button
-const cancelBtn = document.getElementById("tl-cancel");
-
-cancelBtn.addEventListener("click", () => {
-  trendlineDraft = null;
-  hideTrendlineComposer();
-});
-
-// =========================
-// Trendline drawing logic
-// =========================
-function drawTrendline(tl, preview) {
-  const [a, b] = tl.anchors;
-  if (!a || !b) return;
-
-  const x1 = x(a.date) + x.bandwidth() / 2;
-  const y1 = y(a.price);
-  const x2 = x(b.date) - x.bandwidth() / 2;
-  const y2 = y(b.price);
-
-  annotationLayer.append("line")
-    .attr("class", "trendline")
-    .attr("x1", x1)
-    .attr("y1", y1)
-    .attr("x2", x2)
-    .attr("y2", y2)
-    .attr("stroke", tl.style.color)
-    .attr("stroke-width", tl.style.width)
-    .attr("stroke-dasharray", preview ? "4,4" : null)
-    .attr("opacity", preview ? 0.6 : 1)
-    .style("pointer-events", "none");
-}
-
-// -------------------
-// Interaction wiring
-// -------------------
-
-// preview projection
-overlay.on("click", (event) => {
-  
-  if (drawingState.mode !== "trendline")  return;
-
-  const [mx, my] = d3.pointer(event, root.node());
-  const index = Math.floor((mx - margin.left) / x.bandwidth());
-  const date = x.domain()[index];
-  if (!date) return;
-
-  const price = y.invert(my);
-
-
-  // ---- First anchor
-  if (drawingState.phase === "first") {
-    drawingState.draft.anchors = [{ date, price }];
-    overlayLayer.selectAll(".crosshair"). remove();
-    axisLayer.selectAll("*").remove();
-    drawingState.phase = "second";
-    render(window.__chartData);
-    return;
-  }
-
-  // ---- Second anchor
-  if (drawingState.phase === "second") {
-    drawingState.draft.anchors[1] = { date, price };
-    drawingState.draft.id = crypto.randomUUID();
-    trendlines.push(drawingState.draft);
-
-    drawingState.mode = "idle";
-    drawingState.phase = null;
-    drawingState.draft = null;
-    
-    axisLayer.selectAll("*").remove();
-
-    render(window.__chartData);
-  }
-});
-
-// Pan logic
-overlay.call(
-  d3.drag()
-    .filter(() => drawingState.mode === "idle")
-    .on("drag", (event) => {
-      // your existing pan logic here
-      render(window.__chartData);
-    })
-);
-
-// Tool activation
-function startTrendlineDrawing() {
-  drawingState.mode = "trendline";
-  drawingState.phase = "first"; // 👈 explicit
-  drawingState.draft = {
-    anchors: [],
-    style: { color: "hsl(0, 0%, 70%)", width: 1.5 }
-  };
-
-  showTrendlineComposer();
-}
-
-// Trendline displacement
-function handleTrendlineMove(event) {
-  if (drawingState.phase !== "second") return;
-
-  const [mx, my] = d3.pointer(event);
-  const index = Math.floor((mx - margin.left) / x.bandwidth());
-  const date = x.domain()[index];
-  if (!date) return;
-
-  drawingState.draft.anchors[1] = {
-    date,
-    price: y.invert(my)
-  };
-
-  render(window.__chartData);
-}
 
 // ==========================
 //  Beta Insufficiency Alert
@@ -1178,17 +922,31 @@ const rsi = document.getElementById('rsi').addEventListener("click", (e) => {
 // moving average
 const movingAverage = document.getElementById('movingAverage').addEventListener('click', (e) => {
   e.stopPropagation();
-  alertField.textContent = 'The FinTala team is working on bringing more features. Moving Average coming soon.';
-  openAlert();
+  coWrap.style.display = 'none';
+  const maContainer = document.getElementById('ma-block');
+  maContainer.style.display = 'flex';
+  const maClose = document.getElementById('ma-close');
+  const maEdit = document.getElementById('ma-edit');
+  maClose.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    maContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+  });
+  maEdit.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    addMA();
+    maContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+  });
 });
 
 const volumeIndicator = document.getElementById('volume').addEventListener('click', (e) => {
   e.stopPropagation();
   localStorage.setItem("volume", "on");
-  window.location.href = 'charts.html';
+  window.location.reload();
   
   if (volumeActive == "on") {
     localStorage.removeItem("volume");
-    window.location.href = 'charts.html';
+    window.location.reload();
   }
 });
