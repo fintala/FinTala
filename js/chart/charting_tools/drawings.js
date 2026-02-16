@@ -259,13 +259,15 @@ function drawMovingAverages() {
     .paddingInner(0.3)
     .paddingOuter(0.15);
 
-  const minY = d3.min(visibleData, d => d.low);
-  const maxY = d3.max(visibleData, d => d.high);
-  const padding = (maxY - minY) * 0.1; // 10% padding
+  const maValuesFlat = averageParameters.flatMap(params => 
+    calculateMA(data, params.period, params.type)
+  );
+  const maMin = d3.min(maValuesFlat.filter(v => v !== null));
+  const maMax = d3.max(maValuesFlat.filter(v => v !== null));
+  const maPadding = (maMax - maMin) * 0.1;
   
   const maY = d3.scaleLinear()
-    .domain([minY - padding, maxY + padding])
-    .nice()
+    .domain([maMin - maPadding, maMax + maPadding])
     .range([height - (margin.bottom + (volumeActive === "on" ? 75 : 15)), margin.top]);
 
   // Axes

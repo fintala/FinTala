@@ -405,23 +405,13 @@ function render() {
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
-  if (volumeActive == "on") {
-    y
-    .domain([
-      d3.min(visibleData, d => d.low),
-      d3.max(visibleData, d => d.high)
-    ])
-    .nice()
-    .range([height - (margin.bottom + 75), margin.top]);
-  } else {
-    y
-    .domain([
-      d3.min(visibleData, d => d.low),
-      d3.max(visibleData, d => d.high)
-    ])
-    .nice()
-    .range([height - (margin.bottom + 15), margin.top]);
-  }
+  const minY = d3.min(visibleData, d => d.low);
+  const maxY = d3.max(visibleData, d => d.high);
+  const padding = (maxY - minY) * 0.1; // 10% padding
+  
+  const y = d3.scaleLinear()
+    .domain([minY - padding, maxY + padding])
+    .range([height - (margin.bottom + (volumeActive === "on" ? 75 : 15)), margin.top]);
   
   const candleWidth = x.bandwidth();
   
