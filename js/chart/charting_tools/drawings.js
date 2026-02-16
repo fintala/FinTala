@@ -259,8 +259,12 @@ function drawMovingAverages() {
     .paddingInner(0.3)
     .paddingOuter(0.15);
 
+  const minY = d3.min(visibleData, d => d.low);
+  const maxY = d3.max(visibleData, d => d.high);
+  const padding = (maxY - minY) * 0.1; // 10% padding
+  
   const maY = d3.scaleLinear()
-    .domain([d3.min(visibleData, d => d.low), d3.max(visibleData, d => d.high)])
+    .domain([minY - padding, maxY + padding])
     .nice()
     .range([height - (margin.bottom + (volumeActive === "on" ? 75 : 15)), margin.top]);
 
