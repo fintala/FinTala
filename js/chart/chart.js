@@ -298,6 +298,7 @@ function initChart(data) {
   startIndex = Math.max(0, data.length - visibleCount);
   startIndexY = Math.max(0, data.length - visibleCountY);
   render(window.__chartData);
+  drawTrendlines(window.__chartData)
   drawMovingAverages(window.__chartData);
   if (volumeActive == "on") {
     Indicators(window.__chartData);

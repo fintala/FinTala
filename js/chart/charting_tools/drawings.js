@@ -110,21 +110,21 @@ function closeCard(div) {
 
 const maiColors = [
   "#FF5733", // Orange
-  "#1E90FF", // Dodger Blue
-  "#32CD32", // Lime Green
+  "#FF0000", // Red
+  "#00FF00", // Lime
   "#000000", // Midnight Black
-  "#8A2BE2", // Blue Violet
-  "#FF69B4", // Hot Pink
-  "#00CED1", // Turquoise
-  "#FFA07A", // Light Salmon
-  "#6A5ACD", // Slate Blue
-  "#ADFF2F", // Green Yellow
-  "#DB7093", // Pale Violet Red
-  "#4682B4", // Steel Blue
-  "#FF8C00", // Dark Orange
-  "#3CB371", // Medium Sea Green
-  "#BA55D3", // Medium Orchid
-  "#c1ff72"  // Fintala Green
+  "#0000FF", // Blue
+  "#FFFF00", // Yellow
+  "#00FFFF", // Cyan (Aqua)
+  "#FF00FF", // Magenta
+  "#C0C0C0", // Silver
+  "#808080", // Gray
+  "#800000", // Maroon
+  "#808000", // Olive
+  "#008000", // Green
+  "#800080", // Purple
+  "#008080", // Teal
+  "#000080"  // Navy
 ];
 
 function maInputsOn(ma) {
