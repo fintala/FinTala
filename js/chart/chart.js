@@ -327,7 +327,6 @@ root
     `translate(${screenHeight},0) rotate(90)`
   );
 const overlayLayer = root.append("g");
-const annotationLayer = root.append("g");
 const overlay = root.append("rect");
 
 
