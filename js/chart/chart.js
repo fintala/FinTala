@@ -17,6 +17,7 @@ let dragAccumulator = 0;
 // CONFIG
 // ================================
 let visibleCount = 55;
+let visibleCountY = visibleCount * 2;
 
 const svg = d3.select("#chart");
 
@@ -289,12 +290,13 @@ fetch(datafeed)
 // STATE
 // =====================
 let startIndex = 0;
-
+let startIndexY = 0;
 // =====================
 // INIT
 // =====================
 function initChart(data) {
   startIndex = Math.max(0, data.length - visibleCount);
+  startIndexY = Math.max(0, data.length - visibleCountY);
   render(window.__chartData);
   drawMovingAverages(window.__chartData);
   if (volumeActive == "on") {
@@ -351,10 +353,18 @@ function render() {
   0,
   Math.min(startIndex, data.length - visibleCount)
   );
-
+  startIndexY = Math.max(
+  0,
+  Math.min(startIndexY, data.length - visibleCountY)
+  );
+  
   const visibleData = data.slice(
     startIndex,
     startIndex + visibleCount
+  );
+  const visibleDataY = data.slice(
+    startIndexY,
+    startIndexY + visibleCountY
   );
   
   // -------------------
@@ -406,7 +416,7 @@ function render() {
     .paddingOuter(0.15);
   
   const minY = d3.min(visibleData, d => d.low);
-  const maxY = d3.max(visibleData, d => d.high);
+  const maxY = d3.max(visibleDataY, d => d.high);
   const padding = (maxY - minY) * 0.1; // 10% padding
   
   const y = d3.scaleLinear()
@@ -921,6 +931,7 @@ const movingAverage = document.getElementById('movingAverage').addEventListener(
     e.stopPropagation();
     maContainer.style.display = 'none';
     chartOverlay.style.display = 'none';
+    drawMovingAverages();
   });
   maEdit.addEventListener('click', (e)=>{
     e.stopPropagation();

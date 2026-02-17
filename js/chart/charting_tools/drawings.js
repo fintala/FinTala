@@ -5,6 +5,10 @@ let counterName = localStorage.getItem("symbol");
 const maConfigKey = `maConfig_${counterName}`;
 let mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
 let editingMA = null;
+let acceptableLoad = "Yes";
+  setTimeout(()=>{
+    acceptableLoad = "No";
+  }, 400);
 
 // Action card handler
 function showActionCard(ma, div) {
@@ -56,15 +60,23 @@ function handleMAInput(ma = null) {
       alert('Moving average already exists');
     } else {
       if (editingMA) {
-        const index = mAConfig.averages.indexOf(editingMA);
-        mAConfig.averages[index] = newMA;
+        const index = mAConfig.averages.findIndex(a => 
+            a.name === editingMA.name && 
+            a.period === editingMA.period && 
+            a.type === editingMA.type && 
+            a.color === editingMA.color && 
+            a.offset === editingMA.offset
+          );
+          mAConfig.averages[index] = newMA;
       } else {
         mAConfig.averages.push(newMA);
       }
       localStorage.setItem(maConfigKey, JSON.stringify(mAConfig));
       document.getElementById('ma-inputs').style.display = 'none';
       editingMA = null;
+      document.querySelectorAll('#ma-wrap .average').forEach(el => el.remove());
       renderObjects();
+      render(window.__chartData);
       drawMovingAverages();
     }
   };
@@ -88,7 +100,9 @@ function deleteMA(ma, div) {
   localStorage.setItem(maConfigKey, JSON.stringify(mAConfig));
   div.remove();
   document.getElementById('action-card').style.display = 'none';
-  render();
+  candleLayer.select(`.ma-path-${ma.name}-${ma.period}-${ma.type}`).remove();
+  render(window.__chartData)
+  drawMovingAverages(window.__chartData);
 }
 function closeCard(div) {
   document.getElementById('action-card').style.display = 'none';
@@ -98,7 +112,7 @@ const maiColors = [
   "#FF5733", // Orange
   "#1E90FF", // Dodger Blue
   "#32CD32", // Lime Green
-  "#00000", // Midnight Black
+  "#000000", // Midnight Black
   "#8A2BE2", // Blue Violet
   "#FF69B4", // Hot Pink
   "#00CED1", // Turquoise
@@ -222,10 +236,14 @@ function maInputsOn(ma) {
 };
 
 let startingIndex = 0;
-mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { averages: [] };
 let averageParameters = mAConfig.averages;
-const averagesList = document.getElementById('ma-wrap');
+
 function renderObjects() {
+  // Drawing Objects
+  mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
+  const averagesList = document.getElementById('ma-wrap');
+  const averagesHead = document.querySelector('.ma-head');
+  
   mAConfig.averages.forEach(average => {
     const div = document.createElement('div');
     div.classList.add('average');
@@ -235,7 +253,7 @@ function renderObjects() {
       <div class="average-type">${average.type}</div>
       <div class="average-clr" style="background: ${average.color};"></div>
     `;
-    averagesList.appendChild(div);
+    averagesList.appendChild(div)
     div.onclick = () => showActionCard(average, div);
   });
 }
@@ -245,6 +263,10 @@ renderObjects();
 //  Drawing Moving Averages
 // -------------------------
 function drawMovingAverages() {
+  mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
+  
+  averageParameters = mAConfig.averages;
+
   // Drawing MAs
   const width = screenWidth;
   const height = screenHeight;
@@ -296,12 +318,13 @@ function drawMovingAverages() {
       .x(d => maX(d.date))
       .y(d => maY(d.value))
       .curve(d3.curveLinear);
-
+    
     candleLayer.append("path")
       .datum(maData)
       .attr("fill", "none")
       .attr("stroke", params.color)
       .attr("stroke-width", 1.3)
+      .attr('class', `ma-path-${params.name}-${params.period}-${params.type}`)
       .attr("d", maLine);
   });
 }
