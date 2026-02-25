@@ -76,11 +76,19 @@ function handleMAInput(ma = null) {
       editingMA = null;
       document.querySelectorAll('#ma-wrap .average').forEach(el => el.remove());
       renderObjects();
-      render(window.__chartData);
-      drawMovingAverages();
+      
+      axisLayer.select("rect").remove();
+      axisLayer.select("text.close-text").remove();
+      root.selectAll(".y-axes").remove();
+      root.selectAll(".x-axes").remove();
+      chartLayer.selectAll(".volume-body").remove();
+      root.selectAll(".volume-line").remove();
+      root.selectAll(".volume-rect").remove();
+      stealData();
+      dataFetch();
     }
   };
-}
+};
 
 function addMA() {
   handleMAInput();
@@ -100,9 +108,20 @@ function deleteMA(ma, div) {
   localStorage.setItem(maConfigKey, JSON.stringify(mAConfig));
   div.remove();
   document.getElementById('action-card').style.display = 'none';
-  candleLayer.select(`.ma-path-${ma.name}-${ma.period}-${ma.type}`).remove();
-  render(window.__chartData)
-  drawMovingAverages(window.__chartData);
+  candleLayer.selectAll(`.ma-ema-${ma.period}`).remove();
+  candleLayer.selectAll(`.ma-sma-${ma.period}`).remove();
+  document.querySelectorAll('#ma-wrap .average').forEach(el => el.remove());
+      renderObjects();
+      
+  axisLayer.select("rect").remove();
+  axisLayer.select("text.close-text").remove();
+  root.selectAll(".y-axes").remove();
+  root.selectAll(".x-axes").remove();
+  chartLayer.selectAll(".volume-body").remove();
+  root.selectAll(".volume-line").remove();
+  root.selectAll(".volume-rect").remove();
+  stealData();
+  dataFetch();
 }
 function closeCard(div) {
   document.getElementById('action-card').style.display = 'none';
@@ -134,7 +153,7 @@ function maInputsOn(ma) {
     <input id='mai-text' type='text' placeholder='Enter Moving Average Name' value='untitled_M.A'></input>
     <input class='mai-period' id='mai-period' type='number' placeholder='Period' value='' min='5' max='2000'></input>
     <span id="periodErrorMsg" style="color: red; display: none;">Value must be between 5 and 2000</span>
-    <input class="mai-offset" id="mai-offset" placeholder="Offset" value="" type="number" min="-20" max="20">
+    <input class="mai-offset" id="mai-offset" placeholder="Offset" value="0" type="number" min="-20" max="20"></input>
     <span id="offsetErrorMsg" style="color: red; display: none;">Value must be between -20 and 20</span>
     <div class='mai-typeSelector'>
       <div id='smoothMa' class='mai-typeSelection'>EMA</div>
@@ -232,10 +251,19 @@ function maInputsOn(ma) {
   maiCancel.addEventListener('click', (e)=>{
     e.stopPropagation();
     maInputBox.style.display = 'none';
+      
+    axisLayer.select("rect").remove();
+    axisLayer.select("text.close-text").remove();
+    root.selectAll(".y-axes").remove();
+    root.selectAll(".x-axes").remove();
+    chartLayer.selectAll(".volume-body").remove();
+    root.selectAll(".volume-line").remove();
+      root.selectAll(".volume-rect").remove();
+    stealData();
+    dataFetch();
   });
-};
+}
 
-let startingIndex = 0;
 let averageParameters = mAConfig.averages;
 
 function renderObjects() {
@@ -243,6 +271,9 @@ function renderObjects() {
   mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
   const averagesList = document.getElementById('ma-wrap');
   const averagesHead = document.querySelector('.ma-head');
+  
+  // Removing existing averages
+  averagesList.querySelectorAll('.average').forEach(el => el.remove());
   
   mAConfig.averages.forEach(average => {
     const div = document.createElement('div');
@@ -262,71 +293,125 @@ renderObjects();
 // -------------------------
 //  Drawing Moving Averages
 // -------------------------
-function drawMovingAverages() {
-  mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
-  
-  averageParameters = mAConfig.averages;
+let maDataCache = null;
 
+function drawMovingAverages() {
   // Drawing MAs
   const width = screenWidth;
   const height = screenHeight;
   const dates = data.map(d => d.date);
-  startingIndex = Math.max(0, Math.min(startingIndex, data.length - visibleCount));
-  visibleCount = 55;
-  const visibleData = data.slice(startingIndex, startingIndex + visibleCount);
-
+  startIndex = Math.max(0, Math.min(startIndex, data.length - visibleCount));
+  const visibleData = data.slice(startIndex, startIndex + visibleCount);
   const maX = d3.scaleBand()
     .domain(visibleData.map(d => d.date))
     .range([margin.left, width - margin.right - 15])
     .paddingInner(0.3)
     .paddingOuter(0.15);
-
-  const maValuesFlat = averageParameters.flatMap(params => 
-    calculateMA(data, params.period, params.type)
-  );
-  const maMin = d3.min(maValuesFlat.filter(v => v !== null));
-  const maMax = d3.max(maValuesFlat.filter(v => v !== null));
-  const maPadding = (maMax - maMin) * 0.1;
-  
+  const minY = d3.min(visibleData, d => d.low);
+  const maxY = d3.max(visibleData, d => d.high);
+  const padding = (maxY - minY) * 0.1; // 10% padding
   const maY = d3.scaleLinear()
-    .domain([maMin - maPadding, maMax + maPadding])
-    .range([height - (margin.bottom + (volumeActive === "on" ? 75 : 15)), margin.top]);
+    .domain([minY - padding, maxY + padding])
+    .range([height - (margin.bottom + (volumeActive === "on" ? 105 : 50)), margin.top]);
 
   // Axes
   axisLayer.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`)
-    .style("opacity", "0")
+    .style("display", "none")
     .call(d3.axisBottom(maX)
-      .tickValues(visibleData.filter((_, i) => i % 5 === 0).map(d => d.date))
+      .tickValues(visibleData.filter((_, i) => i % 10 === 0).map(d => d.date))
       .tickFormat(d3.timeFormat("%d %b '%y")));
-
   axisLayer.append("g")
     .attr("transform", `translate(${width - margin.right},0)`)
     .style("opacity", "0")
     .call(d3.axisRight(maY)
       .tickFormat(d => d3.format(".2f")(d)));
+  
+  maDataCache = calculateMAData();
+  const visibleMAData = {
+    SMAs: maDataCache.SMAs.map((ma) => ({
+      ...ma,
+      values: ma.values.slice(Math.max(0, startIndex - ma.period + 1), startIndex + visibleCount),
+    })),
+    EMAs: maDataCache.EMAs.map((ma) => ({
+      ...ma,
+      values: ma.values.slice(Math.max(0, startIndex - ma.period + 1), startIndex + visibleCount),
+    })),
+  };
 
-  // Calculate & draw MAs
-  averageParameters.forEach((params, i) => {
-  const maValues = calculateMA(data, params.period, params.type);
-  const maData = visibleData.map((d, idx) => ({
-    date: d.date,
-    value: maValues[startIndex + idx]
-  })).filter(d => d.value !== null); // Remove nulls
-
-    const maLine = d3.line()
+  // Using visibleMAData to draw the lines
+  visibleMAData.SMAs.forEach((ma) => {
+    const line = d3.line()
       .x(d => maX(d.date))
       .y(d => maY(d.value))
       .curve(d3.curveLinear);
-    
-    candleLayer.append("path")
-      .datum(maData)
-      .attr("fill", "none")
-      .attr("stroke", params.color)
-      .attr("stroke-width", 1.3)
-      .attr('class', `ma-path-${params.name}-${params.period}-${params.type}`)
-      .attr("d", maLine);
+    candleLayer.selectAll(`.ma-sma-${ma.period}`)
+      .data([ma.values])
+      .join(
+        enter => enter.append("path")
+          .attr("class", `ma-sma-${ma.period}`)
+          .attr("fill", "none")
+          .attr("stroke", ma.color)
+          .attr("stroke-width", ma.width),
+        update => update,
+        exit => exit.remove()
+      )
+      .attr("d", line);
   });
+  
+  visibleMAData.EMAs.forEach((ma) => {
+    const line = d3.line()
+      .x(d => maX(d.date))
+      .y(d => maY(d.value))
+      .curve(d3.curveLinear);
+    candleLayer.selectAll(`.ma-ema-${ma.period}`)
+      .data([ma.values])
+      .join(
+        enter => enter.append("path")
+          .attr("class", `ma-ema-${ma.period}`)
+          .attr("fill", "none")
+          .attr("stroke", ma.color)
+          .attr("stroke-width", ma.width),
+        update => update,
+        exit => exit.remove()
+      )
+      .attr("d", line);
+  });
+  
+}
+
+function calculateMAData() {
+  mAConfig = JSON.parse(localStorage.getItem(maConfigKey)) || { name: counterName, averages: [] };
+  const mathData = data.slice(0, data.length);
+  const maData = {
+    SMAs: [],
+    EMAs: [],
+  };
+  mAConfig.averages.forEach((params) => {
+    const maValues = calculateMA(mathData, params.period, params.type);
+    const firstNonNullIndex = maValues.findIndex((value) => value !== null);
+    const maValuesWithDate = maValues.slice(firstNonNullIndex).map((value, i) => ({ date: mathData[i + firstNonNullIndex].date, value }));
+    if (params.type === 'SMA') {
+      maData.SMAs.push({
+        name: params.name,
+        period: params.period,
+        offset: params.offset,
+        type: params.type,
+        color: params.color,
+        values: maValuesWithDate,
+      });
+    } else if (params.type === 'EMA') {
+      maData.EMAs.push({
+        name: params.name,
+        period: params.period,
+        offset: params.offset,
+        type: params.type,
+        color: params.color,
+        values: maValuesWithDate,
+      });
+    }
+  });
+  return maData;
 }
 
 function calculateMA(data, period, type) {

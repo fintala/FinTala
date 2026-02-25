@@ -16,8 +16,7 @@ let dragAccumulator = 0;
 // ================================
 // CONFIG
 // ================================
-let visibleCount = 55;
-let visibleCountY = visibleCount * 2;
+let visibleCount = 60;
 
 const svg = d3.select("#chart");
 
@@ -26,7 +25,7 @@ let screenHeight = window.innerWidth;
 
 const margin = {
   top: 20,
-  right: 60,
+  right: 70,
   bottom: 30,
   left: 5
 };
@@ -34,236 +33,196 @@ const margin = {
 let datafeed = [];
 let ticker = []; 
 let fRame = [];
-const tfSpan = document.getElementById('tf-span');
 
   ticker = localStorage.getItem("symbol");
-  fRame = sessionStorage.getItem("timeframe");
     
   let cuup = ticker;
-  let timeStrech = fRame;
-
-function  checkSession() {
     
-    // handling companies
-    function stealdata() {
-
-      if (cuup === "bhl") {
-        function callBhl() {
-          if (cuup === "bhl" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/bh.json';
-            tfSpan.textContent = 'W1';
-          }
-          else if (cuup === "bhl" && timeStrech === "M1") {
-            datafeed = 'data/ohlc/m_ohlc/bh.json';
-            tfSpan.textContent = 'M1';
-          }
-          else if (cuup === "bhl" && timeStrech === "Y1") {
-            datafeed = 'data/ohlc/y_ohlc/bh.json';
-            tfSpan.textContent = 'Y1';
-          }
-          else {
-            datafeed = "data/ohlc/bh.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callBhl();
+// handling companies
+function stealData() {
+  fRame = sessionStorage.getItem("timeframe");
+  let timeStrech = fRame;
+  if (cuup === "bhl") {
+    function callBhl() {
+      if (cuup === "bhl" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/bh.json';
       }
-      if (cuup === "amw") {
-        function callAmw() {
-          if (cuup === "amw" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/airtelmw.json';
-            tfSpan.textContent = 'W1';
+      else if (cuup === "bhl" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/bh.json';
           }
-          else {
-            datafeed = "data/ohlc/airtelmw.json";
-          }
+      else if (cuup === "bhl" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/bh.json';
         }
-        callAmw();
-      }
-      if (cuup === "nbm") {
-        datafeed = "data/ohlc/nbm.json";
-      }
-      if (cuup === "ill") {
-        function callIll() {
-          if (cuup === "ill" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/illovo.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/illovo.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callIll();
-      }
-      if (cuup === "tnm") {
-        function calltnm() {
-          if (cuup === "tnm" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/tnm.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/tnm.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        calltnm();
-      }
-      if (cuup === "nitl") {
-        function callnitl() {
-          if (cuup === "nitl" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/nitl.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callnitl();
-      }
-      if (cuup === "nico") {
-        function callnico() {
-          if (cuup === "nico" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/nico.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callnico();
-      }
-      if (cuup === "nbs") {
-        function callnbs() {
-          if (cuup === "nbs" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/nbs.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callnbs();
-      }
-      if (cuup === "fdhb") {
-        function callfdhb() {
-          if (cuup === "fdhb" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/fdh.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/fdh.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callfdhb();
-      }
-      if (cuup === "fmb") {
-        function callfmb() {
-          if (cuup === "fmb" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/fmbch.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/fmbch.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callfmb();
-      }
-      if (cuup === "icon") {
-        function callicon() {
-          if (cuup === "icon" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/icon_properties.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callicon();
-      }
-      if (cuup === "omu") {
-        function callomu() {
-          if (cuup === "omu" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/oldmutual.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callomu();
-      }
-      if (cuup === "mpico") {
-        function callmpico() {
-          if (cuup === "mpico" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/mpico.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callmpico();
-      }
-      if (cuup === "pcl") {
-        function callpcl() {
-          if (cuup === "pcl" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/press_corp.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callpcl();
-      }
-      if (cuup === "stdb") {
-        function callstdb() {
-          if (cuup === "stdb" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/std_bank.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callstdb();
-      }
-      if (cuup === "sunbird") {
-        function callsunbird() {
-          if (cuup === "sunbird" && timeStrech === "W1") {
-            datafeed = 'data/ohlc/w_ohlc/nitl.json';
-            tfSpan.textContent = 'W1';
-          }
-          else {
-            datafeed = "data/ohlc/sunbird.json";
-            tfSpan.textContent = 'D1';
-          }
-        }
-        callsunbird();
+      else {
+        datafeed = "data/ohlc/bh.json";
       }
     }
-    stealdata();
-
+    callBhl();
+  }
+  if (cuup === "amw") {
+    function callAmw() {
+      if (cuup === "amw" && timeStrech === "W1") {
+      datafeed = 'data/ohlc/w_ohlc/airtelmw.json';
+          }
+      else {
+        datafeed = "data/ohlc/airtelmw.json";
+      }
+    }
+    callAmw();
+  }
+  if (cuup === "nbm") {
+    datafeed = "data/ohlc/nbm.json";
+  }
+  if (cuup === "ill") {
+    function callIll() {
+      if (cuup === "ill" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/illovo.json';
+      }
+      else {
+        datafeed = "data/ohlc/illovo.json";
+      }
+    }
+    callIll();
+  }
+  if (cuup === "tnm") {
+    function calltnm() {
+      if (cuup === "tnm" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/tnm.json';
+      }
+      else {
+        datafeed = "data/ohlc/tnm.json";
+      }
+    }
+    calltnm();
+  }
+  if (cuup === "nitl") {
+    function callnitl() {
+      if (cuup === "nitl" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/nitl.json";
+      }
+    }
+    callnitl();
+  }
+  if (cuup === "nico") {
+    function callnico() {
+      if (cuup === "nico" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/nico.json";
+      }
+    }
+    callnico();
+  }
+  if (cuup === "nbs") {
+    function callnbs() {
+      if (cuup === "nbs" && timeStrech === "W1") {
+      datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/nbs.json";
+      }
+    }
+    callnbs();
+  }
+  if (cuup === "fdhb") {
+    function callfdhb() {
+      if (cuup === "fdhb" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/fdh.json';
+      }
+      else {
+        datafeed = "data/ohlc/fdh.json";
+      }
+    }
+    callfdhb();
+  }
+  if (cuup === "fmb") {
+    function callfmb() {
+      if (cuup === "fmb" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/fmbch.json';
+      }
+      else {
+        datafeed = "data/ohlc/fmbch.json";
+      }
+    }
+    callfmb();
+  }
+  if (cuup === "icon") {
+    function callicon() {
+      if (cuup === "icon" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/icon_properties.json";
+      }
+    }
+    callicon();
+  }
+  if (cuup === "omu") {
+    function callomu() {
+      if (cuup === "omu" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/oldmutual.json";
+      }
+    }
+    callomu();
+  }
+  if (cuup === "mpico") {
+    function callmpico() {
+      if (cuup === "mpico" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/mpico.json";
+      }
+    }
+    callmpico();
+  }
+  if (cuup === "pcl") {
+    function callpcl() {
+      if (cuup === "pcl" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/press_corp.json";
+      }
+    }
+    callpcl();
+  }
+  if (cuup === "stdb") {
+    function callstdb() {
+      if (cuup === "stdb" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/std_bank.json";
+      }
+    }
+    callstdb();
+  }
+  if (cuup === "sunbird") {
+    function callsunbird() {
+      if (cuup === "sunbird" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      }
+      else {
+        datafeed = "data/ohlc/sunbird.json";
+      }
+    }
+    callsunbird();
+  }
 }
-checkSession();
-
-console.log(datafeed);
-
+stealData();
 
 // =====================
 // DATA LOADING
 // =====================
+function dataFetch() {
 fetch(datafeed)
   .then(res => res.json())
   .then(raw => {
@@ -275,6 +234,7 @@ fetch(datafeed)
       close: +d.close,
       volume: +d.volume
     }));
+    document.getElementById("chart-title").textContent = raw.symbol;
   
     window.__chartData = data; // 👈 cache once
     
@@ -285,23 +245,23 @@ fetch(datafeed)
 
     initChart(data);
   });
+}
+dataFetch();
 
 // =====================
 // STATE
 // =====================
 let startIndex = 0;
-let startIndexY = 0;
 // =====================
 // INIT
 // =====================
 function initChart(data) {
   startIndex = Math.max(0, data.length - visibleCount);
-  startIndexY = Math.max(0, data.length - visibleCountY);
-  render(window.__chartData);
-  drawTrendlines(window.__chartData)
-  drawMovingAverages(window.__chartData);
+  render(data);
+  showTrendlines();
+  drawMovingAverages(data);
   if (volumeActive == "on") {
-    Indicators(window.__chartData);
+    Indicators(data);
   }
 };
 
@@ -353,19 +313,17 @@ function render() {
   0,
   Math.min(startIndex, data.length - visibleCount)
   );
-  startIndexY = Math.max(
-  0,
-  Math.min(startIndexY, data.length - visibleCountY)
-  );
   
   const visibleData = data.slice(
     startIndex,
-    startIndex + visibleCount
-  );
-  const visibleDataY = data.slice(
-    startIndexY,
-    startIndexY + visibleCountY
-  );
+    startIndex + visibleCount);
+  // ------------------
+  // Updating Key Box
+  // ------------------
+  const firstDate = new Date(visibleData[0].date);
+  const lastDate = new Date(visibleData[visibleData.length - 1].date);
+  
+  document.getElementById("date-key").textContent = `${firstDate.getFullYear()} / ${lastDate.getFullYear()}`;
   
   // -------------------
   //  filtering candles
@@ -392,7 +350,7 @@ function render() {
       .attr("x", margin.left)
       .attr("y", margin.top)
       .attr("width", width - margin.left - margin.right)
-      .attr("height", height - margin.top - margin.bottom - 75); // - m.b - 75)
+      .attr("height", height - margin.top - margin.bottom - 105); // - m.b - 75)
   }else {
     svg.append("defs")
       .append("clipPath")
@@ -401,7 +359,7 @@ function render() {
       .attr("x", margin.left)
       .attr("y", margin.top)
       .attr("width", width - margin.left - margin.right)
-      .attr("height", height - margin.top - margin.bottom -15); // - m.b - 75)
+      .attr("height", height - margin.top - margin.bottom -50); // - m.b - 75)
   }
   
   candleLayer.attr("clip-path", "url(#clip)");
@@ -411,17 +369,18 @@ function render() {
   // =====================
     x
     .domain(visibleData.map(d => d.date))
-    .range([margin.left, width - margin.right - 15])
+    .range([margin.left + 10, width - margin.right - 15])
     .paddingInner(0.3)
     .paddingOuter(0.15);
   
   const minY = d3.min(visibleData, d => d.low);
-  const maxY = d3.max(visibleDataY, d => d.high);
-  const padding = (maxY - minY) * 0.1; // 10% padding
+  const maxY = d3.max(visibleData, d => d.high);
+  const padding = (maxY - minY) * 0.10; // 10% padding
+  
   
   const y = d3.scaleLinear()
     .domain([minY - padding, maxY + padding])
-    .range([height - (margin.bottom + (volumeActive === "on" ? 75 : 15)), margin.top]);
+    .range([height - (margin.bottom + (volumeActive === "on" ? 105 : 50)), margin.top]);
   
   const candleWidth = x.bandwidth();
   
@@ -429,45 +388,42 @@ function render() {
   // AXES
   // =====================
   axisLayer.append("g")
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .style("opacity", "0.7")
+    .attr("class", "x-axes")
+    .attr("transform", `translate(0,${height - (margin.bottom + 45)})`)
     .call(
       d3.axisBottom(x)
       .tickValues(
-        visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
+        visibleData.filter((_, i) => i % 10 === 3).map(d => d.date)
       )
-      .tickFormat(d3.timeFormat("%d %b '%y"))
+      .tickFormat(d3.timeFormat("%d %b"))
     );
+  axisLayer.selectAll("text")
+    .style("font-size", "0.7rem");
   
-  overlayLayer.append("line")
-    .attr("x1", margin.left)
-    .attr("x2", width - margin.right)
-    .attr("y1", height - margin.bottom)
-    .attr("y2", height - margin.bottom)
-    .attr("stroke", "black");
-  
+  axisLayer.append("g")
+    .attr("transform", `translate(${width - margin.right},0)`)
+    .attr("class", "y-axes")
+    .style("opacity", "0.7")
+    .call(d3.axisRight(y)
+      .ticks(3)
+      .tickFormat(d => d3.format(".2f")(d))
+    );
+    axisLayer.selectAll(".domain")
+    .attr("stroke", "transparent");
+    
   overlayLayer.append("rect")
     .attr("x", width - margin.right)
     .attr("y", 0)
     .attr("width", margin.right)
     .attr("height", height)
-    .attr("fill", "hsl(0, 0%, 96%");
+    .attr("fill", "transparent");
     
-  if (volumeActive !== "on") {
-    overlayLayer.append("line")
-      .attr("x1", width - margin.right)
-      .attr("x2", width - margin.right)
-      .attr("y1", margin.top)
-      .attr("y2", height - margin.bottom)
-      .attr("stroke", "black");
-  }
-  
-  overlayLayer.append("g")
-    .attr("transform", `translate(${width - margin.right},0)`)
-    .style("opacity", "0.7")
-    .call(d3.axisRight(y)
-      .tickFormat(d => d3.format(".2f")(d))
-    );
+  overlayLayer.append("rect")
+    .attr("x", width - margin.right - 1)
+    .attr("y", height - (margin.bottom + 51))
+    .attr("width", margin.right + 1)
+    .attr("height", 50)
+    .attr("fill", "hsl(0, 0%, 98%)");
     
   candleLayer.selectAll("*").remove();
   
@@ -487,7 +443,8 @@ function render() {
       .attr("x2", d => x(d.date) + candleWidth / 2)
       .attr("y1", d => y(d.high))
       .attr("y2", d => y(d.low))
-      .attr("stroke", "black");
+      .attr("stroke", "black")
+      .attr("stroke-width", "0.6");
     
     // =====================
     // BODIES
@@ -498,6 +455,8 @@ function render() {
       .attr("class", "body")
       .attr("x", d => x(d.date))
       .attr("y", d => y(Math.max(d.open, d.close)))
+      .attr("rx", "1.4")
+      .attr("ry", "1.4")
       .attr("width", candleWidth)
       .attr("height", d =>
         Math.max(1, Math.abs(y(d.open) - y(d.close)))
@@ -538,16 +497,19 @@ function render() {
     .attr("stroke-dasharray", "4 2")
     .style("opacity", "0.8");
     
-  overlayLayer.append("rect")
+  axisLayer.append("rect")
     .attr("x", width - margin.right) // position it a bit to the right of the chart
     .attr("y", y(d3.min(currentCandle, d => d.close)) - 10)
+    .attr("rx", "1.4")
+    .attr("ry", "1.4")
     .attr("width", margin.right - 2)
     .attr("height", 20)
     .attr("fill", colorFf)
     .attr("stroke", "black")
     .attr("stroke-width", "0.3");
   
-  overlayLayer.append("text")
+  axisLayer.append("text")
+    .attr("class", "close-text")
     .data(currentCandle)
     .attr("x", width - margin.right + 3)
     .attr("y", y(d3.min(currentCandle, d => d.close)) + 5)
@@ -564,10 +526,10 @@ function render() {
   // =====================
   overlay
     .attr("x", margin.left)
-    .attr("y", margin.top)
+    .attr("y", margin.top - 10)
     .attr("width", width - margin.left - margin.right)
-    .attr("height", height - margin.top - margin.bottom)
-    .attr("fill", "transparent")
+    .attr("height", height - margin.top - margin.bottom - 35)
+    .attr("fill", "rgba(225, 225, 255, 0.2)")
     .style("cursor", "grab")
     .style("pointer-events", "all");
   
@@ -591,21 +553,23 @@ function render() {
             Math.min(startIndex, data.length - visibleCount)
           );
   
-          dragAccumulator -= shift * pixelsPerCandle;
-      
+          dragAccumulator -= (shift * pixelsPerCandle)/3;
+          
           axisLayer.selectAll("*").remove();
           chartLayer.selectAll("rect").remove();
           candleLayer.selectAll("line").remove();
+          root.selectAll("line.renders").remove();
           
           render(data);
-          drawMovingAverages(window.__chartData);
+          drawMovingAverages(data);
+          showTrendlines();
           if (volumeActive == "on") {
           Indicators(data);
           }
           
         }
       })
-      .on("end", () => overlay.style("cursor", "grab"))
+      .on("end", () => {overlay.style("cursor", "grab")})
   );
   
   // =====================
@@ -631,7 +595,7 @@ function Indicators () {
   );
 
   const volume = {
-    top: margin.bottom + 65
+    top: margin.bottom + 50
   }
   
   const visibleData = data.slice(
@@ -648,8 +612,8 @@ function Indicators () {
     x
     .domain(visibleData.map(d => d.date))
     .range([margin.left, width - margin.right - 15])
-    .paddingInner(0.3)
-    .paddingOuter(0.15);
+    .paddingInner(0.32)
+    .paddingOuter(0.12);
   
     yy
     .domain([
@@ -664,12 +628,15 @@ function Indicators () {
   // ===========================
   //  Chart Indicator Separator
   // ===========================
+  overlayLayer.selectAll("*").remove();
   overlayLayer.append("line")
+    .attr("class", "volume-line")
     .attr("x1", margin.left)
     .attr("x2", width - margin.right - 15)
-    .attr("y1", height - volume.top)
-    .attr("y2", height - volume.top)
-    .attr("stroke", "darkblue");
+    .attr("y1", height - margin.bottom - volume.top - 16)
+    .attr("y2", height - margin.bottom - volume.top - 16)
+    .attr("stroke", "darkblue")
+    .attr("stroke-width", "0.1");
     
   // ============
   //  Axes
@@ -677,17 +644,17 @@ function Indicators () {
   axisLayer.append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`)
     .style("color", "blue")
-    .style("opacity", "0")
+    .style("display", "none")
     .call(
       d3.axisBottom(x)
       .tickValues(
-        visibleData.filter((_, i) => i % 5 === 0).map(d => d.date)
+        visibleData.filter((_, i) => i % 10 === 0).map(d => d.date)
       )
       .tickFormat(d3.timeFormat("%d %b '%y"))
     );
     
   overlayLayer.append("g")
-  .attr("transform", `translate(${width - margin.right}, ${volume.top + 156})`)
+  .attr("transform", `translate(${width - margin.right}, ${height - margin.bottom - volume.top - 46})`)
   .call(d3.axisRight(yy)
     .ticks(3)
     .tickSize(4)
@@ -698,180 +665,180 @@ function Indicators () {
   //  Bars
   // =============
   chartLayer.append("rect")
+    .attr("class", "volume-rect")
     .attr("x", margin.left)
-    .attr("y", height - volume.top - 2)
+    .attr("y", height - margin.bottom - volume.top - 16)
     .attr("width", width - margin.left - margin.right - 14)
     .attr("height",volume.top - 29)
-    .attr("fill", "rgba(255, 255, 255, 0.5)");
+    .attr("fill", "rgba(255, 255, 255, 0.6)");
   
   const barLayer = chartLayer.append("g");
   barLayer.selectAll(".body")
   .data(visibleData)
   .join("rect")
-  .attr("class", "body")
-  .attr("x", d => x(d.date) + 4 - barWidth * 0.5) // adjust x to center the bar
+  .attr("class", "volume-body")
+  .attr("x", d => x(d.date))
   .attr("y", d => yy(0) + yy(d.volume) + volume.top + 37)
+  .attr("rx", "1.1")
+  .attr("ry", "1.1")
   .attr("width", barWidth)
   .attr("height", d => yy(0) - yy(d.volume))
   .attr("fill", "magenta")
   .attr("stroke", "black")
-  .style("transform", "translateY(1.5rem)");
+  .style("transform", "translateY(1.4rem)");
 
 }
 
 // ==============
 // Control Panel
 // ==============
-const navBtn = document.getElementById('logo');
-const toolsWrap = document.getElementById('toolsWrap');
-const tfWrap = document.getElementById('tfWrap');
 const chartOverlay = document.getElementById('chartOverlay');
 const coWrap = document.getElementById('co-wrap');
 const drawWrap = document.getElementById('drawWrap');
 const indicatorWrap = document.getElementById('indicatorWrap');
 const chartSettings = document.getElementById('chartSettings');
 const overlayExit = document.createElement('div');
-    overlayExit.style.cssText = `
-    position: absolute;
-    right: 0;
-    top: 45.5vh;
-    height: calc(100vh - 45.5vh);
-    width: 100vw;
-    background: transparent;
-    `;
+overlayExit.style.cssText = `
+  position: absolute;
+  right: 0;
+  top: 45.5vh;
+  height: calc(100vh - 45.5vh);
+  width: 100vw;
+  background: transparent;
+  `;
 
-let initialClick = 1;
-const coverClick = {one: 2, two: 1};
-function callTools() {
-  
-  if (initialClick == 1) {
-    toolsWrap.style.display = 'none';
-    navBtn.style.opacity = 1;
-    initialClick = coverClick.one;
-    setTimeout (() => {
-      navBtn.style.opacity = 0.5;
-      initialClick = coverClick.two;
-    }, 5000);
-  } else if (initialClick == 2) {
-    toolsWrap.style.display = 'block';
-    tfWrap.style.display = 'none';
-    navBtn.style.opacity = 1;
-    setTimeout (()=> {
-      navBtn.style.opacity = 0.5;
-    }, 5000);
-    initialClick = coverClick.two;
-  }
-}
-
-navBtn.addEventListener("click", (e) => {
-  
-  callTools(e);
-  
-  // Closing the panel
-  function closeTool() {
-    toolsWrap.style.display = 'none';
-    tfWrap.style.display = 'none';
-    navBtn.style.opacity = 0.5;
-  }
-  
-  toolsExit.addEventListener("click", (e) => { 
-      e.stopPropagation();
-      closeTool();
-    });
-  
-  // Timeframe
-  timeframe.addEventListener("click", (e) => {
-    e.stopPropagation();
-    tfWrap.style.display = 'flex';
+// Timeframe
+const timlineBtns = document.querySelectorAll(".chart-timeline");
+const da = document.getElementById('tfwa');
+da.style.background = "white";
+da.addEventListener ('click', (e) => {
+  e.stopPropagation();
+  window.sessionStorage.setItem("timeframe", "");
+  timlineBtns.forEach(button => {
+    button.style.background = "";
   });
+  da.style.background = "white";
+  axisLayer.select("rect").remove();
+  axisLayer.select("text.close-text").remove();
+  root.selectAll(".y-axes").remove();
+  root.selectAll(".x-axes").remove();
+  chartLayer.selectAll(".volume-body"). remove();
+  root.selectAll(".volume-line"). remove();
+  root.selectAll(".volume-rect"). remove();
+  stealData();
+  dataFetch();
+});
+const db = document.getElementById('tfwb');
+db.addEventListener ('click', (e) => {
+  e.stopPropagation();
+  window.sessionStorage.setItem("timeframe", "W1");
+  timlineBtns.forEach(button => {
+    button.style.background = "";
+  });
+  db.style.background = "white";
+  axisLayer.select("rect").remove();
+  axisLayer.select("text.close-text").remove();
+  root.selectAll(".y-axes").remove();
+  root.selectAll(".x-axes").remove();
+  chartLayer.selectAll(".volume-body").remove();
+  root.selectAll(".volume-line"). remove();
+  root.selectAll(".volume-rect"). remove();
+  stealData();
+  dataFetch();
+});
+const dc = document.getElementById('tfwc');
+dc.addEventListener ('click', (e) => {
+  e.stopPropagation();
+  window.sessionStorage.setItem("timeframe", "M1");
+  timlineBtns.forEach(button => {
+    button.style.background = "";
+  });
+  dc.style.background = "white";
+  axisLayer.select("rect").remove();
+  axisLayer.select("text.close-text").remove();
+  root.selectAll(".y-axes").remove();
+  root.selectAll(".x-axes").remove();
+  chartLayer.selectAll(".volume-body").remove();
+  root.selectAll(".volume-line"). remove();
+  root.selectAll(".volume-rect"). remove();
+  stealData();
+  dataFetch();
+});
+const dd = document.getElementById('tfwd');
+dd.addEventListener ('click', (e) => {
+  e.stopPropagation();
+  window.sessionStorage.setItem("timeframe", "Y1");
+  timlineBtns.forEach(button => {
+    button.style.background = "";
+  });
+  dd.style.background = "white";
+  axisLayer.select("rect").remove();
+  axisLayer.select("text.close-text").remove();
+  root.selectAll(".y-axes").remove();
+  root.selectAll(".x-axes").remove();
+  chartLayer.selectAll(".volume-body").remove();
+  root.selectAll(".volume-line"). remove();
+  root.selectAll(".volume-rect"). remove();
+  stealData();
+  dataFetch();
+});
   
-  const da = document.getElementById('tfwa').addEventListener ('click', (e) => {
+// Drawings overlay
+drawingTools.addEventListener("click", (e) => {
+  e.stopPropagation();
+  chartOverlay.style.display = 'block';
+  coWrap.style.display = 'flex';
+  drawWrap.style.display = 'flex';
+  indicatorWrap.style.display = 'none';
+  chartOverlay.appendChild(overlayExit);
+    
+  // Closing Overlay
+  overlayExit.addEventListener("click", (e) => {
     e.stopPropagation();
-    
-    window.sessionStorage.setItem("timeframe", "");
-    tfSpan.textContent = 'D1';
-    checkSession();
-    window.location.reload();
-    closeTool();
+    chartOverlay.style.display = 'none';
   });
-  const db = document.getElementById('tfwb').addEventListener ('click', (e) => {
-    e.stopPropagation();
-    
-    window.sessionStorage.setItem("timeframe", "W1");
-    checkSession();
-    window.location.reload();
-      
-      console.log(datafeed);
-    closeTool();
-  });
-  const dc = document.getElementById('tfwc').addEventListener ('click', (e) => {
-    e.stopPropagation();
-    window.sessionStorage.setItem("timeframe", "M1");
-    checkSession();
-    window.location.reload();
-    
-    tfSpan.textContent = 'M1';
-    closeTool();
-  });
-  const dd = document.getElementById('tfwd').addEventListener ('click', (e) => {
-    e.stopPropagation();
-    
-    window.sessionStorage.setItem("timeframe", "Y1");
-    checkSession();
-    window.location.reload();
-    
-    closeTool();
-  });
+});
   
-  // Drawings overlay
-  drawingTools.addEventListener("click", (e) => {
-    e.stopPropagation();
-    chartOverlay.style.display = 'block';
-    coWrap.style.display = 'flex';
-    drawWrap.style.display = 'flex';
-    indicatorWrap.style.display = 'none';
-    chartOverlay.appendChild(overlayExit);
-    closeTool();
+// Indicators Overlay
+tIndicators.addEventListener("click", (e) => {
+  e.stopPropagation();
+  chartOverlay.style.display = 'block';
+  coWrap.style.display = 'flex';
+  drawWrap.style.display = 'none';
+  indicatorWrap.style.display = 'flex';
+  chartOverlay.appendChild(overlayExit);
     
     // Closing Overlay
-    overlayExit.addEventListener("click", (e) => {
-      e.stopPropagation();
-      chartOverlay.style.display = 'none';
-    });
-  });
-  
-  // Indicators Overlay
-  tIndicators.addEventListener("click", (e) => {
+  overlayExit.addEventListener("click", (e) => {
     e.stopPropagation();
-    chartOverlay.style.display = 'block';
-    coWrap.style.display = 'flex';
-    drawWrap.style.display = 'none';
-    indicatorWrap.style.display = 'flex';
-    chartOverlay.appendChild(overlayExit);
-    closeTool();
-    
-    // Closing Overlay
-    overlayExit.addEventListener("click", (e) => {
-      e.stopPropagation();
-      chartOverlay.style.display = 'none';
-    });
+    chartOverlay.style.display = 'none';
   });
 });
 
 // ===============
 // Graph Toggle
 // ===============
+const graphA = document.getElementById('graphA');
+const graphB = document.getElementById('graphB');
+let isGraphA = true;
 graph.addEventListener("click", (e) => {
   e.stopPropagation();
+  if (isGraphA) {
+    graphA.src = graphB.src;
+    graphB.src = 'assets/ui/chart_candle.png';
+  } else {
+    graphB.src = graphA.src;
+    graphA.src = 'assets/ui/chart-line-smooth.svg';
+  }
+  isGraphA = !isGraphA;
   chartType = chartType === "candlestick" ? "line" : "candlestick";
-    toolsWrap.style.display = 'none';
-    render(window.__chartData);
-    drawMovingAverages(window.__chartData);
-    if (volumeActive == "on") {
-    Indicators(window.__chartData);
-    }
-    console.log("chartType:", chartType);
-  });
+  axisLayer.selectAll("*").remove();
+  render(window.__chartData);
+  drawMovingAverages(window.__chartData);
+  if (volumeActive == "on") {
+  Indicators(window.__chartData);
+  }
+});
   
 // =================
 //  Settings Button
@@ -879,7 +846,6 @@ graph.addEventListener("click", (e) => {
 chartSettings.addEventListener("click", (e) => {
   openAlert();
   alertField.textContent = 'The FinTala team is working on bringing more features. Chart settings coming soon.';
-  alertClose();
 });
 
 
@@ -912,6 +878,28 @@ if (usertype !== "olduser") {
     localStorage.setItem("usertype", "olduser");
   });
 }
+
+const trendlineToolBtn = document.getElementById("trendline");
+trendlineToolBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  coWrap.style.display = 'none';
+  const tlContainer = document.getElementById('tl-block');
+  tlContainer.style.display = 'flex';
+  const tlClose = document.getElementById('tl-close');
+  const tlEdit = document.getElementById('tl-edit');
+  tlClose.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    tlContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+  });
+  tlEdit.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    drawing = true;
+    tlContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+    drawTrendlines();
+  });
+});
 
 const rsi = document.getElementById('rsi').addEventListener("click", (e) => {
   e.stopPropagation();

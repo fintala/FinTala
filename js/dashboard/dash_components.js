@@ -1,7 +1,36 @@
 // Stock Indices
 const indexTimeframe= [d3.json('data/indices/market.json'), d3.json('data/indices/w_market.json'), d3.json('data/indices/m1_market.json'), d3.json('data/indices/m4_market.json'), d3.json('data/indices/y_market.json')];
 
+// widget values fisrt
+fetch('data/indices/market.json')
+  .then(idx => idx.json())
+  .then(idx => {
+    data = idx.index.map(d => ({
+      date: new Date(d.date),
+      masi: +d.masi,
+      dsi: +d.dsi,
+      fsi: +d.fsi
+    }));
+    const currentM = data[data.length - 1].masi;
+    const currentD = data[data.length - 1].dsi;
+    const currentF = data[data.length - 1].masi;
+    setTimeout(()=>{
+      document.getElementById("widget-masi").textContent = (currentM).toLocaleString('en', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      document.getElementById("widget-dsi").textContent = (currentD).toLocaleString('en', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      document.getElementById("widget-fsi").textContent = (currentF).toLocaleString('en', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }, 2135);
+  });
 
+//indices section
 Promise.allSettled(indexTimeframe).then((results) => {
     const dataArray = results.map((result) => {
       if (result.status === 'fulfilled') {
@@ -202,7 +231,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
     const wIdth = 330 - edge.left - edge.right;
     const hEight = 125 - edge.top - edge.bottom;
     
-    const visibleCount = 25;
+    const visibleCount = 15;
     let startIndex = 0;
     const visibleData = indexData.slice(-visibleCount);
     
@@ -259,7 +288,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .style('opacity', '0.7')
         .call(d3.axisBottom(x)
           .tickValues(
-            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+            visibleData.filter((_, i) => i % 5 === 1).map(d => d.date)
           )
         .tickSize(3)
       )
@@ -272,6 +301,8 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .attr("class", "body")
         .attr("x", d => x(d.date)) // adjust x to center the bar
         .attr("y", d => masiY(d.masi))
+        .attr("rx", "1.1")
+        .attr("ry", "1.1")
         .attr("width", barWidth)
         .attr("height", d => Math.abs(masiY(0) - masiY(d.masi))
         )
@@ -303,7 +334,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .style('opacity', '0.7')
         .call(d3.axisBottom(x)
           .tickValues(
-            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+            visibleData.filter((_, i) => i % 5 === 1).map(d => d.date)
           )
         .tickSize(3)
       )
@@ -348,7 +379,7 @@ Promise.allSettled(indexTimeframe).then((results) => {
         .style('opacity', '0.7')
         .call(d3.axisBottom(x)
           .tickValues(
-            visibleData.filter((_, i) => i % 2 === 0).map(d => d.date)
+            visibleData.filter((_, i) => i % 5 === 1).map(d => d.date)
           )
         .tickSize(3)
       )
@@ -502,6 +533,9 @@ Promise.allSettled(indexTimeframe).then((results) => {
   // ======================
   //   Shifting Timelines
   // ======================
+  const indexAnnualyButton = document.getElementById('idxDe');
+  const indexQuarterlyButton = document.getElementById('idxDd');
+  const indexMonthlyButton = document.getElementById('idxDc');
   const indexWeeklyButton = document.getElementById('idxDb');
   const indexDailyButton = document.getElementById('idxDa');
   const indexButtons = document.querySelectorAll('.index-button');
@@ -532,6 +566,39 @@ Promise.allSettled(indexTimeframe).then((results) => {
     indexData = dataArray[1].index;
     
     indexWeeklyButton.style.background = 'white';
+      renderIndexBars();
+      renderIndexPies();
+  });
+  indexMonthlyButton.addEventListener("click", () => {
+    masi = dataArray[2].index.map(d => d.masi);
+    dsi = dataArray[2].index.map(d => d.dsi);
+    fsi = dataArray[2].index.map(d => d.fsi);
+      
+    indexData = dataArray[2].index;
+    
+    indexMonthlyButton.style.background = 'white';
+      renderIndexBars();
+      renderIndexPies();
+  });
+  indexQuarterlyButton.addEventListener("click", () => {
+    masi = dataArray[3].index.map(d => d.masi);
+    dsi = dataArray[3].index.map(d => d.dsi);
+    fsi = dataArray[3].index.map(d => d.fsi);
+      
+    indexData = dataArray[3].index;
+    
+    indexQuarterlyButton.style.background = 'white';
+      renderIndexBars();
+      renderIndexPies();
+  });
+  indexAnnualyButton.addEventListener("click", () => {
+    masi = dataArray[4].index.map(d => d.masi);
+    dsi = dataArray[4].index.map(d => d.dsi);
+    fsi = dataArray[4].index.map(d => d.fsi);
+      
+    indexData = dataArray[4].index;
+    
+    indexAnnualyButton.style.background = 'white';
       renderIndexBars();
       renderIndexPies();
   });

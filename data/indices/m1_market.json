@@ -1,13 +1,13 @@
 {
-  "name": "Daily Stock-Exchange-Indices",
+  "name": "Monthly Stock-Exchange-Indices",
   "exchange": "MSE",
   "index": [
-    { "date": "2026-02-29", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-01-30", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-02-02", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-02-04", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-02-05", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-02-06", "masi": null, "dsi": null, "fsi": null },
-    { "date": "2026-02-09", "masi": null, "dsi": null, "fsi": null }
+    { "date": "2025-07-31", "masi": 386281.85, "dsi": 289041.04, "fsi": 69606.94 },
+    { "date": "2025-08-29", "masi": 535303.19, "dsi": 412549.45, "fsi": 81906.38 },
+    { "date": "2025-09-30", "masi": 579212.79, "dsi": 441898.89, "fsi": 94071.23 },
+    { "date": "2025-10-31", "masi": 602600.89, "dsi": 437930.45, "fsi": 124300.17 },
+    { "date": "2025-11-30", "masi": 619709.36, "dsi": 417628.19, "fsi": 167481.69 },
+    { "date": "2025-12-31", "masi": 598062.80, "dsi": 405749.03, "fsi": 158350.47 },
+    { "date": "2026-01-30", "masi": 588918.94, "dsi": 406964.07, "fsi": 146972.95 }
   ]
 }
