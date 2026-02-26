@@ -19,7 +19,7 @@ let ticker = [];
 bhl.addEventListener('click', () => {
   ticker = 'bhl';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
   }, 200);
@@ -28,7 +28,7 @@ bhl.addEventListener('click', () => {
 amw.addEventListener('click', () => {
   ticker = 'amw';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -37,7 +37,7 @@ amw.addEventListener('click', () => {
 nbm.addEventListener('click', () => {
   ticker = 'nbm';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -46,7 +46,7 @@ nbm.addEventListener('click', () => {
 ill.addEventListener('click', () => {
   ticker = 'ill';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -55,7 +55,7 @@ ill.addEventListener('click', () => {
 tnm.addEventListener('click', () => {
   ticker = 'tnm';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -64,7 +64,7 @@ tnm.addEventListener('click', () => {
 nitl.addEventListener('click', () => {
   ticker = 'nitl';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -73,7 +73,7 @@ nitl.addEventListener('click', () => {
 nico.addEventListener('click', () => {
   ticker = 'nico';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -82,7 +82,7 @@ nico.addEventListener('click', () => {
 nbs.addEventListener('click', () => {
   ticker = 'nbs';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -91,7 +91,7 @@ nbs.addEventListener('click', () => {
 fdhb.addEventListener('click', () => {
   ticker = 'fdhb';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -100,7 +100,7 @@ fdhb.addEventListener('click', () => {
 fmb.addEventListener('click', () => {
   ticker = 'fmb';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -109,7 +109,7 @@ fmb.addEventListener('click', () => {
 icon.addEventListener('click', () => {
   ticker = 'icon';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -118,7 +118,7 @@ icon.addEventListener('click', () => {
 omu.addEventListener('click', () => {
   ticker = 'omu';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -127,7 +127,7 @@ omu.addEventListener('click', () => {
 mpico.addEventListener('click', () => {
   ticker = 'mpico';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -136,7 +136,7 @@ mpico.addEventListener('click', () => {
 pcl.addEventListener('click', () => {
   ticker = 'pcl';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -145,7 +145,7 @@ pcl.addEventListener('click', () => {
 stdb.addEventListener('click', () => {
   ticker = 'stdb';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);
@@ -154,7 +154,7 @@ stdb.addEventListener('click', () => {
 sunbird.addEventListener('click', () => {
   ticker = 'sunbird';
   localStorage.setItem("symbol", ticker);
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   setTimeout ( () => {
     window.location.href = 'charts.html';
  }, 200);

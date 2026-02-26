@@ -40,7 +40,7 @@ let fRame = [];
     
 // handling companies
 function stealData() {
-  fRame = sessionStorage.getItem("timeframe");
+  fRame = localStorage.getItem("timeframe");
   let timeStrech = fRame;
   if (cuup === "bhl") {
     function callBhl() {
@@ -713,7 +713,7 @@ const da = document.getElementById('tfwa');
 da.style.background = "white";
 da.addEventListener ('click', (e) => {
   e.stopPropagation();
-  window.sessionStorage.setItem("timeframe", "");
+  window.localStorage.setItem("timeframe", "");
   timlineBtns.forEach(button => {
     button.style.background = "";
   });
@@ -731,7 +731,7 @@ da.addEventListener ('click', (e) => {
 const db = document.getElementById('tfwb');
 db.addEventListener ('click', (e) => {
   e.stopPropagation();
-  window.sessionStorage.setItem("timeframe", "W1");
+  window.localStorage.setItem("timeframe", "W1");
   timlineBtns.forEach(button => {
     button.style.background = "";
   });
@@ -749,7 +749,7 @@ db.addEventListener ('click', (e) => {
 const dc = document.getElementById('tfwc');
 dc.addEventListener ('click', (e) => {
   e.stopPropagation();
-  window.sessionStorage.setItem("timeframe", "M1");
+  window.localStorage.setItem("timeframe", "M1");
   timlineBtns.forEach(button => {
     button.style.background = "";
   });
@@ -767,7 +767,7 @@ dc.addEventListener ('click', (e) => {
 const dd = document.getElementById('tfwd');
 dd.addEventListener ('click', (e) => {
   e.stopPropagation();
-  window.sessionStorage.setItem("timeframe", "Y1");
+  window.localStorage.setItem("timeframe", "Y1");
   timlineBtns.forEach(button => {
     button.style.background = "";
   });

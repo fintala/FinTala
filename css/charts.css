@@ -181,90 +181,8 @@ body {
 /* ==================
 /  TOOLs DASHBOARD
 /  ================*/
-#toolsWrap {
-  top: 8vh;
-  right: 5.5vw;
-  height: 80vh;
-  width: 100px;
-  position: absolute;
-  background-color: rgba(16, 16, 16, 0.75);
-  z-index: 1000;
-  overflow-x: hidden;
-  overflow-y: auto;
-  box-shadow: -1px 2px 2px 0 black;
-  border: 1px solid lightskyblue;
-  border-radius: 5px;
-  display: none; /* block */
-}
-
-.tools {
-  top: 0;
-  left: 0;
-  position: relative;
-  height: 100%;
-  min-width: 100%;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  overflow-x: auto;
-}
-
-.tools span {
-  background: rgba(255, 255, 255, 1);
-  height: 48px;
-  width: 48px;
-  border: 1px solid black;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.tools span img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  transform: scale(0.6) rotate(90deg);
-}
-
 #graphB {
   display: none;
-}
-
-#tfWrap {
-  top: 20vh;
-  left: 40vw;
-  height: 55vh;
-  width: 60px;
-  position: fixed;
-  display: none; /* flex */
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: -1px 2px 2px 0 black;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  justify-content: space-evenly;
-  align-items: center;
-  z-index: 1000;
-}
-
-#tfWrap span {
-  color: white;
-  border: 1px solid lightskyblue;
-  background: rgba(0, 0, 0, 0.95);
-  transform: rotate(90deg);
-  transform-origin: center;
-}
-
-#tfWrapL span {
-  color: white;
-  border: 1px solid lightskyblue;
-  background: rgba(0, 0, 0, 0.95);
 }
 
 /* =========================
@@ -413,6 +331,15 @@ body {
   right: 0.5rem;
   font-size: 1.1rem;
   font-weight: 400;
+}
+
+.tledit-submit {
+  bottom: 1rem;
+  left: 1rem;
+  height: 1rem;
+  width: 2rem;
+  background: blue;
+  position: fixed;
 }
 
 .trendline {
