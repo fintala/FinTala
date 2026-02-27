@@ -377,7 +377,10 @@ function drawMovingAverages() {
       )
       .attr("d", line);
   });
-  
+}
+const forceMas = drawMovingAverages();
+if (!forceMas) {
+  drawMovingAverages();
 }
 
 function calculateMAData() {

@@ -523,16 +523,21 @@ function showTrendlines() {
 
   root.selectAll(".renders").attr("clip-path", "url(#clipp)");
 }
-showTrendlines();
+const  forceTls = showTrendlines();
+if (!forceTls) {
+  showTrendlines();
+}
 
 function calculateTrendlineData(tlData) {
   const x1 = new Date(tlData.x1);
   const x2 = new Date(tlData.x2);
   const y1 = parseFloat(tlData.y1);
   const y2 = parseFloat(tlData.y2);
-
   const slope = (y2 - y1) / ((x2 - x1) / (86400000));
   const intercept = y1 - slope * (x1.getTime() / 86400000);
-
   return { slope, intercept };
 }
+
+// ==============
+//  Trendlines
+// ==============

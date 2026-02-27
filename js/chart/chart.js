@@ -38,10 +38,31 @@ let fRame = [];
     
   let cuup = ticker;
     
+  const timlineBtns = document.querySelectorAll(".chart-timeline");
+  const da = document.getElementById('tfwa');
+  const db = document.getElementById('tfwb');
+  const dc = document.getElementById('tfwc');
+  const dd = document.getElementById('tfwd');
 // handling companies
 function stealData() {
   fRame = localStorage.getItem("timeframe");
   let timeStrech = fRame;
+  // setting button flairs
+  timlineBtns.forEach(btn => {
+    btn.style.background = ''; 
+  })
+  if (fRame === "") {
+    da.style.background = "white";
+  }
+  if (fRame === "W1") {
+    db.style.background = "white";
+  }
+  if (fRame === "M1") {
+    dc.style.background = "white";
+  }
+  if (fRame === "Y1") {
+    dd.style.background = "white";
+  }
   if (cuup === "bhl") {
     function callBhl() {
       if (cuup === "bhl" && timeStrech === "W1") {
@@ -258,8 +279,8 @@ let startIndex = 0;
 function initChart(data) {
   startIndex = Math.max(0, data.length - visibleCount);
   render(data);
+  drawMovingAverages();
   showTrendlines();
-  drawMovingAverages(data);
   if (volumeActive == "on") {
     Indicators(data);
   }
@@ -708,16 +729,9 @@ overlayExit.style.cssText = `
   `;
 
 // Timeframe
-const timlineBtns = document.querySelectorAll(".chart-timeline");
-const da = document.getElementById('tfwa');
-da.style.background = "white";
 da.addEventListener ('click', (e) => {
   e.stopPropagation();
   window.localStorage.setItem("timeframe", "");
-  timlineBtns.forEach(button => {
-    button.style.background = "";
-  });
-  da.style.background = "white";
   axisLayer.select("rect").remove();
   axisLayer.select("text.close-text").remove();
   root.selectAll(".y-axes").remove();
@@ -728,14 +742,9 @@ da.addEventListener ('click', (e) => {
   stealData();
   dataFetch();
 });
-const db = document.getElementById('tfwb');
 db.addEventListener ('click', (e) => {
   e.stopPropagation();
   window.localStorage.setItem("timeframe", "W1");
-  timlineBtns.forEach(button => {
-    button.style.background = "";
-  });
-  db.style.background = "white";
   axisLayer.select("rect").remove();
   axisLayer.select("text.close-text").remove();
   root.selectAll(".y-axes").remove();
@@ -746,14 +755,9 @@ db.addEventListener ('click', (e) => {
   stealData();
   dataFetch();
 });
-const dc = document.getElementById('tfwc');
 dc.addEventListener ('click', (e) => {
   e.stopPropagation();
   window.localStorage.setItem("timeframe", "M1");
-  timlineBtns.forEach(button => {
-    button.style.background = "";
-  });
-  dc.style.background = "white";
   axisLayer.select("rect").remove();
   axisLayer.select("text.close-text").remove();
   root.selectAll(".y-axes").remove();
@@ -764,14 +768,9 @@ dc.addEventListener ('click', (e) => {
   stealData();
   dataFetch();
 });
-const dd = document.getElementById('tfwd');
 dd.addEventListener ('click', (e) => {
   e.stopPropagation();
   window.localStorage.setItem("timeframe", "Y1");
-  timlineBtns.forEach(button => {
-    button.style.background = "";
-  });
-  dd.style.background = "white";
   axisLayer.select("rect").remove();
   axisLayer.select("text.close-text").remove();
   root.selectAll(".y-axes").remove();
@@ -814,7 +813,6 @@ tIndicators.addEventListener("click", (e) => {
     chartOverlay.style.display = 'none';
   });
 });
-
 // ===============
 // Graph Toggle
 // ===============
@@ -878,6 +876,30 @@ if (usertype !== "olduser") {
     localStorage.setItem("usertype", "olduser");
   });
 }
+
+// Visual Indicators
+const horLineToolBtn = document.getElementById("hol-line");
+horLineToolBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  coWrap.style.display = 'none';
+  const hlContainer = document.getElementById('hl-block');
+  hlContainer.style.display = 'flex';
+  const hlClose = document.getElementById('hl-close');
+  const hlEdit = document.getElementById('hl-edit');
+  hlClose.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    t
+    hlContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+  });
+  hlEdit.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    hDrawing = true;
+    hlContainer.style.display = 'none';
+    chartOverlay.style.display = 'none';
+    drawHorLines();
+  });
+});
 
 const trendlineToolBtn = document.getElementById("trendline");
 trendlineToolBtn.addEventListener("click", (e) => {

@@ -521,9 +521,222 @@ body {
   border-radius: 3px;
 }
 
-#tl-save:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* =====================
+     Horizontal Lines
+   =================== */
+#hl-block {
+  top: 40svh;
+  left: 5vw;
+  width: 90vw;
+  height: 50svh;
+  position: fixed;
+  display: none; /* flex */
+  justify-content: space-around;
+  padding: 0.5rem 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0,0,0,0.2);
+  z-index: 5000;
+  overflow-x: auto;
+  border-radius: 1%;
+}
+
+#hl-wrap {
+  height: auto;
+  min-height: 5rem;
+  width: 50svh;
+  transform-origin: center;
+  transform: rotate(90deg);
+  background: #c1ff72;
+  padding: 2.1rem 0.1rem;
+  overflow-y: auto;
+  border: 2px solid #c1ff72;
+}
+
+.hl-head {
+  top: -2.11rem;
+  left: 0;
+  height: 2rem;
+  width: 50svh;
+  position: sticky;
+  background: #c1ff72;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#hl-close {
+  position: absolute;
+  left: 0.5rem;
+  font-size: 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 7px;
+  border-radius: 3px;
+  background: rgba(255,255, 255, 0.5);
+}
+
+#hl-edit {
+  position: absolute;
+  left: 3.5rem;
+  font-size: 1.1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 7px;
+  border-radius: 3px;
+  background: rgba(255,255, 255, 0.5);
+}
+
+.hl-title {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.hledit-submit {
+  bottom: 1rem;
+  left: 1rem;
+  height: 1rem;
+  width: 2rem;
+  background: blue;
+  position: fixed;
+}
+
+.hor-line {
+  width: 91.5%;
+  height: auto;
+  margin-top: 0.5rem;
+  background: hsl(0, 100%, 100%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.25rem 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.hor-line-name {
+  width: 24svh;
+  opacity: 0.7;
+  overflow: hidden;
+  letter-spacing: 0.12rem;
+}
+
+.hor-line-width {
+  width: 6.45svh;
+  opacity: 0.7;
+  text-align: right;
+  overflow: hidden;
+}
+
+.hor-line-clr {
+  width: 2.56svh;
+  background: brown;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  overflow: hidden;
+  transform: scale(0.8);
+}
+
+#hlaction-card {
+  position: fixed;
+  top: 40svh;
+  left: 48vw;
+  height: 40svh;
+  width: 15vw;
+  background: #c1ff72;
+  display: none; /* flex */
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0.3rem;
+  z-index: 5005;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+#hlactioncard-wrap {
+  top: 50%;
+  left: 50%;
+  height: 15vw;
+  width: 40svh;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  position: absolute;
+}
+
+.hlcard-btn {
+  height: 2rem;
+  width: 5rem;
+  margin: 0.8rem 0 0 0;
+  background: hsl(0, 100%, 15%);
+  border-radius: 4px;
+  color: #c1ff72;
+}
+
+#hlcardclose-btn {
+  height: 2rem;
+  width: 2rem;
+  margin: 0.8rem 0 0 0;
+  background: hsl(0, 100%, 15%);
+  border-radius: 4px;
+  color: #c1ff72;
+  font-size: 1.2rem;
+}
+
+#hlcomposer {
+  top: 0.5rem;
+  left: 15vw;
+  width: 62vw;
+  height: 350px;
+  position: fixed;
+  background: hsl(0, 100%, 97%);
+  z-index: 5010;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1rem 0.75rem;
+  display: none; /* flex */
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+#hl-name {
+  height: 1.7rem;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.hl-row {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hl-ctrl {
+  width: 100%;
+  height: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.hl-ctrl button {
+  height: 97%;
+  width: 4rem;
+  background: black;
+  color: #c1ff72;
+  border-radius: 3px;
 }
 
 /* ===================
