@@ -1,5 +1,5 @@
 {
-  "symbol": "ILL",
+  "symbol": "ILLOVO",
   "name": "ILLOVO SUGAR MALAWI Ltd",
   "exchange": "MSE",
   "currency": "MWK",
@@ -109,6 +109,6 @@
     { "date": "2026-02-16", "open": 2680.13, "high": 2680.14, "low": 2680.14, "close": 2680.14, "volume": 1000 },
     { "date": "2026-02-17", "open": 2680.14, "high": 2680.16, "low": 2680.16, "close": 2680.16, "volume": 4000 },
     { "date": "2026-02-26", "open": 2680.22, "high": 2680.22, "low": 2680.22, "close": 2680.22, "volume": 0 },
-    { "date": "2026-02-27", "open": , "high": , "low": , "close": , "volume":  }
+    { "date": "2026-02-27", "open": 2680.22, "high": 2680.23, "low": 2680.23, "close": 2680.23, "volume": 500 }
   ]
 }
