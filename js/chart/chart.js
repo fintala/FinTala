@@ -281,6 +281,7 @@ function initChart(data) {
   render(data);
   drawMovingAverages();
   showTrendlines();
+  showHorLines(data);
   if (volumeActive == "on") {
     Indicators(data);
   }
@@ -584,6 +585,7 @@ function render() {
           render(data);
           drawMovingAverages(data);
           showTrendlines();
+          showHorLines();
           if (volumeActive == "on") {
           Indicators(data);
           }
@@ -888,7 +890,6 @@ horLineToolBtn.addEventListener("click", (e) => {
   const hlEdit = document.getElementById('hl-edit');
   hlClose.addEventListener('click', (e)=>{
     e.stopPropagation();
-    t
     hlContainer.style.display = 'none';
     chartOverlay.style.display = 'none';
   });
