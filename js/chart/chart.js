@@ -77,27 +77,50 @@ function stealData() {
       else {
         datafeed = "data/ohlc/bh.json";
       }
-    }
-    callBhl();
+    }callBhl();
   }
   if (cuup === "amw") {
     function callAmw() {
       if (cuup === "amw" && timeStrech === "W1") {
       datafeed = 'data/ohlc/w_ohlc/airtelmw.json';
           }
+      else if (cuup === "amw" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/airtelmw.json';
+      }
+      else if (cuup === "amw" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/airtelmw.json';
+      }
       else {
         datafeed = "data/ohlc/airtelmw.json";
       }
-    }
-    callAmw();
+    }callAmw();
   }
   if (cuup === "nbm") {
-    datafeed = "data/ohlc/nbm.json";
+    function callNbm() {
+      if (cuup === "nbm" && timeStrech === "W1") {
+        datafeed = 'data/ohlc/w_ohlc/nbm.json';
+      }
+      else if (cuup === "nbm" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/nbm.json';
+      }
+      else if (cuup === "nbm" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/nbm.json';
+      }
+      else {
+        datafeed = "data/ohlc/nbm.json";
+      }
+    }callNbm();
   }
   if (cuup === "ill") {
     function callIll() {
       if (cuup === "ill" && timeStrech === "W1") {
         datafeed = 'data/ohlc/w_ohlc/illovo.json';
+      }
+      else if (cuup === "ill" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/illovo.json';
+      }
+      else if (cuup === "ill" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/illovo.json';
       }
       else {
         datafeed = "data/ohlc/illovo.json";
@@ -110,6 +133,12 @@ function stealData() {
       if (cuup === "tnm" && timeStrech === "W1") {
         datafeed = 'data/ohlc/w_ohlc/tnm.json';
       }
+      else if (cuup === "tnm" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/tnm.json';
+      }
+      else if (cuup === "tnm" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/tnm.json';
+      }
       else {
         datafeed = "data/ohlc/tnm.json";
       }
@@ -121,6 +150,12 @@ function stealData() {
       if (cuup === "nitl" && timeStrech === "W1") {
         datafeed = 'data/ohlc/w_ohlc/nitl.json';
       }
+      else if (cuup === "nitl" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/nitl.json';
+      }
+      else if (cuup === "nitl" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/nitl.json';
+      }
       else {
         datafeed = "data/ohlc/nitl.json";
       }
@@ -130,7 +165,13 @@ function stealData() {
   if (cuup === "nico") {
     function callnico() {
       if (cuup === "nico" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/nico.json';
+      }
+      else if (cuup === "nico" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/nico.json';
+      }
+      else if (cuup === "nico" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/nico.json';
       }
       else {
         datafeed = "data/ohlc/nico.json";
@@ -141,7 +182,13 @@ function stealData() {
   if (cuup === "nbs") {
     function callnbs() {
       if (cuup === "nbs" && timeStrech === "W1") {
-      datafeed = 'data/ohlc/w_ohlc/nitl.json';
+      datafeed = 'data/ohlc/w_ohlc/nbs.json';
+      }
+      else if (cuup === "nbs" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/nbs.json';
+      }
+      else if (cuup === "nbs" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/nbs.json';
       }
       else {
         datafeed = "data/ohlc/nbs.json";
@@ -154,6 +201,12 @@ function stealData() {
       if (cuup === "fdhb" && timeStrech === "W1") {
         datafeed = 'data/ohlc/w_ohlc/fdh.json';
       }
+      else if (cuup === "fdhb" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/fdh.json';
+      }
+      else if (cuup === "fdhb" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/fdh.json';
+      }
       else {
         datafeed = "data/ohlc/fdh.json";
       }
@@ -165,6 +218,12 @@ function stealData() {
       if (cuup === "fmb" && timeStrech === "W1") {
         datafeed = 'data/ohlc/w_ohlc/fmbch.json';
       }
+      else if (cuup === "fmb" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/fmbch.json';
+      }
+      else if (cuup === "fmb" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/fmbch.json';
+      }
       else {
         datafeed = "data/ohlc/fmbch.json";
       }
@@ -174,7 +233,13 @@ function stealData() {
   if (cuup === "icon") {
     function callicon() {
       if (cuup === "icon" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/icon_properties.json';
+      }
+      else if (cuup === "icon" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/icon_properties.json';
+      }
+      else if (cuup === "icon" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/icon_properties.json';
       }
       else {
         datafeed = "data/ohlc/icon_properties.json";
@@ -185,7 +250,13 @@ function stealData() {
   if (cuup === "omu") {
     function callomu() {
       if (cuup === "omu" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/oldmutual.json';
+      }
+      else if (cuup === "omu" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/oldmutual.json';
+      }
+      else if (cuup === "omu" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/oldmutual.json';
       }
       else {
         datafeed = "data/ohlc/oldmutual.json";
@@ -196,10 +267,16 @@ function stealData() {
   if (cuup === "mpico") {
     function callmpico() {
       if (cuup === "mpico" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/mpico.json';
+      }
+      else if (cuup === "mpico" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/mpico.json';
+      }
+      else if (cuup === "mpico" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/mpico.json';
       }
       else {
-        datafeed = "data/ohlc/mpico.json";
+        datafeed = 'data/ohlc/mpico.json';
       }
     }
     callmpico();
@@ -207,7 +284,13 @@ function stealData() {
   if (cuup === "pcl") {
     function callpcl() {
       if (cuup === "pcl" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/press_corp.json';
+      }
+      else if (cuup === "pcl" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/press_corp.json';
+      }
+      else if (cuup === "pcl" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/press_corp.json  ';
       }
       else {
         datafeed = "data/ohlc/press_corp.json";
@@ -218,7 +301,13 @@ function stealData() {
   if (cuup === "stdb") {
     function callstdb() {
       if (cuup === "stdb" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/std_bank.json';
+      }
+      else if (cuup === "stdb" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/std_bank.json';
+      }
+      else if (cuup === 'stdb' && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/std_bank.json';
       }
       else {
         datafeed = "data/ohlc/std_bank.json";
@@ -229,7 +318,13 @@ function stealData() {
   if (cuup === "sunbird") {
     function callsunbird() {
       if (cuup === "sunbird" && timeStrech === "W1") {
-        datafeed = 'data/ohlc/w_ohlc/nitl.json';
+        datafeed = 'data/ohlc/w_ohlc/sunbird.json';
+      }
+      else if (cuup === "sunbird" && timeStrech === "M1") {
+        datafeed = 'data/ohlc/m_ohlc/sunbird.json';
+      }
+      else if (cuup === "sunbird" && timeStrech === "Y1") {
+        datafeed = 'data/ohlc/y_ohlc/sunbird.json';
       }
       else {
         datafeed = "data/ohlc/sunbird.json";
@@ -580,7 +675,6 @@ function render() {
           axisLayer.selectAll("*").remove();
           chartLayer.selectAll("rect").remove();
           candleLayer.selectAll("line").remove();
-          root.selectAll("line.renders").remove();
           
           render(data);
           drawMovingAverages(data);
@@ -955,10 +1049,10 @@ const movingAverage = document.getElementById('movingAverage').addEventListener(
 const volumeIndicator = document.getElementById('volume').addEventListener('click', (e) => {
   e.stopPropagation();
   localStorage.setItem("volume", "on");
-  window.location.reload();
+  window.location.href = "charts.html";
   
   if (volumeActive == "on") {
     localStorage.removeItem("volume");
-    window.location.reload();
+    window.location.href = "charts.html";
   }
 });

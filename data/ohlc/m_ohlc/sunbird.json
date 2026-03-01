@@ -1,6 +1,6 @@
  {
-  "symbol": "MPICO",
-  "name": "MPICO",
+  "symbol": "SUNBIRD",
+  "name": "SUNBIRD HOTELS",
   "exchange": "MSE",
   "currency": "MWK",
   "ohlc": [
@@ -30,13 +30,12 @@
     { "date": "2025-12-12", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
     { "date": "2025-12-19", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
-    { "date": "2025-01-02", "open": 19.51, "high": 19.51, "low": 19.51, "close": 19.51, "volume": 76147 },
-    { "date": "2025-01-09", "open": 19.51, "high": 19.52, "low": 19.51, "close": 19.52, "volume": 87731 },
-    { "date": "2026-01-16", "open": 19.52, "high": 19.52, "low": 19.49, "close": 19.49, "volume": 191380 },
+    { "date": "2025-12-24", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2025-12-31", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2026-01-14", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
     
-    { "date": "2026-01-23", "open": 19.49, "high": 19.49, "low": 19.46, "close": 19.47, "volume": 49704 },
-    { "date": "2026-01-30", "open": 19.47, "high": 19.47, "low": 19.46, "close": 19.46, "volume": 1089359 },
-    { "date": "2026-02-06", "open": 19.46, "high": 19.46, "low": 19.43, "close": 19.44, "volume": 1109460 },
-    { "date": "2026-02-13", "open": 19.46, "high": 19.46, "low": 19.43, "close": 19.44, "volume": 1109460 }
+    { "date": "2026-01-21", "open": null, "high": null, "low": null, "close": null, "volume": 0 },
+    { "date": "2026-01-30", "open": 1700.01, "high": 1700.02, "low": 1700.02, "close": 1700.02, "volume": 450 },
+    { "date": "2026-02-05", "open": 1700.02, "high": 1700.02, "low": 1700.02, "close": 1700.02, "volume": 22950 }
   ]
 }
