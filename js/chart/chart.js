@@ -380,6 +380,7 @@ function initChart(data) {
   if (volumeActive == "on") {
     Indicators(data);
   }
+  
 };
 
 svg
@@ -504,14 +505,19 @@ function render() {
   // =====================
   // AXES
   // =====================
+  const tickCount = Math.min(10, visibleData.length);
+  const step = (visibleData.length - 1) / (tickCount - 1);
+  
+  const tickValues = d3.range(tickCount).map(i => {
+    return visibleData[Math.round(i * step)].date;
+  });
+  
   axisLayer.append("g")
     .attr("class", "x-axes")
     .attr("transform", `translate(0,${height - (margin.bottom + 45)})`)
     .call(
       d3.axisBottom(x)
-      .tickValues(
-        visibleData.filter((_, i) => i % 10 === 3).map(d => d.date)
-      )
+      .tickValues(tickValues)
       .tickFormat(d3.timeFormat("%d %b"))
     );
   axisLayer.selectAll("text")
@@ -528,7 +534,7 @@ function render() {
     axisLayer.selectAll(".domain")
     .attr("stroke", "transparent");
     
-  overlayLayer.append("rect")
+  zoomRect
     .attr("x", width - margin.right)
     .attr("y", 0)
     .attr("width", margin.right)
@@ -686,7 +692,11 @@ function render() {
           
         }
       })
-      .on("end", () => {overlay.style("cursor", "grab")})
+      .on("end", () => {
+        overlay.style("cursor", "grab");
+        overlayLayer.select(".zoom-rect")
+          .style("cursor", "grab");
+      })
   );
   
   // =====================
@@ -695,6 +705,53 @@ function render() {
   // existing crosshair logic stays here
     
 }
+let zoomRect = overlayLayer.select(".zoom-rect");
+const panDrag = d3.drag();
+
+if (zoomRect.empty()) {
+  zoomRect = overlayLayer.append("rect")
+    .attr("class", "zoom-rect")
+    .call(panDrag);
+}
+
+let startY = null;
+let startVisibleCount = null;
+const maxVisibleCount = 90;
+panDrag
+  .on('start', (event) => {
+    overlay.style("pointer-events", "none");
+    overlayLayer.select('.zoom-rect').style("cursor", "grabbing")
+    console.log('Drag started');
+    if (visibleCount === undefined) {
+      console.log('visibleCount is undefined');
+      return;
+    }
+    startY = event.y;
+    startVisibleCount = visibleCount;
+    console.log('startVisibleCount:', startVisibleCount);
+  })
+  .on('drag', (event) => {
+    overlay.style("pointer-events", "none");
+    const deltaY = event.y - startY;
+    const newVisibleCount = Math.round(startVisibleCount + deltaY * 0.3);
+    visibleCount = Math.max(5, Math.min(newVisibleCount, maxVisibleCount));
+    console.log('visibleCount:', visibleCount);
+    axisLayer.selectAll("*").remove();
+    chartLayer.selectAll("rect").remove();
+    candleLayer.selectAll("line").remove();
+    render();
+  })
+  .on('end', (event) => {
+    overlay.style("pointer-events", "all");
+    console.log('Drag ended');
+    startY = null;
+    startVisibleCount = null;
+    axisLayer.selectAll("*").remove();
+    chartLayer.selectAll("rect").remove();
+    candleLayer.selectAll("line").remove();
+    render();
+    console.log("completing event");
+  });
 
 // =========================
 //    BOTTOM INDICATORS
@@ -966,7 +1023,7 @@ let usertype = localStorage.getItem("usertype", "olduser");
 if (usertype !== "olduser") {
   setTimeout (() => {
     openAlert();
-    alertField.textContent = 'You can access the ‘navigation menu’ by clicking (twice) on the logo, near the top left corner.';
+    alertField.textContent = 'You can zoom the charts by dragging along the prices. Slide up to zoom in, and down to zoom out.';
   }, 4000);
   alertClose.addEventListener('click', () => {
     localStorage.setItem("usertype", "olduser");
