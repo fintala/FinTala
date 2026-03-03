@@ -505,7 +505,7 @@ function render() {
   // =====================
   // AXES
   // =====================
-  const tickCount = Math.min(10, visibleData.length);
+  const tickCount = Math.min(5, visibleData.length);
   const step = (visibleData.length - 1) / (tickCount - 1);
   
   const tickValues = d3.range(tickCount).map(i => {
